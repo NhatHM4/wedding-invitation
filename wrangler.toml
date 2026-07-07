@@ -1,3 +1,5 @@
-# Cloudflare Wrangler Configuration for Next.js (next-on-pages)
+# Cloudflare Wrangler Configuration for Pages
+name = "wedding-invitation"
+pages_build_output_dir = ".vercel/output"
 compatibility_date = "2024-09-23"
 compatibility_flags = [ "nodejs_compat" ]
