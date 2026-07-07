@@ -1,26 +1,285 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  --font-roboto: var(--font-roboto), sans-serif;
+  --font-barlow: var(--font-barlow), sans-serif;
+  --font-cormorant: var(--font-cormorant), serif;
+  
+  --font-pinyon: var(--font-pinyon), cursive;
+  --font-alexbrush: var(--font-alexbrush), cursive;
+  --font-motherland: var(--font-motherland), cursive;
+  --font-azkia: var(--font-azkia), sans-serif;
+  --font-mightiest: var(--font-mightiest), sans-serif;
+  --font-ephesis: var(--font-ephesis), cursive;
+  --font-cafeta: var(--font-cafeta), sans-serif;
+  --font-kechuyen: var(--font-kechuyen), sans-serif;
+  --font-quarzo: var(--font-quarzo), sans-serif;
+  --font-sriracha: var(--font-sriracha), cursive;
+  --font-sloop: var(--font-sloop), cursive;
+
+  --color-gold: #c5a880;
+  --color-gold-dark: #b8986c;
+  --color-cream: #fdfdfb;
+  --color-rose-bg: #f9f5f0;
+
+  --animate-spin-slow: spin 8s linear infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Custom CSS classes for emulation */
+.bg-wedding-pattern {
+  background-image: url('/images/background-pattern.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.text-stroke-none {
+  -webkit-text-stroke: 0px transparent;
+}
+
+.divider-line {
+  border-top: 1px dotted #000;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ====== THIỆP MẪU ĐỎ VÀNG GATE ANIMATIONS ====== */
+@keyframes tmdv-gate-open-left {
+  0% {
+    transform: translateX(0);
+  }
+  15% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes tmdv-gate-open-right {
+  0% {
+    transform: translateX(0);
+  }
+  15% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes tmdv-seal-slide {
+  0% {
+    transform: translateX(0);
+  }
+  15% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-210px);
+  }
+}
+
+.tmdv-gate-left-animation {
+  animation: tmdv-gate-open-left 2.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: 0.2s;
+}
+
+.tmdv-gate-right-animation {
+  animation: tmdv-gate-open-right 2.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: 0.2s;
+}
+
+.tmdv-seal-animation {
+  animation: tmdv-seal-slide 2.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: 0.2s;
+}
+
+/* ====== VIEWPORT ENTRANCE ANIMATIONS ====== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 50px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -50px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translate3d(-50px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translate3d(50px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(0.6, 0.6, 0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes fadeInUpRotate {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 45px, 0) rotate(-3deg);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+}
+@keyframes flipInY {
+  from {
+    transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+  40% {
+    transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+    animation-timing-function: ease-in;
+  }
+  60% {
+    transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+    opacity: 1;
+  }
+  80% {
+    transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+  }
+  to {
+    transform: perspective(400px);
+  }
+}
+@keyframes bounceInUp {
+  from, 60%, 75%, 90%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  from {
+    opacity: 0;
+    transform: translate3d(0, 80px, 0) scaleY(1.1);
+  }
+  60% {
+    opacity: 1;
+    transform: translate3d(0, -10px, 0) scaleY(0.95);
+  }
+  75% {
+    transform: translate3d(0, 5px, 0) scaleY(1.02);
+  }
+  90% {
+    transform: translate3d(0, -2px, 0) scaleY(0.98);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes zoomInRotate {
+  from {
+    opacity: 0;
+    transform: scale3d(0.6, 0.6, 0.6) rotate(-5deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale3d(1, 1, 1) rotate(0deg);
+  }
+}
+
+.is-animation {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.is-animation.animation {
+  opacity: 1;
+}
+
+/* Animation helper classes to apply easily to any element */
+.anim-fade-up.animation {
+  animation: fadeInUp 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+}
+.anim-fade-up-rotate.animation {
+  animation: fadeInUpRotate 1.3s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+}
+.anim-fade-down.animation {
+  animation: fadeInDown 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+}
+.anim-fade-left.animation {
+  animation: fadeInLeft 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+}
+.anim-fade-right.animation {
+  animation: fadeInRight 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+}
+.anim-fade.animation {
+  animation: fadeIn 1.5s ease forwards;
+}
+.anim-zoom.animation {
+  animation: zoomIn 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+.anim-zoom-rotate.animation {
+  animation: zoomInRotate 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+.anim-flip-y.animation {
+  animation: flipInY 1.4s ease-out forwards;
+}
+.anim-bounce-up.animation {
+  animation: bounceInUp 1.4s forwards;
+}
+
+/* Custom Scrollbar for wishes list */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #FFFDF9;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #E8C895;
+  border-radius: 3px;
 }
