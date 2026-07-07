@@ -21,12 +21,27 @@ export function middleware(request: NextRequest) {
 
   // Danh sách các domain chính (không coi là subdomain)
   const rootDomains = ['localhost', 'wedding.com', 'www.wedding.com', 'wedding-nhathm.com', 'www.wedding-nhathm.com'];
-  const isRootDomain = rootDomains.includes(hostnameWithoutPort);
+  
+  // Kiểm tra xem tên miền hiện tại có phải là tên miền mặc định của Cloudflare Pages hay không (*.pages.dev)
+  const isCloudflarePagesDefault = hostnameWithoutPort.endsWith('.pages.dev');
+  let isRootDomain = rootDomains.includes(hostnameWithoutPort);
 
   let subdomain = '';
   let customDomain = '';
 
-  if (!isRootDomain) {
+  if (isCloudflarePagesDefault) {
+    const parts = hostnameWithoutPort.split('.');
+    // Nếu có dạng: [tên-dự-án].pages.dev (3 phần) hoặc [mã-bản-build].[tên-dự-án].pages.dev (4 phần)
+    // Thì đây là domain chính của nền tảng (hiển thị trang chủ)
+    if (parts.length <= 4) {
+      isRootDomain = true;
+    } else {
+      // Nếu có dạng: [subdomain].[mã-bản-build].[tên-dự-án].pages.dev (nhiều hơn 4 phần)
+      subdomain = parts[0];
+    }
+  }
+
+  if (!isRootDomain && !isCloudflarePagesDefault) {
     if (hostnameWithoutPort.endsWith('.wedding-nhathm.com')) {
       // Ví dụ: chure-coda.wedding-nhathm.com -> subdomain = "chure-coda"
       subdomain = hostnameWithoutPort.replace('.wedding-nhathm.com', '');
