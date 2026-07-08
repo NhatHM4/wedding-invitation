@@ -52,7 +52,7 @@ export default function ThiepMauDoVangPage() {
     <main className="min-h-screen w-full flex justify-center bg-white py-0">
       <TmdvHeartsBackground />
 
-      <div className="relative w-full max-w-[420px] bg-white shadow-2xl border-x border-gray-200 flex flex-col min-h-screen overflow-x-hidden">
+      <div className="tmdv-container relative w-full max-w-[420px] bg-white shadow-2xl border-x border-gray-200 flex flex-col min-h-screen overflow-x-hidden">
 
         {/* ── ROMANTIC CURTAIN REVEAL ── */}
         {!curtainDone && (
