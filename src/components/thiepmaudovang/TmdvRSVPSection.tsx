@@ -4,26 +4,67 @@ import { useState } from "react";
 
 interface TmdvRSVPSectionProps {
   onOpenGift: () => void;
+  weddingId?: string;
+  onWishSubmitted?: () => void;
 }
 
-export default function TmdvRSVPSection({ onOpenGift }: TmdvRSVPSectionProps) {
+export default function TmdvRSVPSection({ onOpenGift, weddingId, onWishSubmitted }: TmdvRSVPSectionProps) {
   const [name, setName] = useState("");
   const [relationship, setRelationship] = useState("");
   const [wishes, setWishes] = useState("");
   const [attendance, setAttendance] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !relationship) {
       alert("Vui lòng điền đầy đủ Tên và Quan hệ!");
       return;
     }
     
-    // Simulate API call
-    console.log("RSVP Submission:", { name, relationship, wishes, attendance });
-    setIsSubmitted(true);
-    alert("Cảm ơn bạn đã gửi phản hồi và lời chúc đến Dâu Rể!");
+    setIsSubmitting(true);
+    try {
+      if (!weddingId) {
+        // Chế độ demo (không có weddingId)
+        console.log("Demo RSVP Submission:", { name, relationship, wishes, attendance });
+        setIsSubmitted(true);
+        alert("Cảm ơn bạn đã gửi phản hồi và lời chúc! (Chế độ Demo)");
+        return;
+      }
+
+      const response = await fetch("/api/wishes", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          wedding_id: weddingId,
+          guest_name: `${name} (${relationship})`,
+          content: wishes || "Chúc hai bạn trăm năm hạnh phúc! " + (attendance ? `(${attendance})` : ""),
+        }),
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        setIsSubmitted(true);
+        alert("Cảm ơn bạn đã gửi phản hồi và lời chúc đến Dâu Rể!");
+        setName("");
+        setRelationship("");
+        setWishes("");
+        setAttendance("");
+        if (onWishSubmitted) {
+          onWishSubmitted();
+        }
+      } else {
+        alert("Có lỗi xảy ra khi gửi: " + (result.error || "Không xác định"));
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Không thể gửi phản hồi. Vui lòng kiểm tra kết nối mạng!");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -106,9 +147,10 @@ export default function TmdvRSVPSection({ onOpenGift }: TmdvRSVPSectionProps) {
             <button
               type="submit"
               id="w-jsy0cioh"
-              className="w-[168px] h-[43px] mt-[24px] mx-auto flex items-center justify-center bg-white text-[#8e0101] border border-gray-200 rounded-[5px] font-sans font-bold text-[14px] uppercase tracking-wider shadow-[0px_4px_4px_rgba(0,0,0,0.25)] hover:bg-[#8e0101] hover:text-white transition-all cursor-pointer"
+              disabled={isSubmitting}
+              className="w-[168px] h-[43px] mt-[24px] mx-auto flex items-center justify-center bg-white text-[#8e0101] border border-gray-200 rounded-[5px] font-sans font-bold text-[14px] uppercase tracking-wider shadow-[0px_4px_4px_rgba(0,0,0,0.25)] hover:bg-[#8e0101] hover:text-white transition-all cursor-pointer disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed"
             >
-              GỬI NGAY
+              {isSubmitting ? "ĐANG GỬI..." : "GỬI NGAY"}
             </button>
           </form>
         ) : (

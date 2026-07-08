@@ -1,22 +1,53 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import TmdvHeroSection from "@/components/thiepmaudovang/TmdvHeroSection";
 import TmdvAnnouncementSection from "@/components/thiepmaudovang/TmdvAnnouncementSection";
 import TmdvProgramSection from "@/components/thiepmaudovang/TmdvProgramSection";
 import TmdvRSVPSection from "@/components/thiepmaudovang/TmdvRSVPSection";
+import TmdvWishesSection from "@/components/thiepmaudovang/TmdvWishesSection";
 import TmdvAlbumSection from "@/components/thiepmaudovang/TmdvAlbumSection";
 import TmdvFooter from "@/components/thiepmaudovang/TmdvFooter";
 import TmdvAudioPlayer from "@/components/thiepmaudovang/TmdvAudioPlayer";
 import TmdvGiftModal from "@/components/thiepmaudovang/TmdvGiftModal";
 import TmdvHeartsBackground from "@/components/thiepmaudovang/TmdvHeartsBackground";
+import { supabase } from "@/lib/supabase";
 
 export default function ThiepMauDoVangPage() {
   const [isGiftOpen, setIsGiftOpen] = useState(false);
   const [curtainOpen, setCurtainOpen] = useState(false);
   const [curtainDone, setCurtainDone] = useState(false);
   const [scale, setScale] = useState(1);
+  const [wedding, setWedding] = useState<any>(null);
+  const [wishesList, setWishesList] = useState<any[]>([]);
+
+  const fetchWishes = useCallback(async (weddingId: string) => {
+    const { data, error } = await supabase
+      .from("wishes")
+      .select("*")
+      .eq("wedding_id", weddingId)
+      .order("created_at", { ascending: false });
+    if (!error && data) {
+      setWishesList(data);
+    }
+  }, []);
+
+  useEffect(() => {
+    const fetchWeddingData = async () => {
+      const { data, error } = await supabase
+        .from("weddings")
+        .select("*")
+        .eq("slug", "minhhoang-maihuong")
+        .single();
+      
+      if (!error && data) {
+        setWedding(data);
+        fetchWishes(data.id);
+      }
+    };
+    fetchWeddingData();
+  }, [fetchWishes]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -194,7 +225,12 @@ export default function ThiepMauDoVangPage() {
           <TmdvHeroSection />
           <TmdvAnnouncementSection />
           <TmdvProgramSection />
-          <TmdvRSVPSection onOpenGift={() => setIsGiftOpen(true)} />
+          <TmdvRSVPSection 
+            onOpenGift={() => setIsGiftOpen(true)} 
+            weddingId={wedding?.id}
+            onWishSubmitted={() => wedding && fetchWishes(wedding.id)}
+          />
+          <TmdvWishesSection wishes={wishesList} />
           <TmdvAlbumSection />
           <TmdvFooter />
         </div>
