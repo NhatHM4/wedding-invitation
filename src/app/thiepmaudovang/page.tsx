@@ -16,6 +16,21 @@ export default function ThiepMauDoVangPage() {
   const [isGiftOpen, setIsGiftOpen] = useState(false);
   const [curtainOpen, setCurtainOpen] = useState(false);
   const [curtainDone, setCurtainDone] = useState(false);
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width < 420) {
+        setScale(width / 420);
+      } else {
+        setScale(1);
+      }
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     // Wait 1.5s so the user can appreciate the gorgeous romantic curtain with the seal
@@ -52,7 +67,14 @@ export default function ThiepMauDoVangPage() {
     <main className="min-h-screen w-full flex justify-center bg-white py-0 overflow-x-hidden">
       <TmdvHeartsBackground />
 
-      <div className="tmdv-container relative w-full max-w-[420px] bg-white shadow-2xl border-x border-gray-200 flex flex-col min-h-screen overflow-x-hidden">
+      <div 
+        className="tmdv-container relative flex flex-col min-h-screen overflow-x-hidden bg-white shadow-2xl border-x border-gray-200"
+        style={{
+          width: scale < 1 ? "420px" : "100%",
+          maxWidth: scale < 1 ? "none" : "420px",
+          zoom: scale,
+        }}
+      >
 
         {/* ── ROMANTIC CURTAIN REVEAL ── */}
         {!curtainDone && (

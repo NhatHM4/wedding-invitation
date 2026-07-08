@@ -283,12 +283,3 @@
   background-color: #E8C895;
   border-radius: 3px;
 }
-
-/* ====== RESPONSIVE MOBILE SCALING FOR THIỆP MẪU ĐỎ VÀNG ====== */
-@media (max-width: 420px) {
-  .tmdv-container {
-    width: 420px !important;
-    max-width: none !important;
-    zoom: calc(100vw / 420);
-  }
-}
