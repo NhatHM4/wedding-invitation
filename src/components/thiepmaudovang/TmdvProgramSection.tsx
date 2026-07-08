@@ -168,7 +168,7 @@ export default function TmdvProgramSection() {
         }}
       >
         {/* Red border container */}
-        <div id="w-zajrqtwu" className="absolute top-[40px] left-[53px] w-[309px] h-[232px] z-10 border-2 border-[#8e0101] rounded-[16px] bg-transparent is-animation anim-zoom"></div>
+        <div id="w-zajrqtwu" className="absolute top-[40px] left-[55.5px] w-[309px] h-[232px] z-10 border-2 border-[#8e0101] rounded-[16px] bg-transparent is-animation anim-zoom"></div>
 
         <div id="w-avv4pubr" className="absolute top-[54.5px] left-[-3.5px] w-[427px] h-[22.5px] z-20 flex items-center justify-center font-sans font-bold text-[15px] text-[#8e0101] text-center is-animation anim-fade-down">
           BUỔI TIỆC ĐƯỢC TỔ CHỨC TẠI
@@ -185,7 +185,7 @@ export default function TmdvProgramSection() {
         <button 
           id="w-prbr1wdj" 
           onClick={handleOpenMap}
-          className="absolute top-[217px] left-[137.12px] w-[140px] h-[32px] z-20 flex items-center justify-center bg-[#7d1f2a] hover:bg-[#8e0101] text-white font-sans text-[15px] font-semibold rounded-[42px] shadow-[0px_4px_4px_rgba(0,0,0,0.25)] transition-all cursor-pointer is-animation anim-fade-up"
+          className="absolute top-[217px] left-[140px] w-[140px] h-[32px] z-20 flex items-center justify-center bg-[#7d1f2a] hover:bg-[#8e0101] text-white font-sans text-[15px] font-semibold rounded-[42px] shadow-[0px_4px_4px_rgba(0,0,0,0.25)] transition-all cursor-pointer is-animation anim-fade-up"
         >
           Xem Chỉ Đường
         </button>

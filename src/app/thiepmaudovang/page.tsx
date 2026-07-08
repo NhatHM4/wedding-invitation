@@ -49,7 +49,7 @@ export default function ThiepMauDoVangPage() {
   }, [curtainDone]);
 
   return (
-    <main className="min-h-screen w-full flex justify-center bg-white py-0">
+    <main className="min-h-screen w-full flex justify-center bg-white py-0 overflow-x-hidden">
       <TmdvHeartsBackground />
 
       <div className="tmdv-container relative w-full max-w-[420px] bg-white shadow-2xl border-x border-gray-200 flex flex-col min-h-screen overflow-x-hidden">
