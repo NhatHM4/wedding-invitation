@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 
 export default function Home() {
@@ -34,8 +34,6 @@ export default function Home() {
       image: "/thiepmaudovang/images/cover.jpg"
     }
   ];
-
-  const [activeTemplate, setActiveTemplate] = useState(templates[0]);
 
   const features = [
     {
@@ -105,10 +103,10 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#FFF5F6] flex justify-center py-0 sm:py-6 antialiased font-sans">
-      
+
       {/* Mobile-first main container */}
       <div className="w-full max-w-[480px] bg-white flex flex-col shadow-2xl sm:rounded-3xl overflow-hidden min-h-screen relative border border-[#FFE0E5]">
-        
+
         {/* Floating background blobs */}
         <div className="absolute top-[-100px] left-[-100px] w-[250px] h-[250px] bg-rose-100 rounded-full blur-3xl opacity-60 pointer-events-none z-0"></div>
         <div className="absolute top-[400px] right-[-100px] w-[200px] h-[200px] bg-pink-100 rounded-full blur-3xl opacity-50 pointer-events-none z-0"></div>
@@ -128,7 +126,7 @@ export default function Home() {
 
         {/* Content Body */}
         <div className="flex-1 overflow-y-auto z-10 flex flex-col">
-          
+
           {/* Hero Banner Section */}
           <section className="px-5 py-8 text-center flex flex-col items-center gap-3">
             <h1 className="text-2xl sm:text-3xl font-bold font-serif text-[#333] leading-tight mt-2">
@@ -141,116 +139,90 @@ export default function Home() {
             <div className="w-[80px] h-[2px] bg-rose-300 my-1 rounded"></div>
           </section>
 
-          {/* ── LIVE INTERACTIVE PREVIEW SECTION ── */}
-          <section className="px-5 py-4 flex flex-col items-center gap-5">
-            <div className="text-center flex flex-col gap-1">
-              <h2 className="text-sm font-bold text-gray-800 font-serif flex items-center justify-center gap-1.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-rose-400"></span>
-                Bản Chạy Thử Trực Tiếp (Live Demo)
-              </h2>
-              <p className="text-[11px] text-gray-400">Xem trước hoạt ảnh mở rèm và chạy thực tế bên dưới</p>
-            </div>
-
-            {/* Template Selector Tabs */}
-            <div className="flex bg-rose-50/60 p-1.5 rounded-xl border border-rose-100 w-full max-w-[340px]">
-              {templates.map((tpl) => (
-                <button
-                  key={tpl.id}
-                  onClick={() => setActiveTemplate(tpl)}
-                  className={`flex-1 text-[11px] font-bold py-2 px-3 rounded-lg transition-all ${
-                    activeTemplate.id === tpl.id
-                      ? "bg-rose-500 text-white shadow-md"
-                      : "text-gray-500 hover:text-rose-500"
-                  }`}
-                >
-                  {tpl.name.replace("Mẫu ", "")}
-                </button>
-              ))}
-            </div>
-
-            {/* Interactive Phone Mockup Frame */}
-            <div className="relative w-[280px] h-[480px] border-[10px] border-[#222] rounded-[38px] shadow-2xl overflow-hidden bg-rose-50 flex items-center justify-center">
-              {/* Speaker & camera dots */}
-              <div className="absolute top-2 left-1/2 -translate-x-1/2 w-[60px] h-[15px] bg-[#222] rounded-full z-30 flex items-center justify-center gap-1.5 px-3">
-                <div className="w-[18px] h-[3px] bg-gray-600 rounded-full"></div>
-                <div className="w-[4px] h-[4px] bg-gray-600 rounded-full"></div>
-              </div>
-
-              {/* Live iframe loading the template */}
-              <iframe
-                src={activeTemplate.previewUrl}
-                title="Live Wedding Template Preview"
-                className="w-full h-full border-none pointer-events-auto z-10 pt-[25px]"
-                allow="autoplay"
-              />
-            </div>
-            
-            {/* Direct preview page button */}
-            <a
-              href={activeTemplate.previewUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[11px] font-bold text-rose-500 hover:underline flex items-center gap-1 mt-1"
-            >
-              Xem bản đầy đủ trên tab mới
-              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-            </a>
-          </section>
-
-          {/* Divider */}
-          <div className="w-full h-2.5 bg-rose-50/50 border-y border-[#FFE0E5]"></div>
-
-          {/* 1. SHOWCASE TEMPLATES SECTION FIRST */}
-          <section className="px-5 py-6 flex flex-col gap-6">
-            <div className="flex flex-col gap-1">
-              <h2 className="text-lg font-bold text-[#333] font-serif flex items-center gap-1.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-rose-400"></span>
+          {/* 1. SHOWCASE TEMPLATES SECTION FIRST (2 Columns Grid) */}
+          <section className="px-4 py-6 flex flex-col gap-4">
+            <div className="flex flex-col gap-1 px-1">
+              <h2 className="text-base font-bold text-[#333] font-serif flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-rose-400"></span>
                 Danh Sách Mẫu Thiệp
               </h2>
-              <p className="text-[11px] text-gray-400">Chọn xem thử để trải nghiệm hiệu ứng hình ảnh và âm nhạc thực tế</p>
+
             </div>
 
-            <div className="flex flex-col gap-6">
+            {/* 2 Columns Grid Layout */}
+            <div className="grid grid-cols-2 gap-3.5">
               {templates.map((tpl) => (
-                <div 
+                <div
                   key={tpl.id}
-                  className="w-full bg-white rounded-2xl border border-rose-100 shadow-[0_4px_20px_rgba(244,63,94,0.06)] overflow-hidden flex flex-col"
+                  className="flex flex-col gap-2 bg-[#fffcfd] p-2 rounded-2xl border border-rose-100/70 shadow-[0_4px_16px_rgba(244,63,94,0.03)]"
                 >
-                  {/* Fake Device Image Frame */}
-                  <div className="relative w-full h-[180px] bg-gray-50 overflow-hidden group">
-                    <Image
-                      src={tpl.image}
-                      alt={tpl.name}
-                      fill
-                      sizes="480px"
-                      className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                    <span className={`absolute top-3 right-3 text-[10px] font-bold tracking-wider px-2.5 py-1 rounded-full bg-white/95 border ${tpl.colorClasses.text} border-rose-100 shadow`}>
-                      {tpl.badge}
-                    </span>
+                  {/* Clean 9:16 Frame (Border only, no bulky phone bezels) */}
+                  <div className="relative w-full aspect-[9/16] rounded-xl overflow-hidden shadow-sm bg-rose-50/10 border border-rose-50">
+
+                    {/* Live Simulation inside the 9:16 frame */}
+                    {tpl.id === "template-dovang" ? (
+                      <div className="absolute inset-0 w-full h-full">
+                        {/* Looping MP4 Video for Template 1 */}
+                        <video
+                          src="/thiepmaudovang/video/template1.mp4"
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          className="w-full h-full object-cover object-center"
+                        />
+                      </div>
+                    ) : (
+                      <div className="absolute inset-0 w-full h-full">
+                        {/* Couple Photo Background */}
+                        <Image
+                          src={tpl.image}
+                          alt={tpl.name}
+                          fill
+                          sizes="200px"
+                          className="object-cover object-center"
+                          priority
+                        />
+
+                        {/* Floating Hearts Mockup Overlay (10s cycle) */}
+                        <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
+                          <span className="absolute bottom-[-20px] left-[20%] text-rose-400 text-base opacity-0" style={{ animation: "float-heart-10s 6s infinite linear" }}>❤️</span>
+                          <span className="absolute bottom-[-20px] left-[55%] text-rose-500 text-lg opacity-0" style={{ animation: "float-heart-10s 8s infinite linear 2s" }}>💖</span>
+                          <span className="absolute bottom-[-20px] left-[80%] text-pink-400 text-sm opacity-0" style={{ animation: "float-heart-10s 7s infinite linear 4s" }}>💕</span>
+                        </div>
+
+                        <style jsx global>{`
+                          @keyframes float-heart-10s {
+                            0% { transform: translateY(0) scale(0.8) rotate(0deg); opacity: 0; }
+                            15% { opacity: 0.8; }
+                            85% { opacity: 0.8; }
+                            100% { transform: translateY(-350px) scale(1.2) rotate(15deg); opacity: 0; }
+                          }
+                        `}</style>
+                      </div>
+                    )}
                   </div>
 
-                  {/* Card Description */}
-                  <div className="p-4 sm:p-5 flex flex-col gap-3">
-                    <h3 className="text-base font-bold text-gray-800 font-serif">
-                      {tpl.name}
-                    </h3>
-                    <p className="text-[12px] text-gray-500 leading-relaxed">
-                      {tpl.description}
-                    </p>
+                  {/* Template Info (Tên và nút Xem thử gọn gàng phía dưới) */}
+                  <div className="flex flex-col gap-2 mt-1 px-1">
+                    <div className="flex flex-col gap-0.5">
+                      <span className={`text-[8px] font-bold uppercase tracking-wider self-start text-[#db2777]`}>
+                        {tpl.badge === "Hiệu ứng Độc Quyền" ? "Exclusive" : "Popular"}
+                      </span>
+                      <h3 className="text-[11px] font-bold text-gray-800 font-serif leading-tight truncate">
+                        {tpl.name}
+                      </h3>
+                    </div>
                     <a
                       href={tpl.previewUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full h-[40px] mt-2 flex items-center justify-center rounded-xl text-white font-bold text-[13px] shadow-lg shadow-rose-200 hover:shadow-xl transition-all duration-300"
+                      className="w-full h-[32px] flex items-center justify-center rounded-lg text-white font-bold text-[11px] shadow-md shadow-rose-100 hover:opacity-90 transition-all"
                       style={{
                         background: `linear-gradient(135deg, ${tpl.colorClasses.accent} 0%, #db2777 100%)`
                       }}
                     >
-                      XEM THỬ GIAO DIỆN
+                      XEM THỬ
                     </a>
                   </div>
                 </div>
@@ -274,7 +246,7 @@ export default function Home() {
             {/* Features list */}
             <div className="flex flex-col gap-4">
               {features.map((feat, idx) => (
-                <div 
+                <div
                   key={idx}
                   className="flex items-start gap-4 p-4 rounded-xl bg-white border border-rose-50/60 shadow-[0_2px_12px_rgba(244,63,94,0.03)]"
                 >
@@ -327,18 +299,18 @@ export default function Home() {
 
               {/* Contact actions */}
               <div className="flex flex-col sm:flex-row gap-3 mt-1">
-                <a 
-                  href="https://zalo.me/0932204787" // Custom placeholder or your actual Zalo
+                <a
+                  href="https://zalo.me/0932204787"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 h-[42px] rounded-xl bg-[#0068ff] text-white flex items-center justify-center gap-2 font-bold text-[13px] shadow shadow-[#0068ff]/30 hover:opacity-90"
                 >
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
                   </svg>
                   Liên Hệ Zalo
                 </a>
-                <a 
+                <a
                   href="tel:0932204787"
                   className="flex-1 h-[42px] rounded-xl border border-rose-200 bg-white text-rose-600 flex items-center justify-center gap-2 font-bold text-[13px] shadow hover:bg-rose-50/50"
                 >
