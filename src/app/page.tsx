@@ -134,13 +134,13 @@ export default function Home() {
               <span className="text-rose-500">Hạnh Phúc</span>
             </h1>
             <p className="text-[13px] text-gray-500 max-w-[320px] leading-relaxed">
-              Tạo lời mời trọn vẹn, lưu giữ khoảnh khắc trăm năm. Tối ưu hoàn hảo cho di động, giao diện mượt mà và dễ dàng chia sẻ.
+              Tạo lời mời trọn vẹn, lưu giữ khoảnh khắc trăm năm
             </p>
-            <div className="w-[80px] h-[2px] bg-rose-300 my-1 rounded"></div>
+            <div className="w-[80px] h-[2px] bg-rose-300 rounded"></div>
           </section>
 
           {/* 1. SHOWCASE TEMPLATES SECTION FIRST (2 Columns Grid) */}
-          <section className="px-4 py-6 flex flex-col gap-4">
+          <section className="px-4 flex flex-col gap-4">
             <div className="flex flex-col gap-1 px-1">
               <h2 className="text-base font-bold text-[#333] font-serif flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-rose-400"></span>
@@ -248,7 +248,7 @@ export default function Home() {
               {features.map((feat, idx) => (
                 <div
                   key={idx}
-                  className="flex items-start gap-4 p-4 rounded-xl bg-white border border-rose-50/60 shadow-[0_2px_12px_rgba(244,63,94,0.03)]"
+                  className="flex items-start gap-4 p-2 rounded-xl bg-white border border-rose-50/60 shadow-[0_2px_12px_rgba(244,63,94,0.03)]"
                 >
                   <div className="p-2.5 rounded-xl bg-rose-50 shrink-0">
                     {feat.icon}
@@ -286,8 +286,8 @@ export default function Home() {
                   AD
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[12px] font-bold text-gray-800">Nhật H.M (Admin)</span>
-                  <span className="text-[10px] text-rose-500 font-semibold">Người phát triển trực tiếp</span>
+                  <span className="text-[12px] font-bold text-gray-800">Quýt Kiếm Sỹ</span>
+                  <span className="text-[10px] text-rose-500 font-semibold">ADMIN</span>
                 </div>
               </div>
 
