@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 
 export default function Home() {
@@ -34,6 +34,8 @@ export default function Home() {
       image: "/thiepmaudovang/images/cover.jpg"
     }
   ];
+
+  const [activeTemplate, setActiveTemplate] = useState(templates[0]);
 
   const features = [
     {
@@ -138,6 +140,67 @@ export default function Home() {
             </p>
             <div className="w-[80px] h-[2px] bg-rose-300 my-1 rounded"></div>
           </section>
+
+          {/* ── LIVE INTERACTIVE PREVIEW SECTION ── */}
+          <section className="px-5 py-4 flex flex-col items-center gap-5">
+            <div className="text-center flex flex-col gap-1">
+              <h2 className="text-sm font-bold text-gray-800 font-serif flex items-center justify-center gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-rose-400"></span>
+                Bản Chạy Thử Trực Tiếp (Live Demo)
+              </h2>
+              <p className="text-[11px] text-gray-400">Xem trước hoạt ảnh mở rèm và chạy thực tế bên dưới</p>
+            </div>
+
+            {/* Template Selector Tabs */}
+            <div className="flex bg-rose-50/60 p-1.5 rounded-xl border border-rose-100 w-full max-w-[340px]">
+              {templates.map((tpl) => (
+                <button
+                  key={tpl.id}
+                  onClick={() => setActiveTemplate(tpl)}
+                  className={`flex-1 text-[11px] font-bold py-2 px-3 rounded-lg transition-all ${
+                    activeTemplate.id === tpl.id
+                      ? "bg-rose-500 text-white shadow-md"
+                      : "text-gray-500 hover:text-rose-500"
+                  }`}
+                >
+                  {tpl.name.replace("Mẫu ", "")}
+                </button>
+              ))}
+            </div>
+
+            {/* Interactive Phone Mockup Frame */}
+            <div className="relative w-[280px] h-[480px] border-[10px] border-[#222] rounded-[38px] shadow-2xl overflow-hidden bg-rose-50 flex items-center justify-center">
+              {/* Speaker & camera dots */}
+              <div className="absolute top-2 left-1/2 -translate-x-1/2 w-[60px] h-[15px] bg-[#222] rounded-full z-30 flex items-center justify-center gap-1.5 px-3">
+                <div className="w-[18px] h-[3px] bg-gray-600 rounded-full"></div>
+                <div className="w-[4px] h-[4px] bg-gray-600 rounded-full"></div>
+              </div>
+
+              {/* Live iframe loading the template */}
+              <iframe
+                src={activeTemplate.previewUrl}
+                title="Live Wedding Template Preview"
+                className="w-full h-full border-none pointer-events-auto z-10 pt-[25px]"
+                allow="autoplay"
+              />
+            </div>
+            
+            {/* Direct preview page button */}
+            <a
+              href={activeTemplate.previewUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[11px] font-bold text-rose-500 hover:underline flex items-center gap-1 mt-1"
+            >
+              Xem bản đầy đủ trên tab mới
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </section>
+
+          {/* Divider */}
+          <div className="w-full h-2.5 bg-rose-50/50 border-y border-[#FFE0E5]"></div>
 
           {/* 1. SHOWCASE TEMPLATES SECTION FIRST */}
           <section className="px-5 py-6 flex flex-col gap-6">
