@@ -1,9 +1,11 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 
 export default function Home() {
+  const [activePreviewId, setActivePreviewId] = useState<string | null>(null);
+
   const templates = [
     {
       id: "template-dovang",
@@ -117,7 +119,10 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FFF5F6] flex justify-center py-0 sm:py-6 antialiased font-sans">
+    <div 
+      className="min-h-screen bg-[#FFF5F6] flex justify-center py-0 sm:py-6 antialiased font-sans"
+      onClick={() => setActivePreviewId(null)}
+    >
 
       {/* Mobile-first main container */}
       <div className="w-full max-w-[480px] bg-white flex flex-col shadow-2xl sm:rounded-3xl overflow-hidden min-h-screen relative border border-[#FFE0E5]">
@@ -176,6 +181,13 @@ export default function Home() {
                     href={tpl.previewUrl}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={(e) => {
+                      e.stopPropagation(); // Ngăn click lan ra ngoài làm reset active state
+                      if (activePreviewId !== tpl.id) {
+                        e.preventDefault(); // Lần đầu chạm: chặn chuyển trang, kích hoạt tự động scroll preview
+                        setActivePreviewId(tpl.id);
+                      }
+                    }}
                     className="group relative w-full aspect-[9/16] rounded-xl overflow-hidden shadow-sm bg-rose-50/10 border border-rose-50 block cursor-pointer"
                   >
                     {/* Live Simulation / Image Container */}
@@ -185,7 +197,9 @@ export default function Home() {
                         <img
                           src={tpl.image}
                           alt={tpl.name}
-                          className="w-full h-auto absolute top-0 left-0 transform transition-transform duration-[32s] ease-in-out group-hover:-translate-y-[88%] object-cover object-top"
+                          className={`w-full h-auto absolute top-0 left-0 transform transition-transform duration-[32s] ease-in-out group-hover:-translate-y-[88%] object-cover object-top ${
+                            activePreviewId === tpl.id ? "-translate-y-[88%]" : ""
+                          }`}
                         />
                       ) : (
                         <Image
@@ -223,7 +237,9 @@ export default function Home() {
                     {/* "Xem mẫu" pill at the bottom - visible in normal state, fades out on hover */}
                     {tpl.scrollPreview && (
                       <>
-                        <div className="preview-pill absolute bottom-3 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-sm border border-rose-100 text-rose-600 text-[10px] font-bold px-3.5 py-1.5 rounded-full shadow-sm z-30 flex items-center gap-1">
+                        <div className={`preview-pill absolute bottom-3 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-sm border border-rose-100 text-rose-600 text-[10px] font-bold px-3.5 py-1.5 rounded-full shadow-sm z-30 flex items-center gap-1 ${
+                          activePreviewId === tpl.id ? "opacity-0 pointer-events-none" : ""
+                        }`}>
                           <span>Xem mẫu</span>
                           <svg className="w-2.5 h-2.5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
@@ -240,6 +256,16 @@ export default function Home() {
                           }
                         `}</style>
                       </>
+                    )}
+
+                    {/* Pulsing button when active on mobile (activePreviewId === tpl.id) */}
+                    {activePreviewId === tpl.id && (
+                      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-red-700 text-white text-[10px] font-bold px-3.5 py-1.5 rounded-full shadow-lg z-30 animate-pulse flex items-center gap-1 pointer-events-none">
+                        <span>Chạm để xem</span>
+                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                      </div>
                     )}
 
                   </a>
