@@ -22,14 +22,14 @@ export default function TmdvRSVPSection({ onOpenGift, weddingId, onWishSubmitted
       alert("Vui lòng điền đầy đủ Tên và Quan hệ!");
       return;
     }
-    
+
     setIsSubmitting(true);
     try {
       if (!weddingId) {
         // Chế độ demo (không có weddingId)
         console.log("Demo RSVP Submission:", { name, relationship, wishes, attendance });
         setIsSubmitted(true);
-        alert("Cảm ơn bạn đã gửi phản hồi và lời chúc! (Chế độ Demo)");
+        alert("Cảm ơn bạn đã gửi phản hồi và lời chúc! ");
         return;
       }
 
@@ -68,8 +68,8 @@ export default function TmdvRSVPSection({ onOpenGift, weddingId, onWishSubmitted
   };
 
   return (
-    <section 
-      id="w-j6a4d4fc" 
+    <section
+      id="w-j6a4d4fc"
       className="relative w-full h-[570px] overflow-hidden select-none bg-cover bg-no-repeat"
       style={{
         backgroundImage: "url('/thiepmaudovang/images/bg-pattern-clouds.png')"
@@ -156,8 +156,8 @@ export default function TmdvRSVPSection({ onOpenGift, weddingId, onWishSubmitted
         ) : (
           <div className="w-full h-full flex flex-col items-center justify-center text-white text-center font-sans">
             <h3 className="text-[18px] font-bold mb-3">Đã gửi thành công!</h3>
-            <p className="text-[14px] leading-relaxed">Cảm ơn bạn đã phản hồi.<br/>Sự hiện diện của bạn là niềm vinh hạnh của gia đình chúng tôi!</p>
-            <button 
+            <p className="text-[14px] leading-relaxed">Cảm ơn bạn đã phản hồi.<br />Sự hiện diện của bạn là niềm vinh hạnh của gia đình chúng tôi!</p>
+            <button
               onClick={() => setIsSubmitted(false)}
               className="mt-6 px-4 py-2 bg-white text-[#7d1f2a] rounded-[5px] font-bold text-[12px]"
             >
@@ -168,7 +168,7 @@ export default function TmdvRSVPSection({ onOpenGift, weddingId, onWishSubmitted
       </div>
 
       {/* Button "GỬI MỪNG CƯỚI" */}
-      <button 
+      <button
         id="w-qbpa8242"
         onClick={onOpenGift}
         className="absolute top-[489.4px] left-[113px] w-[194px] h-[40px] z-10 flex items-center justify-center bg-[#7d1f2a] hover:bg-[#8e0101] text-white font-sans font-bold text-[14px] rounded-[9px] shadow-[0px_4px_4px_rgba(0,0,0,0.25)] transition-all cursor-pointer is-animation anim-bounce-up"

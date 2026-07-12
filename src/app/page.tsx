@@ -17,7 +17,8 @@ export default function Home() {
         text: "text-red-700",
         accent: "#7d1f2a"
       },
-      image: "/thiepmaudovang/images/ceremony-photo.jpg"
+      image: "/thiepmaudovang/images/preview.webp",
+      scrollPreview: true
     },
     {
       id: "template-mocnau",
@@ -170,74 +171,87 @@ export default function Home() {
                   key={tpl.id}
                   className="flex flex-col gap-2 bg-[#fffcfd] p-2 rounded-2xl border border-rose-100/70 shadow-[0_4px_16px_rgba(244,63,94,0.03)]"
                 >
-                  {/* Clean 9:16 Frame (Border only, no bulky phone bezels) */}
-                  <div className="relative w-full aspect-[9/16] rounded-xl overflow-hidden shadow-sm bg-rose-50/10 border border-rose-50">
-
-                    {/* Live Simulation inside the 9:16 frame */}
-                    {tpl.id === "template-dovang" ? (
-                      <div className="absolute inset-0 w-full h-full">
-                        {/* Looping MP4 Video for Template 1 */}
-                        <video
-                          src="/thiepmaudovang/video/template1.mp4"
-                          autoPlay
-                          loop
-                          muted
-                          playsInline
-                          className="w-full h-full object-cover object-center"
+                  {/* Clean 9:16 Frame as standard hyperlink to match Zenlove */}
+                  <a
+                    href={tpl.previewUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative w-full aspect-[9/16] rounded-xl overflow-hidden shadow-sm bg-rose-50/10 border border-rose-50 block cursor-pointer"
+                  >
+                    {/* Live Simulation / Image Container */}
+                    <div className="absolute inset-0 w-full h-full">
+                      {tpl.scrollPreview ? (
+                        /* Standard img tag handles w-full h-auto absolute positioning perfectly and scales dynamically without parent wrapper stretching issues */
+                        <img
+                          src={tpl.image}
+                          alt={tpl.name}
+                          className="w-full h-auto absolute top-0 left-0 transform transition-transform duration-[32s] ease-in-out group-hover:-translate-y-[88%] object-cover object-top"
                         />
-                      </div>
-                    ) : (
-                      <div className="absolute inset-0 w-full h-full">
-                        {/* Couple Photo Background */}
+                      ) : (
                         <Image
                           src={tpl.image}
                           alt={tpl.name}
                           fill
                           sizes="200px"
-                          className="object-cover object-center"
+                          className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                           priority
                         />
+                      )}
+                    </div>
 
-                        {/* Floating Hearts Mockup Overlay (10s cycle) */}
-                        <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
-                          <span className="absolute bottom-[-20px] left-[20%] text-rose-400 text-base opacity-0" style={{ animation: "float-heart-10s 6s infinite linear" }}>❤️</span>
-                          <span className="absolute bottom-[-20px] left-[55%] text-rose-500 text-lg opacity-0" style={{ animation: "float-heart-10s 8s infinite linear 2s" }}>💖</span>
-                          <span className="absolute bottom-[-20px] left-[80%] text-pink-400 text-sm opacity-0" style={{ animation: "float-heart-10s 7s infinite linear 4s" }}>💕</span>
-                        </div>
-
-                        <style jsx global>{`
-                          @keyframes float-heart-10s {
-                            0% { transform: translateY(0) scale(0.8) rotate(0deg); opacity: 0; }
-                            15% { opacity: 0.8; }
-                            85% { opacity: 0.8; }
-                            100% { transform: translateY(-350px) scale(1.2) rotate(15deg); opacity: 0; }
-                          }
-                        `}</style>
+                    {/* Floating Hearts Mockup Overlay (only for templates that are not dovang) */}
+                    {tpl.id !== "template-dovang" && (
+                      <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
+                        <span className="absolute bottom-[-20px] left-[20%] text-rose-400 text-base opacity-0" style={{ animation: "float-heart-10s 6s infinite linear" }}>❤️</span>
+                        <span className="absolute bottom-[-20px] left-[55%] text-rose-500 text-lg opacity-0" style={{ animation: "float-heart-10s 8s infinite linear 2s" }}>💖</span>
+                        <span className="absolute bottom-[-20px] left-[80%] text-pink-400 text-sm opacity-0" style={{ animation: "float-heart-10s 7s infinite linear 4s" }}>💕</span>
                       </div>
                     )}
-                  </div>
 
-                  {/* Template Info (Tên và nút Xem thử gọn gàng phía dưới) */}
-                  <div className="flex flex-col gap-2 mt-1 px-1">
-                    <div className="flex flex-col gap-0.5">
-                      <span className={`text-[8px] font-bold uppercase tracking-wider self-start text-[#db2777]`}>
-                        {tpl.badge === "Hiệu ứng Độc Quyền" ? "Exclusive" : "Popular"}
-                      </span>
-                      <h3 className="text-[11px] font-bold text-gray-800 font-serif leading-tight truncate">
-                        {tpl.name}
-                      </h3>
-                    </div>
-                    <a
-                      href={tpl.previewUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full h-[32px] flex items-center justify-center rounded-lg text-white font-bold text-[11px] shadow-md shadow-rose-100 hover:opacity-90 transition-all"
-                      style={{
-                        background: `linear-gradient(135deg, ${tpl.colorClasses.accent} 0%, #db2777 100%)`
-                      }}
-                    >
-                      XEM THỬ
-                    </a>
+                    {/* CSS Animation style block for floating hearts */}
+                    {tpl.id !== "template-dovang" && (
+                      <style jsx global>{`
+                        @keyframes float-heart-10s {
+                          0% { transform: translateY(0) scale(0.8) rotate(0deg); opacity: 0; }
+                          15% { opacity: 0.8; }
+                          85% { opacity: 0.8; }
+                          100% { transform: translateY(-350px) scale(1.2) rotate(15deg); opacity: 0; }
+                        }
+                      `}</style>
+                    )}
+
+                    {/* "Xem mẫu" pill at the bottom - visible in normal state, fades out on hover */}
+                    {tpl.scrollPreview && (
+                      <>
+                        <div className="preview-pill absolute bottom-3 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-sm border border-rose-100 text-rose-600 text-[10px] font-bold px-3.5 py-1.5 rounded-full shadow-sm z-30 flex items-center gap-1">
+                          <span>Xem mẫu</span>
+                          <svg className="w-2.5 h-2.5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </div>
+                        <style jsx>{`
+                          .preview-pill {
+                            transition: opacity 300ms ease;
+                            opacity: 1;
+                          }
+                          :global(.group):hover .preview-pill {
+                            opacity: 0 !important;
+                            pointer-events: none;
+                          }
+                        `}</style>
+                      </>
+                    )}
+
+                  </a>
+
+                  {/* Template Info (Tên gọn gàng phía dưới) */}
+                  <div className="flex flex-col gap-1 mt-1 px-1">
+                    <span className="text-[8px] font-bold uppercase tracking-wider self-start text-[#db2777]">
+                      {tpl.badge === "Hiệu ứng Độc Quyền" ? "Exclusive" : "Popular"}
+                    </span>
+                    <h3 className="text-[11px] font-bold text-gray-800 font-serif leading-tight truncate">
+                      {tpl.name}
+                    </h3>
                   </div>
                 </div>
               ))}
