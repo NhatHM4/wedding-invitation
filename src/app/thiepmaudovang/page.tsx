@@ -75,7 +75,7 @@ export default function ThiepMauDoVangPage() {
     // Wait 1.5s so the user can appreciate the gorgeous romantic curtain with the seal
     const t1 = setTimeout(() => setCurtainOpen(true), 1500);
     // Remove DOM after animation finishes
-    const t2 = setTimeout(() => setCurtainDone(true), 3800);
+    const t2 = setTimeout(() => setCurtainDone(true), 5000);
     return () => { clearTimeout(t1); clearTimeout(t2); };
   }, []);
 
@@ -106,6 +106,81 @@ export default function ThiepMauDoVangPage() {
     <main className="min-h-screen w-full flex justify-center bg-white py-0 overflow-x-hidden">
       <TmdvHeartsBackground />
 
+      {/* ── ROMANTIC CURTAIN REVEAL ── */}
+      {!curtainDone && (
+        <div className="fixed inset-0 z-[9999] pointer-events-none overflow-hidden">
+          {/* Left Door */}
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "50%",
+              height: "100%",
+              zIndex: 3, // Set to 3 so the attached seal overlays the right door and doesn't get cut in half
+              transition: curtainOpen
+                ? "transform 3500ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 3500ms ease-out"
+                : "none",
+              transform: curtainOpen ? "translateX(-100%)" : "translateX(0)",
+              backgroundColor: "#b91c1c", // Brighter, more vibrant traditional red
+              backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='40' viewBox='0 0 60 40'%3E%3Cpath d='M30 40c11.046 0 20-8.954 20-20S41.046 0 30 0 10 8.954 10 20s8.954 20 20 20zm0-4c-8.837 0-16-7.163-16-16S21.163 4 30 4s16 7.163 16 16-7.163 16-16 16zm-15-6c5.523 0 10-4.477 10-10S20.523 10 15 10 5 14.477 5 20s4.477 10 10 10zm30 0c5.523 0 10-4.477 10-10s-4.477-10-10-10-10 4.477-10 10 4.477 10 10 10z' fill='%23c5a880' fill-opacity='.08' fill-rule='evenodd'/%3E%3C/svg%3E\")",
+              borderRight: "4px solid #c5a880",
+              boxShadow: "inset -10px 0 20px rgba(0,0,0,0.3)"
+            }}
+          >
+            {/* Square double happiness seal attached to the right side of the left door */}
+            <div 
+              style={{
+                position: "absolute",
+                top: "50%",
+                right: "-50px", // Centered on the seam (width is 100px, so half is 50px)
+                transform: "translateY(-50%)",
+                width: "100px",
+                height: "100px",
+                backgroundColor: "#b91c1c", // Brighter, more vibrant traditional red
+                border: "3px double #c5a880",
+                borderRadius: "8px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                boxShadow: "0 4px 15px rgba(0,0,0,0.4)",
+                zIndex: 10,
+              }}
+            >
+              <div className="relative w-[65px] h-[65px]">
+                <Image
+                  src="/thiepmaudovang/images/double-happiness.png"
+                  alt="Double Happiness Seal"
+                  fill
+                  sizes="65px"
+                  className="object-contain filter brightness-[1.2]"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Right Door */}
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              right: 0,
+              width: "50%",
+              height: "100%",
+              zIndex: 2, // Layered behind the left door's seal
+              transition: curtainOpen
+                ? "transform 3500ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 3500ms ease-out"
+                : "none",
+              transform: curtainOpen ? "translateX(100%)" : "translateX(0)",
+              backgroundColor: "#b91c1c", // Brighter, more vibrant traditional red
+              backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='40' viewBox='0 0 60 40'%3E%3Cpath d='M30 40c11.046 0 20-8.954 20-20S41.046 0 30 0 10 8.954 10 20s8.954 20 20 20zm0-4c-8.837 0-16-7.163-16-16S21.163 4 30 4s16 7.163 16 16-7.163 16-16 16zm-15-6c5.523 0 10-4.477 10-10S20.523 10 15 10 5 14.477 5 20s4.477 10 10 10zm30 0c5.523 0 10-4.477 10-10s-4.477-10-10-10-10 4.477-10 10 4.477 10 10 10z' fill='%23c5a880' fill-opacity='.08' fill-rule='evenodd'/%3E%3C/svg%3E\")",
+              borderLeft: "4px solid #c5a880",
+              boxShadow: "inset 10px 0 20px rgba(0,0,0,0.3)"
+            }}
+          />
+        </div>
+      )}
+
       <div 
         className="tmdv-container relative flex flex-col min-h-screen overflow-x-hidden bg-white shadow-2xl border-x border-gray-200"
         style={{
@@ -115,122 +190,9 @@ export default function ThiepMauDoVangPage() {
         }}
       >
 
-        {/* ── ROMANTIC CURTAIN REVEAL ── */}
-        {!curtainDone && (
-          <div className="absolute top-0 left-0 w-full h-screen z-[9999] pointer-events-none overflow-hidden">
-
-            {/* Soft blush overlay — fades out as curtains open */}
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                background: "linear-gradient(135deg, #fff5f7 0%, #fce4ec 50%, #fff5f7 100%)",
-                transition: curtainOpen ? "opacity 2000ms ease-out" : "none",
-                opacity: curtainOpen ? 0 : 1,
-                transitionDelay: curtainOpen ? "800ms" : "0ms",
-                zIndex: 0,
-              }}
-            />
-
-            {/* LEFT curtain — floats out to the left */}
-            <div
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "55%",
-                height: "100%",
-                zIndex: 2,
-                transition: curtainOpen
-                  ? "transform 2400ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 2400ms ease-out"
-                  : "none",
-                transform: curtainOpen ? "translateX(-105%)" : "translateX(0)",
-                opacity: curtainOpen ? 0 : 1,
-              }}
-            >
-              <div
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  backgroundImage: "url('/thiepmaudovang/images/curtain-door.png')",
-                  backgroundSize: "cover",
-                  backgroundPosition: "right center",
-                  backgroundRepeat: "no-repeat",
-                }}
-              />
-            </div>
-
-            {/* RIGHT curtain — floats out to the right (mirrored) */}
-            <div
-              style={{
-                position: "absolute",
-                top: 0,
-                right: 0,
-                width: "55%",
-                height: "100%",
-                zIndex: 2,
-                transition: curtainOpen
-                  ? "transform 2400ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 2400ms ease-out"
-                  : "none",
-                transform: curtainOpen ? "translateX(105%)" : "translateX(0)",
-                opacity: curtainOpen ? 0 : 1,
-              }}
-            >
-              <div
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  backgroundImage: "url('/thiepmaudovang/images/curtain-door.png')",
-                  backgroundSize: "cover",
-                  backgroundPosition: "right center",
-                  backgroundRepeat: "no-repeat",
-                  transform: "scaleX(-1)",
-                }}
-              />
-            </div>
-
-            {/* Center ornament (Double Happiness Seal) — fades and scales down as curtains open */}
-            <div
-              style={{
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                transform: curtainOpen 
-                  ? "translate(-50%, -50%) scale(0.3)" 
-                  : "translate(-50%, -50%) scale(1)",
-                opacity: curtainOpen ? 0 : 1,
-                transition: "transform 1800ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 1500ms ease-out",
-                zIndex: 3,
-                pointerEvents: "none",
-              }}
-            >
-              <div className="w-[120px] h-[120px] bg-white/90 backdrop-blur-[4px] border-2 border-[#c5a880] rounded-full flex items-center justify-center shadow-[0_8px_32px_rgba(125,31,42,0.25)]">
-                <div className="relative w-[70px] h-[70px] filter drop-shadow-[0_2px_5px_rgba(0,0,0,0.1)]">
-                  <Image
-                    src="/thiepmaudovang/images/double-happiness.png"
-                    alt="Double Happiness Seal"
-                    fill
-                    sizes="70px"
-                    className="object-contain"
-                  />
-                </div>
-              </div>
-            </div>
-
-          </div>
-        )}
-
         {/* ── INVITATION CONTENT — always beneath curtains ── */}
-        <div 
-          className="flex flex-col w-full"
-          style={{
-            opacity: curtainOpen ? 1 : 0,
-            transform: curtainOpen ? "translateY(0) scale(1)" : "translateY(15px) scale(0.97)",
-            transition: "opacity 2200ms cubic-bezier(0.215, 0.610, 0.355, 1), transform 2200ms cubic-bezier(0.215, 0.610, 0.355, 1)",
-            transitionDelay: "300ms",
-          }}
-        >
-          <TmdvHeroSection wedding={wedding} to={to} />
+        <div className="flex flex-col w-full opacity-100">
+          <TmdvHeroSection wedding={wedding} to={to} animate={curtainOpen} />
           <TmdvAnnouncementSection wedding={wedding} />
           <TmdvProgramSection wedding={wedding} />
           <TmdvRSVPSection 
