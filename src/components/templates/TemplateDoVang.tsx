@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import Image from "next/image";
 import TmdvHeroSection from "@/components/thiepmaudovang/TmdvHeroSection";
 import TmdvAnnouncementSection from "@/components/thiepmaudovang/TmdvAnnouncementSection";
 import TmdvProgramSection from "@/components/thiepmaudovang/TmdvProgramSection";
@@ -12,23 +11,21 @@ import TmdvFooter from "@/components/thiepmaudovang/TmdvFooter";
 import TmdvAudioPlayer from "@/components/thiepmaudovang/TmdvAudioPlayer";
 import TmdvGiftModal from "@/components/thiepmaudovang/TmdvGiftModal";
 import TmdvHeartsBackground from "@/components/thiepmaudovang/TmdvHeartsBackground";
+import Image from "next/image";
 import { supabase } from "@/lib/supabase";
 
-export default function ThiepMauDoVangPage() {
-  const [to, setTo] = useState("");
+interface TemplateDoVangProps {
+  wedding: any;
+  to: string;
+  wishes: any[];
+}
+
+export default function TemplateDoVang({ wedding, to, wishes: initialWishes }: TemplateDoVangProps) {
   const [isGiftOpen, setIsGiftOpen] = useState(false);
   const [curtainOpen, setCurtainOpen] = useState(false);
   const [curtainDone, setCurtainDone] = useState(false);
   const [scale, setScale] = useState(1);
-  const [wedding, setWedding] = useState<any>(null);
-  const [wishesList, setWishesList] = useState<any[]>([]);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const params = new URLSearchParams(window.location.search);
-      setTo(params.get("to") || "");
-    }
-  }, []);
+  const [wishesList, setWishesList] = useState<any[]>(initialWishes);
 
   const fetchWishes = useCallback(async (weddingId: string) => {
     const { data, error } = await supabase
@@ -42,20 +39,8 @@ export default function ThiepMauDoVangPage() {
   }, []);
 
   useEffect(() => {
-    const fetchWeddingData = async () => {
-      const { data, error } = await supabase
-        .from("weddings")
-        .select("*")
-        .eq("slug", "minhhoang-maihuong")
-        .single();
-      
-      if (!error && data) {
-        setWedding(data);
-        fetchWishes(data.id);
-      }
-    };
-    fetchWeddingData();
-  }, [fetchWishes]);
+    setWishesList(initialWishes);
+  }, [initialWishes]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -72,11 +57,12 @@ export default function ThiepMauDoVangPage() {
   }, []);
 
   useEffect(() => {
-    // Wait 1.5s so the user can appreciate the gorgeous romantic curtain with the seal
     const t1 = setTimeout(() => setCurtainOpen(true), 1500);
-    // Remove DOM after animation finishes
     const t2 = setTimeout(() => setCurtainDone(true), 3800);
-    return () => { clearTimeout(t1); clearTimeout(t2); };
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
   }, []);
 
   // Scroll entrance animations (only runs after curtains are fully opened and removed)
@@ -92,18 +78,17 @@ export default function ThiepMauDoVangPage() {
           }
         });
       },
-      { 
-        threshold: 0.15, 
-        // 100px buffer at the bottom ensures elements trigger animation ONLY when scrolled well into view
-        rootMargin: "0px 0px -100px 0px" 
+      {
+        threshold: 0.15,
+        rootMargin: "0px 0px -100px 0px"
       }
     );
     els.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, [curtainDone]);
+  }, [curtainDone, wishesList]);
 
   return (
-    <main className="min-h-screen w-full flex justify-center bg-white py-0 overflow-x-hidden">
+    <div className="min-h-screen w-full flex justify-center bg-white py-0 overflow-x-hidden relative">
       <TmdvHeartsBackground />
 
       <div 
@@ -114,12 +99,9 @@ export default function ThiepMauDoVangPage() {
           zoom: scale,
         }}
       >
-
         {/* ── ROMANTIC CURTAIN REVEAL ── */}
         {!curtainDone && (
           <div className="absolute top-0 left-0 w-full h-screen z-[9999] pointer-events-none overflow-hidden">
-
-            {/* Soft blush overlay — fades out as curtains open */}
             <div
               style={{
                 position: "absolute",
@@ -131,8 +113,6 @@ export default function ThiepMauDoVangPage() {
                 zIndex: 0,
               }}
             />
-
-            {/* LEFT curtain — floats out to the left */}
             <div
               style={{
                 position: "absolute",
@@ -159,8 +139,6 @@ export default function ThiepMauDoVangPage() {
                 }}
               />
             </div>
-
-            {/* RIGHT curtain — floats out to the right (mirrored) */}
             <div
               style={{
                 position: "absolute",
@@ -188,8 +166,6 @@ export default function ThiepMauDoVangPage() {
                 }}
               />
             </div>
-
-            {/* Center ornament (Double Happiness Seal) — fades and scales down as curtains open */}
             <div
               style={{
                 position: "absolute",
@@ -216,11 +192,10 @@ export default function ThiepMauDoVangPage() {
                 </div>
               </div>
             </div>
-
           </div>
         )}
 
-        {/* ── INVITATION CONTENT — always beneath curtains ── */}
+        {/* ── INVITATION CONTENT ── */}
         <div 
           className="flex flex-col w-full"
           style={{
@@ -246,6 +221,6 @@ export default function ThiepMauDoVangPage() {
         <TmdvAudioPlayer wedding={wedding} />
         <TmdvGiftModal isOpen={isGiftOpen} onClose={() => setIsGiftOpen(false)} wedding={wedding} />
       </div>
-    </main>
+    </div>
   );
 }

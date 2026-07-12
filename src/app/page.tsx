@@ -20,6 +20,20 @@ export default function Home() {
       image: "/thiepmaudovang/images/ceremony-photo.jpg"
     },
     {
+      id: "template-mocnau",
+      name: "Mẫu Đỏ Mộc Nâu",
+      description: "Thanh lịch, tối giản kiểu Hàn Quốc với nền trắng tinh khôi. Lịch sự, hiện đại, tích hợp form xác nhận tham dự và lịch đếm ngược ngày cưới.",
+      previewUrl: "/thiepdomocnau",
+      badge: "Mới Nhất",
+      colorClasses: {
+        bg: "bg-gray-50",
+        border: "border-gray-200",
+        text: "text-gray-700",
+        accent: "#7d1f2a"
+      },
+      image: "/thiepmaudovang/images/gallery-1.jpg"
+    },
+    {
       id: "template-classic",
       name: "Mẫu Classic Romantic",
       description: "Thanh lịch, dịu dàng phương Tây với tông màu kem ấm áp. Bố cục tối giản, sang trọng, tập trung vào khoảnh khắc tình yêu và lời chúc của khách mời.",

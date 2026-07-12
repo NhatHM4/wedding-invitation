@@ -5,10 +5,17 @@ import Image from "next/image";
 interface TmdvGiftModalProps {
   isOpen: boolean;
   onClose: () => void;
+  wedding?: any;
 }
 
-export default function TmdvGiftModal({ isOpen, onClose }: TmdvGiftModalProps) {
+export default function TmdvGiftModal({ isOpen, onClose, wedding }: TmdvGiftModalProps) {
   if (!isOpen) return null;
+
+  const bankInfo = wedding?.location_info?.bank_info || {};
+  const bankName = bankInfo.bank_name || "MBBANK";
+  const accountHolder = bankInfo.account_holder || "NGUYEN TAN DAT";
+  const accountNumber = bankInfo.account_number || "8838683860";
+  const qrUrl = bankInfo.qr_url || "/thiepmaudovang/images/qr-modal.jpg";
 
   return (
     <div className="fixed inset-0 z-[1000000] flex items-center justify-center bg-black/60 backdrop-blur-[2px] p-4">
@@ -47,7 +54,7 @@ export default function TmdvGiftModal({ isOpen, onClose }: TmdvGiftModalProps) {
         >
           <div className="w-[185px] h-[185px] relative">
             <Image
-              src="/thiepmaudovang/images/qr-modal.jpg"
+              src={qrUrl}
               alt="QR Code Mừng Cưới"
               fill
               sizes="185px"
@@ -62,8 +69,8 @@ export default function TmdvGiftModal({ isOpen, onClose }: TmdvGiftModalProps) {
           id="w-sg8qlt0w" 
           className="w-full text-center font-sans font-bold text-[15px] text-white/95 tracking-wide leading-relaxed uppercase mb-2"
         >
-          <div>MBBANK - NGUYEN TAN DAT</div>
-          <div className="text-[17px] text-yellow-400 font-extrabold tracking-widest mt-0.5">8838683860</div>
+          <div>{bankName} - {accountHolder}</div>
+          <div className="text-[17px] text-yellow-400 font-extrabold tracking-widest mt-0.5">{accountNumber}</div>
         </div>
       </div>
     </div>

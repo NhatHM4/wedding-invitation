@@ -2,7 +2,11 @@
 
 import Image from "next/image";
 
-export default function TmdvFooter() {
+interface TmdvFooterProps {
+  wedding: any;
+}
+
+export default function TmdvFooter({ wedding }: TmdvFooterProps) {
   return (
     <div className="w-full flex flex-col">
       {/* Greeting Subsection (#w-hcf6fbgo) */}

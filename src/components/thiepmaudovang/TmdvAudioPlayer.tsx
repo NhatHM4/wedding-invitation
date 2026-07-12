@@ -3,7 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
-export default function TmdvAudioPlayer() {
+interface TmdvAudioPlayerProps {
+  wedding: any;
+}
+
+export default function TmdvAudioPlayer({ wedding }: TmdvAudioPlayerProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   // Use a ref to track hasStarted inside closures (avoid stale closure + effect re-run)
@@ -11,7 +15,7 @@ export default function TmdvAudioPlayer() {
 
   useEffect(() => {
     // Initialize audio element once
-    const audio = new Audio("/thiepmaudovang/audio/bg-music.mp3");
+    const audio = new Audio(wedding?.music_url || "/thiepmaudovang/audio/bg-music.mp3");
     audio.loop = true;
     audio.volume = 0.6;
     audioRef.current = audio;

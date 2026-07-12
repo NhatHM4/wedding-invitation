@@ -2,7 +2,26 @@
 
 import Image from "next/image";
 
-export default function TmdvAnnouncementSection() {
+interface TmdvAnnouncementSectionProps {
+  wedding: any;
+}
+
+export default function TmdvAnnouncementSection({ wedding }: TmdvAnnouncementSectionProps) {
+  const locationInfo = wedding?.location_info || {};
+  const groomFamily = locationInfo.groom_family || {};
+  const brideFamily = locationInfo.bride_family || {};
+
+  const groomFather = groomFamily.father_name || "ÔNG TRẦN QUỐC TUẤN";
+  const groomMother = groomFamily.mother_name || "BÀ LÊ THỊ MỸ DUYÊN";
+  const groomAddress = groomFamily.address || "Quận 4, TP. Hồ Chí Minh";
+
+  const brideFather = brideFamily.father_name || "ÔNG PHẠM GIA LONG";
+  const brideMother = brideFamily.mother_name || "BÀ NGUYỄN THỊ NGỌC HẠNH";
+  const brideAddress = brideFamily.address || "Quận 8, TP. Hồ Chí Minh";
+
+  const groomName = wedding?.groom_name || "Trần Minh Hoàng";
+  const brideName = wedding?.bride_name || "Phạm Mai Hương";
+
   return (
     <section 
       id="w-9wu79djo" 
@@ -40,12 +59,12 @@ export default function TmdvAnnouncementSection() {
       </div>
 
       <div id="w-vq47tj4t" className="absolute top-[123px] left-[20px] w-[170px] h-[48px] z-10 flex flex-col items-center justify-center font-cafeta text-[16px] text-black text-center leading-tight is-animation anim-fade-left">
-        <span>ÔNG TRẦN QUỐC TUẤN</span>
-        <span>BÀ LÊ THỊ MỸ DUYÊN</span>
+        <span>{groomFather}</span>
+        <span>{groomMother}</span>
       </div>
 
       <div id="w-y1s24e6p" className="absolute top-[171px] left-[20px] w-[170px] h-[19.5px] z-10 flex items-center justify-center font-sans text-[13px] text-black text-center is-animation anim-fade-left">
-        Quận 4, TP. Hồ Chí Minh
+        {groomAddress}
       </div>
 
       {/* Nhà Gái info */}
@@ -54,12 +73,12 @@ export default function TmdvAnnouncementSection() {
       </div>
 
       <div id="w-fynwgspj" className="absolute top-[122.98px] left-[230px] w-[170px] h-[48px] z-10 flex flex-col items-center justify-center font-cafeta text-[16px] text-black text-center leading-tight is-animation anim-fade-right">
-        <span>ÔNG PHẠM GIA LONG</span>
-        <span>BÀ NGUYỄN THỊ NGỌC HẠNH</span>
+        <span>{brideFather}</span>
+        <span>{brideMother}</span>
       </div>
 
       <div id="w-2wvcu7z3" className="absolute top-[171.48px] left-[230px] w-[170px] h-[19.5px] z-10 flex items-center justify-center font-sans text-[13px] text-black text-center is-animation anim-fade-right">
-        Quận 8, TP. Hồ Chí Minh
+        {brideAddress}
       </div>
 
       {/* Announcement Headline */}
@@ -73,7 +92,7 @@ export default function TmdvAnnouncementSection() {
         className="absolute top-[273.5px] left-[20px] w-[380px] h-[60px] z-10 flex items-center justify-center font-sloop text-[40px] text-black text-center is-animation anim-bounce-up"
         style={{ textShadow: "0px 4px 4px rgba(255, 255, 255, 1)" }}
       >
-        Trần Minh Hoàng
+        {groomName}
       </div>
 
       <div 
@@ -89,7 +108,7 @@ export default function TmdvAnnouncementSection() {
         className="absolute top-[355px] left-[23.5px] w-[373px] h-[60px] z-10 flex items-center justify-center font-sloop text-[40px] text-black text-center is-animation anim-bounce-up"
         style={{ textShadow: "0px 4px 4px rgba(255, 255, 255, 1)" }}
       >
-        Phạm Mai Hương
+        {brideName}
       </div>
 
       {/* Ceremony Photo */}

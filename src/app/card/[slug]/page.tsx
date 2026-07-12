@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { supabase } from '@/lib/supabase';
 import TemplateA from '@/components/templates/TemplateA';
+import TemplateDoVang from '@/components/templates/TemplateDoVang';
 
 export const runtime = 'edge';
 
@@ -82,8 +83,15 @@ export default async function Page({ params, searchParams }: PageProps) {
   const wishes = await getWishes(wedding.id);
   const to = resolvedSearchParams.to || '';
 
-  // Trong tương lai nếu có thêm TemplateB, TemplateC... ta có thể check template_id ở đây để render component tương ứng.
-  // Ví dụ: if (wedding.template_id === 'TemplateB') return <TemplateB ... />
+  if (wedding.template_id === 'template-dovang') {
+    return (
+      <TemplateDoVang
+        wedding={wedding}
+        to={to}
+        wishes={wishes}
+      />
+    );
+  }
   
   return (
     <TemplateA
