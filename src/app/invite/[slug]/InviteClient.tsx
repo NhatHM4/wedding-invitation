@@ -36,6 +36,8 @@ export default function InviteClient({ wedding, secretKey, initialWishes }: Invi
           mainDomain = 'wedding-nhathm.com';
         } else if (hostname.endsWith('wedding.com')) {
           mainDomain = 'wedding.com';
+        } else if (hostname.endsWith('savethedate.io.vn')) {
+          mainDomain = 'savethedate.io.vn';
         }
 
         setOriginUrl(`${protocol}//${wedding.slug}.${mainDomain}${portSuffix}`);
