@@ -20,7 +20,15 @@ export function middleware(request: NextRequest) {
   const hostnameWithoutPort = currentHost.split(':')[0];
 
   // Danh sách các domain chính (không coi là subdomain)
-  const rootDomains = ['localhost', 'wedding.com', 'www.wedding.com', 'wedding-nhathm.com', 'www.wedding-nhathm.com'];
+  const rootDomains = [
+    'localhost', 
+    'wedding.com', 
+    'www.wedding.com', 
+    'wedding-nhathm.com', 
+    'www.wedding-nhathm.com',
+    'savethedate.io.vn',
+    'www.savethedate.io.vn'
+  ];
   
   // Kiểm tra xem tên miền hiện tại có phải là tên miền mặc định của Cloudflare Pages hay không (*.pages.dev)
   const isCloudflarePagesDefault = hostnameWithoutPort.endsWith('.pages.dev');
@@ -48,6 +56,9 @@ export function middleware(request: NextRequest) {
     } else if (hostnameWithoutPort.endsWith('.wedding.com')) {
       // Ví dụ: chure-coda.wedding.com -> subdomain = "chure-coda"
       subdomain = hostnameWithoutPort.replace('.wedding.com', '');
+    } else if (hostnameWithoutPort.endsWith('.savethedate.io.vn')) {
+      // Ví dụ: chure-coda.savethedate.io.vn -> subdomain = "chure-coda"
+      subdomain = hostnameWithoutPort.replace('.savethedate.io.vn', '');
     } else if (hostnameWithoutPort.endsWith('.localhost') || (hostnameWithoutPort.includes('localhost') && hostnameWithoutPort !== 'localhost')) {
       // Ví dụ: chure-coda.localhost -> subdomain = "chure-coda"
       const parts = hostnameWithoutPort.split('.');
