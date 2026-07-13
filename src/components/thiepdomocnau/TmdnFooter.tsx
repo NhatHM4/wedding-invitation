@@ -29,7 +29,7 @@ export default function TmdnFooter() {
         {/* Attribution */}
         <div className="flex items-center justify-center gap-2 text-gray-400">
           <span className="font-sans text-[10px] tracking-wider uppercase">
-            | THIỆP CƯỚI ONLINE LONG THỊNH
+            | THIỆP CƯỚI ONLINE HẠNH PHÚC
           </span>
         </div>
       </div>
