@@ -119,7 +119,7 @@ export default function Home() {
   ];
 
   return (
-    <div 
+    <div
       className="min-h-screen bg-[#FFF8F9] flex justify-center py-0 sm:py-8 antialiased"
       onClick={() => setActivePreviewId(null)}
       style={{ fontFamily: "'Montserrat', sans-serif" }}
@@ -171,12 +171,12 @@ export default function Home() {
 
       {/* Mobile-first main container */}
       <div className="w-full max-w-[480px] bg-white flex flex-col shadow-[0_10px_50px_rgba(244,63,94,0.08)] sm:rounded-[32px] overflow-hidden min-h-screen relative border border-rose-100/50">
-        
+
         {/* Decorative Floating Luxury Elements */}
         <div className="absolute top-[-80px] left-[-80px] w-[260px] h-[260px] bg-gradient-to-tr from-rose-200/40 to-pink-100/30 rounded-full blur-3xl opacity-60 pointer-events-none z-0"></div>
         <div className="absolute top-[350px] right-[-100px] w-[240px] h-[240px] bg-gradient-to-bl from-pink-200/30 to-amber-100/20 rounded-full blur-3xl opacity-50 pointer-events-none z-0"></div>
         <div className="absolute bottom-[-60px] left-[-60px] w-[220px] h-[220px] bg-gradient-to-tr from-rose-200/30 to-red-100/20 rounded-full blur-3xl opacity-50 pointer-events-none z-0"></div>
-        
+
         {/* Subtle Luxury Pattern Overlays */}
         <div className="absolute inset-0 bg-[radial-gradient(#fecdd3_0.5px,transparent_0.5px)] [background-size:16px_16px] opacity-[0.25] pointer-events-none z-0"></div>
 
@@ -234,7 +234,7 @@ export default function Home() {
               {templates.map((tpl) => (
                 <div
                   key={tpl.id}
-                  className="flex flex-col bg-white p-2.5 rounded-[24px] border border-rose-100/50 shadow-[0_4px_25px_rgba(244,63,94,0.02)] transition-all duration-300 hover:translate-y-[-2px] hover:shadow-[0_8px_30px_rgba(244,63,94,0.06)]"
+                  className="flex flex-col bg-white rounded-xl overflow-hidden border border-rose-100/50 shadow-[0_4px_25px_rgba(244,63,94,0.02)] transition-all duration-300 hover:translate-y-[-2px] hover:shadow-[0_8px_30px_rgba(244,63,94,0.06)]"
                 >
                   {/* Clean 9:16 Frame as standard hyperlink to match Zenlove */}
                   <a
@@ -248,7 +248,7 @@ export default function Home() {
                         setActivePreviewId(tpl.id);
                       }
                     }}
-                    className="group relative w-full aspect-[9/16] rounded-[18px] overflow-hidden shadow-[inset_0_1px_3px_rgba(0,0,0,0.05)] bg-rose-50/10 border border-rose-100/30 block cursor-pointer"
+                    className="group relative w-full aspect-[9/16] overflow-hidden shadow-[inset_0_1px_3px_rgba(0,0,0,0.05)] bg-rose-50/10 border-b border-rose-100/20 block cursor-pointer"
                   >
                     {/* Live Simulation / Image Container */}
                     <div className="absolute inset-0 w-full h-full">
@@ -257,9 +257,8 @@ export default function Home() {
                         <img
                           src={tpl.image}
                           alt={tpl.name}
-                          className={`w-full h-auto absolute top-0 left-0 transform transition-transform duration-[32s] ease-in-out group-hover:-translate-y-[88%] object-cover object-top ${
-                            activePreviewId === tpl.id ? "-translate-y-[88%]" : ""
-                          }`}
+                          className={`w-full h-auto absolute top-0 left-0 transform transition-transform duration-[32s] ease-in-out group-hover:-translate-y-[88%] object-cover object-top ${activePreviewId === tpl.id ? "-translate-y-[88%]" : ""
+                            }`}
                         />
                       ) : (
                         <Image
@@ -284,10 +283,9 @@ export default function Home() {
 
                     {/* "Xem mẫu" pill at the bottom - visible in normal state, fades out on hover */}
                     {tpl.scrollPreview && (
-                      <div className={`preview-pill absolute bottom-3.5 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-sm border border-rose-100 text-rose-600 text-[10px] font-bold px-4 py-2 rounded-full shadow-[0_2px_10px_rgba(244,63,94,0.1)] z-30 flex items-center gap-1.5 ${
-                        activePreviewId === tpl.id ? "opacity-0 pointer-events-none" : ""
-                      }`}>
-                        <span>Xem mẫu</span>
+                      <div className={`preview-pill absolute bottom-3.5 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-sm border border-rose-100 text-rose-600 text-[10px] font-bold px-4 py-2 rounded-full shadow-[0_2px_10px_rgba(244,63,94,0.1)] z-30 flex items-center gap-1.5 ${activePreviewId === tpl.id ? "opacity-0 pointer-events-none" : ""
+                        }`}>
+                        {/* <span>Xem mẫu</span> */}
                         <svg className="w-2.5 h-2.5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
                         </svg>
@@ -297,7 +295,7 @@ export default function Home() {
                     {/* Pulsing button when active on mobile (activePreviewId === tpl.id) */}
                     {activePreviewId === tpl.id && (
                       <div className="absolute bottom-3.5 left-1/2 -translate-x-1/2 bg-rose-600 text-white text-[10px] font-bold px-4 py-2 rounded-full shadow-[0_4px_15px_rgba(225,29,72,0.35)] z-30 animate-pulse flex items-center gap-1.5 pointer-events-none">
-                        <span>Chạm để xem</span>
+                        <span>XEM</span>
                         <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>
@@ -307,7 +305,7 @@ export default function Home() {
                   </a>
 
                   {/* Template Info (Tên gọn gàng phía dưới) */}
-                  <div className="flex flex-col gap-0.5 mt-2 px-1">
+                  <div className="flex flex-col gap-0.5 py-3 px-3.5">
                     <span className="text-[7.5px] font-bold uppercase tracking-wider self-start text-[#db2777]">
                       {tpl.badge === "Hiệu ứng Độc Quyền" ? "Exclusive" : "Popular"}
                     </span>
@@ -375,7 +373,7 @@ export default function Home() {
 
             {/* Letter Container styled as a Luxury Invitation Card */}
             <div className="w-full bg-rose-50/30 border border-rose-100/50 rounded-[28px] p-6 flex flex-col gap-5 relative shadow-[0_2px_20px_rgba(244,63,94,0.01)] overflow-hidden">
-              
+
               {/* Elegant Wax Seal Icon Watermark */}
               <div className="absolute right-[-15px] bottom-[-15px] opacity-[0.04] pointer-events-none select-none">
                 <svg className="w-36 h-36" fill="currentColor" viewBox="0 0 24 24">
