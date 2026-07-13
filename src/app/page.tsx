@@ -23,18 +23,34 @@ export default function Home() {
       scrollPreview: true
     },
     {
-      id: "template-mocnau",
-      name: "Mẫu Đỏ Mộc Nâu",
-      description: "Thanh lịch, tối giản kiểu Hàn Quốc với nền trắng tinh khôi. Lịch sự, hiện đại, tích hợp form xác nhận tham dự và lịch đếm ngược ngày cưới.",
-      previewUrl: "/thiepdomocnau",
+      id: "template-hoadobe",
+      name: "Mẫu Hoa Đỏ Be",
+      description: "Phong cách vintage lãng mạn với nền kem điêu khắc hoa, tông đỏ maroon sang trọng. Phong bì đỏ với con dấu sáp vàng, ảnh polaroid và hiệu ứng cuộn tinh tế.",
+      previewUrl: "/mauhoadobe",
       badge: "Mới Nhất",
       colorClasses: {
-        bg: "bg-gray-50",
-        border: "border-gray-200",
-        text: "text-gray-700",
-        accent: "#7d1f2a"
+        bg: "bg-amber-50",
+        border: "border-amber-200",
+        text: "text-amber-700",
+        accent: "#8B1A1A"
       },
-      image: "/thiepmaudovang/images/gallery-1.jpg"
+      image: "/thiepmaudovang/images/cover.jpg",
+      scrollPreview: true
+    },
+    {
+      id: "template-cinelove46",
+      name: "Mẫu CineLove Burgundy",
+      description: "Đậm nét điện ảnh sang trọng với tông màu đỏ Burgundy quý phái. Độc đáo với khung ảnh cổng vòm, đếm ngược ngày cưới, thanh tương tác bắn tim và lời chúc bay nổi bật.",
+      previewUrl: "/cinelove46",
+      badge: "Cực Hot",
+      colorClasses: {
+        bg: "bg-red-50",
+        border: "border-red-200",
+        text: "text-red-700",
+        accent: "#5a1212"
+      },
+      image: "/cinelove46/image/preview_cinelove46.webp",
+      scrollPreview: true
     },
     {
       id: "template-classic",
