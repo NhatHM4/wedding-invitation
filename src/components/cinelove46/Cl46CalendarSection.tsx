@@ -1,10 +1,14 @@
 "use client";
 
+import { motion, useReducedMotion } from "framer-motion";
+import { fadeInUp } from "./motion-presets";
+
 interface Cl46CalendarSectionProps {
   wedding?: any;
 }
 
 export default function Cl46CalendarSection({ wedding }: Cl46CalendarSectionProps) {
+  const shouldReduceMotion = useReducedMotion();
   let dayGroom = 5;
   let dayBride = 6;
   let month = 12;
@@ -36,7 +40,13 @@ export default function Cl46CalendarSection({ wedding }: Cl46CalendarSectionProp
   ];
 
   return (
-    <section className="is-animation anim-fade-up w-full px-5 py-6 bg-white flex flex-col items-center">
+    <motion.section 
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: true, margin: "-50px" }}
+      variants={fadeInUp}
+      className="w-full px-5 py-6 bg-white flex flex-col items-center overflow-hidden"
+    >
       {/* Month Header Banner */}
       <div className="w-full bg-[#5a1212] py-3.5 text-center rounded-t shadow-sm">
         <h3 className="font-cormorant text-[16px] tracking-[4px] text-white uppercase font-bold">
@@ -68,7 +78,13 @@ export default function Cl46CalendarSection({ wedding }: Cl46CalendarSectionProp
                   <div className="relative flex items-center justify-center w-8 h-8">
                     {/* SVG Heart stroke */}
                     <svg viewBox="0 0 24 24" className="absolute w-[30px] h-[30px] text-[#5a1212] fill-none stroke-current stroke-[1.5]">
-                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                      <motion.path 
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" 
+                        initial={shouldReduceMotion ? { pathLength: 1 } : { pathLength: 0 }}
+                        whileInView={{ pathLength: 1 }}
+                        viewport={{ once: true, margin: "-20px" }}
+                        transition={shouldReduceMotion ? { duration: 0 } : { duration: 1.2, ease: "easeInOut", delay: 0.5 }}
+                      />
                     </svg>
                     <span className="font-barlow text-[11px] font-bold text-[#5a1212] z-10">{cell}</span>
                   </div>
@@ -76,13 +92,16 @@ export default function Cl46CalendarSection({ wedding }: Cl46CalendarSectionProp
                   // Day 6 with fingerprint or heart background color
                   <div className="relative flex items-center justify-center w-8 h-8">
                     {/* Fingerprint red stain simulation */}
-                    <span 
-                      className="absolute inset-0.5 rounded-full opacity-80"
+                    <motion.span 
+                      className="absolute inset-0.5 rounded-full"
                       style={{
                         background: "radial-gradient(circle at center, #8B1A1A, #5a1212)",
-                        borderRadius: "38% 62% 63% 37% / 41% 44% 56% 59%",
-                        transform: "rotate(-15deg)"
+                        borderRadius: "38% 62% 63% 37% / 41% 44% 56% 59%"
                       }}
+                      initial={shouldReduceMotion ? { scale: 1, opacity: 0.8 } : { scale: 0.6, opacity: 0 }}
+                      whileInView={{ scale: 1, opacity: 0.8 }}
+                      viewport={{ once: true, margin: "-20px" }}
+                      transition={shouldReduceMotion ? { duration: 0 } : { type: "spring", stiffness: 200, damping: 20, delay: 0.7 }}
                     />
                     <span className="font-barlow text-[11px] font-bold text-white z-10">{cell}</span>
                   </div>
@@ -94,6 +113,6 @@ export default function Cl46CalendarSection({ wedding }: Cl46CalendarSectionProp
           })}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

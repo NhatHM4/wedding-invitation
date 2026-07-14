@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { staggerContainer, fadeInLeft, fadeInRight, fadeInUp } from "./motion-presets";
 
 interface Cl46CountdownSectionProps {
   wedding?: any;
@@ -43,9 +45,15 @@ export default function Cl46CountdownSection({ wedding }: Cl46CountdownSectionPr
   }, [targetDateStr]);
 
   return (
-    <section className="is-animation anim-fade-up w-full px-5 py-6 bg-white flex flex-col items-center">
+    <section className="w-full px-5 py-6 bg-white flex flex-col items-center overflow-hidden">
       {/* Title */}
-      <div className="text-center mb-6">
+      <motion.div 
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true, margin: "-50px" }}
+        variants={fadeInUp}
+        className="text-center mb-6"
+      >
         <p className="font-barlow text-[10px] font-bold tracking-[3px] text-gray-500 uppercase">
           COUNTDOWN
         </p>
@@ -53,12 +61,18 @@ export default function Cl46CountdownSection({ wedding }: Cl46CountdownSectionPr
           Đếm ngược ngày cưới
         </p>
         <div className="w-12 h-[1px] bg-[#e8ddd4] mx-auto mt-2" />
-      </div>
+      </motion.div>
 
       {/* Main photo & Countdown tags container */}
       <div className="relative w-full flex items-stretch gap-4 justify-between h-[360px]">
-        {/* Large photo on the left */}
-        <div className="relative flex-1 rounded border border-gray-100 overflow-hidden shadow-sm">
+        {/* Large photo on the left (anim-fade-left) */}
+        <motion.div 
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={fadeInLeft}
+          className="relative flex-1 rounded border border-gray-100 overflow-hidden shadow-sm"
+        >
           <Image
             src="/thiepmaudovang/images/cover.jpg"
             alt="Countdown backdrop"
@@ -70,34 +84,40 @@ export default function Cl46CountdownSection({ wedding }: Cl46CountdownSectionPr
           <div className="absolute left-3 bottom-4 text-white/40 font-cormorant font-bold uppercase tracking-[4px] text-[18px] [writing-mode:vertical-lr] select-none">
             LOVE ALWAYS
           </div>
-        </div>
+        </motion.div>
 
         {/* Stacked countdown columns on the right */}
-        <div className="w-[85px] flex flex-col justify-between">
+        <motion.div 
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={staggerContainer}
+          className="w-[85px] flex flex-col justify-between"
+        >
           {/* Days */}
-          <div className="bg-[#5a1212] rounded p-2.5 text-center text-white shadow-sm flex flex-col justify-center flex-1 mb-2.5">
+          <motion.div variants={fadeInRight} className="bg-[#5a1212] rounded p-2.5 text-center text-white shadow-sm flex flex-col justify-center flex-1 mb-2.5">
             <span className="font-cormorant text-[20px] font-bold leading-none">{timeLeft.days}</span>
             <span className="font-barlow text-[9px] uppercase tracking-[1px] text-white/70 mt-1">ngày</span>
-          </div>
+          </motion.div>
 
           {/* Hours */}
-          <div className="bg-[#5a1212] rounded p-2.5 text-center text-white shadow-sm flex flex-col justify-center flex-1 mb-2.5">
+          <motion.div variants={fadeInRight} className="bg-[#5a1212] rounded p-2.5 text-center text-white shadow-sm flex flex-col justify-center flex-1 mb-2.5">
             <span className="font-cormorant text-[20px] font-bold leading-none">{timeLeft.hours}</span>
             <span className="font-barlow text-[9px] uppercase tracking-[1px] text-white/70 mt-1">giờ</span>
-          </div>
+          </motion.div>
 
           {/* Minutes */}
-          <div className="bg-[#5a1212] rounded p-2.5 text-center text-white shadow-sm flex flex-col justify-center flex-1 mb-2.5">
+          <motion.div variants={fadeInRight} className="bg-[#5a1212] rounded p-2.5 text-center text-white shadow-sm flex flex-col justify-center flex-1 mb-2.5">
             <span className="font-cormorant text-[20px] font-bold leading-none">{timeLeft.minutes}</span>
             <span className="font-barlow text-[9px] uppercase tracking-[1px] text-white/70 mt-1">phút</span>
-          </div>
+          </motion.div>
 
           {/* Seconds */}
-          <div className="bg-[#5a1212] rounded p-2.5 text-center text-white shadow-sm flex flex-col justify-center flex-1">
+          <motion.div variants={fadeInRight} className="bg-[#5a1212] rounded p-2.5 text-center text-white shadow-sm flex flex-col justify-center flex-1">
             <span className="font-cormorant text-[20px] font-bold leading-none">{timeLeft.seconds}</span>
             <span className="font-barlow text-[9px] uppercase tracking-[1px] text-white/70 mt-1">giây</span>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

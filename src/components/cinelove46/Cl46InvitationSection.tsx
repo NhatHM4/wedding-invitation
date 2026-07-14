@@ -1,18 +1,24 @@
 "use client";
 
+import { motion } from "framer-motion";
+import { staggerContainer, fadeInUp } from "./motion-presets";
+
 interface Cl46InvitationSectionProps {
   wedding?: any;
 }
 
 export default function Cl46InvitationSection({ wedding }: Cl46InvitationSectionProps) {
-  const groomName = wedding?.groom_name || "Tuấn Linh";
-  const brideName = wedding?.bride_name || "Nguyễn Phượng";
-
   return (
-    <section className="is-animation anim-fade-up w-full px-5 py-6 bg-white flex flex-col items-center">
+    <section className="w-full px-5 py-6 bg-white flex flex-col items-center overflow-hidden">
       {/* Parents host columns */}
-      <div className="w-full grid grid-cols-2 gap-6 text-center mb-8 border-b border-[#e8ddd4] pb-6">
-        <div>
+      <motion.div 
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true, margin: "-50px" }}
+        variants={staggerContainer}
+        className="w-full grid grid-cols-2 gap-6 text-center mb-8 border-b border-[#e8ddd4] pb-6"
+      >
+        <motion.div variants={fadeInUp}>
           <p className="font-barlow text-[10px] font-bold tracking-[2px] text-[#5a1212] uppercase mb-1.5">
             Nhà Trai
           </p>
@@ -26,9 +32,9 @@ export default function Cl46InvitationSection({ wedding }: Cl46InvitationSection
             <br />
             TP. Thái Bình
           </p>
-        </div>
+        </motion.div>
 
-        <div>
+        <motion.div variants={fadeInUp}>
           <p className="font-barlow text-[10px] font-bold tracking-[2px] text-[#5a1212] uppercase mb-1.5">
             Nhà Gái
           </p>
@@ -42,11 +48,17 @@ export default function Cl46InvitationSection({ wedding }: Cl46InvitationSection
             <br />
             Đà Nẵng
           </p>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* Main Official Invitation details */}
-      <div className="w-full text-center mb-8">
+      <motion.div 
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true, margin: "-50px" }}
+        variants={fadeInUp}
+        className="w-full text-center mb-8"
+      >
         <p className="font-ephesis text-[24px] text-gray-500 font-semibold mb-2" style={{ fontStyle: "italic" }}>
           Thư Mời
         </p>
@@ -80,12 +92,21 @@ export default function Cl46InvitationSection({ wedding }: Cl46InvitationSection
             Chỉ đường
           </a>
         </div>
-      </div>
+      </motion.div>
 
       {/* Detail Ceremony and Party Cards side-by-side */}
-      <div className="w-full grid grid-cols-2 gap-4">
+      <motion.div 
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true, margin: "-50px" }}
+        variants={staggerContainer}
+        className="w-full grid grid-cols-2 gap-4"
+      >
         {/* Card 1 */}
-        <div className="bg-[#fcfaf7] border border-[#e8e2d8] rounded p-3.5 text-center flex flex-col justify-between shadow-sm">
+        <motion.div 
+          variants={fadeInUp}
+          className="bg-[#fcfaf7] border border-[#e8e2d8] rounded p-3.5 text-center flex flex-col justify-between shadow-sm"
+        >
           <div>
             <p className="font-barlow text-[10px] font-bold tracking-[1.5px] text-[#5a1212] uppercase mb-1">
               Tiệc Nhà Trai
@@ -110,10 +131,13 @@ export default function Cl46InvitationSection({ wedding }: Cl46InvitationSection
           >
             Chỉ đường
           </a>
-        </div>
+        </motion.div>
 
         {/* Card 2 */}
-        <div className="bg-[#fcfaf7] border border-[#e8e2d8] rounded p-3.5 text-center flex flex-col justify-between shadow-sm">
+        <motion.div 
+          variants={fadeInUp}
+          className="bg-[#fcfaf7] border border-[#e8e2d8] rounded p-3.5 text-center flex flex-col justify-between shadow-sm"
+        >
           <div>
             <p className="font-barlow text-[10px] font-bold tracking-[1.5px] text-[#5a1212] uppercase mb-1">
               Tiệc Nhà Gái
@@ -138,8 +162,8 @@ export default function Cl46InvitationSection({ wedding }: Cl46InvitationSection
           >
             Chỉ đường
           </a>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

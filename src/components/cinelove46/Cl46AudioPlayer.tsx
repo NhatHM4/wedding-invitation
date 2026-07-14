@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { motion } from "framer-motion";
 
 interface Cl46AudioPlayerProps {
   audioSrc?: string;
@@ -43,16 +44,18 @@ export default function Cl46AudioPlayer({ audioSrc }: Cl46AudioPlayerProps) {
   };
 
   return (
-    <button
+    <motion.button
+      whileHover={{ scale: 1.06 }}
+      whileTap={{ scale: 0.94 }}
       onClick={toggle}
-      className={`fixed top-4 right-4 z-[99] w-9.5 h-9.5 rounded-full flex items-center justify-center shadow-lg border border-white/20 transition-all ${
-        playing ? "animate-spin-slow bg-[#5a1212] text-white" : "bg-white text-[#5a1212]"
+      className={`fixed top-4 right-4 z-[99] w-9.5 h-9.5 rounded-full flex items-center justify-center shadow-lg border border-white/20 transition-colors focus-visible:outline-2 focus-visible:outline-[#5a1212] focus-visible:outline-offset-1 ${
+        playing ? "animate-spin-slow-custom bg-[#5a1212] text-white" : "animate-spin-slow-custom paused bg-white text-[#5a1212]"
       }`}
       style={{
-        boxShadow: "0 4px 15px rgba(0,0,0,0.15)",
-        animationDuration: "12s"
+        boxShadow: "0 4px 15px rgba(0,0,0,0.15)"
       }}
       title={playing ? "Tắt nhạc" : "Bật nhạc"}
+      aria-label={playing ? "Tắt nhạc" : "Bật nhạc"}
     >
       {loading ? (
         <div className={`w-3.5 h-3.5 border-2 rounded-full animate-spin ${playing ? "border-white" : "border-[#5a1212]"} border-top-color-transparent`} />
@@ -70,6 +73,6 @@ export default function Cl46AudioPlayer({ audioSrc }: Cl46AudioPlayerProps) {
           <line x1="2" y1="2" x2="22" y2="22" stroke="currentColor" strokeWidth="2" />
         </svg>
       )}
-    </button>
+    </motion.button>
   );
 }

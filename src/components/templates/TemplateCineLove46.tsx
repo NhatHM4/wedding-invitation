@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Cl46HeroSection from "@/components/cinelove46/Cl46HeroSection";
+import Cl46AmbientPetals from "@/components/cinelove46/Cl46AmbientPetals";
 import Cl46InvitationSection from "@/components/cinelove46/Cl46InvitationSection";
 import Cl46CalendarSection from "@/components/cinelove46/Cl46CalendarSection";
 import Cl46QuotesSection from "@/components/cinelove46/Cl46QuotesSection";
@@ -12,27 +13,30 @@ import Cl46AudioPlayer from "@/components/cinelove46/Cl46AudioPlayer";
 import Cl46InteractionToolbar from "@/components/cinelove46/Cl46InteractionToolbar";
 import Cl46WishesOverlay from "@/components/cinelove46/Cl46WishesOverlay";
 
+interface WeddingData {
+  id?: string;
+  groom_name?: string;
+  bride_name?: string;
+  event_date?: string;
+  venue?: string;
+  slug?: string;
+}
+
+interface Wish {
+  id: string;
+  guest_name: string;
+  content: string;
+}
+
 interface TemplateCineLove46Props {
-  wedding?: any;
+  wedding?: WeddingData;
 }
 
 export default function TemplateCineLove46({ wedding }: TemplateCineLove46Props) {
-  const [scale, setScale] = useState(1);
   const [animate, setAnimate] = useState(false);
   const [likes, setLikes] = useState(117);
-  const [wishes, setWishes] = useState<any[]>([]);
+  const [wishes, setWishes] = useState<Wish[]>([]);
   const [floatingHearts, setFloatingHearts] = useState<{ id: number; left: number }[]>([]);
-
-  // Scaling responsive check
-  useEffect(() => {
-    const handleResize = () => {
-      const w = window.innerWidth;
-      setScale(w < 420 ? w / 420 : 1);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   // Activate observer elements after layout loads
   useEffect(() => {
@@ -82,16 +86,11 @@ export default function TemplateCineLove46({ wedding }: TemplateCineLove46Props)
 
   return (
     <div className="min-h-screen w-full flex justify-center bg-[#e8e0d8] py-0 overflow-x-hidden relative">
-      {/* Visual scaled canvas frame */}
+      {/* Visual responsive canvas frame */}
       <div
-        className="relative flex flex-col min-h-screen overflow-x-hidden shadow-2xl pb-[100px]"
-        style={{
-          width: scale < 1 ? "420px" : "100%",
-          maxWidth: scale < 1 ? "none" : "420px",
-          zoom: scale,
-          background: "#ffffff",
-        }}
+        className="relative flex flex-col min-h-screen w-full max-w-[420px] overflow-x-hidden shadow-2xl pb-[100px] bg-white"
       >
+        <Cl46AmbientPetals />
         <Cl46HeroSection wedding={wedding} />
         <Cl46InvitationSection wedding={wedding} />
         <Cl46CalendarSection wedding={wedding} />

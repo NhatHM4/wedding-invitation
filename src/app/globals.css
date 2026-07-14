@@ -1,6 +1,12 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@property --spin-duration {
+  syntax: "<time>";
+  inherits: false;
+  initial-value: 8s;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -240,37 +246,44 @@
   opacity: 1;
 }
 
-/* Animation helper classes to apply easily to any element */
+/* Animation helper classes to apply easily to any element (optimized responsive durations) */
 .anim-fade-up.animation {
-  animation: fadeInUp 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+  animation: fadeInUp 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
 }
 .anim-fade-up-rotate.animation {
-  animation: fadeInUpRotate 1.3s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+  animation: fadeInUpRotate 0.65s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
 }
 .anim-fade-down.animation {
-  animation: fadeInDown 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+  animation: fadeInDown 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
 }
 .anim-fade-left.animation {
-  animation: fadeInLeft 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+  animation: fadeInLeft 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
 }
 .anim-fade-right.animation {
-  animation: fadeInRight 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+  animation: fadeInRight 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
 }
 .anim-fade.animation {
-  animation: fadeIn 1.5s ease forwards;
+  animation: fadeIn 0.7s ease forwards;
 }
 .anim-zoom.animation {
-  animation: zoomIn 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: zoomIn 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 .anim-zoom-rotate.animation {
-  animation: zoomInRotate 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: zoomInRotate 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 .anim-flip-y.animation {
-  animation: flipInY 1.4s ease-out forwards;
+  animation: flipInY 0.7s ease-out forwards;
 }
 .anim-bounce-up.animation {
-  animation: bounceInUp 1.4s forwards;
+  animation: bounceInUp 0.7s forwards;
 }
+
+/* Animation Delay Utilities */
+.delay-75 { animation-delay: 75ms !important; }
+.delay-150 { animation-delay: 150ms !important; }
+.delay-225 { animation-delay: 225ms !important; }
+.delay-300 { animation-delay: 300ms !important; }
+.delay-450 { animation-delay: 450ms !important; }
 
 /* Custom Scrollbar for wishes list */
 .custom-scrollbar::-webkit-scrollbar {
@@ -283,3 +296,167 @@
   background-color: #E8C895;
   border-radius: 3px;
 }
+
+/* ====== CUSTOM AUDIO DECELELATION SPIN ====== */
+.animate-spin-slow-custom {
+  animation: spin var(--spin-duration, 8s) linear infinite;
+  transition: --spin-duration 0.8s cubic-bezier(0.1, 0.8, 0.3, 1);
+  will-change: transform;
+}
+.animate-spin-slow-custom.paused {
+  --spin-duration: 200s;
+}
+
+/* ====== CUSTOM MODAL SLIDE DOWN ====== */
+@keyframes slide-down {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+.animate-slide-down {
+  animation: slide-down 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ====== CUSTOM CALENDAR DRAW ====== */
+.calendar-heart-path {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+.is-animation.animation .calendar-heart-path {
+  animation: draw-heart 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: 0.6s;
+}
+@keyframes draw-heart {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.calendar-fingerprint {
+  opacity: 0;
+  transform: scale(0.6) rotate(-15deg);
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.6s ease;
+  transition-delay: 0.8s;
+}
+.is-animation.animation .calendar-fingerprint {
+  opacity: 0.8;
+  transform: scale(1) rotate(-15deg);
+}
+
+/* ====== HERO ENTRANCE CHOREOGRAPHY ====== */
+.anim-hero-arch {
+  opacity: 0;
+  transform: translateY(20px) rotate(-1.5deg);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.is-animation.animation .anim-hero-arch {
+  opacity: 1;
+  transform: translateY(0) rotate(0deg);
+}
+
+.anim-hero-curve {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  transition-delay: 0.35s;
+}
+.is-animation.animation .anim-hero-curve {
+  opacity: 0.8;
+}
+
+.anim-hero-schedule > div {
+  opacity: 0;
+  transform: translateX(12px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.is-animation.animation .anim-hero-schedule > div:nth-child(1) {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0.45s;
+}
+.is-animation.animation .anim-hero-schedule > div:nth-child(3) {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0.6s;
+}
+
+.anim-hero-schedule-sep {
+  opacity: 0;
+  width: 0%;
+  transition: opacity 0.6s ease, width 0.6s ease;
+  transition-delay: 0.5s;
+}
+.is-animation.animation .anim-hero-schedule-sep {
+  opacity: 0.2;
+  width: 100%;
+}
+
+.anim-hero-title {
+  opacity: 0;
+  transform: translateY(15px);
+  letter-spacing: 2px;
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), letter-spacing 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 0.7s;
+}
+.is-animation.animation .anim-hero-title {
+  opacity: 0.9;
+  transform: translateY(0);
+  letter-spacing: 8px;
+}
+
+.anim-hero-names {
+  opacity: 0;
+  transform: translateY(10px);
+  letter-spacing: 0.5px;
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), letter-spacing 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 0.8s;
+}
+.is-animation.animation .anim-hero-names {
+  opacity: 1;
+  transform: translateY(0);
+  letter-spacing: 1px;
+}
+
+/* ====== ACCESSIBILITY / PREFERS REDUCED MOTION ====== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0s !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+    scroll-behavior: auto !important;
+  }
+  .calendar-heart-path {
+    stroke-dashoffset: 0 !important;
+    animation: none !important;
+  }
+  .calendar-fingerprint {
+    opacity: 0.8 !important;
+    transform: scale(1) rotate(-15deg) !important;
+    transition: none !important;
+  }
+  .animate-spin-slow-custom {
+    animation: none !important;
+    transition: none !important;
+  }
+  .anim-hero-arch,
+  .anim-hero-curve,
+  .anim-hero-schedule > div,
+  .anim-hero-schedule-sep,
+  .anim-hero-title,
+  .anim-hero-names {
+    opacity: 1 !important;
+    transform: none !important;
+    width: 100% !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
+

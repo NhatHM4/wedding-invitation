@@ -62,13 +62,21 @@ export default function Cl46WishesOverlay({ wishes = [] }: Cl46WishesOverlayProp
       
       <style>{`
         @keyframes bubble-fade {
-          0% { transform: translateY(15px) scale(0.95); opacity: 0; }
+          0% { transform: translateY(6px) scale(0.98); opacity: 0; }
           10% { transform: translateY(0) scale(1); opacity: 1; }
           90% { opacity: 1; }
-          100% { transform: translateY(-10px) scale(0.98); opacity: 0; }
+          100% { transform: translateY(-6px) scale(0.99); opacity: 0; }
         }
         .animate-bubble-fade {
           animation: bubble-fade 7.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          will-change: transform, opacity;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .animate-bubble-fade {
+            animation: none !important;
+            opacity: 0.95 !important;
+            transform: none !important;
+          }
         }
       `}</style>
     </div>
