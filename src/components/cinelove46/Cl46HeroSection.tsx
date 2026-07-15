@@ -53,32 +53,39 @@ export default function Cl46HeroSection({ wedding }: Cl46HeroSectionProps) {
       initial="initial"
       animate="animate"
       variants={heroStagger}
-      className="relative w-full flex flex-col items-center bg-white overflow-hidden"
+      className="relative w-full flex flex-col items-center bg-[#fdfcf7] overflow-hidden"
     >
       {/* Dark red top block */}
-      <div className="w-full bg-[#5a1212] px-5 pt-8 pb-10 flex flex-col items-center">
+      <div className="w-full bg-gradient-to-b from-[#5c161e] to-[#420f14] px-5 pt-9 pb-10 flex flex-col items-center relative">
+        {/* Subtle gold line framing */}
+        <div className="absolute inset-4 border border-[#c5a880]/30 pointer-events-none rounded-sm" />
+
         {/* Title */}
         <motion.h2 
           variants={fadeInUp}
-          className="font-cormorant text-[15px] tracking-[5px] text-white/90 uppercase font-semibold mb-8"
+          className="font-serif-display text-[13px] tracking-[6px] text-[#c5a880] uppercase font-medium mb-8 z-10"
         >
           SAVE THE DATE
         </motion.h2>
-
+ 
         {/* Arch Frame & Schedule Info Block */}
-        <div className="w-full flex items-start gap-4 justify-between">
+        <div className="w-full flex items-start gap-4 justify-between z-10">
           {/* Arched Photo Frame */}
           <motion.div 
             variants={archTransition}
-            className="relative w-[190px] aspect-[5/8] border-[3px] border-white/95 rounded-t-full overflow-hidden shadow-lg flex-shrink-0"
+            className="relative w-[185px] aspect-[5/8] border-[3px] border-[#fdfcf7] rounded-t-full overflow-hidden shadow-md flex-shrink-0"
+            style={{
+              outline: "1px solid rgba(197, 168, 128, 0.4)",
+              outlineOffset: "-4px",
+            }}
           >
             {/* Arched Text: "I LOVE YOU" */}
             <motion.div 
               variants={textCurveTransition}
-              className="absolute inset-x-0 top-3 z-10 flex justify-center pointer-events-none"
+              className="absolute inset-x-0 top-3.5 z-10 flex justify-center pointer-events-none"
             >
-              <svg viewBox="0 0 100 35" className="w-[120px] fill-white/80 font-cormorant font-bold uppercase tracking-[1.5px] text-[7.5px]">
-                <path id="curve" d="M 10 30 A 40 40 0 0 1 90 30" fill="transparent" />
+              <svg viewBox="0 0 100 35" className="w-[110px] fill-[#fdfcf7] font-serif-display font-medium uppercase tracking-[2px] text-[7.5px]">
+                <path id="curve" d="M 12 30 A 38 38 0 0 1 88 30" fill="transparent" />
                 <text className="text-center">
                   <textPath href="#curve" startOffset="50%" textAnchor="middle">
                     I LOVE YOU
@@ -86,7 +93,7 @@ export default function Cl46HeroSection({ wedding }: Cl46HeroSectionProps) {
                 </text>
               </svg>
             </motion.div>
-
+ 
             <Image
               src="/thiepmaudovang/images/cover.jpg"
               alt="Arch Wedding Photo"
@@ -96,7 +103,7 @@ export default function Cl46HeroSection({ wedding }: Cl46HeroSectionProps) {
               className="object-cover object-center"
             />
           </motion.div>
-
+ 
           {/* Schedule Info */}
           <motion.div 
             variants={scheduleStagger}
@@ -104,14 +111,14 @@ export default function Cl46HeroSection({ wedding }: Cl46HeroSectionProps) {
           >
             {/* Event 1 */}
             <motion.div variants={fadeInRight} className="mb-6">
-              <p className="font-barlow text-[10px] tracking-[2.5px] text-white/70 uppercase font-bold">
+              <p className="font-sans-clean text-[9px] tracking-[3px] text-[#c5a880] uppercase font-bold">
                 THƯ MỜI TIỆC CƯỚI
               </p>
-              <div className="w-8 h-[1px] bg-white/40 ml-auto my-1.5" />
-              <p className="font-barlow text-[12px] font-semibold">THỨ BẢY - 16:30</p>
-              <p className="font-cormorant text-[16px] font-bold tracking-wider mt-0.5">05 . 12 . 2025</p>
+              <div className="w-6 h-[0.5px] bg-[#c5a880]/50 ml-auto my-2" />
+              <p className="font-sans-clean text-[10.5px] tracking-wide text-white/95">THỨ BẢY - 16:30</p>
+              <p className="font-serif-display text-[18px] font-medium tracking-[1.5px] text-[#fdfcf7] mt-0.5">05 . 12 . 2025</p>
             </motion.div>
-
+ 
             {/* Separator line */}
             <motion.div 
               variants={{
@@ -120,45 +127,74 @@ export default function Cl46HeroSection({ wedding }: Cl46HeroSectionProps) {
               }}
               className="w-full h-[0.5px] bg-white/20 my-2" 
             />
-
+ 
             {/* Event 2 */}
             <motion.div variants={fadeInRight} className="mt-4">
-              <p className="font-barlow text-[10px] tracking-[2.5px] text-white/70 uppercase font-bold">
+              <p className="font-sans-clean text-[9px] tracking-[3px] text-[#c5a880] uppercase font-bold">
                 LỄ THÀNH HÔN
               </p>
-              <div className="w-8 h-[1px] bg-white/40 ml-auto my-1.5" />
-              <p className="font-barlow text-[12px] font-semibold">CHỦ NHẬT - 12:00</p>
-              <p className="font-cormorant text-[16px] font-bold tracking-wider mt-0.5">06 . 12 . 2025</p>
+              <div className="w-6 h-[0.5px] bg-[#c5a880]/50 ml-auto my-2" />
+              <p className="font-sans-clean text-[10.5px] tracking-wide text-white/95">CHỦ NHẬT - 12:00</p>
+              <p className="font-serif-display text-[18px] font-medium tracking-[1.5px] text-[#fdfcf7] mt-0.5">06 . 12 . 2025</p>
             </motion.div>
           </motion.div>
         </div>
       </div>
-
+ 
       {/* Styled "WEDDING" Section Header right below the banner */}
-      <div className="w-full py-8 text-center bg-white relative flex flex-col items-center">
+      <div className="w-full py-10 text-center bg-[#fdfcf7] relative flex flex-col items-center border-b border-[#e8e2d8]">
+        {/* Subtle background monogram or flourish */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[90px] font-serif-display text-[#c5a880]/10 font-light pointer-events-none select-none z-0">
+          W
+        </div>
+
         <motion.h1 
           variants={{
-            initial: { opacity: 0, y: 20, letterSpacing: "2px" },
+            initial: { opacity: 0, y: 15, letterSpacing: "2px" },
             animate: { 
-              opacity: 0.9, 
+              opacity: 0.95, 
               y: 0, 
-              letterSpacing: "8px", 
-              transition: { type: "spring", stiffness: 150, damping: 20 } 
+              letterSpacing: "10px", 
+              transition: { type: "spring", stiffness: 150, damping: 20, delay: 0.2 } 
             }
           }}
-          className="font-cormorant text-[42px] tracking-[8px] text-[#5a1212]/90 uppercase font-light relative select-none"
+          className="font-serif-display text-[38px] tracking-[10px] text-[#5c161e] uppercase font-extralight relative select-none z-10"
         >
-          WEDD<span className="relative">I<span className="absolute -top-1 left-[1px] text-[18px]">✿</span></span>NG
+          WEDD<span className="relative">I<span className="absolute -top-1 left-[1px] text-[16px] text-[#c5a880]">✿</span></span>NG
         </motion.h1>
         
-        <motion.p 
+        <motion.div 
           variants={staggerContainer}
-          className="font-ephesis text-[24px] text-gray-500 font-medium leading-none -mt-2 flex items-center justify-center gap-1.5"
+          className="flex flex-col items-center mt-4 z-10 w-full"
         >
-          <motion.span variants={fadeInUp}>{groomName}</motion.span>
-          <motion.span variants={fadeInUp} className="text-[#5a1212]">&amp;</motion.span>
-          <motion.span variants={fadeInUp}>{brideName}</motion.span>
-        </motion.p>
+          <motion.span 
+            variants={fadeInUp}
+            className="font-serif-display text-[32px] font-light text-[#3a3430] uppercase tracking-[2px] leading-tight"
+          >
+            {groomName}
+          </motion.span>
+          <motion.span 
+            variants={fadeInUp}
+            className="font-script-accent text-[38px] text-[#b8986c] my-1.5 leading-none"
+          >
+            &
+          </motion.span>
+          <motion.span 
+            variants={fadeInUp}
+            className="font-serif-display text-[32px] font-light text-[#3a3430] uppercase tracking-[2px] leading-tight"
+          >
+            {brideName}
+          </motion.span>
+          
+          <div className="w-8 h-[0.5px] bg-[#c5a880] my-4" />
+          
+          <motion.p 
+            variants={fadeInUp}
+            className="font-sans-clean text-[9px] tracking-[4px] text-[#6b645f] uppercase font-bold"
+          >
+            LỄ THÀNH HÔN · 06.12.2025
+          </motion.p>
+        </motion.div>
       </div>
     </motion.section>
   );

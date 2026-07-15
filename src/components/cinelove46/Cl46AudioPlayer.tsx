@@ -12,7 +12,7 @@ export default function Cl46AudioPlayer({ audioSrc }: Cl46AudioPlayerProps) {
   const [loading, setLoading] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  const src = audioSrc || "/thiepmaudovang/audio/wedding-song.mp3";
+  const src = audioSrc || "/thiepmaudovang/audio/bg-music.mp3";
 
   useEffect(() => {
     if (!audioRef.current) {
@@ -35,7 +35,7 @@ export default function Cl46AudioPlayer({ audioSrc }: Cl46AudioPlayerProps) {
         setLoading(true);
         await audioRef.current.play();
         setPlaying(true);
-      } catch {
+      } catch (e) {
         // autoplay blocked
       } finally {
         setLoading(false);
@@ -48,17 +48,17 @@ export default function Cl46AudioPlayer({ audioSrc }: Cl46AudioPlayerProps) {
       whileHover={{ scale: 1.06 }}
       whileTap={{ scale: 0.94 }}
       onClick={toggle}
-      className={`fixed top-4 right-4 z-[99] w-9.5 h-9.5 rounded-full flex items-center justify-center shadow-lg border border-white/20 transition-colors focus-visible:outline-2 focus-visible:outline-[#5a1212] focus-visible:outline-offset-1 ${
-        playing ? "animate-spin-slow-custom bg-[#5a1212] text-white" : "animate-spin-slow-custom paused bg-white text-[#5a1212]"
+      className={`fixed top-4 right-4 z-[99] w-9.5 h-9.5 rounded-full flex items-center justify-center shadow-lg border border-[#c5a880]/30 transition-colors focus-visible:outline-2 focus-visible:outline-[#5c161e] focus-visible:outline-offset-1 ${
+        playing ? "animate-spin-slow-custom bg-[#5c161e] text-[#fdfcf7]" : "animate-spin-slow-custom paused bg-[#fdfcf7] text-[#5c161e]"
       }`}
       style={{
-        boxShadow: "0 4px 15px rgba(0,0,0,0.15)"
+        boxShadow: "0 4px 15px rgba(92, 52, 45, 0.12)"
       }}
       title={playing ? "Tắt nhạc" : "Bật nhạc"}
       aria-label={playing ? "Tắt nhạc" : "Bật nhạc"}
     >
       {loading ? (
-        <div className={`w-3.5 h-3.5 border-2 rounded-full animate-spin ${playing ? "border-white" : "border-[#5a1212]"} border-top-color-transparent`} />
+        <div className={`w-3.5 h-3.5 border-2 rounded-full animate-spin ${playing ? "border-[#fdfcf7]" : "border-[#5c161e]"} border-top-color-transparent`} />
       ) : playing ? (
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" className="animate-pulse">
           <path d="M9 18V5l12-2v13" />

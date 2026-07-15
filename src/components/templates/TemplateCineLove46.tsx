@@ -32,6 +32,17 @@ interface TemplateCineLove46Props {
   wedding?: WeddingData;
 }
 
+const LeafSeparator = () => (
+  <div className="w-full flex items-center justify-center py-2 bg-[#fdfcf7] select-none">
+    <svg width="80" height="16" viewBox="0 0 80 16" fill="none" className="text-[#c5a880]/50">
+      <path d="M 0 8 C 20 8, 30 11, 40 8 C 50 5, 60 8, 80 8" stroke="currentColor" strokeWidth="0.75" strokeDasharray="1.5 1.5" />
+      <circle cx="40" cy="8" r="1.5" fill="currentColor" />
+      <path d="M 37 6 C 36 4, 34 5, 35 7" stroke="currentColor" strokeWidth="0.75" fill="currentColor" />
+      <path d="M 43 10 C 44 12, 46 11, 45 9" stroke="currentColor" strokeWidth="0.75" fill="currentColor" />
+    </svg>
+  </div>
+);
+
 export default function TemplateCineLove46({ wedding }: TemplateCineLove46Props) {
   const [animate, setAnimate] = useState(false);
   const [likes, setLikes] = useState(117);
@@ -85,18 +96,24 @@ export default function TemplateCineLove46({ wedding }: TemplateCineLove46Props)
   };
 
   return (
-    <div className="min-h-screen w-full flex justify-center bg-[#e8e0d8] py-0 overflow-x-hidden relative">
+    <div className="min-h-screen w-full flex justify-center bg-[#e8e0d8] py-0 overflow-x-hidden relative" data-template="cinelove46">
       {/* Visual responsive canvas frame */}
       <div
-        className="relative flex flex-col min-h-screen w-full max-w-[420px] overflow-x-hidden shadow-2xl pb-[100px] bg-white"
+        className="relative flex flex-col min-h-screen w-full max-w-[420px] overflow-x-hidden shadow-2xl pb-[100px] bg-[#fdfcf7] cinelove46-container"
       >
         <Cl46AmbientPetals />
         <Cl46HeroSection wedding={wedding} />
+        <LeafSeparator />
         <Cl46InvitationSection wedding={wedding} />
+        <LeafSeparator />
         <Cl46CalendarSection wedding={wedding} />
+        <LeafSeparator />
         <Cl46QuotesSection />
+        <LeafSeparator />
         <Cl46CountdownSection wedding={wedding} />
+        <LeafSeparator />
         <Cl46RSVPSection weddingId={wedding?.id} onWishSubmitted={() => setLikes((l) => l + 1)} />
+        <LeafSeparator />
 
         {/* Anchor for scroll box targeting */}
         <div id="gift-section" className="w-full">

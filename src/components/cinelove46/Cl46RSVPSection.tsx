@@ -33,17 +33,17 @@ export default function Cl46RSVPSection({ weddingId, onWishSubmitted }: Cl46RSVP
       whileInView="animate"
       viewport={{ once: true, margin: "-50px" }}
       variants={fadeInUp}
-      className="w-full px-5 py-6 bg-[#fcfaf7] border-y border-[#e8e2d8] overflow-hidden"
+      className="w-full px-5 py-8 bg-[#fdfcf7] border-b border-[#e8e2d8] overflow-hidden"
     >
       {/* Title */}
       <div className="text-center mb-6">
-        <p className="font-barlow text-[10px] font-bold tracking-[3px] text-gray-500 uppercase">
+        <p className="font-sans-clean text-[9px] tracking-[3px] text-[#6b645f] uppercase font-bold">
           XÁC NHẬN THAM DỰ
         </p>
-        <p className="font-ephesis text-[28px] text-[#5a1212] mt-0.5" style={{ fontStyle: "italic" }}>
+        <p className="font-script-accent text-[34px] text-[#5c161e] mt-1" style={{ fontStyle: "normal" }}>
           RSVP
         </p>
-        <div className="w-12 h-[1px] bg-[#e8ddd4] mx-auto mt-2" />
+        <div className="w-12 h-[0.5px] bg-[#c5a880] mx-auto mt-2" />
       </div>
 
       <div className="w-full relative min-h-[220px]">
@@ -65,10 +65,10 @@ export default function Cl46RSVPSection({ weddingId, onWishSubmitted }: Cl46RSVP
               >
                 💌
               </motion.div>
-              <p className="font-ephesis text-[24px] text-[#5a1212] italic">
+              <p className="font-script-accent text-[28px] text-[#5c161e]">
                 Cảm ơn bạn rất nhiều!
               </p>
-              <p className="font-barlow text-[11px] text-gray-500 mt-2">
+              <p className="font-sans-clean text-[11px] text-[#6b645f] mt-2">
                 Phản hồi xác nhận tham dự của bạn đã được gửi.
               </p>
             </motion.div>
@@ -80,10 +80,12 @@ export default function Cl46RSVPSection({ weddingId, onWishSubmitted }: Cl46RSVP
               exit={{ opacity: 0, y: -15 }}
               transition={{ duration: 0.25 }}
             >
-              <form onSubmit={handleSubmit} className="w-full bg-white border border-[#e8ddd4] rounded p-5 shadow-sm">
+              <form onSubmit={handleSubmit} className="w-full bg-[#fdfcf7] border border-[#e8e2d8] rounded p-5 shadow-sm relative">
+                <div className="absolute inset-1.5 border border-[#c5a880]/15 pointer-events-none rounded-sm" />
+                
                 {/* Name input */}
-                <div className="mb-4">
-                  <label className="block font-barlow text-[10.5px] font-bold text-gray-700 uppercase mb-1.5">
+                <div className="mb-4 relative z-10">
+                  <label className="block font-sans-clean text-[10px] font-bold text-[#6b645f] uppercase mb-1.5 tracking-wider">
                     Họ và tên *
                   </label>
                   <input
@@ -92,39 +94,39 @@ export default function Cl46RSVPSection({ weddingId, onWishSubmitted }: Cl46RSVP
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
-                    className="w-full bg-[#fcfaf7] border border-[#d8ccc2] rounded px-3.5 py-2.5 font-barlow text-[11.5px] text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#5a1212] transition-colors"
+                    className="w-full focus:outline-none placeholder-gray-400"
                   />
                 </div>
 
                 {/* Attendance option */}
-                <div className="mb-4">
-                  <label className="block font-barlow text-[10.5px] font-bold text-gray-700 uppercase mb-2">
+                <div className="mb-4 relative z-10">
+                  <label className="block font-sans-clean text-[10px] font-bold text-[#6b645f] uppercase mb-2 tracking-wider">
                     Bạn sẽ tham dự chứ?
                   </label>
                   
                   <div className="flex flex-col gap-2">
                     {/* Option Yes */}
-                    <label className="flex items-center gap-2.5 cursor-pointer font-barlow text-[11.5px] text-gray-700">
+                    <label className="flex items-center gap-2.5 cursor-pointer font-sans-clean text-[11.5px] text-[#3a3430]">
                       <input
                         type="radio"
                         name="attending"
                         value="yes"
                         checked={attending === "yes"}
                         onChange={() => setAttending("yes")}
-                        className="accent-[#5a1212] w-4 h-4 cursor-pointer"
+                        className="w-4 h-4 cursor-pointer"
                       />
                       <span>Có, tôi sẽ tham dự</span>
                     </label>
 
                     {/* Option No */}
-                    <label className="flex items-center gap-2.5 cursor-pointer font-barlow text-[11.5px] text-gray-700">
+                    <label className="flex items-center gap-2.5 cursor-pointer font-sans-clean text-[11.5px] text-[#3a3430]">
                       <input
                         type="radio"
                         name="attending"
                         value="no"
                         checked={attending === "no"}
                         onChange={() => setAttending("no")}
-                        className="accent-[#5a1212] w-4 h-4 cursor-pointer"
+                        className="w-4 h-4 cursor-pointer"
                       />
                       <span>Tôi bận, rất tiếc không thể tham dự</span>
                     </label>
@@ -142,26 +144,23 @@ export default function Cl46RSVPSection({ weddingId, onWishSubmitted }: Cl46RSVP
                         height: { type: "spring", stiffness: 300, damping: 30 }, 
                         opacity: { duration: 0.15 } 
                       }}
-                      className="overflow-hidden"
+                      className="overflow-hidden relative z-10"
                     >
                       <div className="pt-0.5 pb-0.5">
-                        <label className="block font-barlow text-[10.5px] font-bold text-gray-700 uppercase mb-1.5">
+                        <label className="block font-sans-clean text-[10px] font-bold text-[#6b645f] uppercase mb-1.5 tracking-wider">
                           Số lượng người tham dự
                         </label>
                         <div className="relative">
                           <select
                             value={count}
                             onChange={(e) => setCount(e.target.value)}
-                            className="w-full bg-[#fcfaf7] border border-[#d8ccc2] rounded px-3.5 py-2.5 font-barlow text-[11.5px] text-gray-800 focus:outline-none focus:border-[#5a1212] transition-colors appearance-none"
+                            className="w-full focus:outline-none appearance-none"
                           >
                             <option value="1">1 người</option>
                             <option value="2">2 người</option>
                             <option value="3">3 người</option>
                             <option value="4">4 người hoặc hơn</option>
                           </select>
-                          <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none text-gray-500 text-xs">
-                            ▼
-                          </div>
                         </div>
                       </div>
                     </motion.div>
@@ -173,7 +172,7 @@ export default function Cl46RSVPSection({ weddingId, onWishSubmitted }: Cl46RSVP
                   whileTap={{ scale: 0.98 }}
                   type="submit"
                   disabled={submitting}
-                  className="w-full py-3 bg-[#5a1212] text-white font-barlow text-[11px] font-bold tracking-[2.5px] uppercase rounded shadow hover:bg-[#4c0d0d] transition-colors disabled:opacity-60 cursor-pointer"
+                  className="w-full py-3 stationery-btn-primary disabled:opacity-60 relative z-10"
                 >
                   {submitting ? "Đang gửi..." : "Gửi xác nhận"}
                 </motion.button>

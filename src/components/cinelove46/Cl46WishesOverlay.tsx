@@ -49,12 +49,16 @@ export default function Cl46WishesOverlay({ wishes = [] }: Cl46WishesOverlayProp
       {activeWishes.map((w) => (
         <div
           key={w.id}
-          className="bg-[#fae6e6]/95 border border-[#fae3e3] rounded-md px-3.5 py-2 flex flex-col gap-0.5 shadow-sm animate-bubble-fade max-w-[280px]"
+          className="bg-[#fdfcf7]/95 border border-[#c5a880]/30 rounded px-4 py-3 flex flex-col gap-1 shadow-md animate-bubble-fade max-w-[280px] relative"
+          style={{
+            outline: "1px double rgba(197, 168, 128, 0.25)",
+            outlineOffset: "-3px"
+          }}
         >
-          <p className="font-barlow text-[10.5px] font-bold text-[#5a1212]">
+          <p className="font-serif-display text-[12px] font-bold text-[#5c161e] tracking-wide relative z-10">
             {w.guest_name}:
           </p>
-          <p className="font-barlow text-[11px] text-gray-700 leading-normal">
+          <p className="font-serif-display text-[12px] text-[#3a3430] italic leading-normal relative z-10">
             {w.content}
           </p>
         </div>
