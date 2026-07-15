@@ -17,7 +17,7 @@ export default function Cl46QuotesSection() {
   return (
     <section className="w-full px-5 py-8 bg-[#fdfcf7] flex flex-col gap-8 overflow-hidden border-b border-[#e8e2d8]">
       {/* Quote Block 1: Side-by-side vertical split */}
-      <motion.div 
+      <motion.div
         initial="initial"
         whileInView="animate"
         viewport={{ once: true, margin: "-50px" }}
@@ -70,7 +70,7 @@ export default function Cl46QuotesSection() {
       </div>
 
       {/* Quote Block 2: Vietnamese quotation section header */}
-      <motion.div 
+      <motion.div
         initial="initial"
         whileInView="animate"
         viewport={{ once: true, margin: "-50px" }}
@@ -88,7 +88,7 @@ export default function Cl46QuotesSection() {
       </motion.div>
 
       {/* Cinematic asymmetrical photo grid */}
-      <motion.div 
+      <motion.div
         initial="initial"
         whileInView="animate"
         viewport={{ once: true, margin: "-50px" }}
@@ -97,7 +97,7 @@ export default function Cl46QuotesSection() {
       >
         {/* Left Column */}
         <div className="flex flex-col gap-4">
-          <motion.div 
+          <motion.div
             variants={fadeInUp}
             className="relative w-full aspect-[3/4] border border-[#e8e2d8] rounded overflow-hidden shadow-sm bg-white p-1"
           >
@@ -111,7 +111,7 @@ export default function Cl46QuotesSection() {
               />
             </div>
           </motion.div>
-          <motion.div 
+          <motion.div
             variants={fadeInUp}
             className="relative w-full aspect-square border border-[#e8e2d8] rounded overflow-hidden shadow-sm bg-white p-1"
           >
@@ -129,7 +129,7 @@ export default function Cl46QuotesSection() {
 
         {/* Right Column with vertical stagger offset */}
         <div className="flex flex-col gap-4 pt-6">
-          <motion.div 
+          <motion.div
             variants={fadeInUp}
             className="relative w-full aspect-square border border-[#e8e2d8] rounded overflow-hidden shadow-sm bg-white p-1"
           >
@@ -143,7 +143,7 @@ export default function Cl46QuotesSection() {
               />
             </div>
           </motion.div>
-          <motion.div 
+          <motion.div
             variants={fadeInUp}
             className="relative w-full aspect-[3/4] border border-[#e8e2d8] rounded overflow-hidden shadow-sm bg-white p-1"
           >
@@ -161,7 +161,7 @@ export default function Cl46QuotesSection() {
       </motion.div>
 
       {/* With You Quote row */}
-      <motion.div 
+      <motion.div
         initial="initial"
         whileInView="animate"
         viewport={{ once: true, margin: "-50px" }}
@@ -181,7 +181,7 @@ export default function Cl46QuotesSection() {
       </motion.div>
 
       {/* Bottom Quote Banner */}
-      <motion.div 
+      <motion.div
         initial="initial"
         whileInView="animate"
         viewport={{ once: true, margin: "-50px" }}

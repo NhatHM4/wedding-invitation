@@ -63,7 +63,7 @@ export default function Cl46WishesOverlay({ wishes = [] }: Cl46WishesOverlayProp
           </p>
         </div>
       ))}
-      
+
       <style>{`
         @keyframes bubble-fade {
           0% { transform: translateY(6px) scale(0.98); opacity: 0; }

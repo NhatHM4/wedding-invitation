@@ -11,7 +11,7 @@ export default function Cl46InvitationSection({ wedding }: Cl46InvitationSection
   return (
     <section className="w-full px-5 py-8 bg-[#fdfcf7] flex flex-col items-center overflow-hidden border-b border-[#e8e2d8]">
       {/* Parents host columns */}
-      <motion.div 
+      <motion.div
         initial="initial"
         whileInView="animate"
         viewport={{ once: true, margin: "-50px" }}
@@ -52,7 +52,7 @@ export default function Cl46InvitationSection({ wedding }: Cl46InvitationSection
       </motion.div>
 
       {/* Main Official Invitation details */}
-      <motion.div 
+      <motion.div
         initial="initial"
         whileInView="animate"
         viewport={{ once: true, margin: "-50px" }}
@@ -83,7 +83,7 @@ export default function Cl46InvitationSection({ wedding }: Cl46InvitationSection
           <p className="font-sans-clean text-[11px] text-[#6b645f] mt-2.5 leading-relaxed">
             10 Lê Lợi - Đề Thám - TP. Thái Bình
           </p>
-          
+
           <a
             href="https://maps.google.com/?q=10+Le+Loi+De+Tham+Thai+Binh"
             target="_blank"
@@ -96,7 +96,7 @@ export default function Cl46InvitationSection({ wedding }: Cl46InvitationSection
       </motion.div>
 
       {/* Detail Ceremony and Party Cards side-by-side (flex-column on mobile) */}
-      <motion.div 
+      <motion.div
         initial="initial"
         whileInView="animate"
         viewport={{ once: true, margin: "-50px" }}
@@ -104,7 +104,7 @@ export default function Cl46InvitationSection({ wedding }: Cl46InvitationSection
         className="w-full schedule-grid-wrap"
       >
         {/* Card 1 */}
-        <motion.div 
+        <motion.div
           variants={fadeInUp}
           className="flex-1 stationery-card p-5 text-center flex flex-col justify-between"
         >
@@ -136,7 +136,7 @@ export default function Cl46InvitationSection({ wedding }: Cl46InvitationSection
         </motion.div>
 
         {/* Card 2 */}
-        <motion.div 
+        <motion.div
           variants={fadeInUp}
           className="flex-1 stationery-card p-5 text-center flex flex-col justify-between"
         >

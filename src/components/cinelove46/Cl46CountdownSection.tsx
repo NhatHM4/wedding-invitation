@@ -11,7 +11,7 @@ interface Cl46CountdownSectionProps {
 
 export default function Cl46CountdownSection({ wedding }: Cl46CountdownSectionProps) {
   const targetDateStr = wedding?.event_date || "2025-12-06T12:00:00";
-  
+
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -21,21 +21,21 @@ export default function Cl46CountdownSection({ wedding }: Cl46CountdownSectionPr
 
   useEffect(() => {
     const target = new Date(targetDateStr).getTime();
-    
+
     const update = () => {
       const now = new Date().getTime();
       const diff = target - now;
-      
+
       if (diff <= 0) {
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
         return;
       }
-      
+
       const d = Math.floor(diff / (1000 * 60 * 60 * 24));
       const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const s = Math.floor((diff % (1000 * 60)) / 1000);
-      
+
       setTimeLeft({ days: d, hours: h, minutes: m, seconds: s });
     };
 
@@ -47,7 +47,7 @@ export default function Cl46CountdownSection({ wedding }: Cl46CountdownSectionPr
   return (
     <section className="w-full px-5 py-8 bg-[#fdfcf7] flex flex-col items-center overflow-hidden border-b border-[#e8e2d8]">
       {/* Title */}
-      <motion.div 
+      <motion.div
         initial="initial"
         whileInView="animate"
         viewport={{ once: true, margin: "-50px" }}
@@ -66,7 +66,7 @@ export default function Cl46CountdownSection({ wedding }: Cl46CountdownSectionPr
       {/* Main photo & Countdown tags container */}
       <div className="relative w-full flex items-stretch gap-4 justify-between h-[360px]">
         {/* Large photo on the left (anim-fade-left) */}
-        <motion.div 
+        <motion.div
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, margin: "-50px" }}
@@ -90,7 +90,7 @@ export default function Cl46CountdownSection({ wedding }: Cl46CountdownSectionPr
         </motion.div>
 
         {/* Stacked countdown columns on the right */}
-        <motion.div 
+        <motion.div
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, margin: "-50px" }}

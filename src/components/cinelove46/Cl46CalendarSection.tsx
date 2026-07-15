@@ -40,7 +40,7 @@ export default function Cl46CalendarSection({ wedding }: Cl46CalendarSectionProp
   ];
 
   return (
-    <motion.section 
+    <motion.section
       initial="initial"
       whileInView="animate"
       viewport={{ once: true, margin: "-50px" }}
@@ -74,7 +74,7 @@ export default function Cl46CalendarSection({ wedding }: Cl46CalendarSectionProp
           {/* Days */}
           {cells.map((cell, idx) => {
             if (cell === null) return <div key={`empty-${idx}`} />;
-            
+
             const isGroomDay = cell === dayGroom;
             const isBrideDay = cell === dayBride;
 
@@ -85,8 +85,8 @@ export default function Cl46CalendarSection({ wedding }: Cl46CalendarSectionProp
                   <div className="relative flex items-center justify-center w-8 h-8">
                     {/* SVG Heart stroke */}
                     <svg viewBox="0 0 24 24" className="absolute w-[30px] h-[30px] text-[#5c161e] fill-none stroke-current stroke-[1.5]">
-                      <motion.path 
-                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" 
+                      <motion.path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
                         initial={shouldReduceMotion ? { pathLength: 1 } : { pathLength: 0 }}
                         whileInView={{ pathLength: 1 }}
                         viewport={{ once: true, margin: "-20px" }}
@@ -99,7 +99,7 @@ export default function Cl46CalendarSection({ wedding }: Cl46CalendarSectionProp
                   // Day 6 with fingerprint or heart background color
                   <div className="relative flex items-center justify-center w-8 h-8">
                     {/* Fingerprint red stain simulation */}
-                    <motion.span 
+                    <motion.span
                       className="absolute inset-0.5 rounded-full"
                       style={{
                         background: "radial-gradient(circle at center, #8b1a1a, #5c161e)",
