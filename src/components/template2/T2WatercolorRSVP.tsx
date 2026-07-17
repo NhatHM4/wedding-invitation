@@ -44,8 +44,10 @@ export default function T2WatercolorRSVP({ weddingId, initialWishes }: T2Waterco
 
       if (!response.ok) throw new Error("Failed to submit");
 
-      const newWish = await response.json();
-      setWishes((prev) => [newWish, ...prev]);
+      const result = await response.json();
+      if (result.success && result.data) {
+        setWishes((prev) => [result.data, ...prev]);
+      }
 
       setName("");
       setAttending(null);

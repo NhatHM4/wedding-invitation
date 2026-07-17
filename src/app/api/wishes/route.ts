@@ -17,6 +17,18 @@ export async function POST(request: Request) {
       );
     }
 
+    // Nếu là ID xem trước (preview), trả về dữ liệu mock thành công luôn
+    if (typeof wedding_id === 'string' && wedding_id.startsWith('preview-')) {
+      const mockWish = {
+        id: `mock-wish-${Date.now()}`,
+        wedding_id,
+        guest_name,
+        content,
+        created_at: new Date().toISOString(),
+      };
+      return NextResponse.json({ success: true, data: mockWish }, { status: 200 });
+    }
+
     // Insert lời chúc vào bảng wishes trong Supabase
     const { data, error } = await supabase
       .from('wishes')
