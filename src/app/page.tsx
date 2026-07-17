@@ -23,48 +23,19 @@ export default function Home() {
       scrollPreview: true
     },
     {
-      id: "template-hoadobe",
-      name: "Mẫu Hoa Đỏ Be",
-      description: "Phong cách vintage lãng mạn với nền kem điêu khắc hoa, tông đỏ maroon sang trọng. Phong bì đỏ với con dấu sáp vàng, ảnh polaroid và hiệu ứng cuộn tinh tế.",
-      previewUrl: "/mauhoadobe",
+      id: "template-white-rose",
+      name: "Mẫu Trắng Hồng Space",
+      description: "Phong cách trắng hồng thanh lịch tinh khôi kết hợp hiệu ứng anti-gravity phong bì bay lượn độc đáo. Động cơ tinh vân cảm ứng nhạc nền sống động cùng hộp mừng cưới thông minh.",
+      previewUrl: "/Template1",
       badge: "Mới Nhất",
-      colorClasses: {
-        bg: "bg-amber-50",
-        border: "border-amber-200",
-        text: "text-amber-700",
-        accent: "#8B1A1A"
-      },
-      image: "/thiepmaudovang/images/cover.jpg",
-      scrollPreview: true
-    },
-    {
-      id: "template-cinelove46",
-      name: "Mẫu CineLove Burgundy",
-      description: "Đậm nét điện ảnh sang trọng với tông màu đỏ Burgundy quý phái. Độc đáo với khung ảnh cổng vòm, đếm ngược ngày cưới, thanh tương tác bắn tim và lời chúc bay nổi bật.",
-      previewUrl: "/cinelove46",
-      badge: "Cực Hot",
-      colorClasses: {
-        bg: "bg-red-50",
-        border: "border-red-200",
-        text: "text-red-700",
-        accent: "#5a1212"
-      },
-      image: "/cinelove46/image/preview_cinelove46.webp",
-      scrollPreview: true
-    },
-    {
-      id: "template-classic",
-      name: "Mẫu Classic Romantic",
-      description: "Thanh lịch, dịu dàng phương Tây với tông màu kem ấm áp. Bố cục tối giản, sang trọng, tập trung vào khoảnh khắc tình yêu và lời chúc của khách mời.",
-      previewUrl: "/card/minhhoang-maihuong",
-      badge: "Được Yêu Thích Nhất",
       colorClasses: {
         bg: "bg-rose-50",
         border: "border-rose-200",
         text: "text-rose-700",
-        accent: "#db2777"
+        accent: "#f43f5e"
       },
-      image: "/thiepmaudovang/images/cover.jpg"
+      image: "/template1/preview/Template1.webp",
+      scrollPreview: true
     }
   ];
 
