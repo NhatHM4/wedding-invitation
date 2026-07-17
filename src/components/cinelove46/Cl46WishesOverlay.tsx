@@ -45,7 +45,7 @@ export default function Cl46WishesOverlay({ wishes = [] }: Cl46WishesOverlayProp
   }, [wishes]);
 
   return (
-    <div className="fixed bottom-[80px] left-1/2 -translate-x-1/2 w-full max-w-[420px] px-5 items-start pointer-events-none z-40 flex flex-col gap-2">
+    <div className="fixed bottom-[100px] left-1/2 -translate-x-1/2 w-full max-w-[420px] px-5 items-start pointer-events-none z-40 flex flex-col gap-2">
       {activeWishes.map((w) => (
         <div
           key={w.id}
