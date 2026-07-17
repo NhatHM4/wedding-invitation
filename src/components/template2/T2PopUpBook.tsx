@@ -114,7 +114,7 @@ export default function T2PopUpBook({
 
     const rect = e.currentTarget.getBoundingClientRect();
     const clickX = e.clientX - rect.left;
-    
+
     if (clickX < rect.width * 0.22) {
       if (currentPage > 1) {
         popUpSynth.playPageFlip();
@@ -213,7 +213,7 @@ export default function T2PopUpBook({
   );
 
   return (
-    <div 
+    <div
       onClick={handlePageClick}
       className="relative w-full h-full min-h-[92vh] flex items-center justify-center cursor-pointer select-none"
       style={{ perspective: "1500px" }}
@@ -231,7 +231,7 @@ export default function T2PopUpBook({
       )}
 
       {/* 3D Page Frame Wrapper */}
-      <div 
+      <div
         className="w-full h-full relative"
         style={{
           transformStyle: "preserve-3d",
@@ -249,7 +249,7 @@ export default function T2PopUpBook({
         )}
 
         <AnimatePresence mode="wait" initial={false}>
-          
+
           {/* PAGE 0: SKETCHBOOK CLOSED COVER */}
           {currentPage === 0 && (
             <motion.div
@@ -258,48 +258,79 @@ export default function T2PopUpBook({
               initial="initial"
               animate="animate"
               exit="exit"
-              className="absolute inset-0 w-full h-full bg-[#5c3d2e] border-8 border-double border-[#3d251e] rounded-3xl shadow-[10px_20px_45px_rgba(0,0,0,0.6)] flex flex-col justify-between items-center p-8 py-12 text-center overflow-hidden z-20"
+              className="absolute inset-0 w-full h-full bg-[#5c3d2e] border-8 border-double border-[#3d251e] rounded-3xl shadow-[10px_20px_45px_rgba(0,0,0,0.6)] flex flex-col justify-between items-center p-8 py-10 text-center overflow-hidden z-20"
               style={{
                 transformOrigin: "left center",
                 backgroundImage: `radial-gradient(circle, rgba(110,75,56,0.98) 50%, rgba(61,37,30,1) 100%)`,
               }}
             >
+              {/* Corner ornaments */}
               <div className="absolute inset-5 border-4 border-double border-yellow-600/35 rounded-xl pointer-events-none" />
               <div className="absolute top-3 left-3 w-12 h-12 border-t-4 border-l-4 border-yellow-600/50 rounded-tl-lg" />
               <div className="absolute top-3 right-3 w-12 h-12 border-t-4 border-r-4 border-yellow-600/50 rounded-tr-lg" />
               <div className="absolute bottom-3 left-3 w-12 h-12 border-b-4 border-l-4 border-yellow-600/50 rounded-bl-lg" />
               <div className="absolute bottom-3 right-3 w-12 h-12 border-b-4 border-r-4 border-yellow-600/50 rounded-br-lg" />
 
-              <div className="w-full flex flex-col items-center gap-1 mt-6 z-10">
-                <span className="text-[12px] uppercase tracking-[0.4em] text-yellow-500 font-bold font-cyber">
+              {/* Header block */}
+              <div className="w-full flex flex-col items-center gap-1 mt-4 z-10">
+                <span className="text-[10px] uppercase tracking-[0.5em] text-yellow-400/80 font-cyber">
+                  ✦ WEDDING INVITATION ✦
+                </span>
+                <div className="h-[1.5px] w-16 bg-yellow-600/50 my-2" />
+                <span className="text-[11px] uppercase tracking-[0.3em] text-yellow-500/70 font-cyber font-bold">
                   ★ INVITATION CARD ★
                 </span>
-                <div className="h-[2px] w-14 bg-yellow-500/50 my-3" />
               </div>
 
-              <div className="relative w-48 h-48 flex items-center justify-center my-auto z-10">
+              {/* Central medallion with OUR LOVE */}
+              <div className="relative w-52 h-52 flex items-center justify-center my-1 z-10">
                 <div className="absolute inset-0 border-2 border-dashed border-yellow-600/25 rounded-full animate-[spin_40s_linear_infinite]" />
-                <div className="absolute inset-2 bg-gradient-to-tr from-[#fbc5c5]/25 via-transparent to-[#fae588]/15 rounded-full blur-sm" />
-                <div className="flex flex-col items-center gap-1">
-                  <h1 className="font-serif-lux text-5xl font-extrabold text-white tracking-widest drop-shadow-[0_4px_8px_rgba(0,0,0,0.4)]">
-                    OUR
-                  </h1>
-                  <h1 className="font-serif-lux text-5xl font-extrabold text-white tracking-widest drop-shadow-[0_4px_8px_rgba(0,0,0,0.4)]">
+                <div className="absolute inset-3 border border-yellow-600/15 rounded-full" />
+                <div className="absolute inset-2 bg-gradient-to-tr from-[#fbc5c5]/20 via-transparent to-[#fae588]/10 rounded-full blur-sm" />
+                <div className="flex flex-col items-center gap-0">
+                  <span className="text-yellow-500/60 font-cyber text-[8px] tracking-[0.4em] uppercase mb-1">Our</span>
+                  <h1 className="font-serif-lux text-6xl font-extrabold text-white tracking-widest drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)] leading-none">
                     LOVE
                   </h1>
+                  <span className="text-yellow-500/60 font-cyber text-[8px] tracking-[0.4em] uppercase mt-1">Story</span>
                 </div>
               </div>
 
-              <div className="flex flex-col gap-1.5 text-[11px] text-yellow-500 mb-6 bg-yellow-600/10 border-2 border-yellow-600/20 rounded-xl px-6 py-3.5 font-cyber z-10 w-full max-w-[270px]">
-                <span className="text-yellow-600/60 uppercase tracking-widest text-[9px]">Đặc biệt kính mời:</span>
+              {/* Couple names */}
+              <div className="w-full flex flex-col items-center gap-1 z-10 mb-1">
+                <div className="flex items-center gap-2 w-full justify-center">
+                  <div className="h-[1px] flex-1 bg-yellow-600/30" />
+                  <span className="text-yellow-400/70 text-[9px] font-cyber uppercase tracking-widest px-2">Lễ Thành Hôn</span>
+                  <div className="h-[1px] flex-1 bg-yellow-600/30" />
+                </div>
+                <div className="flex items-center gap-3 mt-1">
+                  <span className="font-handwritten text-xl text-white/90 font-bold tracking-wide drop-shadow-sm">
+                    {wedding.groom_name}
+                  </span>
+                  <span className="text-yellow-500 text-lg font-serif-lux italic">&</span>
+                  <span className="font-handwritten text-xl text-white/90 font-bold tracking-wide drop-shadow-sm">
+                    {wedding.bride_name}
+                  </span>
+                </div>
+                {/* Wedding date badge */}
+                <div className="flex items-center gap-2 mt-1.5 bg-yellow-600/15 border border-yellow-600/25 rounded-lg px-4 py-1.5">
+                  <span className="text-yellow-400 text-[9px] font-cyber tracking-widest uppercase">📅</span>
+                  <span className="text-yellow-300 font-bold text-[11px] font-cyber tracking-wider">10 . 10 . 2026</span>
+                </div>
+              </div>
+
+              {/* Guest name box */}
+              <div className="flex flex-col gap-1 text-[11px] text-yellow-500 bg-yellow-600/10 border-2 border-yellow-600/20 rounded-xl px-6 py-3 font-cyber z-10 w-full max-w-[270px]">
+                <span className="text-yellow-600/60 uppercase tracking-widest text-[9px]">Trân trọng kính mời:</span>
                 <span className="text-white font-extrabold tracking-widest text-[13px] block">{to.toUpperCase()}</span>
               </div>
 
-              <span className="text-[9px] tracking-[0.3em] text-yellow-600/60 uppercase animate-pulse mb-2">
+              <span className="text-[9px] tracking-[0.3em] text-yellow-600/60 uppercase animate-pulse mb-1">
                 - CHẠM VÀO SÁCH ĐỂ LẬT MỞ -
               </span>
             </motion.div>
           )}
+
 
           {/* PAGE 1: 3D POP-UP GREETING */}
           {currentPage === 1 && (
@@ -326,7 +357,7 @@ export default function T2PopUpBook({
               </div>
 
               {/* 3D Pop-Up Assembly */}
-              <div 
+              <div
                 className="relative w-full h-44 flex justify-center items-end pointer-events-none mt-2 select-none"
                 style={{ transformStyle: "preserve-3d" }}
               >
@@ -367,7 +398,7 @@ export default function T2PopUpBook({
 
               <div className="flex flex-col gap-2.5 z-10 w-full px-2 mb-2 flex-1 justify-center">
                 <span className="text-[11px] text-gray-400 tracking-widest uppercase">Trân trọng kính báo Lễ Thành Hôn của</span>
-                
+
                 <div className="flex flex-col gap-1.5 font-serif-lux">
                   <h2 className="text-4xl font-extrabold text-gray-800 tracking-wider">
                     {wedding.groom_name}
@@ -493,7 +524,7 @@ export default function T2PopUpBook({
               <div className="absolute inset-4 bg-[#f5f4ed] border-2 border-[#dfdbcf] rounded-2xl rotate-2 shadow-md z-0" />
               <div className="absolute inset-4 bg-[#faf9f3] border-2 border-[#e6e2d3] rounded-2xl -rotate-2 shadow-md z-1" />
 
-              <div 
+              <div
                 className="relative w-full h-full bg-[#fefefe] border-2 border-gray-300/80 rounded-2xl shadow-[5px_5px_25px_rgba(0,0,0,0.12)] p-5 py-7 flex flex-col justify-between items-center text-center overflow-hidden z-10 rotate-[0.5deg]"
                 style={{
                   backgroundImage: "repeating-linear-gradient(#fefefe, #fefefe 27px, #eef2f5 28px)",
@@ -502,9 +533,9 @@ export default function T2PopUpBook({
               >
                 <div className="absolute left-3.5 top-0 bottom-0 w-2 flex flex-col justify-around py-8 z-20 pointer-events-none">
                   {Array.from({ length: 9 }).map((_, idx) => (
-                    <div 
-                      key={idx} 
-                      className="w-3.5 h-3 bg-[#f3f3eb] border border-gray-300 rounded-full shadow-[inset_1px_1px_2px_rgba(0,0,0,0.18)]" 
+                    <div
+                      key={idx}
+                      className="w-3.5 h-3 bg-[#f3f3eb] border border-gray-300 rounded-full shadow-[inset_1px_1px_2px_rgba(0,0,0,0.18)]"
                     />
                   ))}
                 </div>
@@ -529,7 +560,7 @@ export default function T2PopUpBook({
 
                 {/* Story text */}
                 <div className="flex-1 flex items-center justify-center px-2 py-1 z-10 relative mt-2">
-                  <p 
+                  <p
                     className="text-[17px] sm:text-[18px] text-gray-700 font-handwritten text-left leading-[28px] font-bold tracking-wide"
                     style={{ textIndent: "1.2rem" }}
                   >
@@ -553,13 +584,12 @@ export default function T2PopUpBook({
                       const dayNum = i + 1;
                       const isWeddingDay = dayNum === 10;
                       return (
-                        <span 
-                          key={dayNum} 
-                          className={`flex items-center justify-center w-[18px] h-[18px] rounded-full font-bold relative text-[10px] ${
-                            isWeddingDay 
-                              ? "text-white bg-[#f08080] shadow-[0_2px_4px_rgba(240,128,128,0.55)] scale-120" 
+                        <span
+                          key={dayNum}
+                          className={`flex items-center justify-center w-[18px] h-[18px] rounded-full font-bold relative text-[10px] ${isWeddingDay
+                              ? "text-white bg-[#f08080] shadow-[0_2px_4px_rgba(240,128,128,0.55)] scale-120"
                               : "text-gray-600"
-                          }`}
+                            }`}
                         >
                           {dayNum}
                           {isWeddingDay && (
@@ -635,7 +665,7 @@ export default function T2PopUpBook({
               {/* Calligraphy invitation banner (like picture 2) */}
               <div className="w-full text-center mt-4 z-10 shrink-0 select-none">
                 <span className="text-[12.5px] text-gray-400 tracking-[0.2em] uppercase block font-sans font-medium">Trân Trọng Báo Tin Lễ Thành Hôn Của</span>
-                
+
                 {/* Large handwritten couple names */}
                 <div className="flex flex-col gap-1.5 mt-2.5">
                   <h2 className="text-4xl font-handwritten font-bold text-[#e63946] leading-none">Minh Hoàng</h2>
@@ -697,7 +727,7 @@ export default function T2PopUpBook({
               </div>
 
               <div className="w-full flex-1 flex flex-col justify-between my-3 gap-4 z-10">
-                
+
                 {/* Countdown circles */}
                 <div className="grid grid-cols-4 gap-2.5 w-full max-w-[300px] mx-auto font-cyber shadow-sm p-2 rounded-2xl bg-[#fcfcf9] border border-gray-200/40">
                   {Object.entries(timeLeft).map(([key, val]) => (
@@ -710,7 +740,7 @@ export default function T2PopUpBook({
 
                 {/* Timeline detailed Checklist (Time text size to 15px, details to 13px) */}
                 <div className="w-full bg-[#fcfcf9] border border-gray-200/50 p-5 rounded-2xl shadow-sm text-left text-gray-600 flex-1 flex flex-col justify-between gap-5 relative">
-                  
+
                   <div className="absolute left-[33px] top-[40px] bottom-[35px] w-0.5 border-l border-dashed border-[#f08080]/40 z-0 flex flex-col justify-around items-center pointer-events-none">
                     <span className="text-[8px] bg-[#fcfcf9] py-0.5">🍃</span>
                     <span className="text-[8px] bg-[#fcfcf9] py-0.5">🍃</span>
@@ -831,7 +861,7 @@ export default function T2PopUpBook({
                           className="object-cover brightness-95 saturate-[0.85] group-hover:scale-105 transition-transform duration-300"
                         />
                       </div>
-                      
+
                       <span className="text-[8.5px] text-gray-500 font-handwritten italic font-bold tracking-wider mt-0.5 block truncate">
                         {captions[idx]}
                       </span>
