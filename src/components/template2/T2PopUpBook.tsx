@@ -31,8 +31,8 @@ export default function T2PopUpBook({
   const [activePhoto, setActivePhoto] = useState<string | null>(null);
 
   // Smooth springs for tilt/parallax values
-  const springX = useSpring(0, { stiffness: 90, damping: 20 });
-  const springY = useSpring(0, { stiffness: 90, damping: 20 });
+  const springX = useSpring(0, { stiffness: 50, damping: 25 });
+  const springY = useSpring(0, { stiffness: 50, damping: 25 });
 
   // Handle Parallax tilting via mouse/gyroscope on Page 1
   useEffect(() => {
@@ -130,38 +130,26 @@ export default function T2PopUpBook({
     }
   };
 
-  // 3D corner-peeling paper curve variants
+  // GPU-only flip variants (only rotateY + opacity = compositor-only, no layout/paint on mobile)
   const flipVariants: any = {
     initial: {
-      rotateY: 85,
-      rotateZ: 8,
-      scaleX: 0.9,
-      skewY: -5,
+      rotateY: 75,
       opacity: 0,
-      z: -30,
     },
     animate: {
       rotateY: 0,
-      rotateZ: 0,
-      scaleX: 1,
-      skewY: 0,
       opacity: 1,
-      z: 0,
       transition: {
-        duration: 0.95,
-        ease: [0.25, 1, 0.4, 1],
+        duration: 0.55,
+        ease: [0.25, 1, 0.5, 1],
       },
     },
     exit: {
-      rotateY: -85,
-      rotateZ: -8,
-      scaleX: 0.9,
-      skewY: 5,
+      rotateY: -75,
       opacity: 0,
-      z: -30,
       transition: {
-        duration: 0.85,
-        ease: [0.25, 0, 0.7, 0],
+        duration: 0.4,
+        ease: [0.4, 0, 0.8, 0],
       },
     },
   };
@@ -216,7 +204,7 @@ export default function T2PopUpBook({
     <div
       onClick={handlePageClick}
       className="relative w-full h-full min-h-[92vh] flex items-center justify-center cursor-pointer select-none"
-      style={{ perspective: "1500px" }}
+      style={{ perspective: "1200px", willChange: "transform", transform: "translate3d(0,0,0)" }}
     >
       {/* Side indicators */}
       {currentPage > 0 && (
@@ -237,16 +225,7 @@ export default function T2PopUpBook({
           transformStyle: "preserve-3d",
         }}
       >
-        {/* Dynamic shadow overlay sweep */}
-        {currentPage > 0 && (
-          <motion.div
-            key={`shadow-${currentPage}`}
-            initial={{ opacity: 0, x: "100%" }}
-            animate={{ opacity: [0, 0.45, 0], x: ["100%", "0%", "-100%"] }}
-            transition={{ duration: 0.9, ease: "easeInOut" }}
-            className="absolute inset-0 bg-gradient-to-r from-transparent via-black/15 to-transparent pointer-events-none z-30"
-          />
-        )}
+        {/* Shadow sweep removed — was causing extra compositing layer per flip on mobile */}
 
         <AnimatePresence mode="wait" initial={false}>
 
