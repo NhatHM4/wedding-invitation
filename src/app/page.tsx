@@ -36,6 +36,21 @@ export default function Home() {
       },
       image: "/template1/preview/Template1.webp",
       scrollPreview: true
+    },
+    {
+      id: "template-watercolor",
+      name: "Mẫu Pop-Up Sách Nổi",
+      description: "Cuốn sách màu nước 3D tuyệt đẹp với trang lật chân thực. Các lớp mô hình giấy lâu đài, rừng cây và cặp đôi dựng đứng sinh động, tương tác cảm biến con quay hồi chuyển tạo chiều sâu thực tế.",
+      previewUrl: "/template2",
+      badge: "Độc Đáo",
+      colorClasses: {
+        bg: "bg-orange-50",
+        border: "border-rose-200",
+        text: "text-rose-600",
+        accent: "#f08080"
+      },
+      image: "/thiepmaudovang/images/preview.webp",
+      scrollPreview: true
     }
   ];
 
