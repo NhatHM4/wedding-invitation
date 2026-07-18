@@ -16,6 +16,8 @@
   --font-roboto: var(--font-roboto), sans-serif;
   --font-barlow: var(--font-barlow), sans-serif;
   --font-cormorant: var(--font-cormorant), serif;
+  --font-cormorant-garamond: var(--font-cormorant-garamond), serif;
+  --font-inter: var(--font-inter), sans-serif;
 
   --font-pinyon: var(--font-pinyon), cursive;
   --font-alexbrush: var(--font-alexbrush), cursive;

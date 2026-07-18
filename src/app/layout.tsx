@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Cormorant_Upright, Roboto, Barlow } from "next/font/google";
+import { Geist, Geist_Mono, Cormorant_Upright, Roboto, Barlow, Cormorant_Garamond, Inter } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -29,6 +29,19 @@ const cormorant = Cormorant_Upright({
   variable: "--font-cormorant",
   subsets: ["latin", "vietnamese"],
   weight: ["300", "400", "500", "600", "700"],
+});
+
+const cormorantGaramond = Cormorant_Garamond({
+  variable: "--font-cormorant-garamond",
+  subsets: ["latin", "vietnamese"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin", "vietnamese"],
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 // Local Fonts
@@ -111,6 +124,8 @@ export default function RootLayout({
     roboto.variable,
     barlow.variable,
     cormorant.variable,
+    cormorantGaramond.variable,
+    inter.variable,
     pinyon.variable,
     alexBrush.variable,
     motherland.variable,
