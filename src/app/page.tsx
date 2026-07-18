@@ -51,6 +51,66 @@ export default function Home() {
       },
       image: "/thiepmaudovang/images/preview.webp",
       scrollPreview: true
+    },
+    {
+      id: "template-bento",
+      name: "Mẫu Bento Grid Magazine",
+      description: "Thiết kế dạng lưới Bento hiện đại, tối ưu không gian hiển thị hình ảnh và thông tin sự kiện như một tạp chí thời trang cưới sang trọng.",
+      previewUrl: "/template3",
+      badge: "Bento Grid",
+      colorClasses: {
+        bg: "bg-emerald-50",
+        border: "border-emerald-200",
+        text: "text-emerald-700",
+        accent: "#047857"
+      },
+      image: "/thiepmaudovang/images/preview.webp",
+      scrollPreview: true
+    },
+    {
+      id: "template-brutalist",
+      name: "Mẫu Brutalist Art Gallery",
+      description: "Phong cách thiết kế Brutalism phá cách, ấn tượng mạnh với đường nét cứng cáp, bố cục tự do và hiệu ứng trượt cuộn lồng ảnh nghệ thuật.",
+      previewUrl: "/template4",
+      badge: "Nghệ Thuật Cực Hạn",
+      colorClasses: {
+        bg: "bg-indigo-50",
+        border: "border-indigo-200",
+        text: "text-indigo-700",
+        accent: "#4338ca"
+      },
+      image: "/thiepmaudovang/images/preview.webp",
+      scrollPreview: true
+    },
+    {
+      id: "template-kinetic",
+      name: "Mẫu Typography Động",
+      description: "Tập trung vào hiệu ứng chuyển động chữ (Kinetic Typography) ấn tượng, mặt nạ ảnh lồng chữ và các khối chữ chạy vô tận đầy hiện đại.",
+      previewUrl: "/template5",
+      badge: "Kinetic Motion",
+      colorClasses: {
+        bg: "bg-amber-50",
+        border: "border-amber-200",
+        text: "text-amber-700",
+        accent: "#b45309"
+      },
+      image: "/thiepmaudovang/images/preview.webp",
+      scrollPreview: true
+    },
+    {
+      id: "template-rosegold",
+      name: "Mẫu Rose Gold & Blossom",
+      description: "Mẫu thiệp lãng mạn sang trọng với tông màu kem đào, hoa hồng rơi nhẹ nhàng, kết hợp đếm ngược ngày hỷ, xác nhận RSVP thông minh và bank mừng cưới.",
+      previewUrl: "/template6",
+      badge: "Mới & Lãng Mạn",
+      colorClasses: {
+        bg: "bg-pink-50",
+        border: "border-pink-200",
+        text: "text-pink-700",
+        accent: "#8E4A49"
+      },
+      image: "/thiepmaudovang/images/preview.webp",
+      scrollPreview: true
     }
   ];
 
