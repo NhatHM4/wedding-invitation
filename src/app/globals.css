@@ -959,3 +959,65 @@
     transition: none !important;
   }
 }
+
+/* ==============================================================================
+   TEMPLATE 7 NEOMORPHIC THEME & UTILITIES
+   ============================================================================== */
+:root {
+  --neo-bg-base: #EAECEF;
+  --neo-bg-pressed: #D6DCE0;
+  --neo-shadow-dark: #B8BEC6;
+  --neo-shadow-light: #FFFFFF;
+  --neo-text-color: #2D3748;
+}
+
+[data-theme="sage"] {
+  --neo-bg-base: #E3E7E3;
+  --neo-bg-pressed: #CFCFCF;
+  --neo-shadow-dark: #B4B9B4;
+  --neo-shadow-light: #FFFFFF;
+  --neo-text-color: #2C3E2C;
+}
+
+.neomorph-bg {
+  background-color: var(--neo-bg-base);
+}
+
+.neomorph-raised {
+  background-color: var(--neo-bg-base);
+  box-shadow: 6px 6px 12px var(--neo-shadow-dark), -6px -6px 12px var(--neo-shadow-light);
+  will-change: transform, box-shadow;
+}
+
+.neomorph-sunken {
+  background-color: var(--neo-bg-base);
+  box-shadow: inset 4px 4px 8px var(--neo-shadow-dark), inset -4px -4px 8px var(--neo-shadow-light);
+  will-change: transform, box-shadow;
+}
+
+.neomorph-raised-sm {
+  background-color: var(--neo-bg-base);
+  box-shadow: 3px 3px 6px var(--neo-shadow-dark), -3px -3px 6px var(--neo-shadow-light);
+  will-change: transform, box-shadow;
+}
+
+.neomorph-sunken-sm {
+  background-color: var(--neo-bg-base);
+  box-shadow: inset 2px 2px 4px var(--neo-shadow-dark), inset -2px -2px 4px var(--neo-shadow-light);
+  will-change: transform, box-shadow;
+}
+
+.neomorph-transition {
+  transition: box-shadow 0.15s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.15s ease, transform 0.15s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Polaroid Deck drop shadows */
+.polaroid-drop-shadow {
+  filter: drop-shadow(0px 8px 16px rgba(0,0,0,0.12));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .neomorph-transition {
+    transition: none !important;
+  }
+}

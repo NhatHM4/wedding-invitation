@@ -111,6 +111,21 @@ export default function Home() {
       },
       image: "/thiepmaudovang/images/preview.webp",
       scrollPreview: true
+    },
+    {
+      id: "template-neomorphic",
+      name: "Mẫu Neomorphic Mini-OS",
+      description: "Đột phá với phong cách thiết kế Skeuomorphism/Neomorphism giả lập hệ điều hành điện thoại sang trọng. Tích hợp thanh kéo lịch trình, album ảnh Polaroid tương tác vật lý sống động và nhạc nền thông minh.",
+      previewUrl: "/template7",
+      badge: "Độc Bản OS",
+      colorClasses: {
+        bg: "bg-slate-50",
+        border: "border-slate-200",
+        text: "text-slate-700",
+        accent: "#B8BEC6"
+      },
+      image: "/thiepmaudovang/images/preview.webp",
+      scrollPreview: true
     }
   ];
 
