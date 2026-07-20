@@ -300,6 +300,13 @@ export default function Template3({ wedding, to, wishes }: Template3Props) {
               </section>
 
               {/* =========================================================
+                  SCREEN 1.5: THE COUPLE PROFILE
+                  ========================================================= */}
+              <section className="w-full h-full snap-start snap-always flex-shrink-0 flex flex-col justify-between p-4 relative overflow-hidden">
+                <CoupleProfile wedding={wedding} />
+              </section>
+
+              {/* =========================================================
                   SCREEN 2: THE LOVE ODYSSEY (5-BENTO IMAGES LAYOUT)
                   ========================================================= */}
               <section className="w-full h-full snap-start snap-always flex-shrink-0 flex flex-col justify-between p-4 relative overflow-hidden">
@@ -583,6 +590,111 @@ export default function Template3({ wedding, to, wishes }: Template3Props) {
           />
         )}
       </AnimatePresence>
+    </div>
+  );
+}
+
+/* =========================================================================
+   SUB-COMPONENT: SCREEN 1.5 COUPLE PROFILE
+   ========================================================================= */
+interface CoupleProfileProps {
+  wedding: Wedding;
+}
+
+function CoupleProfile({ wedding }: CoupleProfileProps) {
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { amount: 0.3 });
+
+  return (
+    <div ref={containerRef} className="h-full flex flex-col justify-between py-6">
+      {/* Header */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
+        transition={{ duration: 0.6 }}
+        className="text-center z-10 font-sans"
+      >
+        <span className="text-[9px] uppercase font-bold tracking-[0.25em] text-[#8C7355]">
+          Introducing
+        </span>
+        <h2 className="text-3xl font-artistic font-bold text-[#dc2626] mt-1">
+          Cô Dâu & Chú Rể
+        </h2>
+      </motion.div>
+
+      {/* Profile cards */}
+      <div className="flex-1 flex flex-col justify-center gap-4 z-10 my-2">
+        {/* Chú rể */}
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="flex flex-col gap-2 bg-white/80 backdrop-blur-sm border border-[#C5A880]/30 p-4 rounded-2xl shadow-sm"
+        >
+          <div className="flex gap-4 items-center">
+            <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-[#C5A880]/40 relative flex-shrink-0 shadow-sm">
+              <Image
+                src="/thiepmaudovang/images/gallery-2.jpg"
+                alt="Chú rể"
+                fill
+                sizes="80px"
+                className="object-cover"
+              />
+            </div>
+            <div className="flex-1 min-w-0">
+              <span className="text-[9px] font-bold text-[#8C7355] uppercase tracking-wider block font-sans">Chú rể</span>
+              <h3 className="font-serif-lux text-base font-bold text-stone-850 leading-snug">{wedding.groom_name}</h3>
+              {wedding.location_info?.groom_family && (
+                <div className="text-[10px] text-stone-500 font-sans space-y-0.5 mt-0.5">
+                  {wedding.location_info.groom_family.father_name && <p>Con ông: {wedding.location_info.groom_family.father_name}</p>}
+                  {wedding.location_info.groom_family.mother_name && <p>Con bà: {wedding.location_info.groom_family.mother_name}</p>}
+                </div>
+              )}
+            </div>
+          </div>
+          <p className="text-[10px] text-stone-600 italic leading-relaxed border-t border-stone-100 pt-1.5 font-sans px-1">
+            &ldquo;Là một chàng trai điềm đạm, ấm áp và luôn tràn đầy hoài bão. Đối với anh, tình yêu là cùng nhau đi qua mọi hành trình cuộc sống.&rdquo;
+          </p>
+        </motion.div>
+
+        {/* Cô dâu */}
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex flex-col gap-2 bg-white/80 backdrop-blur-sm border border-[#C5A880]/30 p-4 rounded-2xl shadow-sm"
+        >
+          <div className="flex gap-4 items-center flex-row-reverse text-right">
+            <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-[#C5A880]/40 relative flex-shrink-0 shadow-sm">
+              <Image
+                src="/thiepmaudovang/images/gallery-1.jpg"
+                alt="Cô dâu"
+                fill
+                sizes="80px"
+                className="object-cover"
+              />
+            </div>
+            <div className="flex-1 min-w-0">
+              <span className="text-[9px] font-bold text-[#8C7355] uppercase tracking-wider block font-sans">Cô dâu</span>
+              <h3 className="font-serif-lux text-base font-bold text-stone-850 leading-snug">{wedding.bride_name}</h3>
+              {wedding.location_info?.bride_family && (
+                <div className="text-[10px] text-stone-500 font-sans space-y-0.5 mt-0.5">
+                  {wedding.location_info.bride_family.father_name && <p>Con ông: {wedding.location_info.bride_family.father_name}</p>}
+                  {wedding.location_info.bride_family.mother_name && <p>Con bà: {wedding.location_info.bride_family.mother_name}</p>}
+                </div>
+              )}
+            </div>
+          </div>
+          <p className="text-[10px] text-stone-600 italic leading-relaxed border-t border-stone-100 pt-1.5 font-sans px-1 text-right">
+            &ldquo;Một cô gái dịu dàng, tinh tế và luôn tràn đầy năng lượng tích cực. Cô tin rằng hạnh phúc là khi hai trái tim luôn hướng về nhau.&rdquo;
+          </p>
+        </motion.div>
+      </div>
+
+      {/* Decorative footer line */}
+      <div className="text-center text-xs text-[#8C7355]/40 select-none">
+        ❀ ❀ ❀
+      </div>
     </div>
   );
 }

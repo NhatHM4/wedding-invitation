@@ -822,6 +822,93 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════ */}
+      {/* SECTION 4.5: GROOM & BRIDE PROFILES                                 */}
+      {/* ═══════════════════════════════════════════════════════════════════ */}
+      <section style={{ padding: "4rem 1.5rem", borderBottom: "1px solid rgba(197,168,128,0.08)" }}>
+        <FadeSection>
+          <p
+            style={{
+              fontFamily: "var(--font-inter)",
+              fontSize: "0.62rem",
+              letterSpacing: "0.35em",
+              textTransform: "uppercase",
+              color: "#C5A880",
+              marginBottom: "2.5rem",
+              textAlign: "center",
+            }}
+          >
+            cô dâu & chú rể
+          </p>
+        </FadeSection>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: "3.5rem", maxWidth: "480px", margin: "0 auto" }}>
+          {/* Chú rể */}
+          <FadeSection delay={0.15}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "1rem", border: "1px solid rgba(197,168,128,0.15)", padding: "1.5rem", borderRadius: "8px", background: "rgba(249,246,238,0.02)" }}>
+              <div style={{ display: "flex", gap: "1.5rem", alignItems: "center" }}>
+                <div style={{ position: "relative", width: "100px", height: "100px", borderRadius: "50%", overflow: "hidden", border: "2px solid #C5A880", flexShrink: 0 }}>
+                  <Image
+                    src="/thiepmaudovang/images/gallery-2.jpg"
+                    alt="Chú rể"
+                    fill
+                    sizes="100px"
+                    className="object-cover grayscale"
+                  />
+                </div>
+                <div style={{ flex: 1 }}>
+                  <span style={{ fontSize: "0.6rem", fontWeight: "bold", color: "#C5A880", textTransform: "uppercase", letterSpacing: "0.15em", display: "block" }}>Chú rể</span>
+                  <h3 style={{ fontFamily: "var(--font-playfair)", fontSize: "1.35rem", color: "#F9F6EE", fontWeight: 600, marginTop: "0.25rem" }}>
+                    {wedding.groom_name}
+                  </h3>
+                  {groomFamily && (
+                    <div style={{ fontFamily: "var(--font-inter)", fontSize: "0.7rem", color: "rgba(249,246,238,0.5)", marginTop: "0.35rem", lineHeight: "1.4" }}>
+                      {groomFamily.father_name && <p>Con ông: {groomFamily.father_name}</p>}
+                      {groomFamily.mother_name && <p>Con bà: {groomFamily.mother_name}</p>}
+                    </div>
+                  )}
+                </div>
+              </div>
+              <p style={{ fontFamily: "var(--font-inter)", fontSize: "0.72rem", color: "rgba(249,246,238,0.65)", lineHeight: "1.6", fontStyle: "italic", borderTop: "1px solid rgba(197,168,128,0.08)", paddingTop: "0.75rem", textAlign: "center" }}>
+                &ldquo;Là một chàng trai điềm đạm, ấm áp và luôn tràn đầy hoài bão. Đối với anh, tình yêu không chỉ là những lời ngọt ngào mà còn là sự thấu hiểu, cùng nhau vượt qua mọi hành trình cuộc sống.&rdquo;
+              </p>
+            </div>
+          </FadeSection>
+
+          {/* Cô dâu */}
+          <FadeSection delay={0.3}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "1rem", border: "1px solid rgba(197,168,128,0.15)", padding: "1.5rem", borderRadius: "8px", background: "rgba(249,246,238,0.02)" }}>
+              <div style={{ display: "flex", gap: "1.5rem", alignItems: "center", flexDirection: "row-reverse", textAlign: "right" }}>
+                <div style={{ position: "relative", width: "100px", height: "100px", borderRadius: "50%", overflow: "hidden", border: "2px solid #C5A880", flexShrink: 0 }}>
+                  <Image
+                    src="/thiepmaudovang/images/gallery-1.jpg"
+                    alt="Cô dâu"
+                    fill
+                    sizes="100px"
+                    className="object-cover grayscale"
+                  />
+                </div>
+                <div style={{ flex: 1 }}>
+                  <span style={{ fontSize: "0.6rem", fontWeight: "bold", color: "#C5A880", textTransform: "uppercase", letterSpacing: "0.15em", display: "block" }}>Cô dâu</span>
+                  <h3 style={{ fontFamily: "var(--font-playfair)", fontSize: "1.35rem", color: "#F9F6EE", fontWeight: 600, marginTop: "0.25rem" }}>
+                    {wedding.bride_name}
+                  </h3>
+                  {brideFamily && (
+                    <div style={{ fontFamily: "var(--font-inter)", fontSize: "0.7rem", color: "rgba(249,246,238,0.5)", marginTop: "0.35rem", lineHeight: "1.4" }}>
+                      {brideFamily.father_name && <p>Con ông: {brideFamily.father_name}</p>}
+                      {brideFamily.mother_name && <p>Con bà: {brideFamily.mother_name}</p>}
+                    </div>
+                  )}
+                </div>
+              </div>
+              <p style={{ fontFamily: "var(--font-inter)", fontSize: "0.72rem", color: "rgba(249,246,238,0.65)", lineHeight: "1.6", fontStyle: "italic", borderTop: "1px solid rgba(197,168,128,0.08)", paddingTop: "0.75rem", textAlign: "center" }}>
+                &ldquo;Một cô gái dịu dàng, tinh tế và luôn mang đến nguồn năng lượng tích cực cho mọi người xung quanh. Cô tin rằng hạnh phúc chân chính là khi hai trái tim luôn đập cùng một nhịp.&rdquo;
+              </p>
+            </div>
+          </FadeSection>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════ */}
       {/* SECTION 5: EVENT DETAILS                                            */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <section style={{ padding: "4rem 1.5rem 5rem" }}>

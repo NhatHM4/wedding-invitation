@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import TmdvHeroSection from "@/components/thiepmaudovang/TmdvHeroSection";
 import TmdvAnnouncementSection from "@/components/thiepmaudovang/TmdvAnnouncementSection";
+import TmdvCoupleSection from "@/components/thiepmaudovang/TmdvCoupleSection";
 import TmdvProgramSection from "@/components/thiepmaudovang/TmdvProgramSection";
 import TmdvRSVPSection from "@/components/thiepmaudovang/TmdvRSVPSection";
 import TmdvWishesSection from "@/components/thiepmaudovang/TmdvWishesSection";
@@ -194,6 +195,7 @@ export default function ThiepMauDoVangPage() {
         <div className="flex flex-col w-full opacity-100">
           <TmdvHeroSection wedding={wedding} to={to} animate={curtainOpen} />
           <TmdvAnnouncementSection wedding={wedding} />
+          <TmdvCoupleSection wedding={wedding} />
           <TmdvProgramSection wedding={wedding} />
           <TmdvRSVPSection 
             onOpenGift={() => setIsGiftOpen(true)} 

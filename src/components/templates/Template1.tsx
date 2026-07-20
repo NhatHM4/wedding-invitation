@@ -311,6 +311,69 @@ export default function Template1({ wedding, to, wishes }: Template1Props) {
             ✦ ✦ ✦
           </div>
 
+          {/* Groom & Bride Info Section */}
+          <section className="w-full py-10 px-6 text-center">
+            <div className="flex flex-col items-center bg-white/80 border border-rose-100/50 rounded-3xl p-6 shadow-[0_15px_50px_rgba(244,63,94,0.06)]">
+              <span className="text-[10px] font-bold text-rose-400 uppercase tracking-widest font-sans">Giới thiệu</span>
+              <h2 className="text-2xl font-bold text-[#5c3c43] font-serif-lux mt-1 mb-8">Cô Dâu & Chú Rể</h2>
+              
+              <div className="flex flex-col gap-8 w-full">
+                {/* Chú rể */}
+                <div className="flex flex-col items-center bg-rose-50/20 border border-rose-100/40 rounded-2xl p-6 shadow-sm">
+                  <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-rose-300 mb-4 shadow-md">
+                    <Image
+                      src="/thiepmaudovang/images/gallery-2.jpg"
+                      alt="Chú rể"
+                      fill
+                      sizes="96px"
+                      className="object-cover"
+                    />
+                  </div>
+                  <h3 className="font-artistic text-3xl font-bold text-[#8b1a1a] mb-1">Chú Rể</h3>
+                  <h4 className="font-serif-lux text-lg font-bold text-[#5c3c43] mb-3">{wedding.groom_name}</h4>
+                  {wedding.location_info?.groom_family && (
+                    <div className="text-xs text-slate-600 font-sans space-y-1 mb-3">
+                      {wedding.location_info.groom_family.father_name && <p><span className="text-slate-400">Con ông:</span> {wedding.location_info.groom_family.father_name}</p>}
+                      {wedding.location_info.groom_family.mother_name && <p><span className="text-slate-400">Con bà:</span> {wedding.location_info.groom_family.mother_name}</p>}
+                    </div>
+                  )}
+                  <p className="text-xs text-[#5c3c43]/80 italic leading-relaxed border-t border-rose-100/60 pt-3 max-w-[260px]">
+                    &ldquo;Là một chàng trai điềm đạm, ấm áp và luôn tràn đầy hoài bão. Đối với anh, tình yêu không chỉ là những lời ngọt ngào mà còn là sự thấu hiểu, cùng nhau vượt qua mọi hành trình cuộc sống.&rdquo;
+                  </p>
+                </div>
+
+                {/* Cô dâu */}
+                <div className="flex flex-col items-center bg-rose-50/20 border border-rose-100/40 rounded-2xl p-6 shadow-sm">
+                  <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-rose-300 mb-4 shadow-md">
+                    <Image
+                      src="/thiepmaudovang/images/gallery-1.jpg"
+                      alt="Cô dâu"
+                      fill
+                      sizes="96px"
+                      className="object-cover"
+                    />
+                  </div>
+                  <h3 className="font-artistic text-3xl font-bold text-[#8b1a1a] mb-1">Cô Dâu</h3>
+                  <h4 className="font-serif-lux text-lg font-bold text-[#5c3c43] mb-3">{wedding.bride_name}</h4>
+                  {wedding.location_info?.bride_family && (
+                    <div className="text-xs text-slate-600 font-sans space-y-1 mb-3">
+                      {wedding.location_info.bride_family.father_name && <p><span className="text-slate-400">Con ông:</span> {wedding.location_info.bride_family.father_name}</p>}
+                      {wedding.location_info.bride_family.mother_name && <p><span className="text-slate-400">Con bà:</span> {wedding.location_info.bride_family.mother_name}</p>}
+                    </div>
+                  )}
+                  <p className="text-xs text-[#5c3c43]/80 italic leading-relaxed border-t border-rose-100/60 pt-3 max-w-[260px]">
+                    &ldquo;Một cô gái dịu dàng, tinh tế và luôn mang đến nguồn năng lượng tích cực cho mọi người xung quanh. Cô tin rằng hạnh phúc chân chính là khi hai trái tim luôn đập cùng một nhịp.&rdquo;
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* SECTION BREAK */}
+          <div className="w-full flex justify-center py-2 text-rose-300/30 select-none">
+            ✦ ✦ ✦
+          </div>
+
           {/* 2. TINDER STORY CARDS SECTION */}
           <section className="w-full">
             <T1StoryDeck />

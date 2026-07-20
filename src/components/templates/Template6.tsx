@@ -664,6 +664,75 @@ export default function Template6({ wedding, to, wishes }: Template6Props) {
             </FadeSection>
           </div>
 
+          {/* ── SECTION: BRIDE & GROOM PROFILES ── */}
+          <div className="px-6 py-6 bg-[#FAF6F0] relative z-10">
+            <FadeSection className="glass-panel border-gray-200/50 rounded-3xl p-6 shadow-md flex flex-col gap-6 relative overflow-hidden">
+              <div className="text-center">
+                <span className="text-[9px] uppercase tracking-[0.25em] font-sans-title font-semibold text-[#8E4A49]">
+                  Giới Thiệu
+                </span>
+                <h3 className="font-serif-luxury text-lg font-bold text-[#2B2D42] mt-1">Cô Dâu & Chú Rể</h3>
+                <div className="w-8 h-[1px] bg-[#C5A880] mx-auto mt-2" />
+              </div>
+
+              <div className="flex flex-col gap-6 w-full font-sans">
+                {/* Chú rể */}
+                <div className="flex flex-col gap-3 p-4 bg-white/40 rounded-2xl border border-white/60 shadow-sm">
+                  <div className="flex gap-4 items-center">
+                    <div className="w-20 h-20 rounded-full overflow-hidden border border-[#C5A880] relative flex-shrink-0 shadow-sm">
+                      <Image
+                        src="/thiepmaudovang/images/gallery-2.jpg"
+                        alt="Chú rể"
+                        fill
+                        sizes="80px"
+                        className="object-cover grayscale"
+                      />
+                    </div>
+                    <div>
+                      <span className="text-[9px] font-bold text-[#8E4A49] uppercase tracking-wider block">Chú rể</span>
+                      <h4 className="font-serif-luxury text-base font-bold text-[#2B2D42] mt-0.5">{wedding.groom_name}</h4>
+                      {groomFamily && (
+                        <p className="text-[10px] text-gray-500 mt-1 leading-normal">
+                          Con ông: {groomFamily.father_name} <br/> Con bà: {groomFamily.mother_name}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                  <p className="text-[11px] text-[#2B2D42]/80 italic leading-relaxed border-t border-gray-200/50 pt-2 px-1">
+                    &ldquo;Là một chàng trai điềm đạm, ấm áp và luôn tràn đầy hoài bão. Đối với anh, tình yêu là cùng nhau đi qua mọi hành trình cuộc sống.&rdquo;
+                  </p>
+                </div>
+
+                {/* Cô dâu */}
+                <div className="flex flex-col gap-3 p-4 bg-white/40 rounded-2xl border border-white/60 shadow-sm">
+                  <div className="flex gap-4 items-center flex-row-reverse text-right">
+                    <div className="w-20 h-20 rounded-full overflow-hidden border border-[#C5A880] relative flex-shrink-0 shadow-sm">
+                      <Image
+                        src="/thiepmaudovang/images/gallery-1.jpg"
+                        alt="Cô dâu"
+                        fill
+                        sizes="80px"
+                        className="object-cover grayscale"
+                      />
+                    </div>
+                    <div>
+                      <span className="text-[9px] font-bold text-[#8E4A49] uppercase tracking-wider block">Cô dâu</span>
+                      <h4 className="font-serif-luxury text-base font-bold text-[#2B2D42] mt-0.5">{wedding.bride_name}</h4>
+                      {brideFamily && (
+                        <p className="text-[10px] text-gray-500 mt-1 leading-normal">
+                          Con ông: {brideFamily.father_name} <br/> Con bà: {brideFamily.mother_name}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                  <p className="text-[11px] text-[#2B2D42]/80 italic leading-relaxed border-t border-gray-200/50 pt-2 px-1 text-right">
+                    &ldquo;Một cô gái dịu dàng, tinh tế và luôn tràn đầy năng lượng tích cực. Cô tin rằng hạnh phúc là khi hai trái tim luôn đập cùng một nhịp.&rdquo;
+                  </p>
+                </div>
+              </div>
+            </FadeSection>
+          </div>
+
           {/* ── SECTION: EVENTS & MAPS ── */}
           <div ref={sectionEventsRef} className="px-6 py-10 bg-[#FAF6F0] relative z-10 flex flex-col gap-6">
             <div className="text-center">
