@@ -15,30 +15,7 @@ const Template6 = dynamic(() => import('@/components/templates/Template6'));
 const Template7 = dynamic(() => import('@/components/templates/Template7'));
 const Template8 = dynamic(() => import('@/components/templates/Template8'));
 
-// 0. Cấu hình ISR (Incremental Static Regeneration)
-export const revalidate = 60; // Tự động tái tạo trang tĩnh ngầm mỗi 60s
-export const dynamicParams = true; // Cho phép tạo trang mới lập tức khi xuất hiện slug/custom_domain mới
-
-// Hàm sinh danh sách các slug tĩnh lúc build time
-export async function generateStaticParams() {
-  const { data: weddings } = await supabase
-    .from('weddings')
-    .select('slug, custom_domain');
-
-  if (!weddings) return [];
-
-  const paths: { slug: string }[] = [];
-  for (const w of weddings) {
-    if (w.slug) {
-      paths.push({ slug: w.slug });
-    }
-    if (w.custom_domain) {
-      const domain = w.custom_domain.replace(/^www\./, '');
-      paths.push({ slug: `domain-${domain}` });
-    }
-  }
-  return paths;
-}
+export const runtime = 'edge';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
