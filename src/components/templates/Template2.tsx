@@ -7,6 +7,7 @@ import { Wedding, Wish } from "@/types";
 import T2WatercolorBackground from "@/components/template2/T2WatercolorBackground";
 import T2PopUpBook from "@/components/template2/T2PopUpBook";
 import { popUpSynth } from "@/components/template2/T2PopUpSynth";
+import FloatingHearts from "@/components/common/FloatingHearts";
 
 interface Template2Props {
   wedding: Wedding;
@@ -28,6 +29,7 @@ export default function Template2({ wedding, to, wishes }: Template2Props) {
 
   return (
     <div className="min-h-screen w-full flex justify-center bg-[#fbfbf8] text-[#5c677d] relative antialiased overflow-hidden p-0 sm:p-4">
+      <FloatingHearts />
       
       {/* Import Web Fonts */}
       <link

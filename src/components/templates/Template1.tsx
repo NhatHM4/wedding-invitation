@@ -7,6 +7,7 @@ import T1Envelope from "@/components/template1/T1Envelope";
 import T1StoryDeck from "@/components/template1/T1StoryDeck";
 import T1ScrollMap from "@/components/template1/T1ScrollMap";
 import T1RSVPSection from "@/components/template1/T1RSVPSection";
+import FloatingHearts from "@/components/common/FloatingHearts";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
@@ -97,6 +98,7 @@ export default function Template1({ wedding, to, wishes }: Template1Props) {
 
   return (
     <div className="min-h-screen w-full flex justify-center bg-gradient-to-br from-[#fff7f9] via-[#fffbfd] to-[#fff3f6] text-[#5c3c43] overflow-x-hidden font-sans relative antialiased selection:bg-rose-500/30">
+      <FloatingHearts />
 
       {/* Import Premium Google Fonts */}
       <link

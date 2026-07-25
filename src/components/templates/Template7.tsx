@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef, useMemo } from "react";
 import { motion, useMotionValue, useTransform, useAnimation, AnimatePresence, animate } from "framer-motion";
+import FloatingHearts from "@/components/common/FloatingHearts";
 import { 
   Heart, Calendar, MapPin, Music, Play, Pause, Unlock, Lock, 
   ChevronDown, Send, Users, Clock, Image as ImageIcon, 
@@ -488,8 +489,9 @@ export default function Template7({ wedding, to, wishes }: Template7Props) {
   return (
     <div 
       data-theme={theme}
-      className="w-full min-h-screen bg-slate-900 flex items-center justify-center p-0 sm:p-4 md:p-6 overflow-hidden select-none font-inter text-slate-800"
+      className="w-full min-h-screen bg-slate-900 flex items-center justify-center p-0 sm:p-4 md:p-6 overflow-hidden select-none font-inter text-slate-800 relative"
     >
+      <FloatingHearts />
       {/* Embedded audio */}
       <audio ref={audioRef} src={wedding.music_url || "/thiepmaudovang/audio/bg-music.mp3"} loop />
 

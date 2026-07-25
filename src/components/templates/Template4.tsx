@@ -20,6 +20,7 @@ import { Wedding, Wish } from "@/types";
 import dynamic from "next/dynamic";
 import BrutalistScrollRevealHeader from "../template4/BrutalistScrollRevealHeader";
 import PolaroidOverlapGallery from "../template4/PolaroidOverlapGallery";
+import FloatingHearts from "@/components/common/FloatingHearts";
 
 // Load WebGL FluidDistortionImage dynamically with SSR disabled to prevent hydration errors
 const FluidDistortionImage = dynamic(() => import("../template4/FluidDistortionImage"), {
@@ -160,6 +161,7 @@ export default function Template4({ wedding, to, wishes }: Template4Props) {
 
   return (
     <div className="relative max-w-md mx-auto min-h-screen bg-[#FAF9F6] text-neutral-900 shadow-2xl flex flex-col overflow-x-hidden font-inter">
+      <FloatingHearts />
       {/* Background ambient audio stream */}
       <audio 
         ref={audioRef} 

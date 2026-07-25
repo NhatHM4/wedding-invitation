@@ -28,6 +28,7 @@ import {
 import KineticStretchingText from "@/components/template5/KineticStretchingText";
 import BiDirectionalMarquee from "@/components/template5/BiDirectionalMarquee";
 import TextSilhouetteMask from "@/components/template5/TextSilhouetteMask";
+import FloatingHearts from "@/components/common/FloatingHearts";
 
 // ── Types ──────────────────────────────────────────────────────────────────
 interface Template5Props {
@@ -457,6 +458,7 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
         position: "relative",
       }}
     >
+      <FloatingHearts />
       {/* Audio */}
       {wedding.music_url && <audio ref={audioRef} src={wedding.music_url} loop />}
 

@@ -12,6 +12,7 @@ import GiftBoxSection from "../template8/GiftBoxSection";
 import PhotoGallerySection from "../template8/PhotoGallerySection";
 import WishesSection from "../template8/WishesSection";
 import MusicPlayerFloating from "../template8/MusicPlayerFloating";
+import FloatingHearts from "@/components/common/FloatingHearts";
 import { Heart } from "lucide-react";
 
 interface Template8Props {
@@ -22,7 +23,10 @@ interface Template8Props {
 
 export default function Template8({ wedding, to, wishes = [] }: Template8Props) {
   return (
-    <main className="min-h-screen bg-[#FDF8F5] text-gray-800 font-sans selection:bg-rose-200 selection:text-rose-900">
+    <main className="min-h-screen bg-[#FDF8F5] text-gray-800 font-sans selection:bg-rose-200 selection:text-rose-900 relative">
+      {/* Gentle Floating Hearts */}
+      <FloatingHearts />
+
       {/* Floating Music Player */}
       <MusicPlayerFloating musicUrl={wedding.music_url} />
 

@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import { T6CanvasHearts, T6CanvasHeartsRef } from "../template6/T6CanvasHearts";
 import T6FloralFalling from "../template6/T6FloralFalling";
+import FloatingHearts from "@/components/common/FloatingHearts";
 
 // ── Types ──────────────────────────────────────────────────────────────────
 interface Template6Props {
@@ -970,6 +971,7 @@ export default function Template6({ wedding, to, wishes }: Template6Props) {
 
           {/* ── SECTION: RSVP (XÁC NHẬN THAM DỰ) ── */}
           <div ref={sectionRsvpRef} className="px-6 py-10 bg-[#FAF6F0] relative z-10">
+            <FloatingHearts />
             <FadeSection>
               <div className="bg-white border border-gray-100 rounded-3xl p-6 shadow-md relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-20 h-20 bg-[#8E4A49]/5 rounded-bl-full pointer-events-none" />
