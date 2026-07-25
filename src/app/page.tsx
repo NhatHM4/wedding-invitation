@@ -492,7 +492,7 @@ export default function Home() {
               {/* Contact actions */}
               <div className="flex flex-col gap-2.5">
                 <a
-                  href="https://zalo.me/0932204787"
+                  href="https://zalo.me/0798128201"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex h-[45px] rounded-xl bg-[#0068ff] text-white flex items-center justify-center gap-2 font-bold text-[13px] shadow-[0_4px_15px_rgba(0,104,255,0.25)] hover:opacity-90 transition-all duration-300"
@@ -502,15 +502,15 @@ export default function Home() {
                   </svg>
                   Liên Hệ Zalo hỗ trợ
                 </a>
-                <a
-                  href="tel:0932204787"
+                {/* <a
+                  href="tel:0798128201"
                   className="flex h-[45px] rounded-xl border border-rose-200/80 bg-white text-rose-600 flex items-center justify-center gap-2 font-bold text-[13px] shadow-[0_2px_10px_rgba(244,63,94,0.03)] hover:bg-rose-50/50 transition-all duration-300"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
                   Gọi Điện Thoại hỗ trợ
-                </a>
+                </a> */}
               </div>
             </div>
           </section>
