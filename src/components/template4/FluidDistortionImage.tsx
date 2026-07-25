@@ -103,13 +103,12 @@ function ShaderMesh({ src, pointerState }: ShaderMeshProps) {
   });
 
   useFrame((state, delta) => {
-    const { clock } = state;
     if (materialRef.current) {
-      // Update running elapsed time
-      materialRef.current.uniforms.uTime.value = clock.getElapsedTime();
-      
       // Get frame delta time
       const dt = Math.min(delta, 0.1); // Clamp to prevent massive spikes
+
+      // Update running elapsed time without triggering deprecated THREE.Clock
+      materialRef.current.uniforms.uTime.value += dt;
       
       const ps = pointerState.current;
       

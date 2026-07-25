@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
 interface Wish {
@@ -14,6 +15,11 @@ interface TmdvWishesSectionProps {
 }
 
 export default function TmdvWishesSection({ wishes }: TmdvWishesSectionProps) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   return (
     <section 
       id="w-tmdv-wishes" 
@@ -75,12 +81,12 @@ export default function TmdvWishesSection({ wishes }: TmdvWishesSectionProps) {
                   </div>
                   <div className="w-full text-right mt-2">
                     <span className="font-sans text-[9px] text-gray-400">
-                      {new Date(wish.created_at).toLocaleDateString('vi-VN', { 
+                      {mounted && wish.created_at ? new Date(wish.created_at).toLocaleDateString('vi-VN', { 
                         day: '2-digit',
                         month: '2-digit',
                         hour: '2-digit', 
                         minute: '2-digit' 
-                      })}
+                      }) : ""}
                     </span>
                   </div>
                 </div>

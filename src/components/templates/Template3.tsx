@@ -173,7 +173,7 @@ export default function Template3({ wedding, to, wishes }: Template3Props) {
     if (isPlaying) {
       audioRef.current.pause();
     } else {
-      audioRef.current.play().catch(err => console.log("Audio play error: ", err));
+      audioRef.current.play().catch(() => {});
     }
     setIsPlaying(!isPlaying);
   };
@@ -184,7 +184,7 @@ export default function Template3({ wedding, to, wishes }: Template3Props) {
     if (audioRef.current) {
       audioRef.current.play()
         .then(() => setIsPlaying(true))
-        .catch((err) => console.log("Audio autoplay blocked/suspended:", err));
+        .catch(() => {});
     }
   };
 

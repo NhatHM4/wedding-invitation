@@ -1220,12 +1220,7 @@ export default function Template6({ wedding, to, wishes }: Template6Props) {
                       <div className="flex justify-between items-center border-b border-gray-50 pb-1 text-[10px]">
                         <span className="font-bold text-[#8E4A49]">{wish.guest_name}</span>
                         <span className="text-gray-400 font-mono">
-                          {new Date(wish.created_at).toLocaleDateString("vi-VN", {
-                            day: "numeric",
-                            month: "numeric",
-                            hour: "2-digit",
-                            minute: "2-digit",
-                          })}
+                          {wish.created_at ? new Date(wish.created_at).toISOString().split('T')[0].split('-').reverse().join('/') : ""}
                         </span>
                       </div>
                       <p className="text-xs text-[#2B2D42]/90 leading-relaxed italic font-serif-luxury">

@@ -34,9 +34,7 @@ export default function TmdvAudioPlayer({ wedding }: TmdvAudioPlayerProps) {
           hasStartedRef.current = true;
           setIsPlaying(true);
         })
-        .catch(() => {
-          console.log("Autoplay blocked by browser policy.");
-        });
+        .catch(() => {});
       document.body.removeEventListener("click", handleAutoPlay);
       document.body.removeEventListener("touchstart", handleAutoPlay);
     };
@@ -49,7 +47,7 @@ export default function TmdvAudioPlayer({ wedding }: TmdvAudioPlayerProps) {
           hasStartedRef.current = true;
           setIsPlaying(true);
         })
-        .catch((err) => console.log("Play trigger error:", err));
+        .catch(() => {});
     };
 
     document.body.addEventListener("click", handleAutoPlay);
@@ -79,9 +77,7 @@ export default function TmdvAudioPlayer({ wedding }: TmdvAudioPlayerProps) {
           setIsPlaying(true);
           hasStartedRef.current = true;
         })
-        .catch((err) => {
-          console.error("Audio playback error:", err);
-        });
+        .catch(() => {});
     }
   };
 

@@ -218,12 +218,7 @@ export default function T2WatercolorRSVP({ weddingId, initialWishes }: T2Waterco
                     {wish.guest_name}
                   </span>
                   <span className="text-gray-400 text-[8px] font-sans">
-                    {new Date(wish.created_at).toLocaleDateString("vi-VN", {
-                      day: "numeric",
-                      month: "numeric",
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    })}
+                    {wish.created_at ? new Date(wish.created_at).toISOString().split('T')[0].split('-').reverse().join('/') : ""}
                   </span>
                 </div>
                 <p className="text-xs text-gray-600 leading-relaxed italic font-serif-lux">

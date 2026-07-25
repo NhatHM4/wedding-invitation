@@ -76,7 +76,7 @@ export default function Template1({ wedding, to, wishes }: Template1Props) {
     if (audioRef.current) {
       audioRef.current.play()
         .then(() => setIsPlaying(true))
-        .catch((err) => console.log("Audio autoplay was blocked:", err));
+        .catch(() => {});
     }
   };
 
@@ -92,7 +92,7 @@ export default function Template1({ wedding, to, wishes }: Template1Props) {
     } else {
       audio.play()
         .then(() => setIsPlaying(true))
-        .catch((err) => console.log("Play failed:", err));
+        .catch(() => {});
     }
   };
 

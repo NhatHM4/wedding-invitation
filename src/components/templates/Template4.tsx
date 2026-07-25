@@ -86,7 +86,7 @@ export default function Template4({ wedding, to, wishes }: Template4Props) {
     if (audioRef.current) {
       audioRef.current.play()
         .then(() => setIsPlaying(true))
-        .catch((err) => console.log("Audio play blocked by browser policies: ", err));
+        .catch(() => {});
     }
   };
 
@@ -99,7 +99,7 @@ export default function Template4({ wedding, to, wishes }: Template4Props) {
     } else {
       audioRef.current.play()
         .then(() => setIsPlaying(true))
-        .catch((err) => console.log("Failed to resume audio: ", err));
+        .catch(() => {});
     }
   };
 
@@ -690,7 +690,7 @@ export default function Template4({ wedding, to, wishes }: Template4Props) {
                       {wish.guest_name}
                     </span>
                     <span className="text-[8px] font-mono text-neutral-400">
-                      {wish.created_at ? new Date(wish.created_at).toLocaleDateString("vi-VN") : "10/10/2026"}
+                      {wish.created_at ? new Date(wish.created_at).toISOString().split('T')[0].split('-').reverse().join('/') : "16/11/2025"}
                     </span>
                   </div>
                   <p className="text-xs text-neutral-600 font-light leading-relaxed font-sans">

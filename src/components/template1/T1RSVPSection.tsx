@@ -263,12 +263,7 @@ export default function T1RSVPSection({ weddingId, initialWishes }: T1RSVPSectio
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold text-rose-500">{wish.guest_name}</span>
                   <span className="text-[9px] text-rose-400/60 font-sans">
-                    {new Date(wish.created_at).toLocaleDateString("vi-VN", {
-                      day: "numeric",
-                      month: "numeric",
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    })}
+                    {wish.created_at ? new Date(wish.created_at).toISOString().split('T')[0].split('-').reverse().join('/') : ""}
                   </span>
                 </div>
                 <p className="text-xs text-[#5c3c43]/90 leading-relaxed font-medium italic">

@@ -324,7 +324,7 @@ export default function Template7({ wedding, to, wishes }: Template7Props) {
     if (audioRef.current) {
       audioRef.current.play()
         .then(() => setIsPlaying(true))
-        .catch((err) => console.log("Audio autoplay prevented", err));
+        .catch(() => {});
     }
   };
 
@@ -337,7 +337,7 @@ export default function Template7({ wedding, to, wishes }: Template7Props) {
     } else {
       audioRef.current.play()
         .then(() => setIsPlaying(true))
-        .catch((err) => console.log(err));
+        .catch(() => {});
     }
   };
 
@@ -966,7 +966,7 @@ export default function Template7({ wedding, to, wishes }: Template7Props) {
                           >
                             <div className="flex justify-between items-center text-[10px] text-slate-400">
                               <span className="font-bold text-slate-600">{wish.guest_name}</span>
-                              <span>{new Date(wish.created_at).toLocaleDateString("vi-VN")}</span>
+                              <span>{wish.created_at ? new Date(wish.created_at).toISOString().split('T')[0].split('-').reverse().join('/') : ""}</span>
                             </div>
                             <p className="text-slate-600 leading-relaxed whitespace-pre-line">
                               {wish.content}
