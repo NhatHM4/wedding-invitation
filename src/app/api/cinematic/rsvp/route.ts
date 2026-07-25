@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
+export const runtime = 'edge';
+
 const rsvpSchema = z.object({
   fullName: z.string().min(2),
   attending: z.enum(["yes", "no"]),
