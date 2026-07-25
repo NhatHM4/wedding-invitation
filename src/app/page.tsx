@@ -349,7 +349,7 @@ export default function Home() {
                         <img
                           src={tpl.image}
                           alt={tpl.name}
-                          className={`w-full h-auto absolute top-0 left-0 transform transition-transform duration-[32s] ease-in-out group-hover:-translate-y-[88%] object-cover object-top ${activePreviewId === tpl.id ? "-translate-y-[88%]" : ""
+                          className={`w-full h-auto absolute top-0 left-0 transform transition-transform duration-[24s] ease-in-out group-hover:-translate-y-[88%] object-cover object-top ${activePreviewId === tpl.id ? "-translate-y-[88%]" : ""
                             }`}
                         />
                       ) : (
