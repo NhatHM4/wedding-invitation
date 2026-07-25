@@ -383,7 +383,7 @@ export default function HomeClient() {
                           height={640}
                           loading="lazy"
                           decoding="async"
-                          className={`w-full min-h-full h-auto absolute top-0 left-0 transition-transform duration-[15s] ease-in-out object-cover object-top group-hover:top-full group-hover:-translate-y-full ${activePreviewId === tpl.id ? "top-full -translate-y-full" : "top-0 translate-y-0"
+                          className={`w-full min-h-full h-auto absolute left-0 transition-[top,transform] duration-[15s] ease-in-out object-cover object-top group-hover:top-full group-hover:-translate-y-full ${activePreviewId === tpl.id ? "top-full -translate-y-full" : "top-0 translate-y-0"
                             }`}
                         />
                       ) : (
