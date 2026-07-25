@@ -6,29 +6,34 @@ import "./globals.css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const roboto = Roboto({
   variable: "--font-roboto",
   subsets: ["latin", "vietnamese"],
   weight: ["100", "300", "400", "700", "900"],
+  display: "swap",
 });
 
 const barlow = Barlow({
   variable: "--font-barlow",
   subsets: ["latin", "vietnamese"],
   weight: ["100", "300", "400", "700", "900"],
+  display: "swap",
 });
 
 const cormorant = Cormorant_Upright({
   variable: "--font-cormorant",
   subsets: ["latin", "vietnamese"],
   weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
 });
 
 const cormorantGaramond = Cormorant_Garamond({
@@ -36,12 +41,14 @@ const cormorantGaramond = Cormorant_Garamond({
   subsets: ["latin", "vietnamese"],
   weight: ["300", "400", "500", "600", "700"],
   style: ["normal", "italic"],
+  display: "swap",
 });
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin", "vietnamese"],
   weight: ["300", "400", "500", "600", "700", "800"],
+  display: "swap",
 });
 
 const playfair = Playfair_Display({
@@ -49,6 +56,7 @@ const playfair = Playfair_Display({
   subsets: ["latin", "vietnamese"],
   weight: ["400", "500", "600", "700", "800", "900"],
   style: ["normal", "italic"],
+  display: "swap",
 });
 
 // Local Fonts

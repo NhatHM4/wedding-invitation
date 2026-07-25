@@ -2,18 +2,45 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { supabase } from '@/lib/supabase';
-import TemplateA from '@/components/templates/TemplateA';
-import TemplateDoVang from '@/components/templates/TemplateDoVang';
-import Template1 from '@/components/templates/Template1';
-import Template2 from '@/components/templates/Template2';
-import Template3 from '@/components/templates/Template3';
-import Template4 from '@/components/templates/Template4';
-import Template5 from '@/components/templates/Template5';
-import Template6 from '@/components/templates/Template6';
-import Template7 from '@/components/templates/Template7';
-import Template8 from '@/components/templates/Template8';
+import dynamic from 'next/dynamic';
+
+const TemplateA = dynamic(() => import('@/components/templates/TemplateA'));
+const TemplateDoVang = dynamic(() => import('@/components/templates/TemplateDoVang'));
+const Template1 = dynamic(() => import('@/components/templates/Template1'));
+const Template2 = dynamic(() => import('@/components/templates/Template2'));
+const Template3 = dynamic(() => import('@/components/templates/Template3'));
+const Template4 = dynamic(() => import('@/components/templates/Template4'));
+const Template5 = dynamic(() => import('@/components/templates/Template5'));
+const Template6 = dynamic(() => import('@/components/templates/Template6'));
+const Template7 = dynamic(() => import('@/components/templates/Template7'));
+const Template8 = dynamic(() => import('@/components/templates/Template8'));
 
 export const runtime = 'edge';
+
+// 0. Cấu hình ISR (Incremental Static Regeneration)
+export const revalidate = 60; // Tự động tái tạo trang tĩnh ngầm mỗi 60s
+export const dynamicParams = true; // Cho phép tạo trang mới lập tức khi xuất hiện slug/custom_domain mới
+
+// Hàm sinh danh sách các slug tĩnh lúc build time
+export async function generateStaticParams() {
+  const { data: weddings } = await supabase
+    .from('weddings')
+    .select('slug, custom_domain');
+
+  if (!weddings) return [];
+
+  const paths: { slug: string }[] = [];
+  for (const w of weddings) {
+    if (w.slug) {
+      paths.push({ slug: w.slug });
+    }
+    if (w.custom_domain) {
+      const domain = w.custom_domain.replace(/^www\./, '');
+      paths.push({ slug: `domain-${domain}` });
+    }
+  }
+  return paths;
+}
 
 interface PageProps {
   params: Promise<{ slug: string }>;

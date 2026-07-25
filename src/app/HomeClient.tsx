@@ -249,9 +249,6 @@ export default function HomeClient() {
       onClick={() => setActivePreviewId(null)}
       style={{ fontFamily: "'Montserrat', sans-serif" }}
     >
-      {/* Import Premium Google Fonts */}
-      <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
       {/* Global CSS for custom luxury fonts and custom styles */}
       <style jsx global>{`
         .font-serif-lux {
@@ -330,11 +327,11 @@ export default function HomeClient() {
               Lưu giữ trăm năm
             </span>
             <h1 className="text-2xl sm:text-[26px] font-bold font-serif-lux text-gray-800 leading-tight tracking-tight mt-1">
-              Thiệp Cưới Online <br />
-              <span className="bg-gradient-to-r from-rose-600 via-pink-500 to-rose-500 bg-clip-text text-transparent">Hạnh Phúc</span>
+              Tạo Thiệp Cưới Online & Website Đám Cưới <br />
+              <span className="bg-gradient-to-r from-rose-600 via-pink-500 to-rose-500 bg-clip-text text-transparent">Save The Date</span>
             </h1>
             <p className="text-[12px] text-gray-500 max-w-[290px] leading-relaxed font-sans-lux mt-2">
-              Giải pháp tạo lời mời trọn vẹn, tinh tế & hiện đại nhất cho ngày trọng đại của hai bạn.
+              Tạo thiệp cưới điện tử sang trọng chỉ trong 5 phút. Tích hợp RSVP, thiệp cưới QR code & gửi Zalo/Facebook dễ dàng.
             </p>
             {/* Elegant Floral Divider */}
             <div className="flex items-center gap-3 w-full justify-center mt-3 opacity-60">
@@ -349,7 +346,7 @@ export default function HomeClient() {
             <div className="flex flex-col gap-1 px-1.5">
               <h2 className="text-[15px] font-bold text-gray-800 font-serif-lux flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-rose-500 to-pink-400 border border-white shadow-sm"></span>
-                Danh Sách Mẫu Thiệp
+                Mẫu Thiệp Cưới Online & Điện Tử Đẹp
               </h2>
               <p className="text-[10.5px] text-gray-400 font-sans-lux">Chạm vào thiệp để xem trước hiệu ứng cuộn</p>
             </div>
@@ -381,18 +378,20 @@ export default function HomeClient() {
                         /* Standard img tag handles w-full h-auto absolute positioning perfectly and scales dynamically without parent wrapper stretching issues */
                         <img
                           src={tpl.image}
-                          alt={tpl.name}
+                          alt={`Mẫu thiệp cưới online ${tpl.name} - Save The Date`}
+                          loading="lazy"
+                          decoding="async"
                           className={`w-full min-h-full h-auto absolute top-0 left-0 transition-all duration-[15s] ease-in-out object-cover object-top group-hover:top-full group-hover:-translate-y-full ${activePreviewId === tpl.id ? "top-full -translate-y-full" : "top-0 translate-y-0"
                             }`}
                         />
                       ) : (
                         <Image
                           src={tpl.image}
-                          alt={tpl.name}
+                          alt={`Mẫu thiệp cưới online ${tpl.name} - Save The Date`}
                           fill
-                          sizes="200px"
+                          sizes="(max-width: 480px) 50vw, 200px"
+                          loading="lazy"
                           className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                          priority
                         />
                       )}
                     </div>
@@ -452,7 +451,7 @@ export default function HomeClient() {
             <div className="flex flex-col gap-1 px-0.5">
               <h2 className="text-[15px] font-bold text-gray-800 font-serif-lux flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-rose-500 to-pink-400 border border-white shadow-sm"></span>
-                Tính Năng Nổi Bật
+                Tính Năng Thiệp Cưới Điện Tử Vượt Trội
               </h2>
               <p className="text-[10.5px] text-gray-400 font-sans-lux">Nền tảng thiệp cưới online tối ưu & đầy đủ nhất</p>
             </div>
@@ -553,6 +552,41 @@ export default function HomeClient() {
                   </svg>
                   Liên Hệ Zalo hỗ trợ
                 </a>
+              </div>
+            </div>
+          </section>
+
+          {/* Luxury Spacer */}
+          <div className="my-8 px-6 flex items-center justify-center">
+            <div className="w-full h-[0.5px] bg-gradient-to-r from-transparent via-rose-100 to-transparent"></div>
+          </div>
+
+          {/* 4. FAQ SECTION (SEO Rich Snippets) */}
+          <section className="px-5 flex flex-col gap-5">
+            <div className="flex flex-col gap-1 px-0.5">
+              <h2 className="text-[15px] font-bold text-gray-800 font-serif-lux flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-rose-500 to-pink-400 border border-white shadow-sm"></span>
+                Câu Hỏi Thường Gặp (FAQ)
+              </h2>
+              <p className="text-[10.5px] text-gray-400 font-sans-lux">Giải đáp thắc mắc về tạo thiệp cưới điện tử SaveTheDate</p>
+            </div>
+
+            <div className="flex flex-col gap-3 font-sans-lux">
+              <div className="bg-rose-50/40 p-4 rounded-2xl border border-rose-100/60 flex flex-col gap-1.5 shadow-sm">
+                <h3 className="font-bold text-rose-800 text-[12.5px]">Tạo thiệp cưới online tại SaveTheDate mất bao lâu?</h3>
+                <p className="text-gray-600 text-[11px] leading-relaxed">Bạn có thể tạo và tùy chỉnh website thiệp cưới điện tử sang trọng chỉ trong vòng 5 phút với đầy đủ thông tin, album ảnh và nhạc nền.</p>
+              </div>
+              <div className="bg-rose-50/40 p-4 rounded-2xl border border-rose-100/60 flex flex-col gap-1.5 shadow-sm">
+                <h3 className="font-bold text-rose-800 text-[12.5px]">Thiệp cưới điện tử có chia sẻ qua Zalo, Facebook được không?</h3>
+                <p className="text-gray-600 text-[11px] leading-relaxed">Hoàn toàn được! Thiệp cưới SaveTheDate được tối ưu hình ảnh preview nét đẹp khi gửi qua Zalo, Facebook, Messenger, iMessage và hỗ trợ cá nhân hóa tên từng khách mời.</p>
+              </div>
+              <div className="bg-rose-50/40 p-4 rounded-2xl border border-rose-100/60 flex flex-col gap-1.5 shadow-sm">
+                <h3 className="font-bold text-rose-800 text-[12.5px]">SaveTheDate có hỗ trợ tên miền riêng (custom domain) không?</h3>
+                <p className="text-gray-600 text-[11px] leading-relaxed">Có, hệ thống hỗ trợ gán tên miền riêng (VD: codau-chure.com) hoặc subdomain theo tên cô dâu chú rể giúp thiệp cưới chuyên nghiệp và độc đáo.</p>
+              </div>
+              <div className="bg-rose-50/40 p-4 rounded-2xl border border-rose-100/60 flex flex-col gap-1.5 shadow-sm">
+                <h3 className="font-bold text-rose-800 text-[12.5px]">Giá tạo thiệp cưới online là bao nhiêu?</h3>
+                <p className="text-gray-600 text-[11px] leading-relaxed">SaveTheDate cung cấp thiệp cưới online cao cấp trọn gói đồng giá 99.000 VNĐ không phát sinh chi phí ẩn, lưu trữ 1 năm.</p>
               </div>
             </div>
           </section>
