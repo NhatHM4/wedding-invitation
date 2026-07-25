@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Cormorant_Upright, Roboto, Barlow, Cormorant_Garamond, Inter, Playfair_Display } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -112,11 +112,63 @@ const sloop = localFont({
   variable: "--font-sloop",
 });
 
+export const metadataBase = new URL(
+  process.env.NEXT_PUBLIC_SITE_URL || 'https://savethedate.io.vn'
+);
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#7d1f2a",
+};
+
 export const metadata: Metadata = {
-  title: "E-Wedding - Thiệp Cưới Online",
-  description: "Dịch vụ tạo thiệp cưới online độc bản và tinh tế",
+  metadataBase,
+  title: {
+    default: "E-Wedding - Thiệp Cưới Online Độc Bản & Sang Trọng",
+    template: "%s | E-Wedding",
+  },
+  description: "Nền tảng tạo thiệp cưới online độc bản, chuyên nghiệp với giao diện sang trọng, custom domain theo tên hai bạn và nhạc nền lãng mạn.",
+  keywords: [
+    "thiệp cưới online",
+    "thiệp cưới điện tử",
+    "e-wedding",
+    "tạo thiệp cưới",
+    "thiệp đám cưới",
+    "thiệp cưới custom domain",
+    "save the date"
+  ],
+  authors: [{ name: "E-Wedding Platform" }],
   icons: {
     icon: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
+  openGraph: {
+    type: "website",
+    locale: "vi_VN",
+    url: "https://savethedate.io.vn",
+    siteName: "E-Wedding - Thiệp Cưới Online",
+    title: "E-Wedding - Dịch Vụ Tạo Thiệp Cưới Online Độc Bản",
+    description: "Tạo thiệp cưới điện tử đẳng cấp với custom domain riêng, giao diện sang trọng và âm nhạc lãng mạn.",
+    images: [
+      {
+        url: "/thiepmaudovang/images/cover.jpg",
+        width: 1200,
+        height: 630,
+        alt: "E-Wedding - Thiệp Cưới Online",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "E-Wedding - Thiệp Cưới Online Độc Bản",
+    description: "Tạo thiệp cưới điện tử đẳng cấp với custom domain riêng.",
+    images: ["/thiepmaudovang/images/cover.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

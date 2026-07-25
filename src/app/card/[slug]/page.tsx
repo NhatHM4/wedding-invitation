@@ -4,6 +4,14 @@ import type { Metadata } from 'next';
 import { supabase } from '@/lib/supabase';
 import TemplateA from '@/components/templates/TemplateA';
 import TemplateDoVang from '@/components/templates/TemplateDoVang';
+import Template1 from '@/components/templates/Template1';
+import Template2 from '@/components/templates/Template2';
+import Template3 from '@/components/templates/Template3';
+import Template4 from '@/components/templates/Template4';
+import Template5 from '@/components/templates/Template5';
+import Template6 from '@/components/templates/Template6';
+import Template7 from '@/components/templates/Template7';
+import Template8 from '@/components/templates/Template8';
 
 export const runtime = 'edge';
 
@@ -19,8 +27,9 @@ async function getWeddingData(slug: string) {
   if (slug.startsWith('domain-')) {
     const domain = slug.replace('domain-', '');
     const domainWithoutWww = domain.replace(/^www\./, '');
-    // Truy vấn custom_domain bằng chính domain hoặc domain đã loại bỏ www
-    query = query.or(`custom_domain.eq.${domain},custom_domain.eq.${domainWithoutWww}`);
+    const domainWithWww = `www.${domainWithoutWww}`;
+    // Truy vấn custom_domain bằng chính domain hoặc domain đã loại bỏ www hoặc domain có www
+    query = query.or(`custom_domain.eq.${domain},custom_domain.eq.${domainWithoutWww},custom_domain.eq.${domainWithWww}`);
   } else {
     query = query.eq('slug', slug);
   }
@@ -47,30 +56,118 @@ async function getWishes(weddingId: string) {
   return data;
 }
 
-// 1. Tạo Metadata động phục vụ cho SEO và mạng xã hội (Facebook, Zalo share)
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+function getAbsoluteImageUrl(imagePath?: string, baseDomain?: string): string {
+  const fallback = 'https://savethedate.io.vn/thiepmaudovang/images/cover.jpg';
+  if (!imagePath) return fallback;
+  if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
+    return imagePath;
+  }
+  const domain = baseDomain || 'https://savethedate.io.vn';
+  const cleanPath = imagePath.startsWith('/') ? imagePath : `/${imagePath}`;
+  return `${domain}${cleanPath}`;
+}
+
+function getCanonicalUrl(slug: string, customDomain?: string): string {
+  if (customDomain) {
+    const cleanDomain = customDomain.replace(/^www\./, '');
+    return `https://${cleanDomain}`;
+  }
+  if (slug.startsWith('domain-')) {
+    const domain = slug.replace('domain-', '').replace(/^www\./, '');
+    return `https://${domain}`;
+  }
+  return `https://${slug}.savethedate.io.vn`;
+}
+
+// 1. Tạo Metadata động phục vụ cho SEO và mạng xã hội (Facebook, Zalo share, iMessage, Twitter)
+export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {
   const { slug } = await params;
+  const resolvedSearchParams = await searchParams;
+  const to = resolvedSearchParams?.to || '';
+
   const wedding = await getWeddingData(slug);
 
   if (!wedding) {
     return {
-      title: 'Không Tìm Thấy Thiệp Cưới',
+      title: 'Không Tìm Thấy Thiệp Cưới | E-Wedding',
+      description: 'Trang thiệp cưới bạn đang tìm kiếm không tồn tại hoặc đã thay đổi địa chỉ.',
+      robots: { index: false, follow: false },
     };
   }
 
+  const groom = wedding.groom_name || 'Chú Rể';
+  const bride = wedding.bride_name || 'Cô Dâu';
+  const canonicalUrl = getCanonicalUrl(slug, wedding.custom_domain);
+
+  // Hiển thị tên Cô Dâu Chú Rể trực tiếp trên thanh Bar trình duyệt
+  const rawTitle = to 
+    ? `Kính Mời ${to} - Lễ Cưới Của ${groom} & ${bride}` 
+    : `Lễ Cưới Của ${groom} & ${bride} | Thiệp Cưới Online`;
+
+  const description = to
+    ? `Trân trọng kính mời ${to} tới tham dự lễ kết hôn của ${groom} & ${bride}. Sự hiện diện của bạn là niềm vinh hạnh lớn nhất cho hai gia đình!`
+    : `Thư mời tham dự Lễ Kết Hôn của ${groom} & ${bride}. Trân trọng kính mời quý khách tới tham dự ngày chung đôi của chúng tôi!`;
+
+  const firstImg = (wedding.images && wedding.images.length > 0) ? wedding.images[0] : wedding.cover_image;
+  const imageUrl = getAbsoluteImageUrl(firstImg, canonicalUrl);
+
+  const ogTitle = to
+    ? `Lễ Cưới Của ${groom} & ${bride} - Kính Mời ${to}`
+    : `Lễ Cưới Của ${groom} & ${bride}`;
+
   return {
-    title: `Trân Trọng Kính Mời - Lễ Cưới Của ${wedding.groom_name} & ${wedding.bride_name}`,
-    description: `Thư mời đám cưới của ${wedding.groom_name} & ${wedding.bride_name}. Sự hiện diện của bạn là niềm vinh hạnh cho gia đình chúng tôi!`,
+    title: rawTitle,
+    description: description,
+    keywords: [
+      groom,
+      bride,
+      `Lễ cưới ${groom} ${bride}`,
+      `Thiệp cưới ${groom} ${bride}`,
+      'Thiệp cưới online',
+      'Save the date',
+      'Lời mời đám cưới'
+    ],
+    authors: [{ name: `${groom} & ${bride}` }],
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
-      title: `Lễ Cưới Của ${wedding.groom_name} & ${wedding.bride_name}`,
-      description: `Trân trọng kính mời quý khách tới tham dự ngày chung đôi của chúng tôi!`,
+      title: ogTitle,
+      description: description,
+      url: canonicalUrl,
+      siteName: `${groom} & ${bride} - Thiệp Cưới Online`,
+      locale: 'vi_VN',
       type: 'website',
-      images: wedding.images && wedding.images.length > 0 ? [{ url: wedding.images[0] }] : [],
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: `Hình ảnh thiệp cưới của ${groom} & ${bride}`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: ogTitle,
+      description: description,
+      images: [imageUrl],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
     },
   };
 }
 
-// 2. Component Page chính
+// 2. Component Page chính với JSON-LD Structured Data
 export default async function Page({ params, searchParams }: PageProps) {
   const { slug } = await params;
   const resolvedSearchParams = await searchParams;
@@ -83,21 +180,72 @@ export default async function Page({ params, searchParams }: PageProps) {
   const wishes = await getWishes(wedding.id);
   const to = resolvedSearchParams.to || '';
 
-  if (wedding.template_id === 'template-dovang') {
-    return (
-      <TemplateDoVang
-        wedding={wedding}
-        to={to}
-        wishes={wishes}
-      />
-    );
-  }
-  
+  const groom = wedding.groom_name || 'Chú Rể';
+  const bride = wedding.bride_name || 'Cô Dâu';
+  const canonicalUrl = getCanonicalUrl(slug, wedding.custom_domain);
+  const imageUrl = getAbsoluteImageUrl(
+    (wedding.images && wedding.images.length > 0) ? wedding.images[0] : wedding.cover_image,
+    canonicalUrl
+  );
+
+  // Schema.org Event JSON-LD cho Google SEO
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    'name': `Lễ Cưới Của ${groom} & ${bride}`,
+    'startDate': wedding.event_date || new Date().toISOString(),
+    'eventAttendanceMode': 'https://schema.org/OfflineEventAttendanceMode',
+    'eventStatus': 'https://schema.org/EventScheduled',
+    'image': [imageUrl],
+    'description': `Lễ cưới chính thức của chú rể ${groom} và cô dâu ${bride}`,
+    'organizer': {
+      '@type': 'Person',
+      'name': `${groom} & ${bride}`,
+    },
+    'location': {
+      '@type': 'Place',
+      'name': wedding.location_info?.groom_family?.address || 'Địa điểm tiệc cưới',
+      'address': {
+        '@type': 'PostalAddress',
+        'streetAddress': wedding.location_info?.groom_family?.address || '',
+        'addressCountry': 'VN',
+      },
+    },
+  };
+
+  const renderTemplate = () => {
+    switch (wedding.template_id) {
+      case 'template1':
+        return <Template1 wedding={wedding} to={to} wishes={wishes} />;
+      case 'template2':
+        return <Template2 wedding={wedding} to={to} wishes={wishes} />;
+      case 'template3':
+        return <Template3 wedding={wedding} to={to} wishes={wishes} />;
+      case 'template4':
+        return <Template4 wedding={wedding} to={to} wishes={wishes} />;
+      case 'template5':
+        return <Template5 wedding={wedding} to={to} wishes={wishes} />;
+      case 'template6':
+        return <Template6 wedding={wedding} to={to} wishes={wishes} />;
+      case 'template7':
+        return <Template7 wedding={wedding} to={to} wishes={wishes} />;
+      case 'template8':
+        return <Template8 wedding={wedding} to={to} wishes={wishes} />;
+      case 'template-dovang':
+      case 'thiepmaudovang':
+        return <TemplateDoVang wedding={wedding} to={to} wishes={wishes} />;
+      default:
+        return <TemplateA wedding={wedding} to={to} wishes={wishes} />;
+    }
+  };
+
   return (
-    <TemplateA
-      wedding={wedding}
-      to={to}
-      wishes={wishes}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {renderTemplate()}
+    </>
   );
 }

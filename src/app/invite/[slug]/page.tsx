@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import React from 'react';
 import { notFound } from 'next/navigation';
 import { supabase } from '@/lib/supabase';
@@ -41,6 +42,24 @@ async function getWishes(weddingId: string) {
     return [];
   }
   return data;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const wedding = await getWeddingData(slug);
+
+  if (!wedding) {
+    return {
+      title: 'Quản Lý Thiệp Cưới | E-Wedding',
+      robots: { index: false, follow: false },
+    };
+  }
+
+  return {
+    title: `Tạo Link Khách Mời - Lễ Cưới Của ${wedding.groom_name} & ${wedding.bride_name}`,
+    description: `Trang quản lý và tạo đường dẫn thiệp cưới cá nhân hóa cho đám cưới của ${wedding.groom_name} & ${wedding.bride_name}.`,
+    robots: { index: false, follow: false },
+  };
 }
 
 export default async function Page({ params, searchParams }: PageProps) {
