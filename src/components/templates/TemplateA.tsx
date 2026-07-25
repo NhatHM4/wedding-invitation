@@ -145,9 +145,14 @@ export default function TemplateA({ wedding, to, wishes: initialWishes, onNewWis
           )}
 
           {to && (
-            <div className="mt-12 p-6 bg-white border border-[#E8C895]/30 rounded-lg shadow-sm">
+            <div className="mt-12 p-6 bg-white border border-[#E8C895]/30 rounded-lg shadow-sm flex flex-col items-center justify-center">
               <p className="text-xs uppercase tracking-[0.15em] text-[#7C6656] mb-2 font-['Quicksand'] font-medium">Trân trọng kính mời</p>
-              <h3 className="font-['Playfair_Display'] text-2xl font-bold text-[#D9383A]">{to}</h3>
+              <div className="relative inline-flex items-center justify-center px-4 min-w-[180px]">
+                <span className="absolute bottom-0 text-[#7C6656]/50 font-mono tracking-[0.25em] text-xs pointer-events-none select-none">
+                  ..............................
+                </span>
+                <h3 className="relative z-10 font-ephesis text-4xl font-bold text-red-600 capitalize leading-none pb-1 drop-shadow-sm">{to}</h3>
+              </div>
               <p className="text-sm mt-3 text-[#7C6656] italic font-['Quicksand']">Tới dự buổi tiệc thân mật mừng ngày chung đôi của chúng tôi</p>
             </div>
           )}

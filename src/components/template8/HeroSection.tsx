@@ -50,10 +50,18 @@ export default function HeroSection({ wedding, to }: HeroSectionProps) {
         initial={{ opacity: 0, scale: 0.92 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, delay: 0.15, ease: signatureEase }}
-        className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/85 backdrop-blur-sm border border-rose-200 shadow-sm text-rose-700 text-sm font-medium mb-6 hover:shadow-md transition-shadow"
+        className="inline-flex flex-col items-center gap-1 px-6 py-2.5 rounded-full bg-white/85 backdrop-blur-sm border border-rose-200 shadow-sm text-rose-700 text-sm font-medium mb-6 hover:shadow-md transition-shadow"
       >
-        <Sparkles className="w-4 h-4 text-rose-400 animate-pulse" />
-        <span>Kính mời: <strong className="font-semibold text-rose-900">{isMounted ? guestName : "Quý khách"}</strong></span>
+        <div className="flex items-center gap-1.5">
+          <Sparkles className="w-4 h-4 text-rose-400 animate-pulse" />
+          <span className="text-xs uppercase tracking-wider font-semibold text-rose-800">Trân Trọng Kính Mời</span>
+        </div>
+        <div className="relative inline-flex items-center justify-center px-4 min-w-[180px]">
+          <span className="absolute bottom-0 text-rose-300/70 font-mono tracking-[0.25em] text-xs pointer-events-none select-none">
+            ..............................
+          </span>
+          <strong className="relative z-10 font-ephesis text-3xl font-bold text-red-600 capitalize leading-none pb-0.5 drop-shadow-sm">{isMounted ? guestName : "Quý khách"}</strong>
+        </div>
       </motion.div>
 
       {/* Main Card Frame */}

@@ -90,8 +90,13 @@ export default function T1Envelope({ onOpen, to }: T1EnvelopeProps) {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-center mb-8 z-10"
         >
-          <p className="text-purple-300 uppercase tracking-[0.25em] text-xs font-semibold mb-2">Trân Trọng Kính Mời</p>
-          <h2 className="text-white text-3xl font-bold font-serif-lux drop-shadow-[0_2px_10px_rgba(147,51,234,0.3)]">{to}</h2>
+          <p className="text-purple-300 uppercase tracking-[0.25em] text-xs font-semibold mb-1">Trân Trọng Kính Mời</p>
+          <div className="relative inline-flex items-center justify-center px-4 min-w-[200px]">
+            <span className="absolute bottom-0 text-purple-300/60 font-mono tracking-[0.25em] text-xs pointer-events-none select-none">
+              ..............................
+            </span>
+            <h2 className="relative z-10 text-red-400 text-3xl sm:text-4xl font-bold font-ephesis capitalize leading-none pb-1 drop-shadow-[0_2px_10px_rgba(239,68,68,0.4)]">{to || "Quý Khách"}</h2>
+          </div>
           <div className="h-[1px] w-24 bg-gradient-to-r from-transparent via-purple-400 to-transparent mx-auto mt-3" />
         </motion.div>
 

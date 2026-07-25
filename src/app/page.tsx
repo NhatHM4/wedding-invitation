@@ -5,6 +5,7 @@ import Image from "next/image";
 
 export default function Home() {
   const [activePreviewId, setActivePreviewId] = useState<string | null>(null);
+  const [activeFeatureModal, setActiveFeatureModal] = useState<"guest-name" | "subdomain" | null>(null);
 
   const templates = [
     {
@@ -89,10 +90,10 @@ export default function Home() {
       previewUrl: "/template5",
       badge: "Kinetic Motion",
       colorClasses: {
-        bg: "bg-amber-50",
-        border: "border-amber-200",
-        text: "text-amber-700",
-        accent: "#b45309"
+        bg: "bg-pink-50",
+        border: "border-pink-200",
+        text: "text-pink-700",
+        accent: "#e11d48"
       },
       image: "/template5/preview/template5.webp",
       scrollPreview: true
@@ -166,6 +167,7 @@ export default function Home() {
     {
       title: "Cá Nhân Hóa Tên Khách Mời",
       description: "Tính năng tạo liên kết mời riêng biệt với tên người nhận tùy biến xuất hiện ngay trên thiệp cưới.",
+      demoType: "guest-name",
       icon: (
         <svg className="w-6 h-6 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -175,6 +177,7 @@ export default function Home() {
     {
       title: "Tên Miền Theo Tên Cô Dâu Chú Rể",
       description: "Sử dụng đường dẫn subdomain chuyên nghiệp, độc đáo mang đậm dấu ấn riêng của hai bạn.",
+      demoType: "subdomain",
       icon: (
         <svg className="w-6 h-6 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
@@ -430,15 +433,34 @@ export default function Home() {
               {features.map((feat, idx) => (
                 <div
                   key={idx}
-                  className="flex items-start gap-4 p-3.5 rounded-[20px] bg-white border border-rose-100/40 shadow-[0_2px_15px_rgba(244,63,94,0.015)] transition-all duration-300 hover:shadow-[0_4px_20px_rgba(244,63,94,0.04)]"
+                  onClick={() => {
+                    if (feat.demoType) {
+                      setActiveFeatureModal(feat.demoType as "guest-name" | "subdomain");
+                    }
+                  }}
+                  className={`flex items-start gap-4 p-3.5 rounded-[20px] bg-white border border-rose-100/40 shadow-[0_2px_15px_rgba(244,63,94,0.015)] transition-all duration-300 ${feat.demoType
+                    ? "cursor-pointer hover:border-rose-300 hover:shadow-[0_6px_25px_rgba(244,63,94,0.08)] relative group border-rose-200/80"
+                    : "hover:shadow-[0_4px_20px_rgba(244,63,94,0.04)]"
+                    }`}
                 >
                   <div className="p-3.5 rounded-[16px] bg-rose-50/70 border border-rose-100/30 shrink-0 text-rose-500 shadow-[inset_0_1px_3px_rgba(244,63,94,0.05)]">
                     {feat.icon}
                   </div>
-                  <div className="flex flex-col gap-1.5">
-                    <h3 className="text-[13px] font-bold text-gray-800 font-serif-lux">
-                      {feat.title}
-                    </h3>
+                  <div className="flex flex-col gap-1 flex-1">
+                    <div className="flex items-center justify-between gap-2">
+                      <h3 className="text-[13px] font-bold text-gray-800 font-serif-lux flex items-center gap-1.5">
+                        {feat.title}
+                      </h3>
+                      {feat.demoType && (
+                        <span className="text-[9.5px] font-extrabold text-rose-600 bg-rose-50 border border-rose-200/80 px-2 py-0.5 rounded-full flex items-center gap-1 shrink-0 animate-pulse group-hover:bg-rose-600 group-hover:text-white transition-colors">
+                          <span>Xem minh họa</span>
+                          <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                          </svg>
+                        </span>
+                      )}
+                    </div>
                     <p className="text-[11px] text-gray-500 leading-relaxed font-sans-lux">
                       {feat.description}
                     </p>
@@ -523,6 +545,217 @@ export default function Home() {
         </footer>
       </div>
 
+      {/* FEATURE DEMO MODAL */}
+      {activeFeatureModal && (
+        <div
+          className="fixed inset-0 bg-black/65 backdrop-blur-sm z-[100] flex items-center justify-center p-4 sm:p-6 transition-all duration-300"
+          onClick={() => setActiveFeatureModal(null)}
+        >
+          <div
+            className="w-full max-w-[430px] max-h-[90vh] bg-white rounded-[28px] overflow-y-auto custom-scroll border border-rose-100 shadow-[0_20px_60px_rgba(0,0,0,0.35)] p-5 flex flex-col gap-4 relative animate-in fade-in zoom-in-95"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close button */}
+            <button
+              onClick={() => setActiveFeatureModal(null)}
+              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-rose-50 text-rose-600 flex items-center justify-center font-bold text-sm hover:bg-rose-100 transition-colors z-20 shadow-sm border border-rose-100"
+            >
+              ✕
+            </button>
+
+            {activeFeatureModal === "guest-name" ? (
+              /* GUEST NAME PERSONALIZATION DEMO MODAL (Matching Image 2) */
+              <div className="flex flex-col gap-4">
+                {/* Header */}
+                <div className="text-center flex flex-col items-center pt-1">
+                  <span className="text-[8.5px] font-extrabold uppercase tracking-widest text-rose-500 bg-rose-50 px-3 py-1 rounded-full border border-rose-100">
+                    Tính Năng Nổi Bật
+                  </span>
+                  <h2 className="text-base sm:text-lg font-bold text-[#7d1f2a] font-serif-lux mt-2 uppercase tracking-wide">
+                    TÍNH NĂNG ĐIỀN TÊN KHÁCH MỜI
+                  </h2>
+                  <div className="w-14 h-[2px] bg-rose-300 my-1.5 rounded-full"></div>
+                </div>
+
+                {/* Side by Side Comparison Container */}
+                <div className="bg-rose-50/40 p-3 rounded-2xl border border-rose-100/60 flex flex-col gap-3">
+                  <div className="grid grid-cols-2 gap-2 text-center text-[9.5px] font-bold text-gray-800 uppercase tracking-tight">
+                    <div className="flex flex-col items-center leading-tight">
+                      <span className="text-gray-400 font-normal">Thiệp <strong className="text-gray-800">KHÔNG DÙNG</strong></span>
+                      <span>tên riêng từng khách</span>
+                    </div>
+                    <div className="flex flex-col items-center leading-tight text-rose-700">
+                      <span className="text-rose-500 font-normal">Thiệp <strong className="text-rose-700 font-extrabold">DÙNG</strong></span>
+                      <span>tên riêng từng khách</span>
+                    </div>
+                  </div>
+
+                  {/* Mockup frames side-by-side */}
+                  <div className="flex items-center justify-between gap-1.5">
+                    {/* Left Phone Frame (Standard) */}
+                    <div className="flex-1 bg-white rounded-xl border border-gray-200 shadow-sm p-1.5 flex flex-col gap-1.5 items-center">
+                      <div className="w-full aspect-[9/14] bg-stone-100 rounded-lg overflow-hidden relative border border-gray-100 flex flex-col justify-between p-1.5 text-center">
+                        <div className="flex flex-col items-center gap-0.5 pt-1">
+                          <span className="text-[6.5px] text-gray-400 uppercase tracking-widest font-serif-lux">THIỆP MỜI</span>
+                          <span className="text-[9px] font-serif-lux font-bold text-gray-700 leading-tight">Anh Tú &amp; Quỳnh Nhi</span>
+                        </div>
+                        <div className="w-full h-[55%] rounded bg-rose-50/50 overflow-hidden relative border border-rose-100/40 my-1">
+                          <img src="/thiepmaudovang/images/preview.webp" alt="Standard Preview" className="w-full h-full object-cover object-top" />
+                        </div>
+                        <div className="text-[6.5px] text-gray-300 italic pb-0.5">Vui lòng tham dự</div>
+                      </div>
+                      <span className="text-[8px] text-gray-400 italic font-semibold">Gửi liên kết chung</span>
+                    </div>
+
+                    {/* Arrow */}
+                    <div className="flex flex-col items-center shrink-0 text-rose-500 font-bold">
+                      <svg className="w-5 h-5 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </div>
+
+                    {/* Right Phone Frame (Personalized Highlight Box) */}
+                    <div className="flex-1 bg-white rounded-xl border-2 border-rose-400 shadow-md p-1.5 flex flex-col gap-1.5 items-center relative">
+                      <span className="absolute -top-2.5 bg-rose-600 text-white text-[7px] font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider shadow-sm">
+                        Cá nhân hóa
+                      </span>
+                      <div className="w-full aspect-[9/14] bg-stone-100 rounded-lg overflow-hidden relative border border-rose-100 flex flex-col justify-between p-1 text-center">
+                        <div className="flex flex-col items-center gap-0.5 pt-0.5">
+                          <span className="text-[6px] text-rose-400 uppercase tracking-widest font-serif-lux">THIỆP MỜI</span>
+                          <span className="text-[8.5px] font-serif-lux font-bold text-gray-700 leading-tight">Anh Tú &amp; Quỳnh Nhi</span>
+                        </div>
+                        <div className="w-full h-[45%] rounded bg-rose-50/50 overflow-hidden relative border border-rose-100/40 my-0.5">
+                          <img src="/thiepmaudovang/images/preview.webp" alt="Personalized Preview" className="w-full h-full object-cover object-top" />
+                        </div>
+                        {/* Red highlight box for personalized guest name */}
+                        <div className="w-full bg-white rounded p-1 border-2 border-rose-600 shadow-inner flex flex-col items-center justify-center">
+                          <span className="text-[6px] text-gray-500 uppercase tracking-wider font-semibold">Trân Trọng Kính Mời</span>
+                          <div className="relative inline-flex items-center justify-center w-full">
+                            <span className="absolute bottom-0 text-gray-300 font-mono tracking-[0.2em] text-[7px] pointer-events-none select-none">
+                              ......................
+                            </span>
+                            <span className="relative z-10 text-[11px] font-bold text-red-600 font-ephesis leading-none pb-0.5">Anh Nam &amp; Chị Mai</span>
+                          </div>
+                        </div>
+                      </div>
+                      <span className="text-[8px] text-rose-600 font-extrabold">Tên hiển thị riêng</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Key Bullet Points */}
+                <div className="flex flex-col gap-2.5 text-[11px] text-gray-700 font-sans-lux bg-gray-50 p-3.5 rounded-2xl border border-gray-100">
+                  <div className="flex items-start gap-2">
+                    <span className="text-base shrink-0">👉</span>
+                    <span><strong className="text-gray-900 font-bold">Không giới hạn</strong> lượt tạo tên khách mời.</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <span className="text-base shrink-0">👉</span>
+                    <span>Tạo tên <strong className="text-gray-900 font-bold">từng khách</strong> hoặc nhập <strong className="text-gray-900 font-bold">danh sách hàng loạt</strong> nhanh chóng.</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <span className="text-base shrink-0">👉</span>
+                    <span>Hỗ trợ <strong className="text-gray-900 font-bold">theo dõi khách đã xem thiệp</strong> hay chưa, dễ dàng quản lý &amp; nhắc khách khi cần.</span>
+                  </div>
+                </div>
+
+                {/* Confirm button */}
+                <button
+                  onClick={() => setActiveFeatureModal(null)}
+                  className="w-full py-2.5 rounded-xl bg-gradient-to-r from-rose-600 to-pink-500 text-white font-bold text-xs shadow-md hover:opacity-95 transition-opacity"
+                >
+                  Đã Hiểu
+                </button>
+              </div>
+            ) : (
+              /* SUBDOMAIN DEMO MODAL */
+              <div className="flex flex-col gap-4">
+                {/* Header */}
+                <div className="text-center flex flex-col items-center pt-1">
+                  <span className="text-[8.5px] font-extrabold uppercase tracking-widest text-indigo-500 bg-indigo-50 px-3 py-1 rounded-full border border-indigo-100">
+                    Tùy Biến Tên Miền
+                  </span>
+                  <h2 className="text-base sm:text-lg font-bold text-gray-800 font-serif-lux mt-2 uppercase tracking-wide">
+                    TÊN MIỀN THEO TÊN CÔ DÂU CHÚ RỂ
+                  </h2>
+                  <div className="w-14 h-[2px] bg-indigo-300 my-1.5 rounded-full"></div>
+                </div>
+
+                {/* Subdomain Comparison */}
+                <div className="bg-slate-50 p-3.5 rounded-2xl border border-slate-200/80 flex flex-col gap-3">
+                  {/* Default URL */}
+                  <div className="flex flex-col gap-1">
+                    <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Đường dẫn mặc định</span>
+                    <div className="flex items-center gap-2 bg-white px-3 py-2.5 rounded-xl border border-gray-200 text-[11px] text-gray-400 truncate">
+                      <span className="text-xs shrink-0">🌐</span>
+                      <span className="truncate">savethedate.io.vn/template</span>
+                    </div>
+                  </div>
+
+                  {/* Arrow Down */}
+                  <div className="flex justify-center text-rose-500">
+                    <svg className="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                  </div>
+
+                  {/* Subdomain URL */}
+                  <div className="flex flex-col gap-1">
+                    <span className="text-[10px] font-bold text-rose-600 uppercase tracking-wider flex items-center justify-between">
+                      <span>Tên miền riêng theo tên hai bạn</span>
+                      <span className="bg-rose-100 text-rose-700 text-[8.5px] px-2 py-0.5 rounded-full font-extrabold">Độc Quyền</span>
+                    </span>
+                    <div className="flex items-center gap-2 bg-gradient-to-r from-rose-50 to-pink-50 px-3.5 py-3 rounded-xl border-2 border-rose-400 text-[12px] font-bold text-rose-700 truncate shadow-sm">
+                      <span className="text-xs shrink-0">🔒</span>
+                      <span className="truncate">minhhoang-maihuong.savethedate.io.vn</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Social Share Preview Card */}
+                <div className="bg-emerald-50/60 p-3 rounded-2xl border border-emerald-100 flex flex-col gap-1.5">
+                  <span className="text-[10px] font-bold text-emerald-800 uppercase tracking-wider flex items-center gap-1">
+                    <span>💬</span> Giao diện hiển thị chuyên nghiệp trên Zalo / Messenger
+                  </span>
+                  <div className="bg-white p-2.5 rounded-xl border border-emerald-200/60 flex items-center gap-3 shadow-sm">
+                    <div className="w-10 h-10 rounded-lg bg-rose-100 overflow-hidden shrink-0 border border-rose-200">
+                      <img src="/thiepmaudovang/images/preview.webp" alt="Thumb" className="w-full h-full object-cover" />
+                    </div>
+                    <div className="flex flex-col truncate">
+                      <span className="text-[11px] font-bold text-gray-800 truncate">Thiệp Cưới Online: Minh Hoàng &amp; Mai Hương</span>
+                      <span className="text-[9.5px] text-gray-400 truncate">minhhoang-maihuong.savethedate.io.vn</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Key Bullet Points */}
+                <div className="flex flex-col gap-2.5 text-[11px] text-gray-700 font-sans-lux bg-gray-50 p-3.5 rounded-2xl border border-gray-100">
+                  <div className="flex items-start gap-2">
+                    <span className="text-base shrink-0">👉</span>
+                    <span><strong className="text-gray-900 font-bold">Tên miền độc quyền</strong> dạng <code className="bg-rose-50 text-rose-600 px-1 py-0.5 rounded text-[10px]">codau-chure.savethedate.io.vn</code> vô cùng sang trọng.</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <span className="text-base shrink-0">👉</span>
+                    <span>Dễ nhớ, ngắn gọn, tự tin chia sẻ lên Zalo, Facebook, Messenger.</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <span className="text-base shrink-0">👉</span>
+                    <span>Khởi tạo &amp; kích hoạt <strong className="text-gray-900 font-bold">ngay lập tức</strong>, không cần cấu hình phức tạp.</span>
+                  </div>
+                </div>
+
+                {/* Confirm button */}
+                <button
+                  onClick={() => setActiveFeatureModal(null)}
+                  className="w-full py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-rose-500 text-white font-bold text-xs shadow-md hover:opacity-95 transition-opacity"
+                >
+                  Đã Hiểu
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

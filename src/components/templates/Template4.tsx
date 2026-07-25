@@ -202,9 +202,14 @@ export default function Template4({ wedding, to, wishes }: Template4Props) {
                 </span>
               </div>
 
-              <div className="pt-4 border-t border-dashed border-neutral-900/20 space-y-1">
-                <span className="text-[9px] tracking-widest font-mono text-neutral-400 block uppercase font-light">SPECIAL ENTRY FOR</span>
-                <span className="font-cormorant-garamond text-2xl italic font-semibold text-neutral-800">{to}</span>
+              <div className="pt-4 border-t border-dashed border-neutral-900/20 flex flex-col items-center justify-center">
+                <span className="text-[9px] tracking-widest font-mono text-neutral-400 block uppercase font-light mb-1">TRÂN TRỌNG KÍNH MỜI</span>
+                <div className="relative inline-flex items-center justify-center px-4 min-w-[180px]">
+                  <span className="absolute bottom-0 text-neutral-400/80 font-mono tracking-[0.25em] text-xs pointer-events-none select-none">
+                    ..............................
+                  </span>
+                  <span className="relative z-10 font-ephesis text-3xl sm:text-4xl font-bold text-red-600 capitalize leading-none pb-1 drop-shadow-sm">{to || "Quý Khách"}</span>
+                </div>
               </div>
             </div>
 

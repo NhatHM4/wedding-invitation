@@ -88,8 +88,13 @@ export default function T3Envelope({ onOpen, to }: T3EnvelopeProps) {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-center mb-8 z-10 font-barlow"
         >
-          <p className="text-[#C5A880] uppercase tracking-[0.25em] text-[10px] font-bold mb-2">Trân Trọng Kính Mời</p>
-          <h2 className="text-white text-3xl font-normal font-cormorant tracking-wide drop-shadow-[0_2px_8px_rgba(197,168,128,0.2)]">{to}</h2>
+          <p className="text-[#C5A880] uppercase tracking-[0.25em] text-[10px] font-bold mb-1">Trân Trọng Kính Mời</p>
+          <div className="relative inline-flex items-center justify-center px-4 min-w-[200px]">
+            <span className="absolute bottom-0 text-[#C5A880]/60 font-mono tracking-[0.25em] text-xs pointer-events-none select-none">
+              ..............................
+            </span>
+            <h2 className="relative z-10 text-red-500 text-3xl sm:text-4xl font-bold font-ephesis capitalize leading-none pb-1 drop-shadow-sm">{to || "Quý Khách"}</h2>
+          </div>
           <div className="h-[1px] w-24 bg-gradient-to-r from-transparent via-[#C5A880]/50 to-transparent mx-auto mt-3" />
         </motion.div>
 

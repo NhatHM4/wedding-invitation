@@ -586,11 +586,16 @@ export default function Template7({ wedding, to, wishes }: Template7Props) {
                     {/* Personalized Guest Box */}
                     <div className="neomorph-raised rounded-3xl p-6 text-center border-t border-white/50">
                       <p className="text-xs text-slate-400 uppercase tracking-widest font-sans font-semibold mb-1">
-                        Thân Gửi Quý Khách
+                        Trân Trọng Kính Mời
                       </p>
-                      <h3 className="font-pinyon text-4xl text-slate-800 my-2">
-                        {to}
-                      </h3>
+                      <div className="relative inline-flex items-center justify-center px-4 min-w-[180px] my-2">
+                        <span className="absolute bottom-0 text-slate-400/80 font-mono tracking-[0.25em] text-xs pointer-events-none select-none">
+                          ..............................
+                        </span>
+                        <h3 className="relative z-10 font-ephesis text-4xl text-red-600 font-bold capitalize leading-none pb-1 drop-shadow-sm">
+                          {to || "Quý Khách"}
+                        </h3>
+                      </div>
                       <p className="text-xs text-slate-500 leading-relaxed max-w-[280px] mx-auto mt-2">
                         Sự hiện diện của quý vị là niềm vinh hạnh lớn cho gia đình chúng tôi để cùng chúc mừng hạnh phúc trăm năm.
                       </p>
@@ -1194,7 +1199,7 @@ export default function Template7({ wedding, to, wishes }: Template7Props) {
                     </div>
                     <h4 className="font-bold text-slate-800 text-sm">Vinh Quang & Thúy Vân</h4>
                     <p className="text-slate-500 leading-relaxed text-left">
-                      Kính mời: <span className="font-bold text-rose-600">{to}</span> đến tham dự lễ cưới ấm áp của tụi mình...
+                      Trân Trọng Kính Mời: <span className="font-ephesis text-xl font-bold text-red-600 capitalize underline decoration-dotted underline-offset-4">{to || "Quý Khách"}</span> đến tham dự lễ cưới ấm áp của tụi mình...
                     </p>
                   </div>
                 </div>

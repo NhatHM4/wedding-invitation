@@ -501,18 +501,22 @@ export default function Template6({ wedding, to, wishes }: Template6Props) {
 
             {/* Button bottom */}
             <div className="relative z-10 text-center pb-20 px-6 flex flex-col items-center gap-6 w-full">
-              {to && (
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 1.0, duration: 0.8 }}
-                  className="bg-white/15 backdrop-blur-md px-6 py-2 rounded-full border border-white/20 shadow-sm"
+                  className="bg-white/15 backdrop-blur-md px-6 py-2.5 rounded-full border border-white/20 shadow-sm flex flex-col items-center justify-center gap-1"
                 >
-                  <p className="text-[11px] font-sans-title tracking-wider text-[#FAF6F0]">
-                    Kính gửi: <span className="font-bold text-[#C5A880]">{to}</span>
+                  <p className="text-[11px] font-sans-title tracking-wider text-[#FAF6F0] uppercase font-semibold">
+                    Trân Trọng Kính Mời
                   </p>
+                  <div className="relative inline-flex items-center justify-center px-4 min-w-[180px]">
+                    <span className="absolute bottom-0 text-[#C5A880]/60 font-mono tracking-[0.25em] text-xs pointer-events-none select-none">
+                      ..............................
+                    </span>
+                    <span className="relative z-10 font-ephesis text-3xl font-bold text-red-500 capitalize leading-none pb-0.5 drop-shadow-sm">{to || "Quý Khách"}</span>
+                  </div>
                 </motion.div>
-              )}
 
               <motion.button
                 initial={{ opacity: 0, y: 30 }}

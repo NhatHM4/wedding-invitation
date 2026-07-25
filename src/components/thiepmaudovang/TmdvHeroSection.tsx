@@ -208,8 +208,16 @@ export default function TmdvHeroSection({ wedding, to, animate = true }: TmdvHer
           transitionDelay: "500ms",
         }}
       >
-        <div id="w-pq910b19" className="font-mightiest text-[22px] text-black leading-tight text-center">
-          Trân Trọng Kính Mời: {to || "Quý Khách"}
+        <div id="w-pq910b19" className="flex flex-col items-center justify-center text-center">
+          <span className="font-sans font-semibold text-[14px] text-gray-800 uppercase tracking-wider mb-1">Trân Trọng Kính Mời</span>
+          <div className="relative inline-flex items-center justify-center px-4 min-w-[200px]">
+            <span className="absolute bottom-0 text-gray-400/80 font-mono tracking-[0.25em] text-xs pointer-events-none select-none">
+              ..............................
+            </span>
+            <span className="relative z-10 font-ephesis text-[36px] text-red-600 font-bold capitalize leading-none pb-1 drop-shadow-sm">
+              {to || "Quý Khách"}
+            </span>
+          </div>
         </div>
       </div>
     </section>

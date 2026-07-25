@@ -738,9 +738,15 @@ function WelcomeDeck({ wedding, to, timeLeft, isPlaying, handleToggleAudio, onIm
         <span className="text-[9px] uppercase font-bold tracking-[0.25em] text-[#8C7355]">
           Digital Invitation
         </span>
-        <h4 className="text-[12px] uppercase tracking-[0.1em] font-medium text-neutral-400 mt-0.5">
-          Gửi tới: <span className="text-stone-800 font-bold border-b border-[#C5A880]/30 pb-0.5 px-1">{to}</span>
-        </h4>
+        <div className="flex flex-col items-center justify-center mt-0.5">
+          <span className="uppercase text-[10px] tracking-widest text-neutral-400 font-semibold mb-0.5">Trân Trọng Kính Mời</span>
+          <div className="relative inline-flex items-center justify-center px-4 min-w-[180px]">
+            <span className="absolute bottom-0 text-stone-400/70 font-mono tracking-[0.25em] text-xs pointer-events-none select-none">
+              ..............................
+            </span>
+            <span className="relative z-10 text-red-600 font-ephesis text-3xl font-bold capitalize leading-none pb-1 drop-shadow-sm">{to || "Quý Khách"}</span>
+          </div>
+        </div>
       </motion.div>
 
       {/* Main Bento Grid layout: 2 cols, custom rows (increased heights to fill empty spaces) */}

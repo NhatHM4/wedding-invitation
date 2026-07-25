@@ -246,12 +246,15 @@ export default function Template1({ wedding, to, wishes }: Template1Props) {
             </div>
 
             {/* Trân Trọng Kính Mời */}
-            <span className="font-artistic text-3xl font-bold text-[#8b1a1a] my-1">
+            <span className="font-sans text-xs uppercase tracking-widest font-semibold text-rose-800 my-1">
               Trân Trọng Kính Mời
             </span>
-            <h3 className="text-2xl font-bold font-serif-lux text-[#8b1a1a] bg-rose-50/50 border border-rose-100 px-6 py-2 rounded-xl shadow-sm mb-6 max-w-[280px]">
-              {to}
-            </h3>
+            <div className="relative inline-flex items-center justify-center px-6 min-w-[220px] mb-6 my-2">
+              <span className="absolute bottom-0 text-gray-400/80 font-mono tracking-[0.25em] text-xs pointer-events-none select-none">
+                ..............................
+              </span>
+              <span className="relative z-10 text-4xl font-bold font-ephesis text-red-600 capitalize leading-none pb-1 drop-shadow-sm">{to || "Quý Khách"}</span>
+            </div>
             <p className="text-[10px] text-slate-500 uppercase tracking-widest font-sans mb-3">Tới dự bữa cơm thân mật chung vui cùng gia đình chúng tôi</p>
 
             {/* Three Portrait Photo Grid (Image 2 style) */}

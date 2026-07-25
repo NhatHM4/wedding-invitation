@@ -73,8 +73,8 @@ export default function TextSilhouetteMask({
                 WebkitBackgroundClip: "text",
                 backgroundClip: "text",
                 color: "transparent",
-                WebkitTextStroke: "1px rgba(249, 246, 238, 0.35)", // Elegant light gold/cream outline
-                filter: "drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.5))", // Stand out shadow
+                WebkitTextStroke: "1px rgba(244, 63, 94, 0.4)", // Elegant rose outline
+                filter: "drop-shadow(0px 4px 12px rgba(244, 63, 94, 0.2))", // Stand out shadow
                 // Performance
                 WebkitFontSmoothing: "antialiased",
                 willChange: "transform",
@@ -94,7 +94,7 @@ export default function TextSilhouetteMask({
                 fontSize: "0.7rem",
                 letterSpacing: "0.25em",
                 textTransform: "uppercase",
-                color: "#C5A880",
+                color: "#E11D48",
                 marginTop: "1rem",
               }}
             >

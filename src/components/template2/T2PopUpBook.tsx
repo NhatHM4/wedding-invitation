@@ -299,9 +299,14 @@ export default function T2PopUpBook({
               </div>
 
               {/* Guest name box */}
-              <div className="flex flex-col gap-1 text-[11px] text-yellow-500 bg-yellow-600/10 border-2 border-yellow-600/20 rounded-xl px-6 py-3 font-cyber z-10 w-full max-w-[270px]">
+              <div className="flex flex-col items-center gap-1 text-[11px] text-yellow-500 bg-yellow-600/10 border-2 border-yellow-600/20 rounded-xl px-6 py-3 font-cyber z-10 w-full max-w-[270px]">
                 <span className="text-yellow-600/60 uppercase tracking-widest text-[9px]">Trân trọng kính mời:</span>
-                <span className="text-white font-extrabold tracking-widest text-[13px] block">{to.toUpperCase()}</span>
+                <div className="relative inline-flex items-center justify-center px-4 w-full">
+                  <span className="absolute bottom-0 text-yellow-500/40 font-mono tracking-[0.2em] text-xs pointer-events-none select-none">
+                    ........................
+                  </span>
+                  <span className="relative z-10 text-red-400 font-ephesis text-3xl font-bold capitalize block leading-none pb-1 drop-shadow-sm">{to || "Quý Khách"}</span>
+                </div>
               </div>
 
               <span className="text-[9px] tracking-[0.3em] text-yellow-600/60 uppercase animate-pulse mb-1">

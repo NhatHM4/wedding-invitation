@@ -7,7 +7,6 @@ import {
   useInView,
   useScroll,
   useTransform,
-  useSpring,
 } from "framer-motion";
 import Image from "next/image";
 import { Wedding, Wish } from "@/types";
@@ -16,7 +15,6 @@ import {
   MapPin,
   Calendar,
   Clock,
-  Music,
   Volume2,
   VolumeX,
   ChevronDown,
@@ -79,7 +77,7 @@ function FadeSection({
   );
 }
 
-// ── Gold ornament line ──────────────────────────────────────────────────────
+// ── Rose ornament line ──────────────────────────────────────────────────────
 function GoldLine({ width = "60px" }: { width?: string }) {
   return (
     <div
@@ -91,15 +89,15 @@ function GoldLine({ width = "60px" }: { width?: string }) {
         margin: "1rem 0",
       }}
     >
-      <div style={{ height: "1px", width, background: "#C5A880", opacity: 0.5 }} />
+      <div style={{ height: "1px", width, background: "#FB7185", opacity: 0.5 }} />
       <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
         <path
           d="M6 0L7.5 4.5H12L8.25 7.3L9.75 12L6 9.2L2.25 12L3.75 7.3L0 4.5H4.5L6 0Z"
-          fill="#C5A880"
-          fillOpacity="0.7"
+          fill="#F43F5E"
+          fillOpacity="0.8"
         />
       </svg>
-      <div style={{ height: "1px", width, background: "#C5A880", opacity: 0.5 }} />
+      <div style={{ height: "1px", width, background: "#FB7185", opacity: 0.5 }} />
     </div>
   );
 }
@@ -119,7 +117,7 @@ function CountUnit({ value, label }: { value: number; label: string }) {
             fontFamily: "var(--font-cormorant-garamond)",
             fontWeight: 700,
             fontSize: "clamp(2rem, 9vw, 3.5rem)",
-            color: "#F9F6EE",
+            color: "#881337",
             lineHeight: 1,
           }}
         >
@@ -132,7 +130,7 @@ function CountUnit({ value, label }: { value: number; label: string }) {
           fontSize: "0.6rem",
           letterSpacing: "0.2em",
           textTransform: "uppercase",
-          color: "#C5A880",
+          color: "#E11D48",
           marginTop: "0.4rem",
         }}
       >
@@ -150,10 +148,10 @@ function CountSep() {
         fontFamily: "var(--font-cormorant-garamond)",
         fontWeight: 700,
         fontSize: "clamp(2rem, 9vw, 3.5rem)",
-        color: "#C5A880",
+        color: "#FB7185",
         lineHeight: 1,
         paddingBottom: "1.2rem",
-        opacity: 0.6,
+        opacity: 0.8,
       }}
     >
       :
@@ -198,7 +196,7 @@ function AmbientParticles() {
             width: `${p.size}px`,
             height: `${p.size}px`,
             borderRadius: "50%",
-            background: "#C5A880",
+            background: "#FB7185",
             left: `${p.x}%`,
             top: `${p.top}%`,
             opacity: 0,
@@ -233,9 +231,10 @@ function GalleryCard({ src, index }: { src: string; index: number }) {
     >
       <div
         style={{
-          borderRadius: "4px",
+          borderRadius: "8px",
           overflow: "hidden",
           aspectRatio: index % 3 === 0 ? "3/4" : "1/1",
+          boxShadow: "0 4px 20px rgba(244, 63, 94, 0.08)",
         }}
       >
         <Image
@@ -336,7 +335,7 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
       <div
         style={{
           minHeight: "100dvh",
-          background: "#111111",
+          background: "linear-gradient(to bottom, #FFFFFF 0%, #FFF0F3 50%, #FFE4E8 100%)",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -346,7 +345,7 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
           overflow: "hidden",
         }}
       >
-        {/* Background ambient particles — client-only to avoid SSR hydration mismatch */}
+        {/* Background ambient particles */}
         <AmbientParticles />
 
         {/* Recipient label */}
@@ -359,25 +358,32 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
             fontSize: "0.7rem",
             letterSpacing: "0.3em",
             textTransform: "uppercase",
-            color: "#C5A880",
-            marginBottom: "2rem",
+            color: "#E11D48",
+            marginBottom: "1.5rem",
           }}
         >
-          Kính gửi
+          Trân Trọng Kính Mời
         </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.9, delay: 0.5, ease: [0.4, 0, 0.2, 1] }}
-          style={{ textAlign: "center", marginBottom: "1rem" }}
-        >
-          <KineticStretchingText
-            text={to}
-            fontSize="clamp(2.8rem, 12vw, 5.5rem)"
-            color="#F9F6EE"
-          />
-        </motion.div>
+        <div className="relative inline-flex items-center justify-center px-6 min-w-[220px] mb-4">
+          <span className="absolute bottom-0 text-rose-300/60 font-mono tracking-[0.25em] text-xs pointer-events-none select-none">
+            ..............................
+          </span>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.9, delay: 0.5, ease: [0.4, 0, 0.2, 1] }}
+            style={{ textAlign: "center" }}
+            className="relative z-10"
+          >
+            <KineticStretchingText
+              text={to || "Quý Khách"}
+              fontSize="clamp(2.8rem, 12vw, 5.5rem)"
+              color="#DC2626"
+              className="font-ephesis drop-shadow-sm"
+            />
+          </motion.div>
+        </div>
 
         <GoldLine />
 
@@ -389,7 +395,7 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
             fontFamily: "var(--font-cormorant-garamond)",
             fontStyle: "italic",
             fontSize: "clamp(1rem, 4vw, 1.4rem)",
-            color: "rgba(249,246,238,0.55)",
+            color: "rgba(136,19,55,0.75)",
             textAlign: "center",
             marginBottom: "3rem",
             lineHeight: 1.6,
@@ -402,7 +408,7 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
           text="Trân trọng kính mời · You are invited · Chúc mừng"
           baseSpeed={0.5}
           fontSize="0.75rem"
-          color="rgba(197,168,128,0.35)"
+          color="rgba(244,63,94,0.4)"
           paddingY="0.5rem"
           className="absolute bottom-28 left-0 right-0"
         />
@@ -420,15 +426,16 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
             }
           }}
           style={{
-            background: "transparent",
-            border: "1px solid rgba(197,168,128,0.5)",
-            color: "#C5A880",
+            background: "rgba(255, 255, 255, 0.9)",
+            border: "1px solid rgba(244, 63, 94, 0.3)",
+            color: "#E11D48",
+            boxShadow: "0 4px 20px rgba(244, 63, 94, 0.12)",
             fontFamily: "var(--font-inter)",
             fontSize: "0.7rem",
             letterSpacing: "0.3em",
             textTransform: "uppercase",
             padding: "1rem 2.5rem",
-            borderRadius: "2px",
+            borderRadius: "30px",
             cursor: "pointer",
             display: "flex",
             alignItems: "center",
@@ -451,8 +458,8 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
   return (
     <div
       style={{
-        background: "#111111",
-        color: "#F9F6EE",
+        background: "#FFF8F9",
+        color: "#374151",
         minHeight: "100dvh",
         overflowX: "hidden",
         position: "relative",
@@ -473,8 +480,9 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
           top: "1.25rem",
           right: "1.25rem",
           zIndex: 100,
-          background: "rgba(17,17,17,0.7)",
-          border: "1px solid rgba(197,168,128,0.3)",
+          background: "rgba(255, 255, 255, 0.85)",
+          border: "1px solid rgba(244, 63, 94, 0.2)",
+          boxShadow: "0 4px 15px rgba(244, 63, 94, 0.1)",
           backdropFilter: "blur(8px)",
           borderRadius: "50%",
           width: "2.5rem",
@@ -483,7 +491,7 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
           alignItems: "center",
           justifyContent: "center",
           cursor: "pointer",
-          color: "#C5A880",
+          color: "#E11D48",
         }}
         aria-label={isPlaying ? "Tắt nhạc" : "Bật nhạc"}
       >
@@ -522,12 +530,12 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
             sizes="100vw"
             style={{ objectFit: "cover", objectPosition: "center 20%" }}
           />
-          {/* Dark overlay */}
+          {/* Light rose overlay */}
           <div
             style={{
               position: "absolute",
               inset: 0,
-              background: "linear-gradient(to bottom, rgba(17,17,17,0.62) 0%, rgba(17,17,17,0.3) 40%, rgba(17,17,17,0.85) 100%)",
+              background: "linear-gradient(to bottom, rgba(255, 245, 247, 0.7) 0%, rgba(255, 245, 247, 0.25) 40%, rgba(255, 248, 249, 0.95) 100%)",
             }}
           />
         </motion.div>
@@ -543,7 +551,7 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
               fontSize: "0.65rem",
               letterSpacing: "0.35em",
               textTransform: "uppercase",
-              color: "#C5A880",
+              color: "#E11D48",
               marginBottom: "1.5rem",
             }}
           >
@@ -573,7 +581,7 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
               fontFamily: "var(--font-cormorant-garamond)",
               fontStyle: "italic",
               fontSize: "clamp(1rem, 4vw, 1.5rem)",
-              color: "rgba(249,246,238,0.75)",
+              color: "#881337",
               marginTop: "0.5rem",
             }}
           >
@@ -590,7 +598,7 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
             <motion.div
               animate={{ y: [0, 8, 0] }}
               transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-              style={{ color: "rgba(197,168,128,0.5)" }}
+              style={{ color: "rgba(244, 63, 94, 0.5)" }}
             >
               <ChevronDown size={20} style={{ margin: "0 auto" }} />
             </motion.div>
@@ -604,8 +612,8 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
       <BiDirectionalMarquee
         text={`${wedding.groom_name}  ♡  ${wedding.bride_name}  ·  Forever`}
         baseSpeed={0.7}
-        color="#C5A880"
-        background="rgba(197,168,128,0.06)"
+        color="#F43F5E"
+        background="rgba(251, 113, 133, 0.08)"
         paddingY="1.25rem"
         className="z-0"
       />
@@ -627,7 +635,7 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
               fontSize: "0.62rem",
               letterSpacing: "0.35em",
               textTransform: "uppercase",
-              color: "#C5A880",
+              color: "#E11D48",
               marginBottom: "2.5rem",
             }}
           >
@@ -638,7 +646,7 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
         <KineticStretchingText
           text={wedding.groom_name}
           fontSize="clamp(2.2rem, 11vw, 5rem)"
-          color="#F9F6EE"
+          color="#881337"
           style={{ marginBottom: "0.25rem" }}
         />
 
@@ -647,7 +655,7 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
             fontFamily: "var(--font-cormorant-garamond)",
             fontStyle: "italic",
             fontSize: "clamp(1.2rem, 5vw, 2rem)",
-            color: "#C5A880",
+            color: "#F43F5E",
             margin: "0.5rem 0",
           }}
         >
@@ -657,7 +665,7 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
         <KineticStretchingText
           text={wedding.bride_name}
           fontSize="clamp(2.2rem, 11vw, 5rem)"
-          color="#F9F6EE"
+          color="#881337"
           style={{ marginBottom: "2.5rem" }}
         />
 
@@ -668,7 +676,7 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
               fontFamily: "var(--font-inter)",
               fontSize: "0.72rem",
               letterSpacing: "0.25em",
-              color: "rgba(249,246,238,0.5)",
+              color: "rgba(75, 85, 99, 0.8)",
               marginTop: "1.5rem",
             }}
           >
@@ -688,7 +696,7 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
               fontSize: "0.62rem",
               letterSpacing: "0.35em",
               textTransform: "uppercase",
-              color: "#C5A880",
+              color: "#E11D48",
               marginBottom: "2rem",
               textAlign: "center",
             }}
@@ -703,10 +711,9 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
               fontFamily: "var(--font-cormorant-garamond)",
               fontStyle: "italic",
               fontSize: "clamp(1.4rem, 5vw, 1.85rem)",
-              color: "#F9F6EE",
+              color: "#881337",
               lineHeight: 1.65,
               textAlign: "center",
-              opacity: 0.9,
             }}
           >
             &ldquo;Tình yêu không phải là tìm kiếm người hoàn hảo, mà là nhìn thấy sự hoàn hảo trong người bất hoàn.&rdquo;
@@ -720,7 +727,7 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
                 fontFamily: "var(--font-inter)",
                 fontSize: "0.82rem",
                 lineHeight: 1.8,
-                color: "rgba(249,246,238,0.55)",
+                color: "#4B5563",
               }}
             >
               Hành trình của chúng tôi bắt đầu từ những khoảnh khắc bình dị nhất — một buổi chiều tình cờ, một nụ cười chân thành, và một trái tim biết yêu thương. Hôm nay, chúng tôi muốn chia sẻ niềm hạnh phúc đó cùng những người thân yêu nhất.
@@ -733,10 +740,11 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
           <div
             style={{
               marginTop: "2.5rem",
-              borderRadius: "4px",
+              borderRadius: "12px",
               overflow: "hidden",
               aspectRatio: "4/5",
               position: "relative",
+              boxShadow: "0 10px 30px rgba(244, 63, 94, 0.08)",
             }}
           >
             <Image
@@ -746,12 +754,11 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
               sizes="(max-width: 520px) 100vw, 520px"
               style={{ objectFit: "cover" }}
             />
-            {/* Film grain overlay */}
             <div
               style={{
                 position: "absolute",
                 inset: 0,
-                background: "linear-gradient(to bottom, transparent 60%, rgba(17,17,17,0.6) 100%)",
+                background: "linear-gradient(to bottom, transparent 60%, rgba(255, 248, 249, 0.8) 100%)",
               }}
             />
           </div>
@@ -764,8 +771,8 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
       <BiDirectionalMarquee
         text="Save the Date · Lưu ngày này lại · Always &amp; Forever"
         baseSpeed={-0.6}
-        color="rgba(249,246,238,0.25)"
-        background="rgba(249,246,238,0.03)"
+        color="rgba(225, 29, 72, 0.4)"
+        background="rgba(255, 228, 230, 0.4)"
         paddingY="1rem"
         fontSize="0.7rem"
         className="z-0"
@@ -788,7 +795,7 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
               fontSize: "0.62rem",
               letterSpacing: "0.35em",
               textTransform: "uppercase",
-              color: "#C5A880",
+              color: "#E11D48",
               marginBottom: "3rem",
             }}
           >
@@ -817,7 +824,7 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
           <KineticStretchingText
             text={groomFamily?.date || "10 · 10 · 2026"}
             fontSize="clamp(1.5rem, 7vw, 2.5rem)"
-            color="rgba(249,246,238,0.45)"
+            color="rgba(136, 19, 55, 0.6)"
             style={{ marginTop: "1.5rem" }}
           />
         </FadeSection>
@@ -826,7 +833,7 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
       {/* ═══════════════════════════════════════════════════════════════════ */}
       {/* SECTION 4.5: GROOM & BRIDE PROFILES                                 */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
-      <section style={{ padding: "4rem 1.5rem", borderBottom: "1px solid rgba(197,168,128,0.08)" }}>
+      <section style={{ padding: "4rem 1.5rem", borderBottom: "1px solid rgba(251, 113, 133, 0.15)" }}>
         <FadeSection>
           <p
             style={{
@@ -834,7 +841,7 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
               fontSize: "0.62rem",
               letterSpacing: "0.35em",
               textTransform: "uppercase",
-              color: "#C5A880",
+              color: "#E11D48",
               marginBottom: "2.5rem",
               textAlign: "center",
             }}
@@ -846,31 +853,31 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
         <div style={{ display: "flex", flexDirection: "column", gap: "3.5rem", maxWidth: "480px", margin: "0 auto" }}>
           {/* Chú rể */}
           <FadeSection delay={0.15}>
-            <div style={{ display: "flex", flexDirection: "column", gap: "1rem", border: "1px solid rgba(197,168,128,0.15)", padding: "1.5rem", borderRadius: "8px", background: "rgba(249,246,238,0.02)" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "1rem", border: "1px solid rgba(251, 113, 133, 0.2)", padding: "1.5rem", borderRadius: "16px", background: "rgba(255, 255, 255, 0.85)", boxShadow: "0 8px 30px rgba(244, 63, 94, 0.04)" }}>
               <div style={{ display: "flex", gap: "1.5rem", alignItems: "center" }}>
-                <div style={{ position: "relative", width: "100px", height: "100px", borderRadius: "50%", overflow: "hidden", border: "2px solid #C5A880", flexShrink: 0 }}>
+                <div style={{ position: "relative", width: "100px", height: "100px", borderRadius: "50%", overflow: "hidden", border: "2px solid #F43F5E", flexShrink: 0, boxShadow: "0 4px 15px rgba(244, 63, 94, 0.15)" }}>
                   <Image
                     src="/thiepmaudovang/images/gallery-2.jpg"
                     alt="Chú rể"
                     fill
                     sizes="100px"
-                    className="object-cover grayscale"
+                    className="object-cover"
                   />
                 </div>
                 <div style={{ flex: 1 }}>
-                  <span style={{ fontSize: "0.6rem", fontWeight: "bold", color: "#C5A880", textTransform: "uppercase", letterSpacing: "0.15em", display: "block" }}>Chú rể</span>
-                  <h3 style={{ fontFamily: "var(--font-playfair)", fontSize: "1.35rem", color: "#F9F6EE", fontWeight: 600, marginTop: "0.25rem" }}>
+                  <span style={{ fontSize: "0.6rem", fontWeight: "bold", color: "#E11D48", textTransform: "uppercase", letterSpacing: "0.15em", display: "block" }}>Chú rể</span>
+                  <h3 style={{ fontFamily: "var(--font-playfair)", fontSize: "1.35rem", color: "#881337", fontWeight: 600, marginTop: "0.25rem" }}>
                     {wedding.groom_name}
                   </h3>
                   {groomFamily && (
-                    <div style={{ fontFamily: "var(--font-inter)", fontSize: "0.7rem", color: "rgba(249,246,238,0.5)", marginTop: "0.35rem", lineHeight: "1.4" }}>
+                    <div style={{ fontFamily: "var(--font-inter)", fontSize: "0.7rem", color: "#6B7280", marginTop: "0.35rem", lineHeight: "1.4" }}>
                       {groomFamily.father_name && <p>Con ông: {groomFamily.father_name}</p>}
                       {groomFamily.mother_name && <p>Con bà: {groomFamily.mother_name}</p>}
                     </div>
                   )}
                 </div>
               </div>
-              <p style={{ fontFamily: "var(--font-inter)", fontSize: "0.72rem", color: "rgba(249,246,238,0.65)", lineHeight: "1.6", fontStyle: "italic", borderTop: "1px solid rgba(197,168,128,0.08)", paddingTop: "0.75rem", textAlign: "center" }}>
+              <p style={{ fontFamily: "var(--font-inter)", fontSize: "0.72rem", color: "#4B5563", lineHeight: "1.6", fontStyle: "italic", borderTop: "1px solid rgba(251, 113, 133, 0.15)", paddingTop: "0.75rem", textAlign: "center" }}>
                 &ldquo;Là một chàng trai điềm đạm, ấm áp và luôn tràn đầy hoài bão. Đối với anh, tình yêu không chỉ là những lời ngọt ngào mà còn là sự thấu hiểu, cùng nhau vượt qua mọi hành trình cuộc sống.&rdquo;
               </p>
             </div>
@@ -878,31 +885,31 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
 
           {/* Cô dâu */}
           <FadeSection delay={0.3}>
-            <div style={{ display: "flex", flexDirection: "column", gap: "1rem", border: "1px solid rgba(197,168,128,0.15)", padding: "1.5rem", borderRadius: "8px", background: "rgba(249,246,238,0.02)" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "1rem", border: "1px solid rgba(251, 113, 133, 0.2)", padding: "1.5rem", borderRadius: "16px", background: "rgba(255, 255, 255, 0.85)", boxShadow: "0 8px 30px rgba(244, 63, 94, 0.04)" }}>
               <div style={{ display: "flex", gap: "1.5rem", alignItems: "center", flexDirection: "row-reverse", textAlign: "right" }}>
-                <div style={{ position: "relative", width: "100px", height: "100px", borderRadius: "50%", overflow: "hidden", border: "2px solid #C5A880", flexShrink: 0 }}>
+                <div style={{ position: "relative", width: "100px", height: "100px", borderRadius: "50%", overflow: "hidden", border: "2px solid #F43F5E", flexShrink: 0, boxShadow: "0 4px 15px rgba(244, 63, 94, 0.15)" }}>
                   <Image
                     src="/thiepmaudovang/images/gallery-1.jpg"
                     alt="Cô dâu"
                     fill
                     sizes="100px"
-                    className="object-cover grayscale"
+                    className="object-cover"
                   />
                 </div>
                 <div style={{ flex: 1 }}>
-                  <span style={{ fontSize: "0.6rem", fontWeight: "bold", color: "#C5A880", textTransform: "uppercase", letterSpacing: "0.15em", display: "block" }}>Cô dâu</span>
-                  <h3 style={{ fontFamily: "var(--font-playfair)", fontSize: "1.35rem", color: "#F9F6EE", fontWeight: 600, marginTop: "0.25rem" }}>
+                  <span style={{ fontSize: "0.6rem", fontWeight: "bold", color: "#E11D48", textTransform: "uppercase", letterSpacing: "0.15em", display: "block" }}>Cô dâu</span>
+                  <h3 style={{ fontFamily: "var(--font-playfair)", fontSize: "1.35rem", color: "#881337", fontWeight: 600, marginTop: "0.25rem" }}>
                     {wedding.bride_name}
                   </h3>
                   {brideFamily && (
-                    <div style={{ fontFamily: "var(--font-inter)", fontSize: "0.7rem", color: "rgba(249,246,238,0.5)", marginTop: "0.35rem", lineHeight: "1.4" }}>
+                    <div style={{ fontFamily: "var(--font-inter)", fontSize: "0.7rem", color: "#6B7280", marginTop: "0.35rem", lineHeight: "1.4" }}>
                       {brideFamily.father_name && <p>Con ông: {brideFamily.father_name}</p>}
                       {brideFamily.mother_name && <p>Con bà: {brideFamily.mother_name}</p>}
                     </div>
                   )}
                 </div>
               </div>
-              <p style={{ fontFamily: "var(--font-inter)", fontSize: "0.72rem", color: "rgba(249,246,238,0.65)", lineHeight: "1.6", fontStyle: "italic", borderTop: "1px solid rgba(197,168,128,0.08)", paddingTop: "0.75rem", textAlign: "center" }}>
+              <p style={{ fontFamily: "var(--font-inter)", fontSize: "0.72rem", color: "#4B5563", lineHeight: "1.6", fontStyle: "italic", borderTop: "1px solid rgba(251, 113, 133, 0.15)", paddingTop: "0.75rem", textAlign: "center" }}>
                 &ldquo;Một cô gái dịu dàng, tinh tế và luôn mang đến nguồn năng lượng tích cực cho mọi người xung quanh. Cô tin rằng hạnh phúc chân chính là khi hai trái tim luôn đập cùng một nhịp.&rdquo;
               </p>
             </div>
@@ -921,7 +928,7 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
               fontSize: "0.62rem",
               letterSpacing: "0.35em",
               textTransform: "uppercase",
-              color: "#C5A880",
+              color: "#E11D48",
               marginBottom: "2.5rem",
               textAlign: "center",
             }}
@@ -940,11 +947,11 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
               <FadeSection key={label} delay={i * 0.15}>
                 <div
                   style={{
-                    border: "1px solid rgba(197,168,128,0.18)",
-                    borderRadius: "4px",
+                    border: "1px solid rgba(251, 113, 133, 0.2)",
+                    borderRadius: "16px",
                     padding: "1.75rem 1.5rem",
-                    background: "rgba(249,246,238,0.03)",
-                    backdropFilter: "blur(4px)",
+                    background: "rgba(255, 255, 255, 0.85)",
+                    boxShadow: "0 8px 25px rgba(244, 63, 94, 0.04)",
                   }}
                 >
                   <p
@@ -953,8 +960,9 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
                       fontSize: "0.6rem",
                       letterSpacing: "0.3em",
                       textTransform: "uppercase",
-                      color: "#C5A880",
+                      color: "#E11D48",
                       marginBottom: "1.25rem",
+                      fontWeight: 700,
                     }}
                   >
                     {label}
@@ -966,7 +974,7 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
                         fontFamily: "var(--font-cormorant-garamond)",
                         fontStyle: "italic",
                         fontSize: "clamp(0.9rem, 3.5vw, 1.1rem)",
-                        color: "rgba(249,246,238,0.6)",
+                        color: "#6B7280",
                         marginBottom: "1.25rem",
                         lineHeight: 1.6,
                       }}
@@ -978,24 +986,24 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
                   <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
                     {data.date && (
                       <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-                        <Calendar size={13} color="#C5A880" style={{ flexShrink: 0 }} />
-                        <span style={{ fontFamily: "var(--font-inter)", fontSize: "0.8rem", color: "rgba(249,246,238,0.7)" }}>
+                        <Calendar size={13} color="#F43F5E" style={{ flexShrink: 0 }} />
+                        <span style={{ fontFamily: "var(--font-inter)", fontSize: "0.8rem", color: "#374151" }}>
                           {data.date}
                         </span>
                       </div>
                     )}
                     {data.time && (
                       <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-                        <Clock size={13} color="#C5A880" style={{ flexShrink: 0 }} />
-                        <span style={{ fontFamily: "var(--font-inter)", fontSize: "0.8rem", color: "rgba(249,246,238,0.7)" }}>
+                        <Clock size={13} color="#F43F5E" style={{ flexShrink: 0 }} />
+                        <span style={{ fontFamily: "var(--font-inter)", fontSize: "0.8rem", color: "#374151" }}>
                           {data.time}
                         </span>
                       </div>
                     )}
                     {data.address && (
                       <div style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem" }}>
-                        <MapPin size={13} color="#C5A880" style={{ flexShrink: 0, marginTop: "2px" }} />
-                        <span style={{ fontFamily: "var(--font-inter)", fontSize: "0.8rem", color: "rgba(249,246,238,0.7)", lineHeight: 1.6 }}>
+                        <MapPin size={13} color="#F43F5E" style={{ flexShrink: 0, marginTop: "2px" }} />
+                        <span style={{ fontFamily: "var(--font-inter)", fontSize: "0.8rem", color: "#374151", lineHeight: 1.6 }}>
                           {data.address}
                         </span>
                       </div>
@@ -1016,9 +1024,10 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
                         fontSize: "0.65rem",
                         letterSpacing: "0.2em",
                         textTransform: "uppercase",
-                        color: "#C5A880",
+                        color: "#E11D48",
+                        fontWeight: 600,
                         textDecoration: "none",
-                        borderBottom: "1px solid rgba(197,168,128,0.3)",
+                        borderBottom: "1px solid rgba(225, 29, 72, 0.3)",
                         paddingBottom: "2px",
                       }}
                     >
@@ -1043,7 +1052,7 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
               fontSize: "0.62rem",
               letterSpacing: "0.35em",
               textTransform: "uppercase",
-              color: "#C5A880",
+              color: "#E11D48",
               marginBottom: "2.5rem",
               textAlign: "center",
             }}
@@ -1080,7 +1089,8 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
             style={{
               position: "fixed",
               inset: 0,
-              background: "rgba(17,17,17,0.95)",
+              background: "rgba(255, 245, 247, 0.95)",
+              backdropFilter: "blur(10px)",
               zIndex: 200,
               display: "flex",
               alignItems: "center",
@@ -1097,9 +1107,10 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
                 width: "90vw",
                 maxWidth: "480px",
                 aspectRatio: "3/4",
+                boxShadow: "0 10px 40px rgba(244, 63, 94, 0.15)",
               }}
             >
-              <Image src={lightboxSrc} alt="Gallery" fill style={{ objectFit: "cover", borderRadius: "4px" }} />
+              <Image src={lightboxSrc} alt="Gallery" fill style={{ objectFit: "cover", borderRadius: "12px" }} />
             </motion.div>
           </motion.div>
         )}
@@ -1111,7 +1122,7 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
       <BiDirectionalMarquee
         text="Chụp ảnh cùng nhau · Khoảnh khắc đẹp · Memories"
         baseSpeed={0.9}
-        color="rgba(197,168,128,0.3)"
+        color="rgba(225, 29, 72, 0.35)"
         fontSize="0.68rem"
         paddingY="0.8rem"
         className="z-0"
@@ -1129,24 +1140,25 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
-              background: "transparent",
-              border: "1px solid rgba(197,168,128,0.18)",
-              borderRadius: "4px",
+              background: "rgba(255, 255, 255, 0.9)",
+              border: "1px solid rgba(251, 113, 133, 0.3)",
+              boxShadow: "0 4px 15px rgba(244, 63, 94, 0.04)",
+              borderRadius: "12px",
               padding: "1.25rem 1.5rem",
               cursor: "pointer",
-              color: "#F9F6EE",
+              color: "#881337",
               maxWidth: "480px",
               margin: "0 auto",
             }}
           >
             <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-              <Gift size={16} color="#C5A880" />
-              <span style={{ fontFamily: "var(--font-inter)", fontSize: "0.78rem", letterSpacing: "0.1em" }}>
+              <Gift size={16} color="#F43F5E" />
+              <span style={{ fontFamily: "var(--font-inter)", fontSize: "0.78rem", letterSpacing: "0.1em", fontWeight: 600 }}>
                 Thông tin mừng cưới
               </span>
             </div>
             <motion.div animate={{ rotate: isGiftOpen ? 180 : 0 }} transition={{ duration: 0.3 }}>
-              <ChevronDown size={16} color="#C5A880" />
+              <ChevronDown size={16} color="#F43F5E" />
             </motion.div>
           </button>
 
@@ -1161,11 +1173,11 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
               >
                 <div
                   style={{
-                    border: "1px solid rgba(197,168,128,0.18)",
+                    border: "1px solid rgba(251, 113, 133, 0.2)",
                     borderTop: "none",
-                    borderRadius: "0 0 4px 4px",
+                    borderRadius: "0 0 12px 12px",
                     padding: "1.5rem",
-                    background: "rgba(249,246,238,0.03)",
+                    background: "rgba(255, 255, 255, 0.95)",
                   }}
                 >
                   {[
@@ -1173,13 +1185,13 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
                     { label: "Cô dâu", name: wedding.bride_name, bank: "Techcombank", number: "0987654321" },
                   ].map((item) => (
                     <div key={item.label} style={{ marginBottom: "1.25rem" }}>
-                      <p style={{ fontFamily: "var(--font-inter)", fontSize: "0.6rem", letterSpacing: "0.25em", color: "#C5A880", textTransform: "uppercase", marginBottom: "0.5rem" }}>
+                      <p style={{ fontFamily: "var(--font-inter)", fontSize: "0.6rem", letterSpacing: "0.25em", color: "#E11D48", textTransform: "uppercase", marginBottom: "0.5rem", fontWeight: 700 }}>
                         {item.label}
                       </p>
-                      <p style={{ fontFamily: "var(--font-cormorant-garamond)", fontSize: "1.1rem", color: "#F9F6EE", marginBottom: "0.25rem" }}>
+                      <p style={{ fontFamily: "var(--font-cormorant-garamond)", fontSize: "1.1rem", color: "#881337", fontWeight: 700, marginBottom: "0.25rem" }}>
                         {item.name}
                       </p>
-                      <p style={{ fontFamily: "var(--font-inter)", fontSize: "0.78rem", color: "rgba(249,246,238,0.55)" }}>
+                      <p style={{ fontFamily: "var(--font-inter)", fontSize: "0.78rem", color: "#4B5563" }}>
                         {item.bank} · {item.number}
                       </p>
                     </div>
@@ -1202,7 +1214,7 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
               fontSize: "0.62rem",
               letterSpacing: "0.35em",
               textTransform: "uppercase",
-              color: "#C5A880",
+              color: "#E11D48",
               marginBottom: "2rem",
               textAlign: "center",
             }}
@@ -1220,20 +1232,21 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
-              background: "transparent",
-              border: "1px solid rgba(197,168,128,0.3)",
-              borderRadius: "4px",
+              background: "rgba(255, 255, 255, 0.9)",
+              border: "1px solid rgba(251, 113, 133, 0.3)",
+              boxShadow: "0 4px 15px rgba(244, 63, 94, 0.04)",
+              borderRadius: "12px",
               padding: "1.25rem 1.5rem",
               cursor: "pointer",
-              color: "#F9F6EE",
+              color: "#881337",
               marginBottom: "0",
             }}
           >
-            <span style={{ fontFamily: "var(--font-inter)", fontSize: "0.78rem", letterSpacing: "0.1em" }}>
+            <span style={{ fontFamily: "var(--font-inter)", fontSize: "0.78rem", letterSpacing: "0.1em", fontWeight: 600 }}>
               Gửi lời chúc
             </span>
             <motion.div animate={{ rotate: isRsvpOpen ? 180 : 0 }}>
-              <ChevronDown size={16} color="#C5A880" />
+              <ChevronDown size={16} color="#F43F5E" />
             </motion.div>
           </button>
 
@@ -1248,11 +1261,11 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
               >
                 <div
                   style={{
-                    border: "1px solid rgba(197,168,128,0.18)",
+                    border: "1px solid rgba(251, 113, 133, 0.2)",
                     borderTop: "none",
-                    borderRadius: "0 0 4px 4px",
+                    borderRadius: "0 0 12px 12px",
                     padding: "1.5rem",
-                    background: "rgba(249,246,238,0.03)",
+                    background: "rgba(255, 255, 255, 0.95)",
                   }}
                 >
                   {!isSubmitted ? (
@@ -1263,11 +1276,11 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
                             display: "flex",
                             alignItems: "center",
                             gap: "0.6rem",
-                            borderBottom: "1px solid rgba(197,168,128,0.25)",
+                            borderBottom: "1px solid rgba(251, 113, 133, 0.3)",
                             paddingBottom: "0.75rem",
                           }}
                         >
-                          <User size={13} color="#C5A880" />
+                          <User size={13} color="#F43F5E" />
                           <input
                             type="text"
                             placeholder="Tên của bạn"
@@ -1278,7 +1291,7 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
                               background: "transparent",
                               border: "none",
                               outline: "none",
-                              color: "#F9F6EE",
+                              color: "#374151",
                               fontFamily: "var(--font-inter)",
                               fontSize: "0.85rem",
                               width: "100%",
@@ -1296,9 +1309,9 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
                             width: "100%",
                             background: "transparent",
                             border: "none",
-                            borderBottom: "1px solid rgba(197,168,128,0.25)",
+                            borderBottom: "1px solid rgba(251, 113, 133, 0.3)",
                             outline: "none",
-                            color: "#F9F6EE",
+                            color: "#374151",
                             fontFamily: "var(--font-inter)",
                             fontSize: "0.85rem",
                             resize: "none",
@@ -1313,16 +1326,18 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
                           display: "flex",
                           alignItems: "center",
                           gap: "0.5rem",
-                          background: "transparent",
-                          border: "1px solid rgba(197,168,128,0.4)",
-                          borderRadius: "2px",
+                          background: "#F43F5E",
+                          border: "none",
+                          borderRadius: "20px",
                           padding: "0.75rem 1.5rem",
-                          color: "#C5A880",
+                          color: "#FFFFFF",
                           fontFamily: "var(--font-inter)",
                           fontSize: "0.68rem",
                           letterSpacing: "0.2em",
                           textTransform: "uppercase",
+                          fontWeight: 700,
                           cursor: "pointer",
+                          boxShadow: "0 4px 15px rgba(244, 63, 94, 0.25)",
                           opacity: isSubmitting ? 0.5 : 1,
                         }}
                       >
@@ -1336,8 +1351,8 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
                       animate={{ opacity: 1, scale: 1 }}
                       style={{ textAlign: "center", padding: "1rem 0" }}
                     >
-                      <Heart size={24} color="#C5A880" style={{ margin: "0 auto 0.75rem" }} />
-                      <p style={{ fontFamily: "var(--font-cormorant-garamond)", fontStyle: "italic", fontSize: "1.1rem", color: "#F9F6EE" }}>
+                      <Heart size={24} color="#F43F5E" style={{ margin: "0 auto 0.75rem" }} />
+                      <p style={{ fontFamily: "var(--font-cormorant-garamond)", fontStyle: "italic", fontSize: "1.1rem", color: "#881337" }}>
                         Cảm ơn lời chúc của bạn!
                       </p>
                     </motion.div>
@@ -1355,10 +1370,11 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
               <FadeSection key={wish.id} delay={i * 0.05}>
                 <div
                   style={{
-                    border: "1px solid rgba(197,168,128,0.12)",
-                    borderRadius: "4px",
+                    border: "1px solid rgba(251, 113, 133, 0.2)",
+                    borderRadius: "12px",
                     padding: "1.25rem 1.25rem",
-                    background: "rgba(249,246,238,0.02)",
+                    background: "rgba(255, 255, 255, 0.85)",
+                    boxShadow: "0 4px 15px rgba(244, 63, 94, 0.03)",
                   }}
                 >
                   <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.6rem" }}>
@@ -1367,20 +1383,20 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
                         width: "1.75rem",
                         height: "1.75rem",
                         borderRadius: "50%",
-                        background: "rgba(197,168,128,0.15)",
+                        background: "rgba(251, 113, 133, 0.15)",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
                         flexShrink: 0,
                       }}
                     >
-                      <User size={11} color="#C5A880" />
+                      <User size={11} color="#F43F5E" />
                     </div>
-                    <p style={{ fontFamily: "var(--font-inter)", fontSize: "0.75rem", fontWeight: 500, color: "#F9F6EE" }}>
+                    <p style={{ fontFamily: "var(--font-inter)", fontSize: "0.75rem", fontWeight: 600, color: "#881337" }}>
                       {wish.guest_name}
                     </p>
                   </div>
-                  <p style={{ fontFamily: "var(--font-inter)", fontSize: "0.8rem", color: "rgba(249,246,238,0.55)", lineHeight: 1.65 }}>
+                  <p style={{ fontFamily: "var(--font-inter)", fontSize: "0.8rem", color: "#4B5563", lineHeight: 1.65 }}>
                     {wish.content}
                   </p>
                 </div>
@@ -1397,13 +1413,13 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
         style={{
           padding: "4rem 1.5rem 3rem",
           textAlign: "center",
-          borderTop: "1px solid rgba(197,168,128,0.1)",
+          borderTop: "1px solid rgba(251, 113, 133, 0.15)",
         }}
       >
         <BiDirectionalMarquee
           text="Trân trọng · With Love · Cảm ơn bạn đã đến · Mãi yêu"
           baseSpeed={0.4}
-          color="rgba(197,168,128,0.2)"
+          color="rgba(225, 29, 72, 0.3)"
           fontSize="0.65rem"
           paddingY="0.6rem"
           className="z-0"
@@ -1413,7 +1429,7 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
           <KineticStretchingText
             text={`${wedding.groom_name.split(" ").pop()} & ${wedding.bride_name.split(" ").pop()}`}
             fontSize="clamp(1.8rem, 8vw, 3rem)"
-            color="rgba(249,246,238,0.3)"
+            color="rgba(136, 19, 55, 0.4)"
           />
           <GoldLine />
           <p
@@ -1422,7 +1438,7 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
               fontSize: "0.6rem",
               letterSpacing: "0.25em",
               textTransform: "uppercase",
-              color: "rgba(197,168,128,0.3)",
+              color: "rgba(225, 29, 72, 0.4)",
               marginTop: "1rem",
             }}
           >
@@ -1434,7 +1450,7 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
           style={{
             fontFamily: "var(--font-inter)",
             fontSize: "0.58rem",
-            color: "rgba(249,246,238,0.15)",
+            color: "rgba(156, 163, 175, 0.7)",
             marginTop: "3rem",
             letterSpacing: "0.15em",
           }}
