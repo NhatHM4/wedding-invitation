@@ -49,7 +49,7 @@ export default function Home() {
         text: "text-rose-600",
         accent: "#f08080"
       },
-      image: "/thiepmaudovang/images/preview.webp",
+      image: "/template2/preview/template2.webp",
       scrollPreview: true
     },
     {
@@ -64,7 +64,7 @@ export default function Home() {
         text: "text-emerald-700",
         accent: "#047857"
       },
-      image: "/thiepmaudovang/images/preview.webp",
+      image: "/template3/preview/template3.webp",
       scrollPreview: true
     },
     {
@@ -79,7 +79,7 @@ export default function Home() {
         text: "text-indigo-700",
         accent: "#4338ca"
       },
-      image: "/thiepmaudovang/images/preview.webp",
+      image: "/template4/preview/template4.webp",
       scrollPreview: true
     },
     {
@@ -94,7 +94,7 @@ export default function Home() {
         text: "text-amber-700",
         accent: "#b45309"
       },
-      image: "/thiepmaudovang/images/preview.webp",
+      image: "/template5/preview/template5.webp",
       scrollPreview: true
     },
     {
@@ -109,7 +109,7 @@ export default function Home() {
         text: "text-pink-700",
         accent: "#8E4A49"
       },
-      image: "/thiepmaudovang/images/preview.webp",
+      image: "/template6/preview/template6.webp",
       scrollPreview: true
     },
     {
@@ -124,7 +124,22 @@ export default function Home() {
         text: "text-slate-700",
         accent: "#B8BEC6"
       },
-      image: "/thiepmaudovang/images/preview.webp",
+      image: "/template7/preview/template7.webp",
+      scrollPreview: true
+    },
+    {
+      id: "template-cinelove38",
+      name: "Mẫu Cinelove Golden Hour",
+      description: "Phong cách Blush Floral & Golden Hour lãng mạn cao cấp. Tích hợp album ảnh cưới lightbox, đồng hồ đếm ngược, form xác nhận RSVP và hộp mừng cưới QR tiện lợi.",
+      previewUrl: "/template8",
+      badge: "Thiết Kế Mới",
+      colorClasses: {
+        bg: "bg-rose-50",
+        border: "border-rose-200",
+        text: "text-rose-700",
+        accent: "#e11d48"
+      },
+      image: "/template8/preview/template8.webp",
       scrollPreview: true
     }
   ];
