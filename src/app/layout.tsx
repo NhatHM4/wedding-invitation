@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Cormorant_Upright, Roboto, Barlow, Cormorant_Garamond, Inter } from "next/font/google";
+import { Geist, Geist_Mono, Cormorant_Upright, Roboto, Barlow, Cormorant_Garamond, Inter, Playfair_Display } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -42,6 +42,13 @@ const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin", "vietnamese"],
   weight: ["300", "400", "500", "600", "700", "800"],
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin", "vietnamese"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
 });
 
 // Local Fonts
@@ -126,6 +133,7 @@ export default function RootLayout({
     cormorant.variable,
     cormorantGaramond.variable,
     inter.variable,
+    playfair.variable,
     pinyon.variable,
     alexBrush.variable,
     motherland.variable,

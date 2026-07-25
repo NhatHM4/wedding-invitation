@@ -13,11 +13,14 @@
 }
 
 @theme {
+  --font-sans: var(--font-inter), var(--font-roboto), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: var(--font-playfair), var(--font-cormorant-garamond), var(--font-cormorant), Georgia, serif;
   --font-roboto: var(--font-roboto), sans-serif;
   --font-barlow: var(--font-barlow), sans-serif;
   --font-cormorant: var(--font-cormorant), serif;
   --font-cormorant-garamond: var(--font-cormorant-garamond), serif;
   --font-inter: var(--font-inter), sans-serif;
+  --font-playfair: var(--font-playfair), serif;
 
   --font-pinyon: var(--font-pinyon), cursive;
   --font-alexbrush: var(--font-alexbrush), cursive;
