@@ -15,8 +15,6 @@ const Template6 = dynamic(() => import('@/components/templates/Template6'));
 const Template7 = dynamic(() => import('@/components/templates/Template7'));
 const Template8 = dynamic(() => import('@/components/templates/Template8'));
 
-export const runtime = 'edge';
-
 // 0. Cấu hình ISR (Incremental Static Regeneration)
 export const revalidate = 60; // Tự động tái tạo trang tĩnh ngầm mỗi 60s
 export const dynamicParams = true; // Cho phép tạo trang mới lập tức khi xuất hiện slug/custom_domain mới
