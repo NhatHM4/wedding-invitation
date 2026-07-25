@@ -57,14 +57,15 @@ export default function TextSilhouetteMask({
             className={`relative cursor-pointer select-none ${className}`}
             style={{ zIndex: 20 }}
           >
-            {/* Photo-inside-text effect */}
+            {/* Photo-inside-text effect with high-contrast aura & sharp outline */}
             <div
+              className="relative inline-block px-3 py-1 rounded-2xl bg-white/40 backdrop-blur-[2px] border border-rose-200/50"
               style={{
                 fontSize,
                 fontFamily: "var(--font-cormorant-garamond)",
-                fontWeight: 700,
-                lineHeight: 1,
-                letterSpacing: "-0.02em",
+                fontWeight: 800,
+                lineHeight: 1.1,
+                letterSpacing: "-0.01em",
                 whiteSpace: "nowrap",
                 // The core CSS trick
                 backgroundImage: `url(${imageSrc})`,
@@ -73,8 +74,8 @@ export default function TextSilhouetteMask({
                 WebkitBackgroundClip: "text",
                 backgroundClip: "text",
                 color: "transparent",
-                WebkitTextStroke: "1px rgba(244, 63, 94, 0.4)", // Elegant rose outline
-                filter: "drop-shadow(0px 4px 12px rgba(244, 63, 94, 0.2))", // Stand out shadow
+                WebkitTextStroke: "1.5px #BE123C", // Crisp Rose Red outline
+                filter: "drop-shadow(0px 6px 20px rgba(190, 18, 60, 0.4)) drop-shadow(0px 2px 4px rgba(255, 255, 255, 0.95))", // High contrast pop-out shadow
                 // Performance
                 WebkitFontSmoothing: "antialiased",
                 willChange: "transform",

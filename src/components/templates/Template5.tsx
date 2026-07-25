@@ -535,7 +535,7 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
             style={{
               position: "absolute",
               inset: 0,
-              background: "linear-gradient(to bottom, rgba(255, 245, 247, 0.7) 0%, rgba(255, 245, 247, 0.25) 40%, rgba(255, 248, 249, 0.95) 100%)",
+              background: "linear-gradient(to bottom, rgba(255, 245, 247, 0.88) 0%, rgba(255, 245, 247, 0.55) 40%, rgba(255, 248, 249, 0.98) 100%)",
             }}
           />
         </motion.div>
@@ -580,8 +580,11 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
             style={{
               fontFamily: "var(--font-cormorant-garamond)",
               fontStyle: "italic",
-              fontSize: "clamp(1rem, 4vw, 1.5rem)",
-              color: "#881337",
+              fontWeight: 700,
+              fontSize: "clamp(1.1rem, 4.5vw, 1.6rem)",
+              color: "#9F1239",
+              textShadow: "0 1px 6px rgba(255, 255, 255, 0.95)",
+              letterSpacing: "0.04em",
               marginTop: "0.5rem",
             }}
           >
@@ -646,16 +649,17 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
         <KineticStretchingText
           text={wedding.groom_name}
           fontSize="clamp(2.2rem, 11vw, 5rem)"
-          color="#881337"
-          style={{ marginBottom: "0.25rem" }}
+          color="#9F1239"
+          style={{ marginBottom: "0.25rem", filter: "drop-shadow(0 2px 8px rgba(225,29,72,0.15))" }}
         />
 
         <motion.div
           style={{
             fontFamily: "var(--font-cormorant-garamond)",
             fontStyle: "italic",
-            fontSize: "clamp(1.2rem, 5vw, 2rem)",
-            color: "#F43F5E",
+            fontSize: "clamp(1.5rem, 6vw, 2.5rem)",
+            fontWeight: 700,
+            color: "#E11D48",
             margin: "0.5rem 0",
           }}
         >
@@ -665,8 +669,8 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
         <KineticStretchingText
           text={wedding.bride_name}
           fontSize="clamp(2.2rem, 11vw, 5rem)"
-          color="#881337"
-          style={{ marginBottom: "2.5rem" }}
+          color="#9F1239"
+          style={{ marginBottom: "2.5rem", filter: "drop-shadow(0 2px 8px rgba(225,29,72,0.15))" }}
         />
 
         <FadeSection delay={0.2}>

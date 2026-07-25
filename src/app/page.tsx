@@ -5,7 +5,36 @@ import Image from "next/image";
 
 export default function Home() {
   const [activePreviewId, setActivePreviewId] = useState<string | null>(null);
-  const [activeFeatureModal, setActiveFeatureModal] = useState<"guest-name" | "subdomain" | null>(null);
+  const [activeFeatureModal, setActiveFeatureModal] = useState<"guest-name" | "subdomain" | "realtime-wishes" | null>(null);
+  const [demoGuestInput, setDemoGuestInput] = useState<string>("Minh Nhật");
+
+  // Realtime Wishes Demo State
+  const [demoWishes, setDemoWishes] = useState<Array<{ id: number; name: string; message: string; time: string; color: string }>>([
+    { id: 1, name: "Anh Nam & Chị Mai", message: "Chúc hai bạn trăm năm hạnh phúc, sớm đón quý tử nhé! ❤️", time: "Vừa xong", color: "bg-rose-50 border-rose-200 text-rose-800" },
+    { id: 2, name: "Chú Bảy", message: "Mừng ngày trọng đại của hai cháu. Chúc gia đình nhỏ luôn tràn ngập tiếng cười!", time: "2 phút trước", color: "bg-amber-50 border-amber-200 text-amber-800" },
+    { id: 3, name: "Bạn Linh (Đại học)", message: "Mãi bên nhau hạnh phúc nha 2 bạn tui! 🎉🎉", time: "5 phút trước", color: "bg-blue-50 border-blue-200 text-blue-800" }
+  ]);
+  const [newWishName, setNewWishName] = useState("");
+  const [newWishMessage, setNewWishMessage] = useState("");
+  const [justAddedWishId, setJustAddedWishId] = useState<number | null>(null);
+
+  const handleAddDemoWish = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newWishName.trim() || !newWishMessage.trim()) return;
+    const newId = Date.now();
+    const newWishItem = {
+      id: newId,
+      name: newWishName.trim(),
+      message: newWishMessage.trim(),
+      time: "Vừa xong",
+      color: "bg-rose-50 border-rose-300 text-rose-800"
+    };
+    setDemoWishes([newWishItem, ...demoWishes]);
+    setJustAddedWishId(newId);
+    setNewWishName("");
+    setNewWishMessage("");
+    setTimeout(() => setJustAddedWishId(null), 3000);
+  };
 
   const templates = [
     {
@@ -187,6 +216,7 @@ export default function Home() {
     {
       title: "Nhận Lời Chúc Thời Gian Thực",
       description: "Khách mời gửi lời chúc trực tiếp và hiển thị ngay tức thì lên Sổ lưu bút chúc mừng của thiệp.",
+      demoType: "realtime-wishes",
       icon: (
         <svg className="w-6 h-6 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
@@ -564,9 +594,7 @@ export default function Home() {
             </button>
 
             {activeFeatureModal === "guest-name" ? (
-              /* GUEST NAME PERSONALIZATION DEMO MODAL (Matching Image 2) */
               <div className="flex flex-col gap-4">
-                {/* Header */}
                 <div className="text-center flex flex-col items-center pt-1">
                   <span className="text-[8.5px] font-extrabold uppercase tracking-widest text-rose-500 bg-rose-50 px-3 py-1 rounded-full border border-rose-100">
                     Tính Năng Nổi Bật
@@ -577,73 +605,75 @@ export default function Home() {
                   <div className="w-14 h-[2px] bg-rose-300 my-1.5 rounded-full"></div>
                 </div>
 
-                {/* Side by Side Comparison Container */}
                 <div className="bg-rose-50/40 p-3 rounded-2xl border border-rose-100/60 flex flex-col gap-3">
                   <div className="grid grid-cols-2 gap-2 text-center text-[9.5px] font-bold text-gray-800 uppercase tracking-tight">
                     <div className="flex flex-col items-center leading-tight">
-                      <span className="text-gray-400 font-normal">Thiệp <strong className="text-gray-800">KHÔNG DÙNG</strong></span>
-                      <span>tên riêng từng khách</span>
+                      <span className="text-gray-400 font-normal">1. Trước khi điền tên</span>
+                      <span className="text-gray-600 font-extrabold">(Hiện dãy dấu ...)</span>
                     </div>
                     <div className="flex flex-col items-center leading-tight text-rose-700">
-                      <span className="text-rose-500 font-normal">Thiệp <strong className="text-rose-700 font-extrabold">DÙNG</strong></span>
-                      <span>tên riêng từng khách</span>
+                      <span className="text-rose-500 font-normal">2. Sau khi điền tên</span>
+                      <span className="text-rose-700 font-extrabold">(Viết tên lên dấu ...)</span>
                     </div>
                   </div>
 
-                  {/* Mockup frames side-by-side */}
-                  <div className="flex items-center justify-between gap-1.5">
-                    {/* Left Phone Frame (Standard) */}
-                    <div className="flex-1 bg-white rounded-xl border border-gray-200 shadow-sm p-1.5 flex flex-col gap-1.5 items-center">
-                      <div className="w-full aspect-[9/14] bg-stone-100 rounded-lg overflow-hidden relative border border-gray-100 flex flex-col justify-between p-1.5 text-center">
-                        <div className="flex flex-col items-center gap-0.5 pt-1">
-                          <span className="text-[6.5px] text-gray-400 uppercase tracking-widest font-serif-lux">THIỆP MỜI</span>
-                          <span className="text-[9px] font-serif-lux font-bold text-gray-700 leading-tight">Anh Tú &amp; Quỳnh Nhi</span>
+                  <div className="flex items-stretch justify-between gap-1.5 min-w-0">
+                    <div className="flex-1 min-w-0 bg-white rounded-xl border-2 border-stone-200 shadow-sm p-2 flex flex-col justify-between items-center">
+                      <div className="w-full bg-[#FFFBF7] rounded-lg border border-amber-200/60 p-3 flex flex-col items-center justify-center text-center min-w-0 min-h-[90px]">
+                        <div className="w-full bg-stone-50/80 rounded-lg p-2.5 border-2 border-stone-200 flex flex-col items-center justify-center min-w-0">
+                          <span className="text-[7.5px] text-stone-600 uppercase tracking-wider font-bold whitespace-nowrap mb-0.5">TRÂN TRỌNG KÍNH MỜI</span>
+                          <div className="relative inline-flex items-center justify-center w-full mt-1 overflow-hidden">
+                            <span className="text-stone-400 font-mono tracking-[0.25em] text-[10px] whitespace-nowrap">
+                              ......................
+                            </span>
+                          </div>
                         </div>
-                        <div className="w-full h-[55%] rounded bg-rose-50/50 overflow-hidden relative border border-rose-100/40 my-1">
-                          <img src="/thiepmaudovang/images/preview.webp" alt="Standard Preview" className="w-full h-full object-cover object-top" />
-                        </div>
-                        <div className="text-[6.5px] text-gray-300 italic pb-0.5">Vui lòng tham dự</div>
                       </div>
-                      <span className="text-[8px] text-gray-400 italic font-semibold">Gửi liên kết chung</span>
+                      <span className="text-[7.5px] text-gray-400 italic mt-1.5 whitespace-nowrap">Chỉ có dãy dấu chấm</span>
                     </div>
 
-                    {/* Arrow */}
-                    <div className="flex flex-col items-center shrink-0 text-rose-500 font-bold">
-                      <svg className="w-5 h-5 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="flex flex-col items-center justify-center shrink-0 text-rose-500 font-bold px-0.5">
+                      <svg className="w-4 h-4 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                       </svg>
                     </div>
 
-                    {/* Right Phone Frame (Personalized Highlight Box) */}
-                    <div className="flex-1 bg-white rounded-xl border-2 border-rose-400 shadow-md p-1.5 flex flex-col gap-1.5 items-center relative">
-                      <span className="absolute -top-2.5 bg-rose-600 text-white text-[7px] font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider shadow-sm">
-                        Cá nhân hóa
+                    <div className="flex-1 min-w-0 bg-white rounded-xl border-2 border-rose-500 shadow-md p-2 flex flex-col justify-between items-center relative">
+                      <span className="absolute -top-2.5 bg-rose-600 text-white text-[6.5px] font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider shadow-sm z-10 whitespace-nowrap">
+                        Đã điền tên
                       </span>
-                      <div className="w-full aspect-[9/14] bg-stone-100 rounded-lg overflow-hidden relative border border-rose-100 flex flex-col justify-between p-1 text-center">
-                        <div className="flex flex-col items-center gap-0.5 pt-0.5">
-                          <span className="text-[6px] text-rose-400 uppercase tracking-widest font-serif-lux">THIỆP MỜI</span>
-                          <span className="text-[8.5px] font-serif-lux font-bold text-gray-700 leading-tight">Anh Tú &amp; Quỳnh Nhi</span>
-                        </div>
-                        <div className="w-full h-[45%] rounded bg-rose-50/50 overflow-hidden relative border border-rose-100/40 my-0.5">
-                          <img src="/thiepmaudovang/images/preview.webp" alt="Personalized Preview" className="w-full h-full object-cover object-top" />
-                        </div>
-                        {/* Red highlight box for personalized guest name */}
-                        <div className="w-full bg-white rounded p-1 border-2 border-rose-600 shadow-inner flex flex-col items-center justify-center">
-                          <span className="text-[6px] text-gray-500 uppercase tracking-wider font-semibold">Trân Trọng Kính Mời</span>
-                          <div className="relative inline-flex items-center justify-center w-full">
-                            <span className="absolute bottom-0 text-gray-300 font-mono tracking-[0.2em] text-[7px] pointer-events-none select-none">
+                      <div className="w-full bg-[#FFFBF7] rounded-lg border border-amber-200/60 p-3 flex flex-col items-center justify-center text-center min-w-0 min-h-[90px]">
+                        <div className="w-full bg-white rounded-lg p-2.5 border-2 border-rose-600 shadow-inner flex flex-col items-center justify-center min-w-0">
+                          <span className="text-[7.5px] text-stone-600 uppercase tracking-wider font-bold whitespace-nowrap mb-0.5">TRÂN TRỌNG KÍNH MỜI</span>
+                          <div className="relative inline-flex items-center justify-center w-full mt-1 overflow-hidden">
+                            <span className="absolute bottom-0 text-stone-300 font-mono tracking-[0.25em] text-[10px] pointer-events-none select-none whitespace-nowrap">
                               ......................
                             </span>
-                            <span className="relative z-10 text-[11px] font-bold text-red-600 font-ephesis leading-none pb-0.5">Anh Nam &amp; Chị Mai</span>
+                            <span className="relative z-10 text-[15px] font-bold text-red-600 font-ephesis leading-none pb-0.5 truncate max-w-full px-0.5">
+                              {demoGuestInput || "Minh Nhật"}
+                            </span>
                           </div>
                         </div>
                       </div>
-                      <span className="text-[8px] text-rose-600 font-extrabold">Tên hiển thị riêng</span>
+                      <span className="text-[7.5px] text-rose-600 font-extrabold truncate max-w-[120px] mt-1.5 whitespace-nowrap">Viết tên lên dấu ...</span>
                     </div>
+                  </div>
+
+                  <div className="bg-white p-2.5 rounded-xl border border-rose-200/80 flex flex-col gap-1.5 shadow-sm mt-0.5">
+                    <label className="text-[10px] font-bold text-rose-700 uppercase tracking-wider flex items-center justify-between">
+                      <span>✍️ Thử nhập tên để xem trực tiếp:</span>
+                      <span className="text-[8px] text-gray-400 font-normal">Nhập gì cũng được</span>
+                    </label>
+                    <input
+                      type="text"
+                      value={demoGuestInput}
+                      onChange={(e) => setDemoGuestInput(e.target.value)}
+                      placeholder="Ví dụ: Chị Thảo, Gia đình Anh Hùng..."
+                      className="w-full text-xs px-3 py-2 bg-rose-50/50 border border-rose-200 rounded-lg outline-none focus:border-rose-500 focus:bg-white transition-colors text-red-600 font-semibold"
+                    />
                   </div>
                 </div>
 
-                {/* Key Bullet Points */}
                 <div className="flex flex-col gap-2.5 text-[11px] text-gray-700 font-sans-lux bg-gray-50 p-3.5 rounded-2xl border border-gray-100">
                   <div className="flex items-start gap-2">
                     <span className="text-base shrink-0">👉</span>
@@ -655,11 +685,10 @@ export default function Home() {
                   </div>
                   <div className="flex items-start gap-2">
                     <span className="text-base shrink-0">👉</span>
-                    <span>Hỗ trợ <strong className="text-gray-900 font-bold">theo dõi khách đã xem thiệp</strong> hay chưa, dễ dàng quản lý &amp; nhắc khách khi cần.</span>
+                    <span>Hỗ trợ <strong className="text-gray-900 font-bold">theo dõi khách đã xem thiệp</strong> hay chưa.</span>
                   </div>
                 </div>
 
-                {/* Confirm button */}
                 <button
                   onClick={() => setActiveFeatureModal(null)}
                   className="w-full py-2.5 rounded-xl bg-gradient-to-r from-rose-600 to-pink-500 text-white font-bold text-xs shadow-md hover:opacity-95 transition-opacity"
@@ -667,23 +696,121 @@ export default function Home() {
                   Đã Hiểu
                 </button>
               </div>
-            ) : (
-              /* SUBDOMAIN DEMO MODAL */
+            ) : activeFeatureModal === "realtime-wishes" ? (
+              /* REALTIME WISHES DEMO MODAL (Matching User Image Replica) */
               <div className="flex flex-col gap-4">
                 {/* Header */}
+                <div className="text-center flex flex-col items-center pt-1">
+                  <span className="text-[8.5px] font-extrabold uppercase tracking-widest text-[#70151e] bg-rose-50 px-3 py-1 rounded-full border border-rose-100">
+                    Tính Năng Nổi Bật
+                  </span>
+                  <h2 className="text-base sm:text-lg font-bold text-[#70151e] font-serif-lux mt-2 uppercase tracking-wide">
+                    NHẬN LỜI CHÚC THỜI GIAN THỰC
+                  </h2>
+                  <div className="w-14 h-[2px] bg-[#70151e] my-1.5 rounded-full"></div>
+                </div>
+
+                {/* Outer Greek Key / Golden Pattern Frame Replica */}
+                <div className="bg-[#FFFBF5] p-3 rounded-2xl border-2 border-amber-200/80 shadow-md flex flex-col gap-3 relative overflow-hidden">
+                  
+                  {/* Top Form Container (Maroon Dark Red Box) */}
+                  <div className="bg-[#70151e] p-3.5 rounded-2xl flex flex-col gap-2.5 shadow-md border border-rose-900">
+                    <div className="bg-white/95 rounded-xl px-3 py-2 text-[10.5px] text-rose-400 font-sans border border-rose-100/50">
+                      Tên của bạn là? *
+                    </div>
+                    <div className="bg-white/95 rounded-xl px-3 py-2 text-[10.5px] text-rose-400 font-sans border border-rose-100/50">
+                      Bạn là gì của Dâu Rể nhỉ? *
+                    </div>
+                    <div className="bg-white/95 rounded-xl px-3 py-2 text-[10.5px] text-rose-400 font-sans border border-rose-100/50">
+                      Gửi lời chúc đến Dâu Rể nhé!
+                    </div>
+                    <div className="bg-white/95 rounded-xl px-3 py-2 text-[10.5px] text-gray-700 font-sans flex items-center justify-between border border-rose-100/50">
+                      <span>Bạn Có Tham Dự Không? *</span>
+                      <span className="text-xs text-stone-400">▼</span>
+                    </div>
+
+                    <div className="flex justify-center mt-1">
+                      <button className="bg-white text-[#70151e] font-bold text-[11px] px-7 py-2 rounded-xl shadow-md uppercase tracking-wider">
+                        GỬI NGAY
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Middle Section: Button GỬI MỪNG CƯỚI & Double Happiness Symbol */}
+                  <div className="flex flex-col items-center gap-2 my-1">
+                    <button className="bg-[#70151e] text-white font-bold text-xs px-6 py-2 rounded-xl shadow-md uppercase tracking-wider border border-rose-900">
+                      GỬI MỪNG CƯỚI
+                    </button>
+                    <span className="text-[#e1697b] text-3xl font-serif leading-none mt-1">囍</span>
+                    <h3 className="font-artistic text-2xl text-[#70151e] font-bold leading-none">
+                      Sổ Lưu Bút Lời Chúc
+                    </h3>
+                  </div>
+
+                  {/* Bottom Wishes Feed Container (Maroon Box holding White Wish Cards) */}
+                  <div className="bg-[#70151e] p-3 rounded-2xl flex flex-col gap-2.5 shadow-md border border-rose-900">
+                    {/* Wish Card 1 */}
+                    <div className="bg-white rounded-xl p-3 flex flex-col gap-1 shadow-sm relative">
+                      <div className="flex items-center justify-between">
+                        <span className="font-bold text-[#70151e] text-[11.5px]">Bạn</span>
+                        <span className="bg-stone-100 text-stone-600 text-[8.5px] font-semibold px-2 py-0.5 rounded-full">Bạn</span>
+                      </div>
+                      <p className="text-[11px] text-gray-800 font-sans leading-snug">Chúc mừng hạnh phúc</p>
+                      <div className="flex items-center justify-between mt-1 text-[8.5px] text-stone-400 font-mono">
+                        <span className="text-rose-400 text-xs">💖</span>
+                        <span>08:17 26-07</span>
+                      </div>
+                    </div>
+
+                    {/* Wish Card 2 */}
+                    <div className="bg-white rounded-xl p-3 flex flex-col gap-1 shadow-sm relative">
+                      <div className="flex items-center justify-between">
+                        <span className="font-bold text-[#70151e] text-[11.5px]">Hi bro</span>
+                        <span className="bg-stone-100 text-stone-600 text-[8.5px] font-semibold px-2 py-0.5 rounded-full">Bạn</span>
+                      </div>
+                      <p className="text-[11px] text-gray-800 font-sans leading-snug">Chúc mừng hạnh phúc</p>
+                      <div className="flex items-center justify-between mt-1 text-[8.5px] text-stone-400 font-mono">
+                        <span className="text-rose-400 text-xs">🌸</span>
+                        <span>20:51 15-07</span>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                {/* Key Bullet Points */}
+                <div className="flex flex-col gap-2.5 text-[11px] text-gray-700 font-sans-lux bg-gray-50 p-3.5 rounded-2xl border border-gray-100">
+                  <div className="flex items-start gap-2">
+                    <span className="text-base shrink-0">👉</span>
+                    <span>Lời chúc gửi từ form sẽ <strong className="text-gray-900 font-bold">xuất hiện tức thì</strong> ngay trên Sổ Lưu Bút.</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <span className="text-base shrink-0">👉</span>
+                    <span>Tự động lưu trữ làm kỷ niệm bền lâu trên thiệp cưới online.</span>
+                  </div>
+                </div>
+
+                {/* Confirm button */}
+                <button
+                  onClick={() => setActiveFeatureModal(null)}
+                  className="w-full py-2.5 rounded-xl bg-gradient-to-r from-[#70151e] to-rose-600 text-white font-bold text-xs shadow-md hover:opacity-95 transition-opacity"
+                >
+                  Đã Hiểu
+                </button>
+              </div>
+            ) : (
+              <div className="flex flex-col gap-4">
                 <div className="text-center flex flex-col items-center pt-1">
                   <span className="text-[8.5px] font-extrabold uppercase tracking-widest text-indigo-500 bg-indigo-50 px-3 py-1 rounded-full border border-indigo-100">
                     Tùy Biến Tên Miền
                   </span>
                   <h2 className="text-base sm:text-lg font-bold text-gray-800 font-serif-lux mt-2 uppercase tracking-wide">
-                    TÊN MIỀN THEO TÊN CÔ DÂU CHÚ RỂ
+                    TÊN MIỀN RIÊNG
                   </h2>
                   <div className="w-14 h-[2px] bg-indigo-300 my-1.5 rounded-full"></div>
                 </div>
 
-                {/* Subdomain Comparison */}
                 <div className="bg-slate-50 p-3.5 rounded-2xl border border-slate-200/80 flex flex-col gap-3">
-                  {/* Default URL */}
                   <div className="flex flex-col gap-1">
                     <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Đường dẫn mặc định</span>
                     <div className="flex items-center gap-2 bg-white px-3 py-2.5 rounded-xl border border-gray-200 text-[11px] text-gray-400 truncate">
@@ -691,18 +818,14 @@ export default function Home() {
                       <span className="truncate">savethedate.io.vn/template</span>
                     </div>
                   </div>
-
-                  {/* Arrow Down */}
                   <div className="flex justify-center text-rose-500">
                     <svg className="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 14l-7 7m0 0l-7-7m7-7H3" />
                     </svg>
                   </div>
-
-                  {/* Subdomain URL */}
                   <div className="flex flex-col gap-1">
                     <span className="text-[10px] font-bold text-rose-600 uppercase tracking-wider flex items-center justify-between">
-                      <span>Tên miền riêng theo tên hai bạn</span>
+                      <span>Tên miền riêng</span>
                       <span className="bg-rose-100 text-rose-700 text-[8.5px] px-2 py-0.5 rounded-full font-extrabold">Độc Quyền</span>
                     </span>
                     <div className="flex items-center gap-2 bg-gradient-to-r from-rose-50 to-pink-50 px-3.5 py-3 rounded-xl border-2 border-rose-400 text-[12px] font-bold text-rose-700 truncate shadow-sm">
@@ -712,42 +835,20 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Social Share Preview Card */}
-                <div className="bg-emerald-50/60 p-3 rounded-2xl border border-emerald-100 flex flex-col gap-1.5">
-                  <span className="text-[10px] font-bold text-emerald-800 uppercase tracking-wider flex items-center gap-1">
-                    <span>💬</span> Giao diện hiển thị chuyên nghiệp trên Zalo / Messenger
-                  </span>
-                  <div className="bg-white p-2.5 rounded-xl border border-emerald-200/60 flex items-center gap-3 shadow-sm">
-                    <div className="w-10 h-10 rounded-lg bg-rose-100 overflow-hidden shrink-0 border border-rose-200">
-                      <img src="/thiepmaudovang/images/preview.webp" alt="Thumb" className="w-full h-full object-cover" />
-                    </div>
-                    <div className="flex flex-col truncate">
-                      <span className="text-[11px] font-bold text-gray-800 truncate">Thiệp Cưới Online: Minh Hoàng &amp; Mai Hương</span>
-                      <span className="text-[9.5px] text-gray-400 truncate">minhhoang-maihuong.savethedate.io.vn</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Key Bullet Points */}
                 <div className="flex flex-col gap-2.5 text-[11px] text-gray-700 font-sans-lux bg-gray-50 p-3.5 rounded-2xl border border-gray-100">
                   <div className="flex items-start gap-2">
                     <span className="text-base shrink-0">👉</span>
-                    <span><strong className="text-gray-900 font-bold">Tên miền độc quyền</strong> dạng <code className="bg-rose-50 text-rose-600 px-1 py-0.5 rounded text-[10px]">codau-chure.savethedate.io.vn</code> vô cùng sang trọng.</span>
+                    <span><strong className="text-gray-900 font-bold">Tên miền độc quyền</strong> dạng <code className="bg-rose-50 text-rose-600 px-1 py-0.5 rounded text-[10px]">codau-chure.savethedate.io.vn</code>.</span>
                   </div>
                   <div className="flex items-start gap-2">
                     <span className="text-base shrink-0">👉</span>
-                    <span>Dễ nhớ, ngắn gọn, tự tin chia sẻ lên Zalo, Facebook, Messenger.</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-base shrink-0">👉</span>
-                    <span>Khởi tạo &amp; kích hoạt <strong className="text-gray-900 font-bold">ngay lập tức</strong>, không cần cấu hình phức tạp.</span>
+                    <span>Dễ nhớ, chuyên nghiệp, tự tin chia sẻ Zalo/Messenger.</span>
                   </div>
                 </div>
 
-                {/* Confirm button */}
                 <button
                   onClick={() => setActiveFeatureModal(null)}
-                  className="w-full py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-rose-500 text-white font-bold text-xs shadow-md hover:opacity-95 transition-opacity"
+                  className="w-full py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-rose-500 text-white font-bold text-xs shadow-md"
                 >
                   Đã Hiểu
                 </button>
