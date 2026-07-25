@@ -379,9 +379,11 @@ export default function HomeClient() {
                         <img
                           src={tpl.image}
                           alt={`Mẫu thiệp cưới online ${tpl.name} - Save The Date`}
+                          width={360}
+                          height={640}
                           loading="lazy"
                           decoding="async"
-                          className={`w-full min-h-full h-auto absolute top-0 left-0 transition-all duration-[15s] ease-in-out object-cover object-top group-hover:top-full group-hover:-translate-y-full ${activePreviewId === tpl.id ? "top-full -translate-y-full" : "top-0 translate-y-0"
+                          className={`w-full min-h-full h-auto absolute top-0 left-0 transition-transform duration-[15s] ease-in-out object-cover object-top group-hover:top-full group-hover:-translate-y-full ${activePreviewId === tpl.id ? "top-full -translate-y-full" : "top-0 translate-y-0"
                             }`}
                         />
                       ) : (

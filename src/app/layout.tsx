@@ -63,61 +63,73 @@ const playfair = Playfair_Display({
 const pinyon = localFont({
   src: "./fonts/PinyonScript-Regular.ttf",
   variable: "--font-pinyon",
+  display: "swap",
 });
 
 const alexBrush = localFont({
   src: "./fonts/AlexBrush-Regular.ttf",
   variable: "--font-alexbrush",
+  display: "swap",
 });
 
 const motherland = localFont({
   src: "./fonts/NVN-Motherland-Signature.ttf",
   variable: "--font-motherland",
+  display: "swap",
 });
 
 const azkia = localFont({
   src: "./fonts/UTM-Azkia.ttf",
   variable: "--font-azkia",
+  display: "swap",
 });
 
 const mightiest = localFont({
   src: "./fonts/SVN-Mightiest.otf",
   variable: "--font-mightiest",
+  display: "swap",
 });
 
 const ephesis = localFont({
   src: "./fonts/Ephesis-Regular.ttf",
   variable: "--font-ephesis",
+  display: "swap",
 });
 
 const cafeta = localFont({
   src: "./fonts/UTM-Cafeta.ttf",
   variable: "--font-cafeta",
+  display: "swap",
 });
 
 const kechuyen = localFont({
   src: "./fonts/UVNKeChuyen1.ttf",
   variable: "--font-kechuyen",
+  display: "swap",
 });
 
 const quarzo = localFont({
   src: "./fonts/SVN-Quarzo.otf",
   variable: "--font-quarzo",
+  display: "swap",
 });
 
 const ameyallinda = localFont({
   src: "./fonts/SVN-Ameyallinda-Signature.otf",
   variable: "--font-ameyallinda",
+  display: "swap",
 });
 
 const sriracha = localFont({
   src: "./fonts/Sriracha-Regular.ttf",
   variable: "--font-sriracha",
+  display: "swap",
 });
 
 const sloop = localFont({
   src: "./fonts/UTM-Sloop-1.ttf",
   variable: "--font-sloop",
+  display: "swap",
 });
 
 export const metadataBase = new URL(
