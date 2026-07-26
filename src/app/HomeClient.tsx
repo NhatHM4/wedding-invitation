@@ -37,21 +37,21 @@ export default function HomeClient() {
   };
 
   const templates = [
-    {
-      id: "template-dovang",
-      name: "Mẫu Á Đông Red-Gold",
-      description: "Đậm nét truyền thống nhưng không kém phần quý phái. Ấn tượng với hiệu ứng mở cổng chào mở rèm nhung hoành tráng, cánh hoa đào rơi lãng mạn và nhạc nền ấm áp.",
-      previewUrl: "/thiepmaudovang",
-      badge: "Hiệu ứng Độc Quyền",
-      colorClasses: {
-        bg: "bg-red-50",
-        border: "border-red-200",
-        text: "text-red-700",
-        accent: "#7d1f2a"
-      },
-      image: "/thiepmaudovang/images/preview.webp",
-      scrollPreview: true
-    },
+    // {
+    //   id: "template-dovang",
+    //   name: "Mẫu Á Đông Red-Gold",
+    //   description: "Đậm nét truyền thống nhưng không kém phần quý phái. Ấn tượng với hiệu ứng mở cổng chào mở rèm nhung hoành tráng, cánh hoa đào rơi lãng mạn và nhạc nền ấm áp.",
+    //   previewUrl: "/thiepmaudovang",
+    //   badge: "Hiệu ứng Độc Quyền",
+    //   colorClasses: {
+    //     bg: "bg-red-50",
+    //     border: "border-red-200",
+    //     text: "text-red-700",
+    //     accent: "#7d1f2a"
+    //   },
+    //   image: "/thiepmaudovang/images/preview.webp",
+    //   scrollPreview: true
+    // },
     {
       id: "template-white-rose",
       name: "Mẫu Trắng Hồng Space",
@@ -604,10 +604,10 @@ export default function HomeClient() {
             </div>
 
             <div className="flex flex-col gap-3 font-sans-lux">
-              <div className="bg-rose-50/40 p-4 rounded-2xl border border-rose-100/60 flex flex-col gap-1.5 shadow-sm">
+              {/* <div className="bg-rose-50/40 p-4 rounded-2xl border border-rose-100/60 flex flex-col gap-1.5 shadow-sm">
                 <h3 className="font-bold text-rose-800 text-[12.5px]">Tạo thiệp cưới online tại SaveTheDate mất bao lâu?</h3>
                 <p className="text-gray-600 text-[11px] leading-relaxed">Bạn có thể tạo và tùy chỉnh website thiệp cưới điện tử sang trọng chỉ trong vòng 5 phút với đầy đủ thông tin, album ảnh và nhạc nền.</p>
-              </div>
+              </div> */}
               <div className="bg-rose-50/40 p-4 rounded-2xl border border-rose-100/60 flex flex-col gap-1.5 shadow-sm">
                 <h3 className="font-bold text-rose-800 text-[12.5px]">Thiệp cưới điện tử có chia sẻ qua Zalo, Facebook được không?</h3>
                 <p className="text-gray-600 text-[11px] leading-relaxed">Hoàn toàn được! Thiệp cưới SaveTheDate được tối ưu hình ảnh preview nét đẹp khi gửi qua Zalo, Facebook, Messenger, iMessage và hỗ trợ cá nhân hóa tên từng khách mời.</p>
