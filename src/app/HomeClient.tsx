@@ -171,6 +171,36 @@ export default function HomeClient() {
       },
       image: "/template8/preview/template8.webp",
       scrollPreview: true
+    },
+    {
+      id: "template9",
+      name: "Mẫu Ngôi Nhà Chúng Mình Xây Giữa Hai Trái Tim",
+      description: "Trải nghiệm thiết kế kiến trúc và ký ức tinh tế. Từng kỷ niệm hóa thành viên gạch, từng lời hứa thành khung cửa, tạo nên ngôi nhà tình yêu qua từng nhịp cuộn.",
+      previewUrl: "/template9",
+      badge: "Kiến Trúc & Ký Ức",
+      colorClasses: {
+        bg: "bg-[#F3EFE7]",
+        border: "border-[#D8CABB]",
+        text: "text-[#49372F]",
+        accent: "#A55D43"
+      },
+      image: "/template9/preview/template9.webp",
+      scrollPreview: true
+    },
+    {
+      id: "template10",
+      name: "Mẫu Khi Hai Dòng Thời Gian Hóa Thành Một",
+      description: "Trải nghiệm kể chuyện điện ảnh độc bản. Hai đường thẳng ký ức giao thoa hòa làm một dòng thời gian vĩnh cửu, kết hợp tone màu Ivory - Burgundy - Gold nghệ thuật.",
+      previewUrl: "/template10",
+      badge: "Độc Bản Art-Book",
+      colorClasses: {
+        bg: "bg-[#F4EFE7]",
+        border: "border-[#B49567]",
+        text: "text-[#642F35]",
+        accent: "#642F35"
+      },
+      image: "/template10/preview/template10.webp",
+      scrollPreview: true
     }
   ];
 

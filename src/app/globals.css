@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -10,15 +11,25 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  
+  /* Template 9 Color Tokens */
+  --t9-plaster: #F3EFE7;
+  --t9-limestone: #D8CABB;
+  --t9-terracotta: #A55D43;
+  --t9-walnut: #49372F;
+  --t9-olive: #6F7461;
+  --t9-window-light: #E2B96F;
+  --t9-night-ink: #242323;
 }
 
 @theme {
-  --font-sans: var(--font-inter), var(--font-roboto), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-serif: var(--font-playfair), var(--font-cormorant-garamond), var(--font-cormorant), Georgia, serif;
+  --font-sans: var(--font-inter), var(--font-roboto), 'Be Vietnam Pro', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: var(--font-cormorant-garamond), 'Cormorant Garamond', var(--font-cormorant), var(--font-playfair), Georgia, serif;
+  --font-handwriting: 'Dancing Script', var(--font-sriracha), var(--font-alexbrush), cursive;
   --font-roboto: var(--font-roboto), sans-serif;
   --font-barlow: var(--font-barlow), sans-serif;
-  --font-cormorant: var(--font-cormorant), serif;
-  --font-cormorant-garamond: var(--font-cormorant-garamond), serif;
+  --font-cormorant: 'Cormorant Garamond', var(--font-cormorant), serif;
+  --font-cormorant-garamond: 'Cormorant Garamond', var(--font-cormorant-garamond), serif;
   --font-inter: var(--font-inter), sans-serif;
   --font-playfair: var(--font-playfair), serif;
 

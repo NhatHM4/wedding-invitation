@@ -4,14 +4,14 @@ import HomeClient from './HomeClient';
 export const revalidate = 3600; // ISR trang chủ 1 tiếng
 
 export const metadata: Metadata = {
-  title: 'Tạo Thiệp Cưới Online & Website Đám Cưới Miễn Phí | SaveTheDate',
-  description: 'Tạo thiệp cưới điện tử, website đám cưới sang trọng chỉ trong 5 phút. Tích hợp xác nhận tham dự (RSVP), thiệp cưới QR code, gửi Zalo/Facebook dễ dàng.',
+  title: '✨ SaveTheDate.io.vn — Tạo Thiệp Cưới Online & Website Đám Cưới Sang Trọng',
+  description: 'Nền tảng tạo thiệp cưới online & website đám cưới điện tử sang trọng số 1 Việt Nam. Đa dạng mẫu thiết kế nghệ thuật, cá nhân hóa tên khách mời, xác nhận RSVP, QR mừng cưới & nhạc nền lãng mạn.',
   keywords: [
     'Save The Date Việt Nam',
     'thiệp cưới savethedate',
     'savethedate.io.vn',
     'tạo thiệp cưới online',
-    'thiệp cưới điện tử miễn phí',
+    'thiệp cưới điện tử cao cấp',
     'mẫu thiệp cưới online đẹp',
     'trang web thiệp cưới',
     'tạo website đám cưới',
@@ -23,12 +23,20 @@ export const metadata: Metadata = {
     'mẫu lời chúc đám cưới'
   ],
   authors: [{ name: 'SaveTheDate Việt Nam' }],
+  icons: {
+    icon: [
+      { url: '/favicon.ico?v=3', sizes: 'any' },
+      { url: '/icon.png?v=3', type: 'image/png' },
+      { url: '/icon.svg?v=3', type: 'image/svg+xml' }
+    ],
+    apple: '/apple-touch-icon.png?v=3',
+  },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || '',
   },
   openGraph: {
-    title: 'Tạo Thiệp Cưới Online & Website Đám Cưới Miễn Phí | SaveTheDate',
-    description: 'Tạo thiệp cưới điện tử, website đám cưới sang trọng chỉ trong 5 phút. Tích hợp xác nhận tham dự (RSVP), thiệp cưới QR code, gửi Zalo/Facebook dễ dàng.',
+    title: '✨ SaveTheDate.io.vn — Tạo Thiệp Cưới Online & Website Đám Cưới Sang Trọng',
+    description: 'Nền tảng tạo thiệp cưới online & website đám cưới điện tử sang trọng số 1 Việt Nam. Đa dạng mẫu thiết kế nghệ thuật, cá nhân hóa tên khách mời, xác nhận RSVP, QR mừng cưới & nhạc nền lãng mạn.',
     url: 'https://savethedate.io.vn',
     siteName: 'SaveTheDate Việt Nam',
     locale: 'vi_VN',
@@ -38,14 +46,14 @@ export const metadata: Metadata = {
         url: 'https://savethedate.io.vn/thiepmaudovang/images/cover.jpg',
         width: 1200,
         height: 630,
-        alt: 'Mẫu thiệp cưới online điện tử cao cấp SaveTheDate',
+        alt: 'SaveTheDate — Tạo Thiệp Cưới Online & Website Đám Cưới Độc Bản',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Tạo Thiệp Cưới Online & Website Đám Cưới Miễn Phí | SaveTheDate',
-    description: 'Tạo thiệp cưới điện tử sang trọng trong 5 phút. Tích hợp RSVP, QR mừng cưới & gửi Zalo/Facebook.',
+    title: '✨ SaveTheDate.io.vn — Tạo Thiệp Cưới Online & Website Đám Cưới Sang Trọng',
+    description: 'Nền tảng tạo thiệp cưới online & website đám cưới điện tử sang trọng số 1 Việt Nam. Tích hợp RSVP, QR mừng cưới & gửi Zalo/Facebook.',
     images: ['https://savethedate.io.vn/thiepmaudovang/images/cover.jpg'],
   },
 };

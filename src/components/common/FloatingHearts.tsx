@@ -17,9 +17,10 @@ interface HeartParticle {
 interface FloatingHeartsProps {
   count?: number;
   className?: string;
+  colors?: string[];
 }
 
-export default function FloatingHearts({ count = 32, className = "" }: FloatingHeartsProps) {
+export default function FloatingHearts({ count = 32, className = "", colors: customColors }: FloatingHeartsProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -36,7 +37,7 @@ export default function FloatingHearts({ count = 32, className = "" }: FloatingH
     let animationFrameId: number;
     let particles: HeartParticle[] = [];
 
-    const colors = [
+    const colors = customColors || [
       "rgba(244, 114, 182, ", // soft pink
       "rgba(251, 113, 133, ", // rose pink
       "rgba(244, 63, 94, ",   // vibrant rose

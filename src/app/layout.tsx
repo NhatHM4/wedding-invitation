@@ -146,44 +146,48 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase,
   title: {
-    default: "E-Wedding - Thiệp Cưới Online Độc Bản & Sang Trọng",
-    template: "%s | E-Wedding",
+    default: "✨ SaveTheDate.io.vn — Tạo Thiệp Cưới Online & Website Đám Cưới Sang Trọng",
+    template: "%s | SaveTheDate",
   },
-  description: "Nền tảng tạo thiệp cưới online độc bản, chuyên nghiệp với giao diện sang trọng, custom domain theo tên hai bạn và nhạc nền lãng mạn.",
+  description: "Nền tảng tạo thiệp cưới online & website đám cưới điện tử sang trọng số 1 Việt Nam. Tùy chỉnh giao diện nghệ thuật, custom domain riêng và âm nhạc lãng mạn.",
   keywords: [
     "thiệp cưới online",
     "thiệp cưới điện tử",
-    "e-wedding",
+    "savethedate",
     "tạo thiệp cưới",
     "thiệp đám cưới",
     "thiệp cưới custom domain",
     "save the date"
   ],
-  authors: [{ name: "E-Wedding Platform" }],
+  authors: [{ name: "SaveTheDate Platform" }],
   icons: {
-    icon: "/favicon.ico",
-    apple: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico?v=3", sizes: "any" },
+      { url: "/icon.png?v=3", type: "image/png" },
+      { url: "/icon.svg?v=3", type: "image/svg+xml" }
+    ],
+    apple: "/apple-touch-icon.png?v=3",
   },
   openGraph: {
     type: "website",
     locale: "vi_VN",
     url: "https://savethedate.io.vn",
-    siteName: "E-Wedding - Thiệp Cưới Online",
-    title: "E-Wedding - Dịch Vụ Tạo Thiệp Cưới Online Độc Bản",
-    description: "Tạo thiệp cưới điện tử đẳng cấp với custom domain riêng, giao diện sang trọng và âm nhạc lãng mạn.",
+    siteName: "SaveTheDate Việt Nam",
+    title: "✨ SaveTheDate.io.vn — Tạo Thiệp Cưới Online & Website Đám Cưới Sang Trọng",
+    description: "Nền tảng tạo thiệp cưới online & website đám cưới điện tử sang trọng số 1 Việt Nam. Tùy chỉnh giao diện nghệ thuật, custom domain riêng và âm nhạc lãng mạn.",
     images: [
       {
         url: "/thiepmaudovang/images/cover.jpg",
         width: 1200,
         height: 630,
-        alt: "E-Wedding - Thiệp Cưới Online",
+        alt: "SaveTheDate - Thiệp Cưới Online Sang Trọng",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "E-Wedding - Thiệp Cưới Online Độc Bản",
-    description: "Tạo thiệp cưới điện tử đẳng cấp với custom domain riêng.",
+    title: "✨ SaveTheDate.io.vn — Tạo Thiệp Cưới Online & Website Đám Cưới Sang Trọng",
+    description: "Nền tảng tạo thiệp cưới online & website đám cưới điện tử sang trọng số 1 Việt Nam.",
     images: ["/thiepmaudovang/images/cover.jpg"],
   },
   robots: {

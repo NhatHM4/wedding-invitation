@@ -1114,7 +1114,7 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
                 boxShadow: "0 10px 40px rgba(244, 63, 94, 0.15)",
               }}
             >
-              <Image src={lightboxSrc} alt="Gallery" fill style={{ objectFit: "cover", borderRadius: "12px" }} />
+              <Image src={lightboxSrc} alt="Gallery" fill sizes="(max-width: 480px) 90vw, 480px" style={{ objectFit: "cover", borderRadius: "12px" }} />
             </motion.div>
           </motion.div>
         )}
