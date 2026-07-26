@@ -608,4 +608,21 @@
   .neomorph-transition {
     transition: none !important;
   }
-}
+}
+
+/* Template preview smooth top-to-bottom scroll keyframes */
+@keyframes scroll-image-down {
+  0% {
+    top: 0%;
+    transform: translateY(0%);
+  }
+  100% {
+    top: 100%;
+    transform: translateY(-100%);
+  }
+}
+
+.animate-scroll-down {
+  animation: scroll-image-down 12s linear forwards !important;
+}
+

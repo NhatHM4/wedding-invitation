@@ -91,14 +91,14 @@ export default function Home() {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     'mainEntity': [
-      {
-        '@type': 'Question',
-        'name': 'Tạo thiệp cưới online tại SaveTheDate mất bao lâu?',
-        'acceptedAnswer': {
-          '@type': 'Answer',
-          'text': 'Bạn có thể tạo và tùy chỉnh website thiệp cưới điện tử sang trọng chỉ trong vòng 5 phút với đầy đủ thông tin, album ảnh và nhạc nền.'
-        }
-      },
+      // {
+      //   '@type': 'Question',
+      //   'name': 'Tạo thiệp cưới online tại SaveTheDate mất bao lâu?',
+      //   'acceptedAnswer': {
+      //     '@type': 'Answer',
+      //     'text': 'Bạn có thể tạo và tùy chỉnh website thiệp cưới điện tử sang trọng chỉ trong vòng 5 phút với đầy đủ thông tin, album ảnh và nhạc nền.'
+      //   }
+      // },
       {
         '@type': 'Question',
         'name': 'Thiệp cưới điện tử có chia sẻ qua Zalo, Facebook được không?',
