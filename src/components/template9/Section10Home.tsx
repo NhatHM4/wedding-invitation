@@ -78,8 +78,9 @@ export default function Section10Home({ groomName, brideName, weddingDate, onRep
           <span className="font-sans text-[10px] tracking-widest text-[#6F7461] uppercase block mb-1">
             HOUSE PLAQUE
           </span>
-          <h3 className="font-serif text-2xl md:text-3xl text-[#49372F] font-bold tracking-tight">
-            The Home of {groomName} &amp; {brideName}
+          <h3 className="text-[#49372F]">
+            <span className="block font-serif text-base md:text-lg italic opacity-70">The Home of</span>
+            <span className="font-artistic-name block text-2xl md:text-4xl tracking-tight mt-1">{groomName} &amp; {brideName}</span>
           </h3>
           <p className="font-sans text-xs text-[#A55D43] uppercase tracking-widest mt-2 font-semibold">
             SINCE {eventYear} &middot; {formattedDate}
@@ -112,7 +113,10 @@ export default function Section10Home({ groomName, brideName, weddingDate, onRep
 
         {/* Footer info */}
         <div className="mt-16 pt-8 border-t border-[#D8CABB] w-full flex flex-col sm:flex-row justify-between items-center text-xs font-sans text-[#6F7461] gap-2">
-          <span>{groomName} &amp; {brideName} Wedding Invitation</span>
+          <span>
+            <span className="font-artistic-name block text-lg leading-tight">{groomName} &amp; {brideName}</span>
+            <span className="block mt-1 tracking-wider uppercase text-[9px]">Wedding Invitation</span>
+          </span>
           <span className="font-handwriting text-base text-[#A55D43]">Made with love &amp; quiet joy</span>
           <span>SaveTheDate.io.vn &copy; {eventYear}</span>
         </div>

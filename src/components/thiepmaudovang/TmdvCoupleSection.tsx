@@ -60,10 +60,10 @@ export default function TmdvCoupleSection({ wedding }: TmdvCoupleSectionProps) {
             </div>
             <div className="flex-1">
               <span className="text-[11px] font-bold text-[#b91c1c] uppercase tracking-wider block font-sans">Chú rể</span>
-              <h4 className="font-mightiest text-xl text-stone-800 mt-0.5 leading-snug">{groomName}</h4>
+              <h4 className="font-artistic-name text-2xl text-stone-800 mt-0.5 leading-snug">{groomName}</h4>
               <div className="text-[11px] text-stone-600 font-sans mt-1.5 leading-normal">
-                <p><span className="text-stone-400">Con ông:</span> {groomFather}</p>
-                <p><span className="text-stone-400">Con bà:</span> {groomMother}</p>
+                <p className="grid grid-cols-[42px_1fr] items-start gap-1"><span className="text-stone-400 text-right">Con ông:</span> <span className="font-artistic-name text-sm leading-tight text-left">{groomFather}</span></p>
+                <p className="grid grid-cols-[42px_1fr] items-start gap-1"><span className="text-stone-400 text-right">Con bà:</span> <span className="font-artistic-name text-sm leading-tight text-left">{groomMother}</span></p>
               </div>
             </div>
           </div>
@@ -88,10 +88,10 @@ export default function TmdvCoupleSection({ wedding }: TmdvCoupleSectionProps) {
             </div>
             <div className="flex-1">
               <span className="text-[11px] font-bold text-[#b91c1c] uppercase tracking-wider block font-sans">Cô dâu</span>
-              <h4 className="font-mightiest text-xl text-stone-800 mt-0.5 leading-snug">{brideName}</h4>
+              <h4 className="font-artistic-name text-2xl text-stone-800 mt-0.5 leading-snug">{brideName}</h4>
               <div className="text-[11px] text-stone-600 font-sans mt-1.5 leading-normal">
-                <p><span className="text-stone-400">Con ông:</span> {brideFather}</p>
-                <p><span className="text-stone-400">Con bà:</span> {brideMother}</p>
+                <p className="grid grid-cols-[42px_1fr] items-start gap-1"><span className="text-stone-400 text-right">Con ông:</span> <span className="font-artistic-name text-sm leading-tight text-left">{brideFather}</span></p>
+                <p className="grid grid-cols-[42px_1fr] items-start gap-1"><span className="text-stone-400 text-right">Con bà:</span> <span className="font-artistic-name text-sm leading-tight text-left">{brideMother}</span></p>
               </div>
             </div>
           </div>

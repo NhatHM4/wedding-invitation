@@ -62,7 +62,7 @@ export default function TextSilhouetteMask({
               className="relative inline-block px-3 py-1 rounded-2xl bg-white/40 backdrop-blur-[2px] border border-rose-200/50"
               style={{
                 fontSize,
-                fontFamily: "var(--font-cormorant-garamond)",
+                fontFamily: "var(--font-alexbrush), var(--font-motherland), 'Dancing Script', cursive",
                 fontWeight: 800,
                 lineHeight: 1.1,
                 letterSpacing: "-0.01em",
@@ -171,7 +171,7 @@ export default function TextSilhouetteMask({
             >
               <p
                 style={{
-                  fontFamily: "var(--font-cormorant-garamond)",
+                  fontFamily: "var(--font-alexbrush), var(--font-motherland), 'Dancing Script', cursive",
                   fontWeight: 600,
                   fontSize: "clamp(1.5rem, 6vw, 2.5rem)",
                   color: "#F9F6EE",

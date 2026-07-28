@@ -281,7 +281,7 @@ export default function Template10({ wedding, to, wishes: initialWishes }: Templ
               className="mb-8"
             >
               <span className="text-[11px] font-mono uppercase tracking-[0.22em] text-[#69717A] block mb-1">Dòng Thời Gian A</span>
-              <h1 className="font-[family-name:var(--font-cormorant-garamond)] text-4xl sm:text-6xl font-light text-[#642F35] tracking-tight">
+              <h1 className="font-artistic-name text-5xl sm:text-7xl text-[#642F35] tracking-tight">
                 {groomName}
               </h1>
             </motion.div>
@@ -318,7 +318,7 @@ export default function Template10({ wedding, to, wishes: initialWishes }: Templ
               className="mt-8"
             >
               <span className="text-[11px] font-mono uppercase tracking-[0.22em] text-[#69717A] block mb-1">Dòng Thời Gian B</span>
-              <h1 className="font-[family-name:var(--font-cormorant-garamond)] text-4xl sm:text-6xl font-light text-[#642F35] tracking-tight">
+              <h1 className="font-artistic-name text-5xl sm:text-7xl text-[#642F35] tracking-tight">
                 {brideName}
               </h1>
             </motion.div>
@@ -411,7 +411,7 @@ export default function Template10({ wedding, to, wishes: initialWishes }: Templ
                 <div className="sm:col-span-7 space-y-4">
                   <div>
                     <span className="text-[10px] font-mono uppercase tracking-widest text-[#B49567] block mb-1">Architect &amp; Explorer</span>
-                    <h3 className="font-[family-name:var(--font-cormorant-garamond)] text-3xl text-[#642F35]">
+                    <h3 className="font-artistic-name text-4xl text-[#642F35]">
                       {groomName}
                     </h3>
                   </div>
@@ -449,7 +449,7 @@ export default function Template10({ wedding, to, wishes: initialWishes }: Templ
                 <div className="sm:col-span-7 space-y-4 order-2 sm:order-1">
                   <div>
                     <span className="text-[10px] font-mono uppercase tracking-widest text-[#B49567] block mb-1">Artist &amp; Storyteller</span>
-                    <h3 className="font-[family-name:var(--font-cormorant-garamond)] text-3xl text-[#642F35]">
+                    <h3 className="font-artistic-name text-4xl text-[#642F35]">
                       {brideName}
                     </h3>
                   </div>
@@ -520,7 +520,7 @@ export default function Template10({ wedding, to, wishes: initialWishes }: Templ
             {/* Groom's Milestones Track */}
             <div className="space-y-10">
               <div className="border-b border-[#642F35]/20 pb-3 mb-6 flex items-center justify-between">
-                <span className="font-[family-name:var(--font-cormorant-garamond)] text-xl text-[#642F35] font-medium">
+                <span className="font-artistic-name text-2xl text-[#642F35]">
                   {groomName}
                 </span>
                 <span className="text-[10px] font-mono text-[#69717A] uppercase tracking-wider">Hành Trình A</span>
@@ -630,7 +630,7 @@ export default function Template10({ wedding, to, wishes: initialWishes }: Templ
             {/* Bride's Milestones Track */}
             <div className="space-y-10">
               <div className="border-b border-[#642F35]/20 pb-3 mb-6 flex items-center justify-between">
-                <span className="font-[family-name:var(--font-cormorant-garamond)] text-xl text-[#642F35] font-medium">
+                <span className="font-artistic-name text-2xl text-[#642F35]">
                   {brideName}
                 </span>
                 <span className="text-[10px] font-mono text-[#69717A] uppercase tracking-wider">Hành Trình B</span>
@@ -941,7 +941,7 @@ export default function Template10({ wedding, to, wishes: initialWishes }: Templ
               Nhưng anh hứa sẽ cùng em đi qua tất cả những ngày ấy.&rdquo;
             </p>
 
-            <span className="font-[family-name:var(--font-alexbrush)] text-4xl text-[#642F35] block pt-4">
+            <span className="font-artistic-name text-balance text-4xl text-[#642F35] block pt-4">
               {groomName} &amp; {brideName}
             </span>
           </motion.div>
@@ -1017,8 +1017,8 @@ export default function Template10({ wedding, to, wishes: initialWishes }: Templ
                     Lễ Thành Hôn — Tiệc Nhà Trai
                   </h3>
                   <p className="text-xs text-[#69717A] mt-1">
-                    Thân phụ: {wedding.location_info?.groom_family?.father_name || "Nguyễn Văn A"}<br />
-                    Thân mẫu: {wedding.location_info?.groom_family?.mother_name || "Lê Thị B"}
+                    Thân phụ: <span className="font-artistic-name text-base">{wedding.location_info?.groom_family?.father_name || "Nguyễn Văn A"}</span><br />
+                    Thân mẫu: <span className="font-artistic-name text-base">{wedding.location_info?.groom_family?.mother_name || "Lê Thị B"}</span>
                   </p>
                 </div>
 
@@ -1074,8 +1074,8 @@ export default function Template10({ wedding, to, wishes: initialWishes }: Templ
                     Lễ Vu Quy — Tiệc Nhà Gái
                   </h3>
                   <p className="text-xs text-[#69717A] mt-1">
-                    Thân phụ: {wedding.location_info?.bride_family?.father_name || "Trần Văn C"}<br />
-                    Thân mẫu: {wedding.location_info?.bride_family?.mother_name || "Phạm Thị D"}
+                    Thân phụ: <span className="font-artistic-name text-base">{wedding.location_info?.bride_family?.father_name || "Trần Văn C"}</span><br />
+                    Thân mẫu: <span className="font-artistic-name text-base">{wedding.location_info?.bride_family?.mother_name || "Phạm Thị D"}</span>
                   </p>
                 </div>
 
@@ -1246,8 +1246,8 @@ export default function Template10({ wedding, to, wishes: initialWishes }: Templ
                         onChange={(e) => setRsvpForm({ ...rsvpForm, side: e.target.value as "groom" | "bride" })}
                         className="w-full px-4 py-2.5 bg-[#F4EFE7] border border-[#B49567]/50 rounded text-xs text-[#332A27] focus:outline-none focus:border-[#642F35]"
                       >
-                        <option value="groom">Khách Nhà Trai ({groomName})</option>
-                        <option value="bride">Khách Nhà Gái ({brideName})</option>
+                        <option className="font-artistic-name" value="groom">Khách Nhà Trai ({groomName})</option>
+                        <option className="font-artistic-name" value="bride">Khách Nhà Gái ({brideName})</option>
                       </select>
                     </div>
                   </div>
@@ -1445,7 +1445,7 @@ export default function Template10({ wedding, to, wishes: initialWishes }: Templ
           </p>
 
           <div className="space-y-1 mb-12">
-            <span className="font-[family-name:var(--font-alexbrush)] text-4xl text-[#642F35] block">
+            <span className="font-artistic-name text-balance text-4xl text-[#642F35] block">
               {groomName} &amp; {brideName}
             </span>
             <span className="text-xs font-mono text-[#B49567] tracking-widest uppercase block">

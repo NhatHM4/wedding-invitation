@@ -634,8 +634,8 @@ export default function Template6({ wedding, to, wishes }: Template6Props) {
                   </span>
                   {groomFamily ? (
                     <div className="flex flex-col gap-1 text-[#2B2D42]/80">
-                      <p className="font-bold text-gray-800 text-[11px] mb-1">Ông: {groomFamily.father_name || "Nguyễn Văn Hùng"}</p>
-                      <p className="font-bold text-gray-800 text-[11px] mb-2">Bà: {groomFamily.mother_name || "Lê Thị Lan"}</p>
+                      <p className="text-[11px] mb-1">Ông: <span className="font-artistic-name text-base text-gray-800">{groomFamily.father_name || "Nguyễn Văn Hùng"}</span></p>
+                      <p className="text-[11px] mb-2">Bà: <span className="font-artistic-name text-base text-gray-800">{groomFamily.mother_name || "Lê Thị Lan"}</span></p>
                       <span className="text-[10px] text-[#C5A880] italic">Trú tại:</span>
                       <p className="text-[10px] leading-tight text-[#2B2D42]/70 font-medium">
                         {groomFamily.address || "Quận Hoàn Kiếm, Hà Nội"}
@@ -653,8 +653,8 @@ export default function Template6({ wedding, to, wishes }: Template6Props) {
                   </span>
                   {brideFamily ? (
                     <div className="flex flex-col gap-1 text-[#2B2D42]/80">
-                      <p className="font-bold text-gray-800 text-[11px] mb-1">Ông: {brideFamily.father_name || "Trần Văn Minh"}</p>
-                      <p className="font-bold text-gray-800 text-[11px] mb-2">Bà: {brideFamily.mother_name || "Phạm Thị Hoa"}</p>
+                      <p className="text-[11px] mb-1">Ông: <span className="font-artistic-name text-base text-gray-800">{brideFamily.father_name || "Trần Văn Minh"}</span></p>
+                      <p className="text-[11px] mb-2">Bà: <span className="font-artistic-name text-base text-gray-800">{brideFamily.mother_name || "Phạm Thị Hoa"}</span></p>
                       <span className="text-[10px] text-[#C5A880] italic">Trú tại:</span>
                       <p className="text-[10px] leading-tight text-[#2B2D42]/70 font-medium">
                         {brideFamily.address || "Quận Phú Nhuận, TP. HCM"}
@@ -695,10 +695,10 @@ export default function Template6({ wedding, to, wishes }: Template6Props) {
                     </div>
                     <div>
                       <span className="text-[9px] font-bold text-[#8E4A49] uppercase tracking-wider block">Chú rể</span>
-                      <h4 className="font-serif-luxury text-base font-bold text-[#2B2D42] mt-0.5">{wedding.groom_name}</h4>
+                      <h4 className="font-artistic-name text-xl text-[#2B2D42] mt-0.5">{wedding.groom_name}</h4>
                       {groomFamily && (
                         <p className="text-[10px] text-gray-500 mt-1 leading-normal">
-                          Con ông: {groomFamily.father_name} <br/> Con bà: {groomFamily.mother_name}
+                          Con ông: <span className="font-artistic-name text-sm">{groomFamily.father_name}</span> <br/> Con bà: <span className="font-artistic-name text-sm">{groomFamily.mother_name}</span>
                         </p>
                       )}
                     </div>
@@ -722,10 +722,10 @@ export default function Template6({ wedding, to, wishes }: Template6Props) {
                     </div>
                     <div>
                       <span className="text-[9px] font-bold text-[#8E4A49] uppercase tracking-wider block">Cô dâu</span>
-                      <h4 className="font-serif-luxury text-base font-bold text-[#2B2D42] mt-0.5">{wedding.bride_name}</h4>
+                      <h4 className="font-artistic-name text-xl text-[#2B2D42] mt-0.5">{wedding.bride_name}</h4>
                       {brideFamily && (
                         <p className="text-[10px] text-gray-500 mt-1 leading-normal">
-                          Con ông: {brideFamily.father_name} <br/> Con bà: {brideFamily.mother_name}
+                          Con ông: <span className="font-artistic-name text-sm">{brideFamily.father_name}</span> <br/> Con bà: <span className="font-artistic-name text-sm">{brideFamily.mother_name}</span>
                         </p>
                       )}
                     </div>
@@ -1382,7 +1382,7 @@ export default function Template6({ wedding, to, wishes }: Template6Props) {
                         </div>
                         <div>
                           <span className="text-[7.5px] font-bold uppercase text-gray-400 tracking-wider">Chủ tài khoản</span>
-                          <p className="font-bold text-gray-800 uppercase">{wedding.groom_name}</p>
+                          <p className="font-artistic-name text-xl text-gray-800">{wedding.groom_name}</p>
                         </div>
                       </div>
                     </div>
@@ -1418,7 +1418,7 @@ export default function Template6({ wedding, to, wishes }: Template6Props) {
                         </div>
                         <div>
                           <span className="text-[7.5px] font-bold uppercase text-gray-400 tracking-wider">Chủ tài khoản</span>
-                          <p className="font-bold text-gray-800 uppercase">{wedding.bride_name}</p>
+                          <p className="font-artistic-name text-xl text-gray-800">{wedding.bride_name}</p>
                         </div>
                       </div>
                     </div>

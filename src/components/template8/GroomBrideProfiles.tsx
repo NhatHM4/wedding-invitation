@@ -67,7 +67,7 @@ export default function GroomBrideProfiles({ wedding }: GroomBrideProfilesProps)
             <span className="text-xs uppercase tracking-widest text-rose-500 font-semibold mb-1">
               CHÚ RỂ
             </span>
-            <h3 className="font-serif text-2xl sm:text-3xl text-rose-950 font-normal mb-4">
+            <h3 className="font-artistic-name text-3xl sm:text-4xl text-rose-950 mb-4">
               {wedding.groom_name}
             </h3>
 
@@ -75,11 +75,11 @@ export default function GroomBrideProfiles({ wedding }: GroomBrideProfilesProps)
             <div className="text-sm text-gray-600 mb-6 space-y-1 bg-rose-50/50 px-6 py-3 rounded-2xl w-full">
               <p>
                 <span className="text-gray-500">Con ông:</span>{" "}
-                <strong className="text-gray-800 font-medium">{groomFamily.father_name || "Nguyễn Viết Minh"}</strong>
+                <strong className="font-artistic-name text-lg text-gray-800">{groomFamily.father_name || "Nguyễn Viết Minh"}</strong>
               </p>
               <p>
                 <span className="text-gray-500">Con bà:</span>{" "}
-                <strong className="text-gray-800 font-medium">{groomFamily.mother_name || "Trịnh Thị Lan"}</strong>
+                <strong className="font-artistic-name text-lg text-gray-800">{groomFamily.mother_name || "Trịnh Thị Lan"}</strong>
               </p>
             </div>
 
@@ -132,7 +132,7 @@ export default function GroomBrideProfiles({ wedding }: GroomBrideProfilesProps)
             <span className="text-xs uppercase tracking-widest text-rose-500 font-semibold mb-1">
               CÔ DÂU
             </span>
-            <h3 className="font-serif text-2xl sm:text-3xl text-rose-950 font-normal mb-4">
+            <h3 className="font-artistic-name text-3xl sm:text-4xl text-rose-950 mb-4">
               {wedding.bride_name}
             </h3>
 
@@ -140,11 +140,11 @@ export default function GroomBrideProfiles({ wedding }: GroomBrideProfilesProps)
             <div className="text-sm text-gray-600 mb-6 space-y-1 bg-rose-50/50 px-6 py-3 rounded-2xl w-full">
               <p>
                 <span className="text-gray-500">Con ông:</span>{" "}
-                <strong className="text-gray-800 font-medium">{brideFamily.father_name || "Trịnh Văn Huy"}</strong>
+                <strong className="font-artistic-name text-lg text-gray-800">{brideFamily.father_name || "Trịnh Văn Huy"}</strong>
               </p>
               <p>
                 <span className="text-gray-500">Con bà:</span>{" "}
-                <strong className="text-gray-800 font-medium">{brideFamily.mother_name || "Ngô Mai Hoàn"}</strong>
+                <strong className="font-artistic-name text-lg text-gray-800">{brideFamily.mother_name || "Ngô Mai Hoàn"}</strong>
               </p>
             </div>
 

@@ -188,7 +188,7 @@ export default function Template4({ wedding, to, wishes }: Template4Props) {
             <div className="my-auto space-y-8 py-8">
               <div className="space-y-2">
                 <span className="text-[9px] tracking-[0.2em] font-mono text-neutral-400 block uppercase">EXHIBITION NO. 04</span>
-                <h1 className="font-cormorant-garamond text-4xl font-light tracking-tight leading-none uppercase text-neutral-800">
+                <h1 className="font-artistic-name text-balance text-5xl tracking-tight leading-none text-neutral-800">
                   {wedding.groom_name} <br />
                   <span className="italic font-normal lowercase text-neutral-500">&amp;</span> {wedding.bride_name}
                 </h1>
@@ -266,12 +266,12 @@ export default function Template4({ wedding, to, wishes }: Template4Props) {
           />
           <BrutalistScrollRevealHeader 
             text={wedding.groom_name.toUpperCase()} 
-            className="font-cormorant-garamond text-4xl font-light tracking-tight text-neutral-900 leading-none"
+            className="font-artistic-name text-4xl sm:text-5xl tracking-tight text-neutral-900 leading-none"
           />
           <span className="font-cormorant-garamond text-2xl italic font-light text-neutral-400 block px-6">&amp;</span>
           <BrutalistScrollRevealHeader 
             text={wedding.bride_name.toUpperCase()} 
-            className="font-cormorant-garamond text-4xl font-light tracking-tight text-neutral-900 leading-none"
+            className="font-artistic-name text-4xl sm:text-5xl tracking-tight text-neutral-900 leading-none"
           />
         </div>
 
@@ -323,9 +323,9 @@ export default function Template4({ wedding, to, wishes }: Template4Props) {
                 />
               </div>
               <div className="flex-1 space-y-1">
-                <h3 className="font-cormorant-garamond text-2xl font-bold tracking-wide text-neutral-800 leading-none">{wedding.groom_name}</h3>
+                <h3 className="font-artistic-name text-3xl tracking-wide text-neutral-800 leading-none">{wedding.groom_name}</h3>
                 <p className="text-[9px] text-neutral-400 font-semibold uppercase font-mono tracking-wider pt-1.5">Trưởng nam của:</p>
-                <p className="text-xs text-neutral-700 font-light leading-snug">{wedding.location_info.groom_family?.father_name || "Nguyễn Văn A"} & {wedding.location_info.groom_family?.mother_name || "Lê Thị B"}</p>
+                <p className="font-artistic-name text-base text-neutral-700 leading-snug">{wedding.location_info.groom_family?.father_name || "Nguyễn Văn A"} & {wedding.location_info.groom_family?.mother_name || "Lê Thị B"}</p>
                 <p className="text-[10px] text-neutral-500 italic leading-relaxed pt-1">{wedding.location_info.groom_family?.address || "Đại diện gia đình chú rể, Hà Nội"}</p>
               </div>
             </div>
@@ -349,9 +349,9 @@ export default function Template4({ wedding, to, wishes }: Template4Props) {
                 />
               </div>
               <div className="flex-1 space-y-1 text-right">
-                <h3 className="font-cormorant-garamond text-2xl font-bold tracking-wide text-neutral-800 leading-none">{wedding.bride_name}</h3>
+                <h3 className="font-artistic-name text-3xl tracking-wide text-neutral-800 leading-none">{wedding.bride_name}</h3>
                 <p className="text-[9px] text-neutral-400 font-semibold uppercase font-mono tracking-wider pt-1.5">Ái nữ của:</p>
-                <p className="text-xs text-neutral-700 font-light leading-snug">{wedding.location_info.bride_family?.father_name || "Trần Văn C"} & {wedding.location_info.bride_family?.mother_name || "Phạm Thị D"}</p>
+                <p className="font-artistic-name text-base text-neutral-700 leading-snug">{wedding.location_info.bride_family?.father_name || "Trần Văn C"} & {wedding.location_info.bride_family?.mother_name || "Phạm Thị D"}</p>
                 <p className="text-[10px] text-neutral-500 italic leading-relaxed pt-1">{wedding.location_info.bride_family?.address || "Đại diện gia đình cô dâu, TP. Hồ Chí Minh"}</p>
               </div>
             </div>

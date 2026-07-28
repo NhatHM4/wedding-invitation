@@ -308,7 +308,7 @@ export default function GardenTemplate({ wedding, to, wishes }: GardenTemplatePr
             <span className={`text-xs uppercase tracking-[0.2em] font-semibold ${isNightMode ? "text-[#DDB36E]" : "text-[#A6674E]"}`}>
               Thiệp Cưới Gia Đình
             </span>
-            <h1 className={`font-serif text-3xl sm:text-4xl md:text-5xl leading-tight font-medium ${isNightMode ? "text-[#FFF5DF] drop-shadow" : "text-[#56604D]"}`}>
+            <h1 className={`font-serif text-2xl sm:text-4xl md:text-5xl leading-snug text-balance font-medium ${isNightMode ? "text-[#FFF5DF] drop-shadow" : "text-[#56604D]"}`}>
               &quot;The Garden We Grow Together&quot;
             </h1>
             <p className={`font-serif italic text-lg sm:text-xl ${isNightMode ? "text-[#DDB36E]" : "text-[#A6674E]"}`}>
@@ -338,7 +338,7 @@ export default function GardenTemplate({ wedding, to, wishes }: GardenTemplatePr
                   priority
                 />
               </div>
-              <span className={`mt-2 text-xs sm:text-sm font-semibold px-4 py-1.5 rounded-full border shadow-sm ${isNightMode ? "bg-[#1C2820] text-[#FFF5DF] border-[#DDB36E]/40" : "bg-[#F8F3E8] text-[#56604D] border-[#C9D0C4]"}`}>
+              <span className={`font-artistic-name !whitespace-nowrap inline-flex min-w-[118px] w-max items-center justify-center mt-2 text-[15px] sm:text-lg leading-none px-4 py-2 rounded-full border shadow-sm ${isNightMode ? "bg-[#1C2820] text-[#FFF5DF] border-[#DDB36E]/40" : "bg-[#F8F3E8] text-[#56604D] border-[#C9D0C4]"}`}>
                 {wedding.groom_name}
               </span>
             </div>
@@ -358,7 +358,7 @@ export default function GardenTemplate({ wedding, to, wishes }: GardenTemplatePr
                   priority
                 />
               </div>
-              <span className={`mt-2 text-xs sm:text-sm font-semibold px-4 py-1.5 rounded-full border shadow-sm ${isNightMode ? "bg-[#1C2820] text-[#FFF5DF] border-[#DDB36E]/40" : "bg-[#F8F3E8] text-[#56604D] border-[#C9D0C4]"}`}>
+              <span className={`font-artistic-name !whitespace-nowrap inline-flex min-w-[118px] w-max items-center justify-center mt-2 text-[15px] sm:text-lg leading-none px-4 py-2 rounded-full border shadow-sm ${isNightMode ? "bg-[#1C2820] text-[#FFF5DF] border-[#DDB36E]/40" : "bg-[#F8F3E8] text-[#56604D] border-[#C9D0C4]"}`}>
                 {wedding.bride_name}
               </span>
             </div>
@@ -382,7 +382,7 @@ export default function GardenTemplate({ wedding, to, wishes }: GardenTemplatePr
               animate={{ opacity: 1, y: 0 }}
               className="mt-4 space-y-2"
             >
-              <h2 className={`font-serif text-2xl md:text-3xl font-semibold ${isNightMode ? "text-[#DDB36E]" : "text-[#A6674E]"}`}>
+              <h2 className={`font-artistic-name text-3xl md:text-4xl ${isNightMode ? "text-[#DDB36E]" : "text-[#A6674E]"}`}>
                 {wedding.groom_name} &amp; {wedding.bride_name}
               </h2>
               <p className={`text-sm tracking-widest uppercase ${isNightMode ? "text-[#FFF5DF]/80" : "text-[#82916D]"}`}>
@@ -773,8 +773,9 @@ export default function GardenTemplate({ wedding, to, wishes }: GardenTemplatePr
                   <span className={`text-xs font-semibold uppercase tracking-wider ${isNightMode ? "text-[#DDB36E]" : "text-[#A6674E]"}`}>
                     Nhà Trai
                   </span>
-                  <h3 className="font-serif text-xl font-semibold">
-                    Chú Rể: {wedding.groom_name}
+                  <h3>
+                    <span className="block font-serif text-xs uppercase tracking-[0.16em] opacity-70">Chú Rể</span>
+                    <span className="font-artistic-name block text-2xl mt-1">{wedding.groom_name}</span>
                   </h3>
                 </div>
                 {/* Real Groom Photo Avatar */}
@@ -793,11 +794,11 @@ export default function GardenTemplate({ wedding, to, wishes }: GardenTemplatePr
                 <div className={`text-xs space-y-1 pt-2 border-t ${isNightMode ? "border-[#DDB36E]/20 text-[#E2DACB]" : "border-[#C9D0C4]/60 text-[#6A4D3E]"}`}>
                   <p>
                     <span className={`font-medium ${isNightMode ? "text-[#FFF5DF]" : "text-[#56604D]"}`}>Thân phụ:</span>{" "}
-                    {wedding.location_info.groom_family.father_name || "Nguyễn Văn A"}
+                    <span className="font-artistic-name text-lg">{wedding.location_info.groom_family.father_name || "Nguyễn Văn A"}</span>
                   </p>
                   <p>
                     <span className={`font-medium ${isNightMode ? "text-[#FFF5DF]" : "text-[#56604D]"}`}>Thân mẫu:</span>{" "}
-                    {wedding.location_info.groom_family.mother_name || "Lê Thị B"}
+                    <span className="font-artistic-name text-lg">{wedding.location_info.groom_family.mother_name || "Lê Thị B"}</span>
                   </p>
                   <p className="text-xs pt-1 opacity-80">
                     {wedding.location_info.groom_family.address}
@@ -815,8 +816,9 @@ export default function GardenTemplate({ wedding, to, wishes }: GardenTemplatePr
                   <span className={`text-xs font-semibold uppercase tracking-wider ${isNightMode ? "text-[#DDB36E]" : "text-[#A6674E]"}`}>
                     Nhà Gái
                   </span>
-                  <h3 className="font-serif text-xl font-semibold">
-                    Cô Dâu: {wedding.bride_name}
+                  <h3>
+                    <span className="block font-serif text-xs uppercase tracking-[0.16em] opacity-70">Cô Dâu</span>
+                    <span className="font-artistic-name block text-2xl mt-1">{wedding.bride_name}</span>
                   </h3>
                 </div>
                 {/* Real Bride Photo Avatar */}
@@ -835,11 +837,11 @@ export default function GardenTemplate({ wedding, to, wishes }: GardenTemplatePr
                 <div className={`text-xs space-y-1 pt-2 border-t ${isNightMode ? "border-[#DDB36E]/20 text-[#E2DACB]" : "border-[#C9D0C4]/60 text-[#6A4D3E]"}`}>
                   <p>
                     <span className={`font-medium ${isNightMode ? "text-[#FFF5DF]" : "text-[#56604D]"}`}>Thân phụ:</span>{" "}
-                    {wedding.location_info.bride_family.father_name || "Trần Văn C"}
+                    <span className="font-artistic-name text-lg">{wedding.location_info.bride_family.father_name || "Trần Văn C"}</span>
                   </p>
                   <p>
                     <span className={`font-medium ${isNightMode ? "text-[#FFF5DF]" : "text-[#56604D]"}`}>Thân mẫu:</span>{" "}
-                    {wedding.location_info.bride_family.mother_name || "Phạm Thị D"}
+                    <span className="font-artistic-name text-lg">{wedding.location_info.bride_family.mother_name || "Phạm Thị D"}</span>
                   </p>
                   <p className="text-xs pt-1 opacity-80">
                     {wedding.location_info.bride_family.address}
@@ -1109,7 +1111,7 @@ export default function GardenTemplate({ wedding, to, wishes }: GardenTemplatePr
               <strong className="font-semibold text-[#DDB36E] font-sans not-italic">Gia đình.</strong>&quot;
             </p>
             <div className="pt-4 border-t border-[#F8F3E8]/20 space-y-1 text-xs text-[#C9D0C4]">
-              <p className="font-semibold text-sm text-[#F8F3E8]">
+              <p className="font-artistic-name text-xl text-[#F8F3E8]">
                 {wedding.groom_name} &amp; {wedding.bride_name}
               </p>
               <p className="font-mono">10 · 10 · 2026</p>

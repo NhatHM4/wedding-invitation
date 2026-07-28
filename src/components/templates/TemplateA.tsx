@@ -125,11 +125,11 @@ export default function TemplateA({ wedding, to, wishes: initialWishes, onNewWis
         <div className="z-10 max-w-xl px-6">
           <p className="text-[#D9383A] tracking-[0.25em] text-sm font-semibold uppercase mb-6">Thư Mời Lễ Cưới</p>
           
-          <h1 className="font-['Great_Vibes'] text-6xl md:text-8xl text-[#D9383A] my-4 leading-none">
+          <h1 className="font-artistic-name text-6xl md:text-8xl text-[#D9383A] my-4 leading-none">
             {wedding.groom_name}
           </h1>
           <span className="text-2xl font-['Great_Vibes'] text-[#E8C895] block my-2">&</span>
-          <h1 className="font-['Great_Vibes'] text-6xl md:text-8xl text-[#D9383A] my-4 leading-none">
+          <h1 className="font-artistic-name text-6xl md:text-8xl text-[#D9383A] my-4 leading-none">
             {wedding.bride_name}
           </h1>
 
@@ -167,11 +167,11 @@ export default function TemplateA({ wedding, to, wishes: initialWishes, onNewWis
           {/* Chú rể */}
           <div className="bg-[#FAF7F2] p-8 border border-[#E8C895]/40 rounded-lg shadow-sm relative">
             <h3 className="font-['Playfair_Display'] text-2xl font-semibold text-[#D9383A] mb-4">Chú Rể</h3>
-            <h4 className="font-['Playfair_Display'] text-xl font-bold mb-4">{wedding.groom_name}</h4>
+            <h4 className="font-artistic-name text-2xl mb-4">{wedding.groom_name}</h4>
             {wedding.location_info?.groom_family && (
               <div className="text-sm text-[#7C6656] font-['Quicksand'] space-y-1">
-                {wedding.location_info.groom_family.father_name && <p>Con ông: {wedding.location_info.groom_family.father_name}</p>}
-                {wedding.location_info.groom_family.mother_name && <p>Con bà: {wedding.location_info.groom_family.mother_name}</p>}
+                {wedding.location_info.groom_family.father_name && <p>Con ông: <span className="font-artistic-name text-base">{wedding.location_info.groom_family.father_name}</span></p>}
+                {wedding.location_info.groom_family.mother_name && <p>Con bà: <span className="font-artistic-name text-base">{wedding.location_info.groom_family.mother_name}</span></p>}
               </div>
             )}
           </div>
@@ -179,11 +179,11 @@ export default function TemplateA({ wedding, to, wishes: initialWishes, onNewWis
           {/* Cô dâu */}
           <div className="bg-[#FAF7F2] p-8 border border-[#E8C895]/40 rounded-lg shadow-sm relative">
             <h3 className="font-['Playfair_Display'] text-2xl font-semibold text-[#D9383A] mb-4">Cô Dâu</h3>
-            <h4 className="font-['Playfair_Display'] text-xl font-bold mb-4">{wedding.bride_name}</h4>
+            <h4 className="font-artistic-name text-2xl mb-4">{wedding.bride_name}</h4>
             {wedding.location_info?.bride_family && (
               <div className="text-sm text-[#7C6656] font-['Quicksand'] space-y-1">
-                {wedding.location_info.bride_family.father_name && <p>Con ông: {wedding.location_info.bride_family.father_name}</p>}
-                {wedding.location_info.bride_family.mother_name && <p>Con bà: {wedding.location_info.bride_family.mother_name}</p>}
+                {wedding.location_info.bride_family.father_name && <p>Con ông: <span className="font-artistic-name text-base">{wedding.location_info.bride_family.father_name}</span></p>}
+                {wedding.location_info.bride_family.mother_name && <p>Con bà: <span className="font-artistic-name text-base">{wedding.location_info.bride_family.mother_name}</span></p>}
               </div>
             )}
           </div>

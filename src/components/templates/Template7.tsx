@@ -634,14 +634,14 @@ export default function Template7({ wedding, to, wishes }: Template7Props) {
                             Nhà Trai
                           </span>
                           <div className="mt-3 text-slate-600 text-xs space-y-1">
-                            <p className="font-semibold text-slate-700">Ông: {wedding.location_info.groom_family?.father_name}</p>
-                            <p className="font-semibold text-slate-700">Bà: {wedding.location_info.groom_family?.mother_name}</p>
+                            <p className="text-slate-700">Ông: <span className="font-artistic-name text-base">{wedding.location_info.groom_family?.father_name}</span></p>
+                            <p className="text-slate-700">Bà: <span className="font-artistic-name text-base">{wedding.location_info.groom_family?.mother_name}</span></p>
                             <p className="text-[10px] text-slate-400 italic pt-1">Hà Nội</p>
                           </div>
                         </div>
                         <div className="mt-4 border-t border-slate-200/50 pt-3">
                           <p className="text-[11px] font-bold text-slate-700">Chú Rể</p>
-                          <p className="font-cormorant text-lg font-bold text-slate-800">{wedding.groom_name}</p>
+                          <p className="font-artistic-name text-2xl text-slate-800">{wedding.groom_name}</p>
                         </div>
                       </div>
 
@@ -652,14 +652,14 @@ export default function Template7({ wedding, to, wishes }: Template7Props) {
                             Nhà Gái
                           </span>
                           <div className="mt-3 text-slate-600 text-xs space-y-1">
-                            <p className="font-semibold text-slate-700">Ông: {wedding.location_info.bride_family?.father_name}</p>
-                            <p className="font-semibold text-slate-700">Bà: {wedding.location_info.bride_family?.mother_name}</p>
+                            <p className="text-slate-700">Ông: <span className="font-artistic-name text-base">{wedding.location_info.bride_family?.father_name}</span></p>
+                            <p className="text-slate-700">Bà: <span className="font-artistic-name text-base">{wedding.location_info.bride_family?.mother_name}</span></p>
                             <p className="text-[10px] text-slate-400 italic pt-1">TP. Hồ Chí Minh</p>
                           </div>
                         </div>
                         <div className="mt-4 border-t border-slate-200/50 pt-3">
                           <p className="text-[11px] font-bold text-slate-700">Cô Dâu</p>
-                          <p className="font-cormorant text-lg font-bold text-slate-800">{wedding.bride_name}</p>
+                          <p className="font-artistic-name text-2xl text-slate-800">{wedding.bride_name}</p>
                         </div>
                       </div>
                     </div>

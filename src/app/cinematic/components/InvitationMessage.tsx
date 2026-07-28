@@ -39,12 +39,12 @@ export function InvitationMessage({ groomName, brideName, weddingDate, to = "" }
               <p
                 className={`font-[family-name:var(--font-cormorant-garamond)] leading-relaxed ${
                   i === 4
-                    ? "text-2xl md:text-3xl text-[#D4AF72] font-medium mt-6 mb-6"
+                    ? "font-artistic-name text-3xl md:text-4xl text-[#D4AF72] mt-6 mb-6"
                     : i === 5
                     ? "text-base md:text-lg text-[#F5F0E8]/60 italic"
                     : i === 1 && to
                     ? "text-xl md:text-2xl text-[#D4AF72] font-semibold tracking-wide"
-                    : "text-lg md:text-xl text-[#F5F0E8]/80 italic"
+                    : "font-[family-name:var(--font-cormorant-garamond)] text-lg md:text-xl text-[#F5F0E8]/80 italic"
                 }`}
               >
                 {line}

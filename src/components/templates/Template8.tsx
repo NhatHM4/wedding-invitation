@@ -68,8 +68,9 @@ export default function Template8({ wedding, to, wishes = [] }: Template8Props) 
             CẢM ƠN BẠN ĐÃ LÀ MỘT PHẦN TRONG NGÀY HẠNH PHÚC CỦA CHÚNG TÔI
           </p>
           <div className="w-12 h-[1px] bg-rose-400/50 mx-auto my-4" />
-          <p className="text-[11px] text-rose-300 font-light">
-            {wedding.groom_name} & {wedding.bride_name} • 16.11.2025
+          <p className="text-rose-300">
+            <span className="font-artistic-name block text-lg leading-tight">{wedding.groom_name} &amp; {wedding.bride_name}</span>
+            <span className="block mt-1 text-[10px] tracking-[0.2em]">16.11.2025</span>
           </p>
         </div>
       </footer>

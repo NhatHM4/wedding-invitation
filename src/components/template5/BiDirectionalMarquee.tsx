@@ -95,7 +95,7 @@ export default function BiDirectionalMarquee({
             style={{
               display: "inline-block",
               fontSize,
-              fontFamily: "var(--font-cormorant-garamond)",
+              fontFamily: "var(--font-alexbrush), var(--font-motherland), 'Dancing Script', cursive",
               fontStyle: "italic",
               fontWeight: 400,
               color,

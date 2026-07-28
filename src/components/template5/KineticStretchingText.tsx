@@ -76,7 +76,7 @@ export default function KineticStretchingText({
     display: "inline-block",
     fontSize,
     color,
-    fontFamily: "var(--font-cormorant-garamond)",
+    fontFamily: "var(--font-alexbrush), var(--font-motherland), 'Dancing Script', cursive",
     fontWeight: baseWeight,
     lineHeight: 1,
     WebkitFontSmoothing: "antialiased",

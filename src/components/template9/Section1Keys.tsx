@@ -47,7 +47,7 @@ export default function Section1Keys({ groomName, brideName, onOpenDoor, isOpen 
                 {/* Key head */}
                 <circle cx="30" cy="26" r="20" stroke="#49372F" strokeWidth="2" fill="#F3EFE7" />
                 <circle cx="30" cy="26" r="12" stroke="#D8CABB" strokeWidth="1.5" />
-                <text x="30" y="30" textAnchor="middle" fill="#49372F" fontSize="12" fontWeight="700" fontFamily="serif">
+                <text x="30" y="30" textAnchor="middle" fill="#49372F" fontSize="14" fontFamily="var(--font-alexbrush), cursive">
                   {groomInitial}
                 </text>
                 {/* Key shaft */}
@@ -69,7 +69,7 @@ export default function Section1Keys({ groomName, brideName, onOpenDoor, isOpen 
                 {/* Key head */}
                 <circle cx="30" cy="26" r="20" stroke="#A55D43" strokeWidth="2" fill="#F3EFE7" />
                 <circle cx="30" cy="26" r="12" stroke="#D8CABB" strokeWidth="1.5" />
-                <text x="30" y="30" textAnchor="middle" fill="#A55D43" fontSize="12" fontWeight="700" fontFamily="serif">
+                <text x="30" y="30" textAnchor="middle" fill="#A55D43" fontSize="14" fontFamily="var(--font-alexbrush), cursive">
                   {brideInitial}
                 </text>
                 {/* Key shaft */}
@@ -89,7 +89,7 @@ export default function Section1Keys({ groomName, brideName, onOpenDoor, isOpen 
         </div>
 
         {/* Couple Names Editorial Title */}
-        <h1 className="font-serif text-3xl md:text-5xl tracking-tight text-[#49372F] mb-6">
+        <h1 className="font-artistic-name text-balance text-4xl md:text-6xl tracking-tight text-[#49372F] mb-6">
           {groomName} <span className="font-handwriting text-2xl md:text-4xl text-[#A55D43] mx-1">&amp;</span> {brideName}
         </h1>
 

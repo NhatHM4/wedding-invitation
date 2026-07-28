@@ -643,11 +643,11 @@ function CoupleProfile({ wedding }: CoupleProfileProps) {
             </div>
             <div className="flex-1 min-w-0">
               <span className="text-[9px] font-bold text-[#8C7355] uppercase tracking-wider block font-sans">Chú rể</span>
-              <h3 className="font-serif-lux text-base font-bold text-stone-850 leading-snug">{wedding.groom_name}</h3>
+              <h3 className="font-artistic-name text-xl text-stone-850 leading-snug">{wedding.groom_name}</h3>
               {wedding.location_info?.groom_family && (
                 <div className="text-[10px] text-stone-500 font-sans space-y-0.5 mt-0.5">
-                  {wedding.location_info.groom_family.father_name && <p>Con ông: {wedding.location_info.groom_family.father_name}</p>}
-                  {wedding.location_info.groom_family.mother_name && <p>Con bà: {wedding.location_info.groom_family.mother_name}</p>}
+                  {wedding.location_info.groom_family.father_name && <p>Con ông: <span className="font-artistic-name text-sm">{wedding.location_info.groom_family.father_name}</span></p>}
+                  {wedding.location_info.groom_family.mother_name && <p>Con bà: <span className="font-artistic-name text-sm">{wedding.location_info.groom_family.mother_name}</span></p>}
                 </div>
               )}
             </div>
@@ -676,11 +676,11 @@ function CoupleProfile({ wedding }: CoupleProfileProps) {
             </div>
             <div className="flex-1 min-w-0">
               <span className="text-[9px] font-bold text-[#8C7355] uppercase tracking-wider block font-sans">Cô dâu</span>
-              <h3 className="font-serif-lux text-base font-bold text-stone-850 leading-snug">{wedding.bride_name}</h3>
+              <h3 className="font-artistic-name text-xl text-stone-850 leading-snug">{wedding.bride_name}</h3>
               {wedding.location_info?.bride_family && (
                 <div className="text-[10px] text-stone-500 font-sans space-y-0.5 mt-0.5">
-                  {wedding.location_info.bride_family.father_name && <p>Con ông: {wedding.location_info.bride_family.father_name}</p>}
-                  {wedding.location_info.bride_family.mother_name && <p>Con bà: {wedding.location_info.bride_family.mother_name}</p>}
+                  {wedding.location_info.bride_family.father_name && <p>Con ông: <span className="font-artistic-name text-sm">{wedding.location_info.bride_family.father_name}</span></p>}
+                  {wedding.location_info.bride_family.mother_name && <p>Con bà: <span className="font-artistic-name text-sm">{wedding.location_info.bride_family.mother_name}</span></p>}
                 </div>
               )}
             </div>

@@ -16,6 +16,7 @@ const Template7 = dynamic(() => import('@/components/templates/Template7'));
 const Template8 = dynamic(() => import('@/components/templates/Template8'));
 const Template9 = dynamic(() => import('@/components/templates/Template9'));
 const Template10 = dynamic(() => import('@/components/templates/Template10'));
+const Template11 = dynamic(() => import('@/components/template11/GardenTemplate'));
 
 export const runtime = 'edge';
 
@@ -243,6 +244,11 @@ export default async function Page({ params, searchParams }: PageProps) {
       case 'template-10':
       case 'timelines':
         return <Template10 wedding={wedding} to={to} wishes={wishes} />;
+      case 'template11':
+      case 'template-11':
+      case 'garden':
+      case 'the-garden-we-grow':
+        return <Template11 wedding={wedding} to={to} wishes={wishes} />;
       case 'template-dovang':
       case 'thiepmaudovang':
         return <TemplateDoVang wedding={wedding} to={to} wishes={wishes} />;

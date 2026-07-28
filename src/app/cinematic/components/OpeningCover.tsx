@@ -95,7 +95,7 @@ export function OpeningCover({
 
             {/* Groom Name */}
             <motion.h1
-              className="font-[family-name:var(--font-cormorant-garamond)] text-4xl md:text-6xl lg:text-7xl font-light text-[#F5F0E8] leading-tight"
+              className="font-artistic-name text-5xl md:text-7xl lg:text-8xl text-[#F5F0E8] leading-tight"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
@@ -115,7 +115,7 @@ export function OpeningCover({
 
             {/* Bride Name */}
             <motion.h1
-              className="font-[family-name:var(--font-cormorant-garamond)] text-4xl md:text-6xl lg:text-7xl font-light text-[#F5F0E8] leading-tight"
+              className="font-artistic-name text-5xl md:text-7xl lg:text-8xl text-[#F5F0E8] leading-tight"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.1 }}

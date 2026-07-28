@@ -11,7 +11,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  
+
   /* Template 9 Color Tokens */
   --t9-plaster: #F3EFE7;
   --t9-limestone: #D8CABB;
@@ -66,6 +66,18 @@
 
 .divider-line {
   border-top: 1px dotted #000;
+}
+
+/*
+ * Shared treatment for every person's name in the invitation templates.
+ * Keep this independent from each template's body type so names never
+ * silently fall back to a plain serif/sans font.
+ */
+.font-artistic-name {
+  font-family: var(--font-alexbrush), var(--font-motherland), 'Dancing Script', cursive !important;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
 }
 
 @keyframes spin {
@@ -636,4 +648,3 @@
 .animate-scroll-down {
   animation: scroll-image-down 12s linear forwards !important;
 }
-

@@ -157,7 +157,7 @@ export default function TmdvHeroSection({ wedding, to, animate = true }: TmdvHer
       {/* Couple Name "Anh Tú - Diệu Nhi" */}
       <div 
         id="w-kb6stlwe" 
-        className="absolute top-[80px] left-[17.5px] w-[385px] h-[60px] z-10 flex items-center justify-center font-sloop text-[40px] text-black text-center"
+        className="font-artistic-name whitespace-nowrap absolute top-[80px] left-[17.5px] w-[385px] h-[60px] z-10 flex items-center justify-center text-[32px] leading-none text-black text-center"
         style={{
           textShadow: "0px 4px 4px rgba(255, 255, 255, 1)",
           opacity: animate ? 1 : 0,

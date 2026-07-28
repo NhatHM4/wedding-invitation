@@ -201,6 +201,21 @@ export default function HomeClient() {
       },
       image: "/template10/preview/template10.webp",
       scrollPreview: true
+    },
+    {
+      id: "template11",
+      name: "Mẫu Khu Vườn Chúng Mình Cùng Vun Trồng",
+      description: "Trải nghiệm thiệp cưới mộc mạc và dịu dàng. Hành trình gieo mầm kỷ niệm, 6 album mùa yêu thương và hiệu ứng thắp sáng đêm đèn lồng mộng mơ.",
+      previewUrl: "/template11",
+      badge: "Khu Vườn Ký Ức",
+      colorClasses: {
+        bg: "bg-[#F3EFE4]",
+        border: "border-[#82916D]",
+        text: "text-[#56604D]",
+        accent: "#A6674E"
+      },
+      image: "/thiepmaudovang/images/cover.jpg",
+      scrollPreview: true
     }
   ];
 

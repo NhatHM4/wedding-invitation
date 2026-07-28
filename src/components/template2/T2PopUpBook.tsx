@@ -283,11 +283,11 @@ export default function T2PopUpBook({
                   <div className="h-[1px] flex-1 bg-yellow-600/30" />
                 </div>
                 <div className="flex items-center gap-3 mt-1">
-                  <span className="font-handwritten text-xl text-white/90 font-bold tracking-wide drop-shadow-sm">
+                  <span className="font-artistic-name text-2xl text-white/90 tracking-wide drop-shadow-sm">
                     {wedding.groom_name}
                   </span>
                   <span className="text-yellow-500 text-lg font-serif-lux italic">&</span>
-                  <span className="font-handwritten text-xl text-white/90 font-bold tracking-wide drop-shadow-sm">
+                  <span className="font-artistic-name text-2xl text-white/90 tracking-wide drop-shadow-sm">
                     {wedding.bride_name}
                   </span>
                 </div>
@@ -384,11 +384,11 @@ export default function T2PopUpBook({
                 <span className="text-[11px] text-gray-400 tracking-widest uppercase">Trân trọng kính báo Lễ Thành Hôn của</span>
 
                 <div className="flex flex-col gap-1.5 font-serif-lux">
-                  <h2 className="text-4xl font-extrabold text-gray-800 tracking-wider">
+                  <h2 className="font-artistic-name text-5xl text-gray-800 tracking-wider">
                     {wedding.groom_name}
                   </h2>
                   <span className="text-sm italic text-[#f08080] font-bold leading-none">&</span>
-                  <h2 className="text-4xl font-extrabold text-gray-800 tracking-wider">
+                  <h2 className="font-artistic-name text-5xl text-gray-800 tracking-wider">
                     {wedding.bride_name}
                   </h2>
                 </div>
@@ -438,7 +438,7 @@ export default function T2PopUpBook({
                 <span className="text-[9px] uppercase tracking-[0.25em] text-[#84a98c] font-bold font-cyber">
                   // THE GROOM //
                 </span>
-                <h2 className="font-serif-lux text-4xl font-extrabold text-gray-800 tracking-wider">
+                <h2 className="font-artistic-name text-5xl text-gray-800 tracking-wider">
                   {wedding.groom_name.toUpperCase()}
                 </h2>
                 <span className="text-[13px] font-bold text-gray-400 font-cyber">
@@ -479,7 +479,7 @@ export default function T2PopUpBook({
                 <span className="text-[9px] uppercase tracking-[0.25em] text-[#f08080] font-bold font-cyber">
                   // THE BRIDE //
                 </span>
-                <h2 className="font-serif-lux text-4xl font-extrabold text-gray-800 tracking-wider">
+                <h2 className="font-artistic-name text-5xl text-gray-800 tracking-wider">
                   {wedding.bride_name.toUpperCase()}
                 </h2>
                 <span className="text-[13px] font-bold text-gray-400 font-cyber">
@@ -628,8 +628,8 @@ export default function T2PopUpBook({
                 {/* Nhà Trai Column */}
                 <div className="flex flex-col items-center">
                   <span className="text-[12px] font-black uppercase tracking-[0.2em] text-gray-800 font-cyber mb-1">Nhà Trai</span>
-                  <span className="font-extrabold text-gray-800 text-[15.5px] block leading-tight font-serif-lux">{wedding.location_info.groom_family?.father_name}</span>
-                  <span className="font-extrabold text-gray-800 text-[15.5px] block leading-tight font-serif-lux">{wedding.location_info.groom_family?.mother_name}</span>
+                  <span className="font-artistic-name text-gray-800 text-xl block leading-tight">{wedding.location_info.groom_family?.father_name}</span>
+                  <span className="font-artistic-name text-gray-800 text-xl block leading-tight">{wedding.location_info.groom_family?.mother_name}</span>
                   <span className="text-[10px] text-gray-400 mt-2 leading-relaxed block max-w-[150px] font-sans">
                     {wedding.location_info.groom_family?.address}
                   </span>
@@ -638,8 +638,8 @@ export default function T2PopUpBook({
                 {/* Nhà Gái Column */}
                 <div className="flex flex-col items-center border-l border-gray-200/50">
                   <span className="text-[12px] font-black uppercase tracking-[0.2em] text-gray-800 font-cyber mb-1">Nhà Gái</span>
-                  <span className="font-extrabold text-gray-800 text-[15.5px] block leading-tight font-serif-lux">{wedding.location_info.bride_family?.father_name}</span>
-                  <span className="font-extrabold text-gray-800 text-[15.5px] block leading-tight font-serif-lux">{wedding.location_info.bride_family?.mother_name}</span>
+                  <span className="font-artistic-name text-gray-800 text-xl block leading-tight">{wedding.location_info.bride_family?.father_name}</span>
+                  <span className="font-artistic-name text-gray-800 text-xl block leading-tight">{wedding.location_info.bride_family?.mother_name}</span>
                   <span className="text-[10px] text-gray-400 mt-2 leading-relaxed block max-w-[150px] font-sans">
                     {wedding.location_info.bride_family?.address}
                   </span>

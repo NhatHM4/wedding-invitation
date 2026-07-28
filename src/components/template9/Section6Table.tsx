@@ -96,8 +96,8 @@ export default function Section6Table({ wedding, onScrollToGuestbook }: Section6
                 <span className="font-sans text-[10px] tracking-widest text-[#A55D43] uppercase block mb-2 font-semibold">
                   NHÀ CHÚ RỂ
                 </span>
-                <p className="font-serif text-lg text-[#49372F] font-semibold mb-1">
-                  Gia đình: {groomFamily.father_name || "Nguyễn Văn A"} &amp; {groomFamily.mother_name || "Trịnh Thị B"}
+                <p className="text-sm text-[#49372F] mb-1">
+                  Gia đình: <span className="font-artistic-name text-xl">{groomFamily.father_name || "Nguyễn Văn A"} &amp; {groomFamily.mother_name || "Trịnh Thị B"}</span>
                 </p>
                 <div className="mt-4 pt-3 border-t border-[#D8CABB] text-sm font-sans space-y-1 text-[#49372F]/90">
                   <p><span className="font-medium text-[#6F7461]">Thời gian:</span> {groomFamily.time || "11:30"}</p>
@@ -112,8 +112,8 @@ export default function Section6Table({ wedding, onScrollToGuestbook }: Section6
                 <span className="font-sans text-[10px] tracking-widest text-[#A55D43] uppercase block mb-2 font-semibold">
                   NHÀ CÔ DÂU
                 </span>
-                <p className="font-serif text-lg text-[#49372F] font-semibold mb-1">
-                  Gia đình: {brideFamily.father_name || "Trịnh Văn C"} &amp; {brideFamily.mother_name || "Ngô Thị D"}
+                <p className="text-sm text-[#49372F] mb-1">
+                  Gia đình: <span className="font-artistic-name text-xl">{brideFamily.father_name || "Trịnh Văn C"} &amp; {brideFamily.mother_name || "Ngô Thị D"}</span>
                 </p>
                 <div className="mt-4 pt-3 border-t border-[#D8CABB] text-sm font-sans space-y-1 text-[#49372F]/90">
                   <p><span className="font-medium text-[#6F7461]">Thời gian:</span> {brideFamily.time || "11:30"}</p>

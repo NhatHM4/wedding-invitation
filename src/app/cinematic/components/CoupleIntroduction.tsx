@@ -61,7 +61,7 @@ export function CoupleIntroduction({
               </p>
             </ScrollReveal>
             <ScrollReveal direction="up" delay={0.35}>
-              <h3 className="font-[family-name:var(--font-cormorant-garamond)] text-3xl md:text-4xl lg:text-5xl font-light text-[#F5F0E8]">
+              <h3 className="font-artistic-name text-4xl md:text-5xl lg:text-6xl text-[#F5F0E8]">
                 {groomName}
               </h3>
             </ScrollReveal>
@@ -117,7 +117,7 @@ export function CoupleIntroduction({
               </p>
             </ScrollReveal>
             <ScrollReveal direction="up" delay={0.45}>
-              <h3 className="font-[family-name:var(--font-cormorant-garamond)] text-3xl md:text-4xl lg:text-5xl font-light text-[#F5F0E8]">
+              <h3 className="font-artistic-name text-4xl md:text-5xl lg:text-6xl text-[#F5F0E8]">
                 {brideName}
               </h3>
             </ScrollReveal>

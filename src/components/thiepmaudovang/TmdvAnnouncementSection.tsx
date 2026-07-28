@@ -21,6 +21,7 @@ export default function TmdvAnnouncementSection({ wedding }: TmdvAnnouncementSec
 
   const groomName = wedding?.groom_name || "Trần Minh Hoàng";
   const brideName = wedding?.bride_name || "Phạm Mai Hương";
+  const withoutHonorific = (name: string) => name.replace(/^(ông|bà)\s+/i, "");
 
   return (
     <section 
@@ -58,9 +59,15 @@ export default function TmdvAnnouncementSection({ wedding }: TmdvAnnouncementSec
         NHÀ TRAI
       </div>
 
-      <div id="w-vq47tj4t" className="absolute top-[123px] left-[20px] w-[170px] h-[48px] z-10 flex flex-col items-center justify-center font-cafeta text-[16px] text-black text-center leading-tight is-animation anim-fade-left">
-        <span>{groomFather}</span>
-        <span>{groomMother}</span>
+      <div id="w-vq47tj4t" className="absolute top-[123px] left-[10px] w-[195px] h-[48px] z-10 flex flex-col items-center justify-center gap-1 text-black text-center is-animation anim-fade-left">
+        <span className="flex items-baseline justify-center gap-1 whitespace-nowrap leading-none">
+          <span className="font-cafeta text-[10px] uppercase">Ông</span>
+          <span className="font-artistic-name text-[11px]">{withoutHonorific(groomFather)}</span>
+        </span>
+        <span className="flex items-baseline justify-center gap-1 whitespace-nowrap leading-none">
+          <span className="font-cafeta text-[10px] uppercase">Bà</span>
+          <span className="font-artistic-name text-[11px]">{withoutHonorific(groomMother)}</span>
+        </span>
       </div>
 
       <div id="w-y1s24e6p" className="absolute top-[171px] left-[20px] w-[170px] h-[19.5px] z-10 flex items-center justify-center font-sans text-[13px] text-black text-center is-animation anim-fade-left">
@@ -72,9 +79,15 @@ export default function TmdvAnnouncementSection({ wedding }: TmdvAnnouncementSec
         NHÀ GÁI
       </div>
 
-      <div id="w-fynwgspj" className="absolute top-[122.98px] left-[230px] w-[170px] h-[48px] z-10 flex flex-col items-center justify-center font-cafeta text-[16px] text-black text-center leading-tight is-animation anim-fade-right">
-        <span>{brideFather}</span>
-        <span>{brideMother}</span>
+      <div id="w-fynwgspj" className="absolute top-[122.98px] left-[215px] w-[195px] h-[48px] z-10 flex flex-col items-center justify-center gap-1 text-black text-center is-animation anim-fade-right">
+        <span className="flex items-baseline justify-center gap-1 whitespace-nowrap leading-none">
+          <span className="font-cafeta text-[10px] uppercase">Ông</span>
+          <span className="font-artistic-name text-[11px]">{withoutHonorific(brideFather)}</span>
+        </span>
+        <span className="flex items-baseline justify-center gap-1 whitespace-nowrap leading-none">
+          <span className="font-cafeta text-[10px] uppercase">Bà</span>
+          <span className="font-artistic-name text-[11px]">{withoutHonorific(brideMother)}</span>
+        </span>
       </div>
 
       <div id="w-2wvcu7z3" className="absolute top-[171.48px] left-[230px] w-[170px] h-[19.5px] z-10 flex items-center justify-center font-sans text-[13px] text-black text-center is-animation anim-fade-right">
@@ -89,7 +102,7 @@ export default function TmdvAnnouncementSection({ wedding }: TmdvAnnouncementSec
       {/* Groom & Bride Calligraphy */}
       <div 
         id="w-mz04c43b" 
-        className="absolute top-[273.5px] left-[20px] w-[380px] h-[60px] z-10 flex items-center justify-center font-sloop text-[40px] text-black text-center is-animation anim-bounce-up"
+        className="font-artistic-name absolute top-[273.5px] left-[20px] w-[380px] h-[60px] z-10 flex items-center justify-center text-[40px] text-black text-center is-animation anim-bounce-up"
         style={{ textShadow: "0px 4px 4px rgba(255, 255, 255, 1)" }}
       >
         {groomName}
@@ -105,7 +118,7 @@ export default function TmdvAnnouncementSection({ wedding }: TmdvAnnouncementSec
 
       <div 
         id="w-0vqn3fzh" 
-        className="absolute top-[355px] left-[23.5px] w-[373px] h-[60px] z-10 flex items-center justify-center font-sloop text-[40px] text-black text-center is-animation anim-bounce-up"
+        className="font-artistic-name absolute top-[355px] left-[23.5px] w-[373px] h-[60px] z-10 flex items-center justify-center text-[40px] text-black text-center is-animation anim-bounce-up"
         style={{ textShadow: "0px 4px 4px rgba(255, 255, 255, 1)" }}
       >
         {brideName}

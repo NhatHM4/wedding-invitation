@@ -181,8 +181,8 @@ export default function Template1({ wedding, to, wishes }: Template1Props) {
               {/* House of Groom */}
               <div className="flex flex-col text-center">
                 <span className="text-xs font-bold text-[#8b1a1a] uppercase tracking-wider mb-1 font-sans">Nhà Trai</span>
-                <span className="text-xs font-semibold text-slate-800">{wedding.location_info.groom_family?.father_name}</span>
-                <span className="text-xs font-semibold text-slate-800">{wedding.location_info.groom_family?.mother_name}</span>
+                <span className="font-artistic-name text-base text-slate-800">{wedding.location_info.groom_family?.father_name}</span>
+                <span className="font-artistic-name text-base text-slate-800">{wedding.location_info.groom_family?.mother_name}</span>
                 <span className="text-[10px] text-slate-500 mt-1 leading-normal font-sans">
                   {wedding.location_info.groom_family?.address}
                 </span>
@@ -191,8 +191,8 @@ export default function Template1({ wedding, to, wishes }: Template1Props) {
               {/* House of Bride */}
               <div className="flex flex-col text-center">
                 <span className="text-xs font-bold text-[#8b1a1a] uppercase tracking-wider mb-1 font-sans">Nhà Gái</span>
-                <span className="text-xs font-semibold text-slate-800">{wedding.location_info.bride_family?.father_name}</span>
-                <span className="text-xs font-semibold text-slate-800">{wedding.location_info.bride_family?.mother_name}</span>
+                <span className="font-artistic-name text-base text-slate-800">{wedding.location_info.bride_family?.father_name}</span>
+                <span className="font-artistic-name text-base text-slate-800">{wedding.location_info.bride_family?.mother_name}</span>
                 <span className="text-[10px] text-slate-500 mt-1 leading-normal font-sans">
                   {wedding.location_info.bride_family?.address}
                 </span>
@@ -206,7 +206,7 @@ export default function Template1({ wedding, to, wishes }: Template1Props) {
 
             {/* Couple names heading */}
             <div className="flex flex-col items-center gap-0.5 my-4 z-10">
-              <h1 className="font-artistic text-5xl font-bold tracking-wide text-[#8b1a1a] drop-shadow-sm">
+              <h1 className="font-artistic-name text-5xl tracking-wide text-[#8b1a1a] drop-shadow-sm">
                 {wedding.groom_name}
               </h1>
               <div className="flex items-center gap-2">
@@ -214,7 +214,7 @@ export default function Template1({ wedding, to, wishes }: Template1Props) {
                 <span className="font-serif-lux text-lg text-slate-600 font-semibold">&</span>
                 <span className="text-rose-300">♥</span>
               </div>
-              <h1 className="font-artistic text-5xl font-bold tracking-wide text-[#8b1a1a] drop-shadow-sm">
+              <h1 className="font-artistic-name text-5xl tracking-wide text-[#8b1a1a] drop-shadow-sm">
                 {wedding.bride_name}
               </h1>
             </div>
@@ -335,11 +335,11 @@ export default function Template1({ wedding, to, wishes }: Template1Props) {
                     />
                   </div>
                   <h3 className="font-artistic text-3xl font-bold text-[#8b1a1a] mb-1">Chú Rể</h3>
-                  <h4 className="font-serif-lux text-lg font-bold text-[#5c3c43] mb-3">{wedding.groom_name}</h4>
+                  <h4 className="font-artistic-name text-2xl text-[#5c3c43] mb-3">{wedding.groom_name}</h4>
                   {wedding.location_info?.groom_family && (
                     <div className="text-xs text-slate-600 font-sans space-y-1 mb-3">
-                      {wedding.location_info.groom_family.father_name && <p><span className="text-slate-400">Con ông:</span> {wedding.location_info.groom_family.father_name}</p>}
-                      {wedding.location_info.groom_family.mother_name && <p><span className="text-slate-400">Con bà:</span> {wedding.location_info.groom_family.mother_name}</p>}
+                      {wedding.location_info.groom_family.father_name && <p><span className="text-slate-400">Con ông:</span> <span className="font-artistic-name text-base">{wedding.location_info.groom_family.father_name}</span></p>}
+                      {wedding.location_info.groom_family.mother_name && <p><span className="text-slate-400">Con bà:</span> <span className="font-artistic-name text-base">{wedding.location_info.groom_family.mother_name}</span></p>}
                     </div>
                   )}
                   <p className="text-xs text-[#5c3c43]/80 italic leading-relaxed border-t border-rose-100/60 pt-3 max-w-[260px]">
@@ -359,11 +359,11 @@ export default function Template1({ wedding, to, wishes }: Template1Props) {
                     />
                   </div>
                   <h3 className="font-artistic text-3xl font-bold text-[#8b1a1a] mb-1">Cô Dâu</h3>
-                  <h4 className="font-serif-lux text-lg font-bold text-[#5c3c43] mb-3">{wedding.bride_name}</h4>
+                  <h4 className="font-artistic-name text-2xl text-[#5c3c43] mb-3">{wedding.bride_name}</h4>
                   {wedding.location_info?.bride_family && (
                     <div className="text-xs text-slate-600 font-sans space-y-1 mb-3">
-                      {wedding.location_info.bride_family.father_name && <p><span className="text-slate-400">Con ông:</span> {wedding.location_info.bride_family.father_name}</p>}
-                      {wedding.location_info.bride_family.mother_name && <p><span className="text-slate-400">Con bà:</span> {wedding.location_info.bride_family.mother_name}</p>}
+                      {wedding.location_info.bride_family.father_name && <p><span className="text-slate-400">Con ông:</span> <span className="font-artistic-name text-base">{wedding.location_info.bride_family.father_name}</span></p>}
+                      {wedding.location_info.bride_family.mother_name && <p><span className="text-slate-400">Con bà:</span> <span className="font-artistic-name text-base">{wedding.location_info.bride_family.mother_name}</span></p>}
                     </div>
                   )}
                   <p className="text-xs text-[#5c3c43]/80 italic leading-relaxed border-t border-rose-100/60 pt-3 max-w-[260px]">

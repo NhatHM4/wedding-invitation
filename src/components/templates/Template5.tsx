@@ -543,6 +543,7 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
         {/* Content */}
         <div style={{ position: "relative", zIndex: 10, textAlign: "center", width: "100%" }}>
           <motion.p
+            className="font-artistic-name"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
@@ -870,13 +871,13 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
                 </div>
                 <div style={{ flex: 1 }}>
                   <span style={{ fontSize: "0.6rem", fontWeight: "bold", color: "#E11D48", textTransform: "uppercase", letterSpacing: "0.15em", display: "block" }}>Chú rể</span>
-                  <h3 style={{ fontFamily: "var(--font-playfair)", fontSize: "1.35rem", color: "#881337", fontWeight: 600, marginTop: "0.25rem" }}>
+                  <h3 className="font-artistic-name" style={{ fontSize: "1.6rem", color: "#881337", marginTop: "0.25rem" }}>
                     {wedding.groom_name}
                   </h3>
                   {groomFamily && (
                     <div style={{ fontFamily: "var(--font-inter)", fontSize: "0.7rem", color: "#6B7280", marginTop: "0.35rem", lineHeight: "1.4" }}>
-                      {groomFamily.father_name && <p>Con ông: {groomFamily.father_name}</p>}
-                      {groomFamily.mother_name && <p>Con bà: {groomFamily.mother_name}</p>}
+                      {groomFamily.father_name && <p>Con ông: <span className="font-artistic-name text-base">{groomFamily.father_name}</span></p>}
+                      {groomFamily.mother_name && <p>Con bà: <span className="font-artistic-name text-base">{groomFamily.mother_name}</span></p>}
                     </div>
                   )}
                 </div>
@@ -902,13 +903,13 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
                 </div>
                 <div style={{ flex: 1 }}>
                   <span style={{ fontSize: "0.6rem", fontWeight: "bold", color: "#E11D48", textTransform: "uppercase", letterSpacing: "0.15em", display: "block" }}>Cô dâu</span>
-                  <h3 style={{ fontFamily: "var(--font-playfair)", fontSize: "1.35rem", color: "#881337", fontWeight: 600, marginTop: "0.25rem" }}>
+                  <h3 className="font-artistic-name" style={{ fontSize: "1.6rem", color: "#881337", marginTop: "0.25rem" }}>
                     {wedding.bride_name}
                   </h3>
                   {brideFamily && (
                     <div style={{ fontFamily: "var(--font-inter)", fontSize: "0.7rem", color: "#6B7280", marginTop: "0.35rem", lineHeight: "1.4" }}>
-                      {brideFamily.father_name && <p>Con ông: {brideFamily.father_name}</p>}
-                      {brideFamily.mother_name && <p>Con bà: {brideFamily.mother_name}</p>}
+                      {brideFamily.father_name && <p>Con ông: <span className="font-artistic-name text-base">{brideFamily.father_name}</span></p>}
+                      {brideFamily.mother_name && <p>Con bà: <span className="font-artistic-name text-base">{brideFamily.mother_name}</span></p>}
                     </div>
                   )}
                 </div>
@@ -974,6 +975,7 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
 
                   {(data.father_name || data.mother_name) && (
                     <p
+                      className="font-artistic-name"
                       style={{
                         fontFamily: "var(--font-cormorant-garamond)",
                         fontStyle: "italic",
@@ -1192,7 +1194,7 @@ export default function Template5({ wedding, to, wishes }: Template5Props) {
                       <p style={{ fontFamily: "var(--font-inter)", fontSize: "0.6rem", letterSpacing: "0.25em", color: "#E11D48", textTransform: "uppercase", marginBottom: "0.5rem", fontWeight: 700 }}>
                         {item.label}
                       </p>
-                      <p style={{ fontFamily: "var(--font-cormorant-garamond)", fontSize: "1.1rem", color: "#881337", fontWeight: 700, marginBottom: "0.25rem" }}>
+                      <p className="font-artistic-name" style={{ fontSize: "1.3rem", color: "#881337", marginBottom: "0.25rem" }}>
                         {item.name}
                       </p>
                       <p style={{ fontFamily: "var(--font-inter)", fontSize: "0.78rem", color: "#4B5563" }}>

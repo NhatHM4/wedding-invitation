@@ -86,7 +86,7 @@ export default function GiftBoxSection({ wedding }: GiftBoxSectionProps) {
               />
             </div>
 
-            <h3 className="font-serif text-xl text-gray-900 font-medium mb-1">
+            <h3 className="font-artistic-name text-2xl text-gray-900 mb-1">
               {groomBank.owner}
             </h3>
             <p className="text-xs text-rose-600 font-medium mb-3">
@@ -141,7 +141,7 @@ export default function GiftBoxSection({ wedding }: GiftBoxSectionProps) {
               />
             </div>
 
-            <h3 className="font-serif text-xl text-gray-900 font-medium mb-1">
+            <h3 className="font-artistic-name text-2xl text-gray-900 mb-1">
               {brideBank.owner}
             </h3>
             <p className="text-xs text-rose-600 font-medium mb-3">

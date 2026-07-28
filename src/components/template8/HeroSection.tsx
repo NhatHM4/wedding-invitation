@@ -97,7 +97,7 @@ export default function HeroSection({ wedding, to }: HeroSectionProps) {
 
         {/* Couple Names */}
         <div className="my-6 text-center">
-          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl text-rose-900 font-normal leading-tight">
+          <h1 className="font-artistic-name text-4xl sm:text-5xl md:text-6xl text-rose-900 leading-tight">
             {wedding.groom_name}
           </h1>
           <div className="my-2 flex items-center justify-center gap-3">
@@ -105,7 +105,7 @@ export default function HeroSection({ wedding, to }: HeroSectionProps) {
             <Heart className="w-5 h-5 text-rose-500 fill-rose-500 animate-bounce" />
             <span className="h-[1px] w-10 bg-rose-300" />
           </div>
-          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl text-rose-900 font-normal leading-tight">
+          <h1 className="font-artistic-name text-4xl sm:text-5xl md:text-6xl text-rose-900 leading-tight">
             {wedding.bride_name}
           </h1>
         </div>
