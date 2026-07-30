@@ -29,13 +29,8 @@ export default function Section2Foundation() {
 
   return (
     <section id="foundation" className="relative w-full py-24 px-6 bg-[#F3EFE7] text-[#49372F] overflow-hidden border-t border-[#D8CABB]">
-      {/* Architectural blueprint lines background */}
-      <div className="absolute inset-0 pointer-events-none opacity-15">
-        <div className="w-full h-full max-w-4xl mx-auto border-x border-dashed border-[#49372F] grid grid-cols-3">
-          <div className="border-r border-dashed border-[#49372F]" />
-          <div className="border-r border-dashed border-[#49372F]" />
-        </div>
-      </div>
+      {/* Background ambient gradient without heavy dashed grid lines */}
+      <div className="absolute inset-0 pointer-events-none opacity-5 bg-[radial-gradient(#49372F_1px,transparent_1px)] [background-size:24px_24px]" />
 
       <div className="max-w-3xl mx-auto relative z-10">
         {/* Section Header */}

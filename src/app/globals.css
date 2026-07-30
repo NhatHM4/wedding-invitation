@@ -624,7 +624,7 @@
 
 /* Polaroid Deck drop shadows */
 .polaroid-drop-shadow {
-  filter: drop-shadow(0px 8px 16px rgba(0,0,0,0.12));
+  filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.12));
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -639,6 +639,7 @@
     top: 0%;
     transform: translateY(0%);
   }
+
   100% {
     top: 100%;
     transform: translateY(-100%);
