@@ -216,6 +216,21 @@ export default function HomeClient() {
       },
       image: "/thiepmaudovang/images/cover.jpg",
       scrollPreview: true
+    },
+    {
+      id: "template12",
+      name: "Hộ Chiếu Đến Ngày Chung Đôi",
+      description: "Trải nghiệm hành trình du lịch lãng mạn. Nhận vé mời, check-in, mở hộ chiếu tình yêu, bưu thiếp cào bí mật và thẻ lên tàu cá nhân hóa độc bản.",
+      previewUrl: "/template12",
+      badge: "Love Passport",
+      colorClasses: {
+        bg: "bg-[#172235]",
+        border: "border-[#B89B62]",
+        text: "text-[#F4EBDD]",
+        accent: "#762F3A"
+      },
+      image: "/thiepmaudovang/images/cover.jpg",
+      scrollPreview: true
     }
   ];
 
