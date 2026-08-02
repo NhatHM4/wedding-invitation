@@ -231,7 +231,23 @@ export default function HomeClient() {
       },
       image: "/thiepmaudovang/images/cover.jpg",
       scrollPreview: true
+    },
+    {
+      id: "template13",
+      name: "Cuộn Phim Chúng Mình (Love Film Lab)",
+      description: "Trải nghiệm thiệp cưới analog độc bản như một cuộn phim đang tráng trong phòng tối. Hộp phim cá nhân hóa, dải phim 35mm tương tác, tráng ảnh cảm ứng, máy chiếu đếm ngược và vé Polaroid cá nhân hóa.",
+      previewUrl: "/template13",
+      badge: "Mới • Analog Darkroom",
+      colorClasses: {
+        bg: "bg-[#121212]",
+        border: "border-[#3A2924]",
+        text: "text-[#F1E6D2]",
+        accent: "#A53A32"
+      },
+      image: "/thiepmaudovang/images/cover.jpg",
+      scrollPreview: true
     }
+
   ];
 
   const features = [
