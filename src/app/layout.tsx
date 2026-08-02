@@ -226,6 +226,10 @@ export default function RootLayout({
 
   return (
     <html lang="vi" className={`${fontClasses} h-full antialiased`}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
       <body className="min-h-full flex flex-col bg-[#FAF7F2] text-[#2C2C2C]">
         {children}
       </body>

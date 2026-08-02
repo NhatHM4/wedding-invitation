@@ -138,7 +138,6 @@ export default function MemoryGoldReveal({
             src={memoryImage}
             alt="Kỷ niệm được phủ vàng"
             fill
-            priority
             sizes="(max-width: 768px) 100vw, 400px"
             className="object-cover object-center"
           />

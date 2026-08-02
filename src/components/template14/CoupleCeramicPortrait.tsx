@@ -67,7 +67,6 @@ export default function CoupleCeramicPortrait({
               src={groomImage}
               alt={`Chú rể ${groomName}`}
               fill
-              priority
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
             />
@@ -96,7 +95,6 @@ export default function CoupleCeramicPortrait({
               src={brideImage}
               alt={`Cô dâu ${brideName}`}
               fill
-              priority
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
             />
