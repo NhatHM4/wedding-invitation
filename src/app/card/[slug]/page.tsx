@@ -19,6 +19,7 @@ const Template10 = dynamic(() => import('@/components/templates/Template10'));
 const Template11 = dynamic(() => import('@/components/template11/GardenTemplate'));
 const Template12 = dynamic(() => import('@/components/template12/LovePassportTemplate'));
 const Template13 = dynamic(() => import('@/components/template13/LoveFilmLabTemplate'));
+const Template14 = dynamic(() => import('@/components/template14/KintsugiLoveTemplate'));
 
 export const runtime = 'edge';
 
@@ -261,6 +262,12 @@ export default async function Page({ params, searchParams }: PageProps) {
       case 'love-film-lab':
       case 'cuon-phim-chung-minh':
         return <Template13 wedding={wedding} to={to} wishes={wishes} />;
+      case 'template14':
+      case 'template-14':
+      case 'kintsugi-love':
+      case 'kintsugi-love-template':
+      case 'manh-vo-hoa-vang':
+        return <Template14 wedding={wedding} to={to} wishes={wishes} />;
       case 'template-dovang':
       case 'thiepmaudovang':
         return <TemplateDoVang wedding={wedding} to={to} wishes={wishes} />;

@@ -4,7 +4,7 @@ import { use } from "react";
 import { Wedding, Wish } from "@/types";
 import LovePassportTemplate from "@/components/template12/LovePassportTemplate";
 
-export const runtime = 'edge';
+export const dynamic = 'force-static';
 
 interface PageProps {
   searchParams: Promise<{ to?: string }>;

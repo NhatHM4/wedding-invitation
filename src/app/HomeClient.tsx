@@ -246,6 +246,21 @@ export default function HomeClient() {
       },
       image: "/thiepmaudovang/images/cover.jpg",
       scrollPreview: true
+    },
+    {
+      id: "template14",
+      name: "KINTSUGI LOVE – MẢNH VỠ HÓA VÀNG",
+      description: "Trải nghiệm thiệp cưới gốm Kintsugi độc bản. Chiếc đĩa gốm ghép mảnh cảm ứng, đường chỉ vàng gắn kết tình yêu, phủ vàng kỷ niệm, đồng hồ lò nung và Ấn Vàng cá nhân hóa.",
+      previewUrl: "/template14",
+      badge: "Kintsugi Gold",
+      colorClasses: {
+        bg: "bg-[#F3ECDD]",
+        border: "border-[#B99245]",
+        text: "text-[#252320]",
+        accent: "#6A3034"
+      },
+      image: "/thiepmaudovang/images/cover.jpg",
+      scrollPreview: true
     }
 
   ];
