@@ -1,5 +1,5 @@
 import Template13Page from "../template13/page";
 
-export const dynamic = 'force-static';
+export const runtime = 'edge';
 
 export default Template13Page;

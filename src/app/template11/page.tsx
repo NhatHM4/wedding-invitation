@@ -4,7 +4,7 @@ import { use } from "react";
 import { Wedding, Wish } from "@/types";
 import GardenTemplate from "@/components/template11/GardenTemplate";
 
-export const dynamic = 'force-static';
+export const runtime = 'edge';
 
 interface PageProps {
   searchParams: Promise<{ to?: string }>;

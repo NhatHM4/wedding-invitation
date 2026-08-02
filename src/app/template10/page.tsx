@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { Wedding, Wish } from "@/types";
 import Template10 from "@/components/templates/Template10";
 
+export const runtime = 'edge';
+
 export default function Template10Page() {
   const [to, setTo] = useState("");
 

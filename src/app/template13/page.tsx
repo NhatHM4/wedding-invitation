@@ -4,7 +4,7 @@ import { use } from "react";
 import { Wedding, Wish } from "@/types";
 import LoveFilmLabTemplate from "@/components/template13/LoveFilmLabTemplate";
 
-export const dynamic = 'force-static';
+export const runtime = 'edge';
 
 interface PageProps {
   searchParams: Promise<{ to?: string }>;
