@@ -1,18 +1,18 @@
 "use client";
 
-import { use } from "react";
+import { useEffect, useState } from "react";
 import { Wedding, Wish } from "@/types";
 import KintsugiLoveTemplate from "@/components/template14/KintsugiLoveTemplate";
 
-export const runtime = 'edge';
+export default function Template14Page() {
+  const [to, setTo] = useState("");
 
-interface PageProps {
-  searchParams: Promise<{ to?: string }>;
-}
-
-export default function Template14Page({ searchParams }: PageProps) {
-  const resolvedParams = use(searchParams);
-  const to = resolvedParams?.to || "Quý khách";
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      setTo(params.get("to") || "Quý khách");
+    }
+  }, []);
 
   const mockWedding: Wedding = {
     id: "template14-kintsugi-love-id",
